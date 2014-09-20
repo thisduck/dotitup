@@ -8,6 +8,7 @@ task :install do
   link_it_up = {
     vim: "~/.vim",
     vimrc: "~/.vimrc",
+    ctags: "~/.ctags",
   }
   
   puts "-- Linking files and folders"
@@ -24,6 +25,9 @@ task :install do
   if !File.exist?(vundle_path)
     run "git clone https://github.com/gmarik/Vundle.vim #{vundle_path}"
   end
+
+  puts "--- Vundle Install"
+  run 'vim --noplugin -u vim/vundles.vim -N "+set hidden" "+syntax on" +BundleClean! +BundleInstall +qall'
 end
 
 task :default => 'install'

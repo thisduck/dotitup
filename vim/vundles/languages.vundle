@@ -1,0 +1,13 @@
+Plugin 'pangloss/vim-javascript'
+Plugin 'chase/vim-ansible-yaml'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'itspriddle/vim-jquery.git'
+Plugin 'jtratner/vim-flavored-markdown.git'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'nelstrom/vim-markdown-preview'
+Plugin 'skwp/vim-html-escape'
+Plugin 'tpope/vim-haml'
+
+" Plugin 'garbas/vim-snipmate.git'
+" Plugin 'honza/vim-snippets'

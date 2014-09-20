@@ -1,61 +1,62 @@
-`:q` - quits vim.
-`:q!` - force quits vim (will not save changes).
-`:wq` - saves and quits.
-`ZZ` - equivalent to `:wq`
-`ZQ` - equivalent to `:q!`
+---
+
+| `:q`  | - quits vim.                               |
+| `:q!` | - force quits vim (will not save changes). |
+| `:wq` | - saves and quits.                         |
+| `ZZ`  | - equivalent to `:wq`                      |
+| `ZQ`  | - equivalent to `:q!`                      |
 
 ---
 
-`zt` - will "zoom" the current line to the top.
-`zb` - will "zoom" the current line to the bottom.
-`zz` - will "zoom" the current line to the middle.
-
-
----
-
-`G` - moves cursor to the last line in the file.
-`gg` - moves cursor to the first line in the file.
-`:1` - also moves cursor to the first line in the file.
-`:[number]` - moves cursor to the [number] line in the file.
-`h` - move right.
-`j` - move down.
-`k` - move up.
-`l` - move left.
-
-`w` - go to next word.
-`b` - go to previous word.
-`e` - go to end of word.
-
-`W` - while `w` would treat "www.google.com" as 5 words ("www", ".", "google", ".", "com"), `W` will treat "www.google.com" all as one WORD.
-`B` - same as above, but goes back a WORD.
-`E` - same as above, but goes to the end of a WORD.
-
-`<C-u>` - page up half a screen.
-`<C-d>` - page down half a screen.
-`<C-b>` - page up full screen.
-`<C-f>` - page down full screen.
-`^` - move to first non-whitespace character.
-`$` - move to end of line.
-`0` - move to beginning of line.
+| `zt` | - will "zoom" the current line to the top.    |
+| `zb` | - will "zoom" the current line to the bottom. |
+| `zz` | - will "zoom" the current line to the middle. |
 
 ---
 
-`x` - delete/cut character on cursor.
-`X` - delete/cut character before cursor.
-`d` - delete/cut.
-`c` - change.
-`y` - yank/copy.
-`p` - put/paste (after cursor position).
-`P` - put/paste (before cursor position).
-`r[character]` - replaces charcter under cursor with [character], keeps cursor on character.
-`R[character]` - replaces charcter under cursor with [character], and moves cursor forward.
-`~` - change case of character.
+| `G`         | - moves cursor to the last line in the file.       |
+| `gg`        | - moves cursor to the first line in the file.      |
+| `:1`        | - also moves cursor to the first line in the file. |
+| `:[number]` | - moves cursor to the [number] line in the file.   |
+| `h`         | - move right.                                      |
+| `j`         | - move down.                                       |
+| `k`         | - move up.                                         |
+| `l`         | - move left.                                       |
 
-`D` - delete from cursor position to the end of the line.
-`C` - change from cursor position to the end of the line.
+| `w` | - go to next word.     |
+| `b` | - go to previous word. |
+| `e` | - go to end of word.   |
 
-- change will delete and change the mode to insert.
-- delete will delete and remain in normal mode.
+| `W` | - while `w` would treat "www.google.com" as 5 words ("www", ".", "google", ".", "com"), `W` will treat "www.google.com" all as one WORD. |
+| `B` | - same as above, but goes back a WORD.                                                                                                   |
+| `E` | - same as above, but goes to the end of a WORD.                                                                                          |
+
+| `<C-u>` | - page up half a screen.                  |
+| `<C-d>` | - page down half a screen.                |
+| `<C-b>` | - page up full screen.                    |
+| `<C-f>` | - page down full screen.                  |
+| `^`     | - move to first non-whitespace character. |
+| `$`     | - move to end of line.                    |
+| `0`     | - move to beginning of line.              |
+
+---
+
+| `x`            | - delete/cut character on cursor.                                             |
+| `X`            | - delete/cut character before cursor.                                         |
+| `d`            | - delete/cut.                                                                 |
+| `c`            | - change.                                                                     |
+| `y`            | - yank/copy.                                                                  |
+| `p`            | - put/paste (after cursor position).                                          |
+| `P`            | - put/paste (before cursor position).                                         |
+| `r[character]` | - replaces charcter under cursor with [character], keeps cursor on character. |
+| `R[character]` | - replaces charcter under cursor with [character], and moves cursor forward.  |
+| `~`            | - change case of character.                                                   |
+
+| `D` | - delete from cursor position to the end of the line. |
+| `C` | - change from cursor position to the end of the line. |
+
+|  | - change will delete and change the mode to insert. |
+|  | - delete will delete and remain in normal mode.     |
 
 `i` - enters insert mode at cursor position.
 `I` - enters insert mode at the start of the line.
@@ -119,3 +120,8 @@
 `di(` - will delete everything inside round brackets.
 
 `ci"` - will delete everything in the double quotes and put you in insert mode.
+
+```ruby
+def something
+end
+```

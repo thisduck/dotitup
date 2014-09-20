@@ -1,0 +1,43 @@
+" copy to clipboard
+map <Leader>y "*y
+
+" from gary b
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RENAME CURRENT FILE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <Leader>nn :call RenameFile()<cr>
+
+" bind K to grep word under cursor
+nnoremap K :Ag! "<C-R><C-W>"<CR>:cw<CR>
+nnoremap KK :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+
+nnoremap <leader>. :CtrlPTag<CR>
+" nnoremap <silent> <Leader>b :TagbarToggle<CR>
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" configure syntastic syntax checking to check on open as well as save
+let g:syntastic_check_on_open=1
+
+" Index ctags from any project, including those outside Rails
+map <Leader>ct :!/usr/local/bin/ctags -R .<CR><CR>
+
+set shell=/bin/sh
