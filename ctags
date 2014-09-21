@@ -22,6 +22,8 @@
 --regex-coffee=/(constructor|initialize: \()@[A-Za-z.]+(, @([A-Za-z.]+)){9}/\3/f,field/
 
 --langmap=ruby:+.rake
+--exclude=db/migrate
+--exclude=vendor/assets
 
 --regex-ruby=/(^|;)class[[:space:]]+([A-Z][[:alnum:]]+)::([A-Z][[:alnum:]]+)/\3/c,class,constant/
 --regex-ruby=/(^|;)class[[:space:]]+[A-Z][[:alnum:]]+::[A-Z][[:alnum:]]+::([A-Z][[:alnum:]]+)/\2/c,class,constant/
@@ -37,20 +39,16 @@
 --regex-ruby=/(^|;)[ \t]*expose\(? *:([[:alnum:]_]+)/\2/f,function,exposure/
 --regex-ruby=/(^|;)[ \t]*event\(? *:([[:alnum:]_]+)/\2/f,function,aasm_event/
 --regex-ruby=/(^|;)[ \t]*event\(? *:([[:alnum:]_]+)/\2!/f,function,aasm_event/
---regex-ruby=/(^|;)[ \t]*event\(? *:([[:alnum:]_]+)/\2?/f,function,aasm_event/
+--regex-ruby=/(^|;)[ \t]*event\(? *:([[:alnum:]_]+)/may_\2?/f,function,aasm_event/
+--regex-ruby=/(^|;)[ \t]*state\(? *:([[:alnum:]_]+)/\2?/f,function,aasm_state/
 
 --regex-ruby=/(^|;)[ \t]*namespace\(? *[:"]?([[:alnum:]_]+)/\2/f,module,namespace/
 --regex-ruby=/(^|;)[ \t]*task\(? *[:"]?([[:alnum:]_]+)/\2/t,task,task/
 --regex-ruby=/(^|;)[ \t]*alias_method\(? *[:"]?([[:alnum:]_?!]+)/\2/m,method,alias/
 --regex-ruby=/(^|;)[ \t]*alias_attribute\(? *[:"]?([[:alnum:]_?!]+)/\2/m,method,alias/
 
---regex-ruby=/(^|;)[ \t]*t\.boolean\(? *[:"]?([[:alnum:]_]+)/\2/m,method,database/
---regex-ruby=/(^|;)[ \t]*t\.integer\(? *[:"]?([[:alnum:]_]+)/\2/m,method,database/
---regex-ruby=/(^|;)[ \t]*t\.decimal\(? *[:"]?([[:alnum:]_]+)/\2/m,method,database/
---regex-ruby=/(^|;)[ \t]*t\.float\(? *[:"]?([[:alnum:]_]+)/\2/m,method,database/
---regex-ruby=/(^|;)[ \t]*t\.datetime\(? *[:"]?([[:alnum:]_]+)/\2/m,method,database/
---regex-ruby=/(^|;)[ \t]*t\.date\(? *[:"]?([[:alnum:]_]+)/\2/m,method,database/
---regex-ruby=/(^|;)[ \t]*t\.text\(? *[:"]?([[:alnum:]_]+)/\2/m,method,database/
+--regex-ruby=/(^|;)[ \t]*t\.(boolean|integer|decimal|float|datetime|date|text)\(? *[:"]?([[:alnum:]_]+)/\3/f,field,database/
+--regex-ruby=/(^|;)[ \t]*t\.boolean\(? *[:"]?([[:alnum:]_]+)/\2?/f,field,database/
 
 --regex-ruby=/(^|;)[ \t]*delegate\(? *[:"]?([[:alnum:]_?!]+[?!]?)/\2/m,method,delegate/
 --regex-ruby=/(^|;)[ \t]*delegate\(? *[:"]?[[:alnum:]_?!]+[?!]?"?,[ \t]*[:"]?([[:alnum:]_]+[?!]?)/\2/m,method,delegate/
