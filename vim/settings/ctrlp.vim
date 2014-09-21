@@ -53,9 +53,7 @@ map <Leader>pV :CtrlP vendor<CR>
 map <Leader>pF :CtrlP factories<CR>
 map <Leader>pT :CtrlP test<CR>
 
-"Cmd-Shift-(M)ethod - jump to a method (tag in current file)
-"Ctrl-m is not good - it overrides behavior of Enter
-nnoremap <silent> <Leader>pf :CtrlPBufTag<CR>
+nnoremap <silent> <Leader>pt :CtrlPBufTag<CR>
 
 let g:ctrlp_extensions = ['funky']
 nnoremap <Leader>fu :CtrlPFunky<Cr>

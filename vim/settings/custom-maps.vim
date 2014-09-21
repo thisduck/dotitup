@@ -59,3 +59,23 @@ highlight DiffText term=reverse cterm=bold ctermbg=011 ctermfg=232
 
 highlight DiffAdd term=reverse cterm=bold ctermbg=108 ctermfg=235
 highlight DiffDelete term=reverse cterm=bold ctermbg=052 ctermfg=243
+
+function! Preserve(command) "{{{
+  " preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " do the business:
+  execute a:command
+  " clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction "}}}
+
+function! StripTrailingWhitespace() "{{{
+  call Preserve("%s/\\s\\+$//e")
+endfunction "}}}
+
+nmap <leader>fef :call Preserve("normal gg=G")<CR>
+nmap <leader>f$ :call StripTrailingWhitespace()<CR>
+vmap <leader>s :sort<cr>
