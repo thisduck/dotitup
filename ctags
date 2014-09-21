@@ -44,6 +44,14 @@
 --regex-ruby=/(^|;)[ \t]*alias_method\(? *[:"]?([[:alnum:]_?!]+)/\2/m,method,alias/
 --regex-ruby=/(^|;)[ \t]*alias_attribute\(? *[:"]?([[:alnum:]_?!]+)/\2/m,method,alias/
 
+--regex-ruby=/(^|;)[ \t]*t\.boolean\(? *[:"]?([[:alnum:]_]+)/\2/m,method,database/
+--regex-ruby=/(^|;)[ \t]*t\.integer\(? *[:"]?([[:alnum:]_]+)/\2/m,method,database/
+--regex-ruby=/(^|;)[ \t]*t\.decimal\(? *[:"]?([[:alnum:]_]+)/\2/m,method,database/
+--regex-ruby=/(^|;)[ \t]*t\.float\(? *[:"]?([[:alnum:]_]+)/\2/m,method,database/
+--regex-ruby=/(^|;)[ \t]*t\.datetime\(? *[:"]?([[:alnum:]_]+)/\2/m,method,database/
+--regex-ruby=/(^|;)[ \t]*t\.date\(? *[:"]?([[:alnum:]_]+)/\2/m,method,database/
+--regex-ruby=/(^|;)[ \t]*t\.text\(? *[:"]?([[:alnum:]_]+)/\2/m,method,database/
+
 --regex-ruby=/(^|;)[ \t]*delegate\(? *[:"]?([[:alnum:]_?!]+[?!]?)/\2/m,method,delegate/
 --regex-ruby=/(^|;)[ \t]*delegate\(? *[:"]?[[:alnum:]_?!]+[?!]?"?,[ \t]*[:"]?([[:alnum:]_]+[?!]?)/\2/m,method,delegate/
 --regex-ruby=/(^|;)[ \t]*delegate\(? *[:"]?[[:alnum:]_?!]+[?!]?"?,*[:"]?[[:alnum:]_]+[?!]?"?,[ \t]*[:"]?([[:alnum:]_]+[?!]?)/\2/m,method,delegate/

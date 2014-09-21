@@ -50,14 +50,14 @@ set hidden
 " ---
 
 set wildmenu
-set wildmode=list:longest
+set wildmode=longest,list,full
 
 " ---
 
 set ignorecase
 set smartcase
 set hlsearch
-nmap <silent> <leader>/ :silent :nohlsearch<CR>
+nmap // :silent :nohlsearch<CR>
 set incsearch
 
 " ---

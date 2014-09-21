@@ -41,3 +41,21 @@ let g:syntastic_check_on_open=1
 map <Leader>ct :!/usr/local/bin/ctags -R .<CR><CR>
 
 set shell=/bin/sh
+
+" Nagivate cwindows and tags
+nnoremap <Leader>n :cnext<CR>
+nnoremap <Leader>N :cprev<CR>
+nnoremap <Leader>t :tnext<CR>
+nnoremap <Leader>T :tprev<CR>
+
+" toggle set paste
+nnoremap <Leader>pp :set invpaste<CR>:set paste?<CR>
+
+set updatetime=750
+
+" Tomorrow-Night compatible diff colours.
+highlight DiffChange term=reverse cterm=bold ctermbg=229 ctermfg=244
+highlight DiffText term=reverse cterm=bold ctermbg=011 ctermfg=232
+
+highlight DiffAdd term=reverse cterm=bold ctermbg=108 ctermfg=235
+highlight DiffDelete term=reverse cterm=bold ctermbg=052 ctermfg=243
