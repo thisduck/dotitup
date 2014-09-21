@@ -79,3 +79,9 @@ endfunction "}}}
 nmap <leader>fef :call Preserve("normal gg=G")<CR>
 nmap <leader>f$ :call StripTrailingWhitespace()<CR>
 vmap <leader>s :sort<cr>
+
+" ---
+
+set nowrap
+set showbreak=↪
+

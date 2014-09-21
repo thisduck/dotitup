@@ -27,6 +27,13 @@ if !exists('g:neocomplete#keyword_patterns')
   let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+if !exists('g:neocomplete#sources')
+    let g:neocomplete#sources = {}
+endif
+let g:neocomplete#sources._ = ['buffer', 'dictionary', 'tag']
+
+
 let g:neocomplete#sources#tags#cache_limit_size = 500000000
 
 " Enable omni completion.

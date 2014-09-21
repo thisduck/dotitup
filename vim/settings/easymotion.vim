@@ -1,3 +1,3 @@
 let g:EasyMotion_keys='asdfjkoweriop'
-map <Leader> <Plug>(easymotion-prefix)
+" map <Leader> <Plug>(easymotion-prefix)
 

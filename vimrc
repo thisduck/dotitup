@@ -62,6 +62,12 @@ set incsearch
 
 " ---
 
+set scrolloff=8
+set sidescrolloff=15
+set sidescroll=1
+
+" ---
+
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
 

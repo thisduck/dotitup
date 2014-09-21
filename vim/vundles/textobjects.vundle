@@ -1,4 +1,4 @@
-Plugin 'austintaylor/vim-indentobject'
+Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'bootleq/vim-textobj-rubysymbol'
 Plugin 'coderifous/textobj-word-column.vim'
 Plugin 'kana/vim-textobj-datetime'
