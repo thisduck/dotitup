@@ -1,7 +1,0 @@
-Plugin 'tpope/vim-sensible'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'jlanzarotta/bufexplorer'
-" Plugin 'vim-scripts/ZoomWin'
-

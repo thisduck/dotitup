@@ -52,6 +52,7 @@ nnoremap <Leader>T :tprev<CR>
 nnoremap <Leader>pp :set invpaste<CR>:set paste?<CR>
 
 set updatetime=750
+set timeoutlen=500
 
 " Tomorrow-Night compatible diff colours.
 highlight DiffChange term=reverse cterm=bold ctermbg=229 ctermfg=244
@@ -88,3 +89,15 @@ set showbreak=⇇
 " ---
 
 nnoremap <C-]> g<C-]>
+
+" ---
+
+let g:notes_directories = ['~/Desktop/vim-notes']
+
+" ---
+
+if executable('cowsay')
+  if executable('fortune')
+    let g:startify_custom_header = split(system('fortune | cowsay'), '\n') + ['','']
+  endif
+endif

@@ -6,8 +6,8 @@ set nocompatible " turns vi compatibility off.
 
 let mapleader=" "
 
-if filereadable(expand("~/.vim/vundles.vim"))
-  source ~/.vim/vundles.vim
+if filereadable(expand("~/.vim/neobundles.vim"))
+  source ~/.vim/neobundles.vim
 endif
 
 " ---

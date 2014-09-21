@@ -7,9 +7,9 @@ task :install do
 
   clone_it_up = [
     {
-      name: "Vundle",
-      source: "https://github.com/gmarik/Vundle.vim",
-      destination: File.join(current_path, "vim", "bundle", "Vundle.vim")
+      name: "NeoBundle",
+      source: "https://github.com/Shougo/neobundle.vim",
+      destination: File.join(current_path, "vim", "bundle", "neobundle.vim")
     },
     {
       name: "oh-my-zsh",
@@ -62,8 +62,8 @@ task :install do
     end
   end
 
-  puts "-- Vundle Install"
-  run 'vim --noplugin -u vim/vundles.vim -N "+set hidden" "+syntax on" +BundleClean! +BundleInstall +qall'
+  puts "-- NeoBundle Install"
+  run 'vim --noplugin -u vim/neobundles.vim -N "+set hidden" "+syntax on" +NeoBundleClean! +NeoBundleInstall +qall'
 end
 
 task :default => 'install'

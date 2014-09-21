@@ -1,5 +1,0 @@
-" Plugin 'chrisbra/color_highlight.git'
-Plugin 'bling/vim-airline'
-Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Plugin 'Keithbsmiley/tmux.vim'
-" Plugin 'xsunsmile/showmarks.git'
