@@ -53,7 +53,7 @@ map <Leader>pV :CtrlP vendor<CR>
 map <Leader>pF :CtrlP factories<CR>
 map <Leader>pT :CtrlP test<CR>
 
-nnoremap <silent> <Leader>pt :CtrlPBufTag<CR>
+nnoremap <silent> <Leader>pt :CtrlPTag<CR>
 
 let g:ctrlp_extensions = ['funky']
 nnoremap <Leader>fu :CtrlPFunky<Cr>
