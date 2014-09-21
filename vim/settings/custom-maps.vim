@@ -85,3 +85,6 @@ vmap <leader>s :sort<cr>
 set nowrap
 set showbreak=⇇
 
+" ---
+
+nnoremap <C-]> g<C-]>
