@@ -101,3 +101,31 @@ if executable('cowsay')
     let g:startify_custom_header = split(system('fortune | cowsay'), '\n') + ['','']
   endif
 endif
+
+" ---
+
+let g:startify_change_to_vcs_root = 1
+let g:startify_list_order = [
+  \ ['Last recently modified files in the current directory:'],
+  \ 'dir',
+  \ ['Last recently opened files:'],
+  \ 'files',
+  \ ['   Sessions:'],
+  \ 'sessions',
+  \ ['   Bookmarks:'],
+  \ 'bookmarks',
+  \ ]
+
+
+
+" ---
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets = "<C-s>"
+
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+set rtp+=~/.vim/custom/
+let g:UltiSnipsSnippetDirectories=["UltiSnips", 'dotitup_snippets']
+

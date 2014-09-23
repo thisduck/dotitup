@@ -1,0 +1,15 @@
+*.o
+*.obj
+*~
+*vim/backups*
+*sass-cache*
+*DS_Store*
+vendor/rails/**
+vendor/cache/**
+vendor/gems/**
+*.gem
+log/**
+tmp/**
+*.png
+*.jpg
+*.gif

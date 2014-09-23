@@ -33,6 +33,7 @@ task :install do
   link_it_up = [
     { name: "vim" },
     { name: "vimrc" },
+    { name: "agignore" },
     { name: "ctags" },
     { name: "zshrc" },
     { 

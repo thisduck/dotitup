@@ -120,8 +120,3 @@
 `di(` - will delete everything inside round brackets.
 
 `ci"` - will delete everything in the double quotes and put you in insert mode.
-
-```ruby
-def something
-end
-```
