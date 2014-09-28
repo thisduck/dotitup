@@ -22,6 +22,22 @@
 # jobs are running in this shell will all be displayed automatically when
 # appropriate.
 
+setopt prompt_subst
+
+preexec () {
+  typeset -gi CALCTIME=1
+  typeset -gi CMDSTARTTIME=SECONDS
+}
+
+precmd() {
+  if (( CALCTIME )); then
+    typeset -gi ETIME=SECONDS-CMDSTARTTIME
+  fi
+  typeset -gi CALCTIME=0
+  # echo -ne "\a"
+}
+
+
 ### Segment drawing
 # A few utility functions to make it easy and re-usable to draw segmented prompts
 
@@ -170,6 +186,7 @@ second_prompt() {
   local result
   result="
 "
+
   [[ $RETVAL -ne 0 ]] && result+="%{%F{red}%}$"
   [[ $RETVAL -eq 0 ]] && result+="%{%F{green}%}$"
 
@@ -190,5 +207,6 @@ build_prompt() {
 }
 
 
+  # [[ $ETIME > 60 ]] && result+="%{%F{61}%}$((ETIME/60))"
 PROMPT=$'%{%f%b%k%}$(build_prompt) '
-RPROMPT="%F{blue}[%F{green}%D{%L:%M} %F{green}%D{%p}%f%F{blue}]"
+RPROMPT='%F{blue}[$((ETIME))%F{blue}s] %F{blue}[%F{green}%D{%L:%M} %F{green}%D{%p}%f%F{blue}]'

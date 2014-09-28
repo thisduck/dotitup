@@ -18,7 +18,9 @@ call unite#custom#source('file_rec/async', 'max_candidates', 20)
 " let's be smart let's use git when it's there, and ag when not.
 let g:unite_source_rec_async_command  = 'git ls-files --cached --exclude-standard --others . 2> /dev/null || ag --follow --nogroup --nocolor -l -g "" !'
 let g:unite_source_grep_command       = 'ag'
-let g:unite_source_grep_default_opts  = '--nogroup --nocolor --column'
+let g:unite_source_grep_default_opts =
+      \ '-i --line-numbers --nocolor --nogroup --hidden --ignore ' .
+      \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
 let g:unite_source_grep_recursive_opt = ''
 
 nnoremap <C-p> :<C-u>Unite -resume -no-split -buffer-name=files -start-insert -auto-preview file_rec/async<CR>
@@ -34,9 +36,9 @@ nnoremap <silent> <leader>uh :<C-u>Unite -buffer-name=help help<CR>
 nnoremap <silent> <leader>ul :<C-u>Unite -no-split -start-insert -buffer-name=search_file line<CR>
 
 nnoremap <leader>/ :<C-u>Unite -no-split -auto-preview -buffer-name=grep grep:.<cr>
-nnoremap K :Unite -buffer-name=grep -auto-preview grep:.::"<C-r><C-A>"<CR>
-nnoremap KL :Unite -buffer-name=grep -auto-preview grep:.::"\b<C-r><C-w>\b"<CR>
-nnoremap <leader>./ :UniteResume -buffer-name=grep<CR>
+nnoremap K :<C-u>Unite -buffer-name=grep -auto-preview grep:.::<C-r><C-w><CR>
+nnoremap KK :<C-u>Unite -buffer-name=grep -auto-preview grep:.::"\b<C-r><C-w>\b"<CR>
+nnoremap <leader>./ :<C-u>UniteResume -buffer-name=grep<CR>
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
@@ -88,3 +90,8 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '.zip',
       \ '.swf',
       \ ], '\|'))
+
+" Set "-no-quit" automatically in grep unite source.
+call unite#custom#profile('source/grep', 'context', {
+\   'no_quit' : 1
+\ })

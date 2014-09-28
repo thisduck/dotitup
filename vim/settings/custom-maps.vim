@@ -95,7 +95,7 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", 'dotitup_snippets']
 autocmd FileType ruby set iskeyword+=?,!
 
 " --- Replace old style ruby hashes with new style
-map <Leader>> :s<Home>silent! <End>@:\([^: =({})]\+\)\s*=>\s*@\1: @g<CR> :set nohlsearch<CR>
+map <Leader>> :s<Home>silent! <End>@:\([^: =({})]\+\)\s*=>\s*@\1: @g<CR> :nohlsearch<CR>
 
 " --- Break up a long ruby line
 " map <Leader>bb :s<Home>silent! <End>@,\(?!$\)@,\r@g<CR> 
