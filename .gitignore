@@ -1,6 +1,7 @@
-vim/bundle/**
-vim/backups/**
+vim/bundle/
+vim/backups/
+vim/sessions/
 
-zsh/plugins/**
+zsh/plugins/
 
 *.swp

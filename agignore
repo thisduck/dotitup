@@ -7,6 +7,9 @@
 vendor/rails/**
 vendor/cache/**
 vendor/gems/**
+files/development/**
+files/production/**
+files/test/**
 *.gem
 log/**
 tmp/**

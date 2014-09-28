@@ -19,4 +19,5 @@ runtime vim-improvements.vim
 call neobundle#end()
 filetype plugin indent on    " required
 
+" silent! NeoBundleClean!
 " NeoBundleCheck

@@ -16,14 +16,6 @@ function! RenameFile()
 endfunction
 map <Leader>nn :call RenameFile()<cr>
 
-" bind K to grep word under cursor
-nnoremap K :Ag! "<C-R><C-W>"<CR>:cw<CR>
-nnoremap KK :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-
-nnoremap <leader>. :CtrlPTag<CR>
-" nnoremap <silent> <Leader>b :TagbarToggle<CR>
-
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
@@ -94,38 +86,28 @@ nnoremap <C-]> g<C-]>
 
 let g:notes_directories = ['~/Desktop/vim-notes']
 
-" ---
-
-if executable('cowsay')
-  if executable('fortune')
-    let g:startify_custom_header = split(system('fortune | cowsay'), '\n') + ['','']
-  endif
-endif
-
-" ---
-
-let g:startify_change_to_vcs_root = 1
-let g:startify_list_order = [
-  \ ['Last recently modified files in the current directory:'],
-  \ 'dir',
-  \ ['Last recently opened files:'],
-  \ 'files',
-  \ ['   Sessions:'],
-  \ 'sessions',
-  \ ['   Bookmarks:'],
-  \ 'bookmarks',
-  \ ]
-
-
-
-" ---
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets = "<C-s>"
-
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 set rtp+=~/.vim/custom/
 let g:UltiSnipsSnippetDirectories=["UltiSnips", 'dotitup_snippets']
 
+" ---
+
+let g:session_autosave='yes'
+let g:session_autoload = 'no'
+
+" ---
+
+autocmd FileType ruby set iskeyword+=?,!
+
+" --- Replace old style ruby hashes with new style
+map <Leader>> :s<Home>silent! <End>@:\([^: =({})]\+\)\s*=>\s*@\1: @g<CR> :set nohlsearch<CR>
+
+" --- Break up a long ruby line
+" map <Leader>bb :s<Home>silent! <End>@,\(?!$\)@,\r@g<CR> 
+"       \ :s<Home>silent! <End>@}@\r}@g<CR> 
+"       \ :s<Home>silent! <End>@{@{\r@g<CR> 
+"       \ :s<Home>silent! <End>@(@(\r@g<CR> 
+"       \ :s<Home>silent! <End>@)@\r)@g<CR> 
+"       \ =
+"       \ :set nohlsearch<CR>
+"       " \ :silent! s@&@&\r@g<CR> 

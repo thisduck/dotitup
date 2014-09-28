@@ -159,11 +159,21 @@ prompt_virtualenv() {
 prompt_status() {
   local symbols
   symbols=()
-  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘"
+  # [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘"
   [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
 
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
+}
+
+second_prompt() {
+  local result
+  result="
+"
+  [[ $RETVAL -ne 0 ]] && result+="%{%F{red}%}$"
+  [[ $RETVAL -eq 0 ]] && result+="%{%F{green}%}$"
+
+  echo "$result"
 }
 
 ## Main prompt
@@ -171,11 +181,14 @@ build_prompt() {
   RETVAL=$?
   prompt_status
   prompt_virtualenv
-  # prompt_context
+  prompt_context
   prompt_dir
   prompt_git
   prompt_hg
   prompt_end
+  second_prompt
 }
 
-PROMPT='%{%f%b%k%}$(build_prompt) '
+
+PROMPT=$'%{%f%b%k%}$(build_prompt) '
+RPROMPT="%F{blue}[%F{green}%D{%L:%M} %F{green}%D{%p}%f%F{blue}]"

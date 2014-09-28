@@ -7,14 +7,22 @@ NeoBundle 'Shougo/vimproc.vim', {
       \    },
       \ }
 
-NeoBundle 'mhinz/vim-startify'
 NeoBundle 'tpope/vim-sensible'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'tacahiroy/ctrlp-funky'
 NeoBundle 'scrooloose/nerdtree.git'
-NeoBundle 'jlanzarotta/bufexplorer'
 NeoBundle 'airblade/vim-rooter'
 NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-session'
 NeoBundle 'xolox/vim-notes'
-" NeoBundle 'vim-scripts/ZoomWin'
 
+NeoBundle 'edkolev/tmuxline.vim'
+NeoBundle 'regedarek/ZoomWin'
+
+" --- United we stand.
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'basyura/unite-rails'
+NeoBundle 'tsukkee/unite-help'
+NeoBundle 'thinca/vim-unite-history'
+NeoBundle 'Shougo/neomru.vim'

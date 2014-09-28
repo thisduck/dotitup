@@ -1,70 +1,39 @@
-require 'rake' 
-require 'fileutils' 
+require 'rake'
+require 'fileutils'
 
 task :install do
-  current_path = File.expand_path File.dirname(__FILE__)
   puts "-- Installing dotitup"
 
-  clone_it_up = [
-    {
-      name: "NeoBundle",
-      source: "https://github.com/Shougo/neobundle.vim",
-      destination: File.join(current_path, "vim", "bundle", "neobundle.vim")
-    },
-    {
-      name: "oh-my-zsh",
-      source: "https://github.com/robbyrussell/oh-my-zsh",
-      destination: File.expand_path("~/.oh-my-zsh")
-    },
-    {
-      name: "zsh-syntax-highlighting",
-      source: "https://github.com/zsh-users/zsh-syntax-highlighting",
-      destination: File.join(current_path, "zsh", "plugins", "zsh-syntax-highlighting")
-    },
-  ]
+  clone_it "NeoBundle",
+    source: "https://github.com/Shougo/neobundle.vim",
+    destination: current_path("vim", "bundle", "neobundle.vim")
+  clone_it "oh-my-zsh",
+    source: "https://github.com/robbyrussell/oh-my-zsh",
+    destination: File.expand_path("~/.oh-my-zsh")
+  clone_it "zsh-syntax-highlighting",
+    source: "https://github.com/zsh-users/zsh-syntax-highlighting",
+    destination: current_path("zsh", "plugins", "zsh-syntax-highlighting")
 
-  clone_it_up.each do |clone|
-    if !File.exist?(clone[:destination])
-      puts "-- Setting up #{clone[:name]}"
-      run "git clone #{clone[:source]} #{clone[:destination]}"
-    end
-  end
-
-  link_it_up = [
-    { name: "vim" },
-    { name: "vimrc" },
-    { name: "agignore" },
-    { name: "ctags" },
-    { name: "zshrc" },
-    { 
-      name: "custom oh-my-zsh",
-      source: "zsh",
-      destination: "~/.oh-my-zsh/custom",
-      pre_link_proc: lambda {
-        if File.exist?(File.expand_path("~/.oh-my-zsh/custom/example.zsh"))
-          FileUtils.rm_rf(File.expand_path("~/.oh-my-zsh/custom/"))
-        end
-      }
-    },
-  ]
-  
   puts "-- Linking files and folders"
-  link_it_up.each do |link|
-    source = link[:source] || link[:name]
-    destination = link[:destination] || "~/.#{source}"
-    destination = File.expand_path(destination)
-    source = File.expand_path(source.to_s)
-    if link[:pre_link_proc]
-      link[:pre_link_proc].call
-    end
-    
-    if !File.exist?(destination)
-      ln_s(source, destination)
-    end
-  end
+  link_it "vim"
+  link_it "vimrc"
+  link_it "agignore"
+  link_it "ctags"
+  link_it "zshrc"
+  link_it "tmux.conf"
+  link_it "custom oh my zsh",
+    source: "zsh",
+    destination: "~/.oh-my-zsh/custom",
+    pre_link: lambda {
+      if File.exist?(File.expand_path("~/.oh-my-zsh/custom/example.zsh"))
+        FileUtils.rm_rf(File.expand_path("~/.oh-my-zsh/custom/"))
+      end
+    }
 
+
+  # neobundle.vim's setup to do a neobundle check...
   puts "-- NeoBundle Install"
-  run 'vim --noplugin -u vim/neobundles.vim -N "+set hidden" "+syntax on" +NeoBundleClean! +NeoBundleInstall +qall'
+  run 'vim --noplugin -u vim/neobundles.vim -N "+set hidden" "+syntax on" +NeoBundleClean! +NeoBundleInstall +qall < `tty` > `tty`'
 end
 
 task :default => 'install'
@@ -74,4 +43,32 @@ private
 def run(command)
   puts "-- Running [#{command}]"
   `#{command}`
+end
+
+def link_it(name, options = {})
+  options[:name] = name
+  source = options[:source] || options[:name]
+  destination = options[:destination] || "~/.#{source}"
+  destination = File.expand_path(destination)
+  source = File.expand_path(source.to_s)
+  if options[:pre_link]
+    options[:pre_link].call
+  end
+
+  if !File.exist?(destination)
+    ln_s(source, destination)
+  end
+end
+
+def clone_it(name, options = {})
+  options[:name] = name
+  if !File.exist?(options[:destination])
+    puts "-- Cloning #{options[:name]}"
+    run "git clone #{options[:source]} #{options[:destination]}"
+  end
+end
+
+def current_path(*args)
+  current_path = File.expand_path File.dirname(__FILE__)
+  File.join current_path, *args
 end
