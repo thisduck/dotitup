@@ -92,11 +92,6 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", 'dotitup_snippets']
 
 " ---
 
-let g:session_autosave='yes'
-let g:session_autoload = 'no'
-
-" ---
-
 autocmd FileType ruby set iskeyword+=?,!
 
 " --- Replace old style ruby hashes with new style

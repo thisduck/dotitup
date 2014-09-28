@@ -11,7 +11,6 @@ NeoBundle 'tpope/vim-sensible'
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle 'airblade/vim-rooter'
 NeoBundle 'xolox/vim-misc'
-NeoBundle 'xolox/vim-session'
 NeoBundle 'xolox/vim-notes'
 
 NeoBundle 'edkolev/tmuxline.vim'
