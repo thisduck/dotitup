@@ -15,15 +15,14 @@ call unite#custom#source('file_rec/async', 'converters', [])
 call unite#custom#source('file_rec/async', 'max_candidates', 20)
 
 " dont' care if ag is install or not, we're going to use it.
-" let's be smart let's use git when it's there, and ag when not.
-let g:unite_source_rec_async_command  = 'git ls-files --cached --exclude-standard --others . 2> /dev/null || ag --follow --nogroup --nocolor -l -g "" !'
+let g:unite_source_rec_async_command  = 'ag -p ~/.agignore --nogroup --nocolor -l -g "" '
 let g:unite_source_grep_command       = 'ag'
 let g:unite_source_grep_default_opts =
-      \ '-i --line-numbers --nocolor --nogroup --hidden --ignore ' .
-      \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+      \ '-i --line-numbers --nocolor --nogroup --hidden ' .
+      \ '-p .gitignore -p .agignore -p ~/.agignore'
 let g:unite_source_grep_recursive_opt = ''
 
-nnoremap <C-p> :<C-u>Unite -resume -no-split -buffer-name=files -start-insert -auto-preview file_rec/async<CR>
+nnoremap <C-p> :<C-u>Unite -resume -no-split -buffer-name=files -start-insert -auto-preview file_rec/async:<CR>
 nnoremap <leader>. :<C-u>Unite -no-split -buffer-name=tags -auto-preview -start-insert tag<cr>
 
 nnoremap <leader>bs :Unite -no-split -start-insert -buffer-name=buffers buffer file_mru directory_mru<cr>
@@ -65,31 +64,31 @@ function! s:unite_settings()
   nnoremap <silent><buffer> <C-s> unite#do_action('split')
 endfunction
 
-" Set up some custom ignores
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ 'files/',
-      \ 'log/',
-      \ 'vendor/cache',
-      \ 'vendor/gems',
-      \ 'vendor/rails',
-      \ 'vim/bundle/',
-      \ 'vim/sessions/',
-      \ 'vim/backups/',
-      \ 'tmp/',
-      \ '.sass-cache',
-      \ 'node_modules/',
-      \ 'bower_components/',
-      \ 'dist/',
-      \ '.pyc',
-      \ '.jpg',
-      \ '.png',
-      \ '.gif',
-      \ '.pdf',
-      \ '.zip',
-      \ '.swf',
-      \ ], '\|'))
+" " Set up some custom ignores
+" call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+"       \ 'ignore_pattern', join([
+"       \ '\.git/',
+"       \ 'files/',
+"       \ 'log/',
+"       \ 'vendor/cache',
+"       \ 'vendor/gems',
+"       \ 'vendor/rails',
+"       \ 'vim/bundle/',
+"       \ 'vim/sessions/',
+"       \ 'vim/backups/',
+"       \ 'tmp/',
+"       \ '.sass-cache',
+"       \ 'node_modules/',
+"       \ 'bower_components/',
+"       \ 'dist/',
+"       \ '.pyc',
+"       \ '.jpg',
+"       \ '.png',
+"       \ '.gif',
+"       \ '.pdf',
+"       \ '.zip',
+"       \ '.swf',
+"       \ ], '\|'))
 
 " Set "-no-quit" automatically in grep unite source.
 call unite#custom#profile('source/grep', 'context', {

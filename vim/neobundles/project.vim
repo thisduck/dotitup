@@ -8,6 +8,9 @@ NeoBundle 'Shougo/vimproc.vim', {
       \ }
 
 NeoBundle 'tpope/vim-sensible'
+NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'tpope/vim-scriptease'
+NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle 'airblade/vim-rooter'
 NeoBundle 'xolox/vim-misc'
