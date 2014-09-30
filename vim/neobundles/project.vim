@@ -7,12 +7,16 @@ NeoBundle 'Shougo/vimproc.vim', {
       \    },
       \ }
 
+" -- Tim for Pope.
 NeoBundle 'tpope/vim-sensible'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-scriptease'
 NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'pope/vim-rsi'
+
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle 'airblade/vim-rooter'
+
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-notes'
 
