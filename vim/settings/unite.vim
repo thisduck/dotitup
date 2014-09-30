@@ -22,7 +22,7 @@ let g:unite_source_grep_default_opts =
       \ '-p .gitignore -p .agignore -p ~/.agignore'
 let g:unite_source_grep_recursive_opt = ''
 
-nnoremap <C-p> :<C-u>Unite -resume -no-split -buffer-name=files -start-insert file_rec/async:<CR>
+nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=files -start-insert file_rec/async:<CR>
 nnoremap <leader>. :<C-u>Unite -no-split -buffer-name=tags -start-insert tag<cr>
 
 nnoremap <leader>bs :Unite -no-split -start-insert -buffer-name=buffers buffer file_mru directory_mru<cr>
@@ -57,6 +57,9 @@ function! s:unite_settings()
 
   nmap <buffer> <C-r> <Plug>(unite_redraw)
   imap <buffer> <C-r> <Plug>(unite_redraw)
+
+  imap <buffer> <C-p>     <Plug>(unite_toggle_auto_preview)
+  nmap <buffer> <C-p>     <Plug>(unite_toggle_auto_preview)
 
   inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
   nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
