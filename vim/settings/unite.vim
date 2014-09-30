@@ -22,8 +22,8 @@ let g:unite_source_grep_default_opts =
       \ '-p .gitignore -p .agignore -p ~/.agignore'
 let g:unite_source_grep_recursive_opt = ''
 
-nnoremap <C-p> :<C-u>Unite -resume -no-split -buffer-name=files -start-insert -auto-preview file_rec/async:<CR>
-nnoremap <leader>. :<C-u>Unite -no-split -buffer-name=tags -auto-preview -start-insert tag<cr>
+nnoremap <C-p> :<C-u>Unite -resume -no-split -buffer-name=files -start-insert file_rec/async:<CR>
+nnoremap <leader>. :<C-u>Unite -no-split -buffer-name=tags -start-insert tag<cr>
 
 nnoremap <leader>bs :Unite -no-split -start-insert -buffer-name=buffers buffer file_mru directory_mru<cr>
 nnoremap <leader>be :Unite -no-split -start-insert -buffer-name=buffers buffer file_mru directory_mru<cr>
@@ -34,9 +34,9 @@ nnoremap <silent> <leader>us :<C-u>Unite -no-split -buffer-name=snippets ultisni
 nnoremap <silent> <leader>uh :<C-u>Unite -buffer-name=help help<CR>
 nnoremap <silent> <leader>ul :<C-u>Unite -no-split -start-insert -buffer-name=search_file line<CR>
 
-nnoremap <leader>/ :<C-u>Unite -no-split -auto-preview -buffer-name=grep grep:.<cr>
-nnoremap K :<C-u>Unite -buffer-name=grep -auto-preview grep:.::<C-r><C-w><CR>
-nnoremap KK :<C-u>Unite -buffer-name=grep -auto-preview grep:.::"\b<C-r><C-w>\b"<CR>
+nnoremap <leader>/ :<C-u>Unite -no-split -buffer-name=grep grep:.<cr>
+nnoremap K :<C-u>Unite -buffer-name=grep grep:.::<C-r><C-w><CR>
+nnoremap KK :<C-u>Unite -buffer-name=grep grep:.::"\b<C-r><C-w>\b"<CR>
 nnoremap <leader>./ :<C-u>UniteResume -buffer-name=grep<CR>
 
 " Custom mappings for the unite buffer
