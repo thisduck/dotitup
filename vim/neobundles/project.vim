@@ -23,6 +23,8 @@ NeoBundle 'xolox/vim-notes'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'regedarek/ZoomWin'
 
+NeoBundle 'fweep/vim-zsh-path-completion'
+
 " --- United we stand.
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/unite.vim'

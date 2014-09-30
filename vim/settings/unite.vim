@@ -90,7 +90,3 @@ endfunction
 "       \ '.swf',
 "       \ ], '\|'))
 
-" Set "-no-quit" automatically in grep unite source.
-call unite#custom#profile('source/grep', 'context', {
-\   'no_quit' : 1
-\ })
