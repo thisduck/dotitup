@@ -75,8 +75,12 @@ vmap <leader>s :sort<cr>
 
 " ---
 
-set nowrap
+imap <c-c> <esc>
+
+" ---
+
 set showbreak=⇇
+set wrap
 
 " ---
 
