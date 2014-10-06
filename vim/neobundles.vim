@@ -9,12 +9,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 runtime project.vim
 runtime appearance.vim
-runtime languages.vim
 runtime git.vim
-runtime ruby.vim
 runtime search.vim
 runtime textobjects.vim
 runtime vim-improvements.vim
+runtime languages.vim
+runtime ruby.vim
 
 call neobundle#end()
 filetype plugin indent on    " required

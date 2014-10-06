@@ -7,6 +7,8 @@ let g:unite_matcher_fuzzy_max_input_length = 50
 let g:unite_source_rec_unit                = 100
 let g:unite_update_time                    = 200
 let g:unite_cursor_line_highlight          = 'TabLineSel'
+let g:unite_source_rec_max_cache_files     = 0
+
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
@@ -22,7 +24,7 @@ let g:unite_source_grep_default_opts =
       \ '-p .gitignore -p .agignore -p ~/.agignore'
 let g:unite_source_grep_recursive_opt = ''
 
-nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=files -start-insert file_rec/async:<CR>
+nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=files -start-insert -resume -restore file_rec/async:!<CR><ESC>^<Right>C<BS>
 nnoremap <leader>. :<C-u>Unite -no-split -buffer-name=tags -start-insert tag<cr>
 
 nnoremap <leader>bs :Unite -no-split -start-insert -buffer-name=buffers buffer file_mru directory_mru<cr>
@@ -37,7 +39,7 @@ nnoremap <silent> <leader>ul :<C-u>Unite -no-split -start-insert -buffer-name=se
 nnoremap <leader>/ :<C-u>Unite -no-split -buffer-name=grep grep:.<cr>
 nnoremap K :<C-u>Unite -buffer-name=grep grep:.::<C-r><C-w><CR>
 nnoremap KK :<C-u>Unite -buffer-name=grep grep:.::"\b<C-r><C-w>\b"<CR>
-nnoremap <leader>./ :<C-u>UniteResume -buffer-name=grep<CR>
+nnoremap <leader>./ :<C-u>UniteResume grep<CR>
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
@@ -53,7 +55,6 @@ function! s:unite_settings()
   nmap <buffer> <C-c> <Plug>(unite_exit)
 
   imap <buffer> <C-w> <Plug>(unite_delete_backward_word)
-  imap <buffer> <C-u> <Plug>(unite_delete_backward_path)
 
   nmap <buffer> <C-r> <Plug>(unite_redraw)
   imap <buffer> <C-r> <Plug>(unite_redraw)

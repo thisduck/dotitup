@@ -82,9 +82,9 @@ imap <c-c> <esc>
 set showbreak=⇇
 set wrap
 
-" ---
+" --- Taken from vim-ruby to map <C-]> to g<C-]>
 
-nnoremap <C-]> g<C-]>
+nnoremap <silent> <script> <buffer> <C-]>      :<C-U>exe         "tjump <C-R>=RubyCursorIdentifier()<CR>"<SID>foldopen<CR>
 
 " ---
 
@@ -96,7 +96,7 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", 'dotitup_snippets']
 
 " ---
 
-autocmd FileType ruby set iskeyword+=?,!
+" autocmd FileType ruby set iskeyword+=?,!
 
 " --- Replace old style ruby hashes with new style
 map <Leader>> :s<Home>silent! <End>@:\([^: =({})]\+\)\s*=>\s*@\1: @g<CR> :nohlsearch<CR>
