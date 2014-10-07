@@ -12,6 +12,7 @@ let g:unite_source_rec_max_cache_files     = 0
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#custom#profile('default', 'context', {'no_split':1, 'resize':0})
 call unite#custom#source('file_rec/async', 'converters', [])
 " call unite#custom#source('file_rec/async', 'sorters', [])
 call unite#custom#source('file_rec/async', 'max_candidates', 20)
