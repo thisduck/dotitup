@@ -110,3 +110,7 @@ map <Leader>> :s<Home>silent! <End>@:\([^: =({})]\+\)\s*=>\s*@\1: @g<CR> :nohlse
 "       \ =
 "       \ :set nohlsearch<CR>
 "       " \ :silent! s@&@&\r@g<CR> 
+
+" ---
+
+let g:rails_expensive = 0

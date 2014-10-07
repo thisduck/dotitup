@@ -25,3 +25,6 @@ bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
 alias vi=vim
+
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8

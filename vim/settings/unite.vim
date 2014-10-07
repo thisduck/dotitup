@@ -25,15 +25,15 @@ let g:unite_source_grep_default_opts =
       \ '-p .gitignore -p .agignore -p ~/.agignore'
 let g:unite_source_grep_recursive_opt = ''
 
-nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=files -start-insert -resume file_rec/async:!<CR><ESC>^<Right>C<BS>
+nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=files -start-insert -resume -no-restore file_rec/async:!<CR><ESC>^<Right>C<BS>
 
 " rails helpers
-nnoremap <leader>pm :<C-u>Unite -no-split -buffer-name=rails-models -start-insert file_rec/async:.:<BAR>:ag:'^app/models<BAR>/app/models'<CR><ESC>^<Right>C<BS>
-nnoremap <leader>pc :<C-u>Unite -no-split -buffer-name=rails-controllers -start-insert file_rec/async:.:<BAR>:ag:'^app/controllers<BAR>/app/controllers'<CR><ESC>^<Right>C<BS>
-nnoremap <leader>pa :<C-u>Unite -no-split -buffer-name=rails-assets -start-insert file_rec/async:.:<BAR>:ag:'^app/assets<BAR>/app/assets'<CR><ESC>^<Right>C<BS>
-nnoremap <leader>pv :<C-u>Unite -no-split -buffer-name=rails-views -start-insert file_rec/async:.:<BAR>:ag:'^app/views<BAR>/app/views'<CR><ESC>^<Right>C<BS>
-nnoremap <leader>pl :<C-u>Unite -no-split -buffer-name=rails-lib -start-insert file_rec/async:.:<BAR>:ag:'^lib<BAR>/lib'<CR><ESC>^<Right>C<BS>
-nnoremap <leader>ph :<C-u>Unite -no-split -buffer-name=rails-helpers -start-insert file_rec/async:.:<BAR>:ag:'^helpers<BAR>/helpers'<CR><ESC>^<Right>C<BS>
+nnoremap <leader>pm :<C-u>Unite -no-split -resume -no-restore -buffer-name=rails-models -start-insert file_rec/async:.:<BAR>:ag:'^app/models<BAR>/app/models'<CR><ESC>^<Right>C<BS>
+nnoremap <leader>pc :<C-u>Unite -no-split -resume -no-restore -buffer-name=rails-controllers -start-insert file_rec/async:.:<BAR>:ag:'^app/controllers<BAR>/app/controllers'<CR><ESC>^<Right>C<BS>
+nnoremap <leader>pa :<C-u>Unite -no-split -resume -no-restore -buffer-name=rails-assets -start-insert file_rec/async:.:<BAR>:ag:'^app/assets<BAR>/app/assets'<CR><ESC>^<Right>C<BS>
+nnoremap <leader>pv :<C-u>Unite -no-split -resume -no-restore -buffer-name=rails-views -start-insert file_rec/async:.:<BAR>:ag:'^app/views<BAR>/app/views'<CR><ESC>^<Right>C<BS>
+nnoremap <leader>pl :<C-u>Unite -no-split -resume -no-restore -buffer-name=rails-lib -start-insert file_rec/async:.:<BAR>:ag:'^lib<BAR>/lib'<CR><ESC>^<Right>C<BS>
+nnoremap <leader>ph :<C-u>Unite -no-split -resume -no-restore -buffer-name=rails-helpers -start-insert file_rec/async:.:<BAR>:ag:'^helpers<BAR>/helpers'<CR><ESC>^<Right>C<BS>
 
 nnoremap <leader>. :<C-u>Unite -no-split -buffer-name=tags -start-insert tag<cr>
 
