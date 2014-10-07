@@ -27,7 +27,7 @@ NeoBundle 'fweep/vim-zsh-path-completion'
 
 " --- United we stand.
 NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'Shougo/unite.vim'
+NeoBundle 'thisduck/unite.vim' " using modified version
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'basyura/unite-rails'
@@ -36,3 +36,4 @@ NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'kmnk/vim-unite-giti'
 NeoBundle 'ujihisa/unite-locate'
+NeoBundle 'moznion/unite-git-conflict.vim'
