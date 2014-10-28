@@ -25,6 +25,8 @@ NeoBundle 'regedarek/ZoomWin'
 
 NeoBundle 'fweep/vim-zsh-path-completion'
 
+" NeoBundle 'majutsushi/tagbar'
+
 " --- United we stand.
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'thisduck/unite.vim' " using modified version
@@ -38,3 +40,4 @@ NeoBundle 'kmnk/vim-unite-giti'
 NeoBundle 'ujihisa/unite-locate'
 NeoBundle 'moznion/unite-git-conflict.vim'
 NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'Shougo/neossh.vim'

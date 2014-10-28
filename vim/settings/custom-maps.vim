@@ -42,6 +42,7 @@ nnoremap <Leader>T :tprev<CR>
 
 " toggle set paste
 nnoremap <Leader>pp :set invpaste<CR>:set paste?<CR>
+nnoremap <Leader><Leader>p :set invpaste<CR>:set paste?<CR>
 
 set updatetime=750
 set timeoutlen=500
@@ -93,6 +94,11 @@ let g:notes_directories = ['~/Desktop/vim-notes']
 
 set rtp+=~/.vim/custom/
 let g:UltiSnipsSnippetDirectories=["UltiSnips", 'dotitup_snippets']
+
+" ---
+
+nmap <Leader>dd :Dispatch<Space>
+nmap <Leader><Leader>d :Dispatch<Space>
 
 " ---
 
