@@ -1,13 +1,7 @@
 NeoBundle 'AndrewRadev/splitjoin.vim'
 NeoBundle 'Raimondi/delimitMate'
 
-NeoBundle 'Valloric/YouCompleteMe', {
-      \ 'build' : {
-      \     'mac' : 'yes | ./install.sh',
-      \     'unix' : 'yes | ./install.sh',
-      \    },
-      \ }
-
+NeoBundle 'Shougo/neocomplete.vim'
 
 NeoBundle 'ervandew/supertab'
 NeoBundle 'SirVer/ultisnips'

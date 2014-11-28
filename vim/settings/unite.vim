@@ -35,7 +35,7 @@ let g:unite_source_grep_default_opts =
       \ '-p .gitignore -p .agignore -p ~/.agignore'
 let g:unite_source_grep_recursive_opt = ''
 
-nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=files -start-insert -no-restore file_rec/async:!<CR>
+" nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=files -start-insert -no-restore file_rec/async:!<CR>
 nnoremap <leader>.p :<C-u>UniteResume files -no-split -no-restore -start-insert<CR>
 
 " rails helpers
@@ -114,4 +114,5 @@ endfunction
 "       \ '.zip',
 "       \ '.swf',
 "       \ ], '\|'))
+
 

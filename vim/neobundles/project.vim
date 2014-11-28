@@ -25,6 +25,9 @@ NeoBundle 'regedarek/ZoomWin'
 
 NeoBundle 'fweep/vim-zsh-path-completion'
 
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'FelikZ/ctrlp-py-matcher'
+
 " NeoBundle 'majutsushi/tagbar'
 
 " --- United we stand.
