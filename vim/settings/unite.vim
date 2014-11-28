@@ -18,10 +18,20 @@ call unite#custom#source('file_rec/async', 'converters', [])
 call unite#custom#source('file_rec/async', 'max_candidates', 20)
 
 " dont' care if ag is install or not, we're going to use it.
-let g:unite_source_rec_async_command  = 'ag -p ~/.agignore --nogroup --nocolor -l -g "" '
+let g:unite_source_rec_async_command  = 
+      \ 'ag -p ~/.agignore --nogroup --nocolor -l -g "" ' .
+      \ ' --ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' ' .
+      \ '-p ./.gitignore -p ./.agignore -p ~/.agignore'
+
+let g:unite_source_rec_git_command = 
+      \ 'ag -p ~/.agignore --nogroup --nocolor -l -g "" ' .
+      \ ' --ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' ' .
+      \ '-p ./.gitignore -p ./.agignore -p ~/.agignore'
+
 let g:unite_source_grep_command       = 'ag'
 let g:unite_source_grep_default_opts =
       \ '-i --line-numbers --nocolor --nogroup --hidden ' .
+      \ ' --ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' ' .
       \ '-p .gitignore -p .agignore -p ~/.agignore'
 let g:unite_source_grep_recursive_opt = ''
 
