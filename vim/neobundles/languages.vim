@@ -8,6 +8,7 @@ NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'nelstrom/vim-markdown-preview'
 NeoBundle 'skwp/vim-html-escape'
 NeoBundle 'tpope/vim-haml'
+NeoBundle 'heartsentwined/vim-emblem'
 
 " NeoBundle 'garbas/vim-snipmate.git'
 " NeoBundle 'honza/vim-snippets'
