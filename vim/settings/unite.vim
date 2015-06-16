@@ -8,6 +8,7 @@ let g:unite_source_rec_unit                = 100
 let g:unite_update_time                    = 200
 let g:unite_cursor_line_highlight          = 'TabLineSel'
 let g:unite_source_rec_max_cache_files     = 0
+let g:unite_source_grep_max_candidates     = 2000
 
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -17,16 +18,22 @@ call unite#custom#source('file_rec/async', 'converters', [])
 " call unite#custom#source('file_rec/async', 'sorters', [])
 call unite#custom#source('file_rec/async', 'max_candidates', 20)
 
-" dont' care if ag is install or not, we're going to use it.
-let g:unite_source_rec_async_command  = 
-      \ 'ag -p ~/.agignore --nogroup --nocolor -l -g "" ' .
-      \ ' --ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' ' .
-      \ '-p ./.gitignore -p ./.agignore -p ~/.agignore'
+" " dont' care if ag is install or not, we're going to use it.
+let g:unite_source_rec_async_command =
+  \ 'ag --follow --nocolor --nogroup --hidden -g ""'
 
 let g:unite_source_rec_git_command = 
-      \ 'ag -p ~/.agignore --nogroup --nocolor -l -g "" ' .
-      \ ' --ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' ' .
-      \ '-p ./.gitignore -p ./.agignore -p ~/.agignore'
+  \ 'ag --follow --nocolor --nogroup --hidden -g ""'
+
+" let g:unite_source_rec_async_command  = 
+"       \ 'ag -p ~/.agignore --nogroup --nocolor -l -g "" ' .
+"       \ ' --ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' ' .
+"       \ '-p ./.gitignore -p ./.agignore -p ~/.agignore'
+
+" let g:unite_source_rec_git_command = 
+"       \ 'ag -p ~/.agignore --nogroup --nocolor -l -g "" ' .
+"       \ ' --ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' ' .
+"       \ '-p ./.gitignore -p ./.agignore -p ~/.agignore'
 
 let g:unite_source_grep_command       = 'ag'
 let g:unite_source_grep_default_opts =

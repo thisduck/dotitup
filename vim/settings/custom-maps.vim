@@ -26,9 +26,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-
 " Index ctags from any project, including those outside Rails
 map <Leader>ct :!/usr/local/bin/ctags -R .<CR><CR>
 

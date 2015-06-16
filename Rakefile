@@ -4,9 +4,9 @@ require 'fileutils'
 task :install do
   puts "-- Installing dotitup"
 
-  clone_it "NeoBundle",
-    source: "https://github.com/Shougo/neobundle.vim",
-    destination: current_path("vim", "bundle", "neobundle.vim")
+  curl_it "vim-plug",
+    source: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
+    destination: current_path("vim", "autoload", "plug.vim")
   clone_it "oh-my-zsh",
     source: "https://github.com/robbyrussell/oh-my-zsh",
     destination: File.expand_path("~/.oh-my-zsh")
@@ -31,9 +31,9 @@ task :install do
     }
 
 
-  # neobundle.vim's setup to do a neobundle check...
-  puts "-- NeoBundle Install"
-  run 'vim --noplugin -u vim/neobundles.vim -N "+set hidden" "+syntax on" +NeoBundleClean! +NeoBundleInstall +qall < `tty` > `tty`'
+  # vim-plug installing
+  puts "-- vim-plug Install"
+  run 'vim --noplugin -u vim/plug.vim -N "+set hidden" "+syntax on" +PlugInstall +qall < `tty` > `tty`'
 end
 
 task :default => 'install'
@@ -57,6 +57,14 @@ def link_it(name, options = {})
 
   if !File.exist?(destination)
     ln_s(source, destination)
+  end
+end
+
+def curl_it(name, options = {})
+  options[:name] = name
+  if !File.exist?(options[:destination])
+    puts "-- Cloning #{options[:name]}"
+    run "curl -fLo #{options[:destination]} --create-dirs #{options[:source]}"
   end
 end
 

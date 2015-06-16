@@ -1,4 +1,6 @@
 vim/bundle/**
+vim/autoload/**
+vim/plugged/**
 vim/backups/**
 vim/sessions/**
 
