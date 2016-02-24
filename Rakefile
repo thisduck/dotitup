@@ -17,6 +17,7 @@ task :install do
   puts "-- Linking files and folders"
   link_it "vim"
   link_it "vimrc"
+  link_it "gemrc"
   link_it "agignore"
   link_it "ctags"
   link_it "zshrc"
