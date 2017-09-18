@@ -4,7 +4,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'Valloric/YouCompleteMe', {'do': 'yes \| ./install.sh'}
 
 " Plug 'ervandew/supertab'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 Plug 'briandoll/change-inside-surroundings.vim'
 Plug 'godlygeek/tabular'
