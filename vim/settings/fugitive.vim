@@ -10,5 +10,3 @@ nnoremap <silent> <leader>gp :Git push<CR>
 nnoremap <silent> <leader>gw :Gwrite<CR> " adds the current file
 nnoremap <silent> <leader>ga :Gwrite<CR> " to make it feel like git add
 nnoremap <silent> <leader>gr :Gremove<CR>
-
-" autocmd BufReadPost fugitive://* set bufhidden=delete

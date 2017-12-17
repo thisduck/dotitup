@@ -1,4 +1,3 @@
-" let g:airline_theme = 'tomorrow'
 let g:airline_mode_map = {
   \ '__' : '-',
   \ 'n'  : 'N',

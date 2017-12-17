@@ -1,4 +1,5 @@
 " ---
+"
 
 set nocompatible " turns vi compatibility off.
 
@@ -98,6 +99,7 @@ source ~/.vim/settings.vim
 
 " ---
 
+set rtp+=/usr/local/opt/fzf
 if filereadable(expand("~/.vimrc.after"))
   source ~/.vimrc.after
 endif
