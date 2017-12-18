@@ -9,3 +9,4 @@ Plug 'tomasr/molokai'
 Plug 'sickill/vim-monokai'
 Plug 'tpope/vim-vividchalk'
 Plug 'thisduck/tomorrow-theme', {'rtp': 'vim/'}
+Plug 'rafi/awesome-vim-colorschemes'

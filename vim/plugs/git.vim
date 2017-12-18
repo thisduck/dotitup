@@ -4,3 +4,4 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'airblade/vim-gitgutter'
 
+Plug 'gregsexton/gitv', {'on': ['Gitv']}

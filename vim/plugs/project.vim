@@ -25,3 +25,5 @@ Plug 'Shougo/denite.nvim'
 
 Plug 'chemzqm/vim-easygit'
 Plug 'chemzqm/denite-git'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
