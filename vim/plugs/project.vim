@@ -27,3 +27,5 @@ Plug 'chemzqm/vim-easygit'
 Plug 'chemzqm/denite-git'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+Plug 'mhinz/vim-startify'
