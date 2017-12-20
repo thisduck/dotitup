@@ -35,7 +35,7 @@ task :install do
 
   # vim-plug installing
   puts '-- vim-plug Install'
-  run 'vim --noplugin -u vim/plug.vim +PlugInstall +qall'
+  run "vim --noplugin -u vim/plug.vim +'PlugInstall --sync' +qall"
 end
 
 task default: 'install'
