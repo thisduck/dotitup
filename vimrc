@@ -19,6 +19,7 @@ set cursorline
 " ---
 
 syntax on
+set regexpengine=1 " speeds up syntax highlighting
 set number " displays line numbers.
 
 " ---
