@@ -15,7 +15,6 @@ Plug 'edkolev/tmuxline.vim'
 
 Plug 'fweep/vim-zsh-path-completion'
 
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 " Plug 'junegunn/vim-easy-align'
 
 " " --- United we stand.
@@ -25,5 +24,6 @@ Plug 'chemzqm/vim-easygit'
 Plug 'chemzqm/denite-git'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 Plug 'mhinz/vim-startify'

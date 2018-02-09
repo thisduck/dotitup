@@ -19,7 +19,7 @@ call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('file_rec', 'command',
       \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
-nnoremap <C-p> :<C-u>Denite file_rec<CR>
+" nnoremap <C-p> :<C-u>Denite file_rec<CR>
 
 nnoremap <leader>bs :<C-u>Denite buffer file_old <CR>
 
@@ -76,7 +76,7 @@ nnoremap <leader>. :<C-u>Denite tag<CR>
             \ 'auto_resize': 1,
             \ 'statusline': 0,
             \ 'winheight': 15,
-            \ 'updatetime': 150,
+            \ 'updatetime': 50,
             \ 'reversed': 1,
             \ 'prompt': '❯',
             \ 'prompt_highlight': 'Function',
