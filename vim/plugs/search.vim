@@ -1,4 +1,4 @@
-Plug 'rking/ag.vim'
+Plug 'mhinz/vim-grepper'
 Plug 'vim-scripts/IndexedSearch'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'skwp/greplace.vim'
