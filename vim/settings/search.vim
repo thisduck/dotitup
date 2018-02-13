@@ -7,15 +7,31 @@ endif
 
 " Search shortcuts
 
-" Ag search <leader>/
-nnoremap <leader>/ :<C-u>cex system('echo searching...') <bar> GrepperAg<SPACE>
-
-" Search for word under cursor
-nnoremap K :<C-u>cex system('echo searching...') <bar> let cmd = 'GrepperAg "\b<C-R><C-W>\b"' <bar> call histadd("cmd", cmd) <bar> execute cmd<CR>
-
-
 " Fzf search <leader>\ (note the backslack)
 nnoremap <leader>\ :<C-u>FzfAg<SPACE>
 
 " Fzf Search for word under cursor
 nnoremap L :<C-u>FzfAg <C-R><C-W><CR>
+
+function! DotGrep(search)
+  try
+    AsyncStop!
+  finally
+    copen
+    cexpr system("echo loading...")
+    while g:asyncrun_status == "running"
+      sleep 100m
+    endwhile
+    let l:eformat = &errorformat
+    let &errorformat = '%f:%l:%c:%m'
+    exec 'AsyncRun! ag --vimgrep ' . a:search
+    let &errorformat = l:eformat
+  endtry
+endfunction
+command -nargs=+ -complete=file -bar DotGrep silent call DotGrep('<args>')
+
+" DotGrep search <leader>/
+nnoremap <leader>/ :<C-u>DotGrep<SPACE>
+
+" Search for word under cursor
+nnoremap K :<C-u>let cmd = 'DotGrep "\b<C-R><C-W>\b"' <bar> call histadd("cmd", cmd) <bar> execute cmd<CR>
