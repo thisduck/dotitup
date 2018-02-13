@@ -49,6 +49,7 @@
 --regex-ruby=/(^|;)[ \t]*alias_attribute\(? *[:"]?([[:alnum:]_?!]+)/\2/m,method,alias/
 
 --regex-ruby=/(^|;)[ \t]*t\.(boolean|integer|decimal|float|datetime|date|text)\(? *[:"]?([[:alnum:]_]+)/\3/f,field,database/
+--regex-ruby=/(^|;)[ \t]*t\.(boolean|integer|decimal|float|datetime|date|text)\(? *[:"]?([[:alnum:]_]+)/\3=/f,field,database/
 --regex-ruby=/(^|;)[ \t]*t\.boolean\(? *[:"]?([[:alnum:]_]+)/\2?/f,field,database/
 
 --regex-ruby=/(^|;)[ \t]*delegate\(? *[:"]?([[:alnum:]_?!]+[?!]?)/\2/m,method,delegate/

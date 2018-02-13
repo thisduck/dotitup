@@ -15,13 +15,7 @@ Plug 'edkolev/tmuxline.vim'
 
 Plug 'fweep/vim-zsh-path-completion'
 
-" Plug 'junegunn/vim-easy-align'
-
-" " --- United we stand.
-Plug 'Shougo/denite.nvim'
-
-Plug 'chemzqm/vim-easygit'
-Plug 'chemzqm/denite-git'
+Plug 'junegunn/vim-easy-align'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
