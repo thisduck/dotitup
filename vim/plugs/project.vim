@@ -1,9 +1,14 @@
 " -- Tim for Pope.
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rsi'
+
+" ### tpope/vim-dispatch
+" | `:Dispatch [command]` | will run the command and put results in quickfix |
+" |                       | e.g. `:Dispatch bundle install`                  |
+" ###
+Plug 'tpope/vim-dispatch'
 
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-rooter'
@@ -22,3 +27,6 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'mhinz/vim-startify'
 let g:startify_change_to_vcs_root = 1
+
+" adding csv functionality
+Plug 'chrisbra/csv.vim'

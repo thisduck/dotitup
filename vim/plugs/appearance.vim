@@ -2,7 +2,7 @@
 Plug 'bling/vim-airline'
 Plug 'Keithbsmiley/tmux.vim'
 
-" --- Themes
+" Themes
 Plug 'nanotech/jellybeans.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
