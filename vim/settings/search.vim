@@ -34,7 +34,7 @@ endfunction
 command -nargs=+ -complete=file -bar DotGrep silent call DotGrep(<q-args>)
 
 " DotGrep search <leader>/
-nnoremap <leader>/ :<C-u>DotGrep<SPACE>
+nnoremap <leader>/ :<C-u>DotGrep<SPACE>''<LEFT>
 
 " Search for word under cursor
-nnoremap K :<C-u>let cmd = 'DotGrep "\b<C-R><C-W>\b"' <bar> call histadd("cmd", cmd) <bar> execute cmd<CR>
+nnoremap K :<C-u>let cmd = 'DotGrep ''\b<C-R><C-W>\b''' <bar> call histadd("cmd", cmd) <bar> execute cmd<CR>

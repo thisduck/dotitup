@@ -21,3 +21,4 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'mhinz/vim-startify'
+let g:startify_change_to_vcs_root = 1
