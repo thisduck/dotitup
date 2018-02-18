@@ -11,6 +11,15 @@ Plug 'sheerun/vim-polyglot'
 " | `:ALEEnable`  | enables ale                            |
 " ###
 Plug 'w0rp/ale'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+
+let g:ale_fixers = {
+\   'ruby': ['rubocop'],
+\   'json': ['prettier'],
+\   'sass': ['stylelint'],
+\   'scss': ['stylelint'],
+\}
 
 " ### Shougo/neosnippet.vim
 " You can create your own snippets that can be inserted into the 
