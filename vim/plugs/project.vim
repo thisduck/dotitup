@@ -58,3 +58,5 @@ let g:startify_change_to_vcs_root = 1
 
 " adding csv functionality
 Plug 'chrisbra/csv.vim'
+
+Plug 'machakann/vim-highlightedyank'

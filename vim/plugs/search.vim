@@ -23,3 +23,5 @@ Plug 'skwp/greplace.vim'
 Plug 'Lokaltog/vim-easymotion'
 
 Plug 'skywind3000/asyncrun.vim'
+
+Plug 'xtal8/traces.vim'
