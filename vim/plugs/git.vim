@@ -7,6 +7,7 @@
 " | `:Gcommit` / `<leader>gc` | will commit staged changes (with buffer for                           |
 " |                           | commit message)                                                       |
 " | `:Gblame` / `<leader>gb`  | vertical buffer to show git blame results                             |
+" | `:Gvdiff` / `<leader>gd`  | vertical split buffer to show diff |
 " | `:Glog`                   | displays git log for current buffer in the quickfix                   |
 " |                           | can be used with visual mode, highlight a function and `:Glog` to see |
 " |                           | how it changes over time!                                             |

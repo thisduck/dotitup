@@ -12,7 +12,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 "" Index ctags from any project, including those outside Rails
-map <Leader>ct :AsyncRun! ctags -R .<CR><CR>
+map <Leader>ct :AsyncOpenRun ctags -R .<CR><CR>
 
 "" Nagivate cwindows and tags
 nnoremap <Leader>n :cnext<CR>

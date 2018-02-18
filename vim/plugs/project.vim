@@ -35,6 +35,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-rooter'
 
+" ### majutsushi/tagbar
+" | `<leader>tb` | displays the tagbar on the side |
+" ###
 Plug 'majutsushi/tagbar'
 nnoremap <leader>tb :<C-u>TagbarToggle<CR>
 
