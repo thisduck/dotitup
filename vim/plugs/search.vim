@@ -13,15 +13,16 @@ Plug 'skwp/greplace.vim'
 " issuing an easymotion shortcut will highlight words/lines with keys
 " from the keyboard. when you press those keys, it will take you 
 " to that word or line. you have to try it.
-" | `<leader>w` | will highlight words after the cursor |
-" | `<leader>b` | will highlight words before the cursor |
-" | `<leader>j` | will highlight lines after the cursor |
-" | `<leader>k` | will highlight lines before the cursor |
+" | `<leader>w`  | will highlight words after the cursor         |
+" | `<leader>b`  | will highlight words before the cursor        |
+" | `<leader>j`  | will highlight lines after the cursor         |
+" | `<leader>k`  | will highlight lines before the cursor        |
 " | `<leader>ge` | will highlight end of words before the cursor |
-" | `<leader>e` | will highlight end of words after the cursor |
+" | `<leader>e`  | will highlight end of words after the cursor  |
 " ###
 Plug 'Lokaltog/vim-easymotion'
 
 Plug 'skywind3000/asyncrun.vim'
 
+" real time visualization for search and replace (substitution)
 Plug 'xtal8/traces.vim'
