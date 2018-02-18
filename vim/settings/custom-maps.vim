@@ -7,6 +7,7 @@
 " | `<leader>s`                 | sort the visual selection                                                          |
 " | `<leader>>`                 | replace old style ruby hashes with new style                                       |
 " | `<leader>bb`                | break up a ruby line somewhat sensibly                                             |
+" | `<leader>gf`                | `gf` in a vertical split                                                           |
 " | *Window Movement Shortcuts* |                                                                                    |
 " | `<C-j>`                     | `<C-w>j`                                                                           |
 " | `<C-k>`                     | `<C-w>k`                                                                           |
@@ -59,3 +60,6 @@ map <Leader>bb :s<Home>silent! <End>@,\(?!$\)@,\r@g<CR>
       \ =
       \ :set nohlsearch<CR>
       " \ :silent! s@&@&\r@g<CR> 
+
+" --- 
+nnoremap <silent> <Leader>gf   :vertical botright wincmd F<CR>

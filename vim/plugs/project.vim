@@ -25,19 +25,26 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-dispatch'
 
 " ### scrooloose/nerdtree
-" | `:NERDTreeToggle` / `<leader>nt` | toggle the NERDTree drawer                           |
-" |                                  | e.g. `:Dispatch bundle install`                      |
-" | `:NERDTreeFind` / `<leader>nf`   | find current file in NERDTree                        |
-" | while in NERDTree                |                                                      |
-" | `m` while on file                | to see a menu (allows you to add/remove/rename dirs) |
-" | `i` while on file                | opens file in a split |
-" | `gi` while on file                | opens file in a split keep cursor in nerdtree |
-" | `s` while on file                | opens file in a vertical split |
-" | `gs` while on file                | opens file in a vertical split keep cursor in nerdtree |
-" | `R`                              | refresh the file listing to show any changes         |
+" | `:NERDTreeToggle` / `<leader>nt` | toggle the NERDTree drawer                             |
+" |                                  | e.g. `:Dispatch bundle install`                        |
+" | `:NERDTreeFind` / `<leader>nf`   | find current file in NERDTree                          |
+" | while in NERDTree                |                                                        |
+" | `m` while on file                | to see a menu (allows you to add/remove/rename dirs)   |
+" | `i` while on file                | opens file in a split                                  |
+" | `gi` while on file               | opens file in a split keep cursor in nerdtree          |
+" | `s` while on file                | opens file in a vertical split                         |
+" | `gs` while on file               | opens file in a vertical split keep cursor in nerdtree |
+" | `R`                              | refresh the file listing to show any changes           |
+" | `?`                              | for help                                               |
 " ###
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let g:NERDTreeWinSize = 30
+map <Leader>nt :NERDTreeToggle<CR>
+map <Leader>nf :NERDTreeFind<CR>
+
 Plug 'airblade/vim-rooter'
 
 " ### majutsushi/tagbar
