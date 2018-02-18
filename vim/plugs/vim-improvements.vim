@@ -14,6 +14,16 @@ Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/neoinclude.vim'
 Plug 'fszymanski/deoplete-emoji'
+let g:deoplete#enable_at_startup = 1
+
+let g:deoplete#sources = {}
+let g:deoplete#sources._ = ['neosnippet', 'emoji', 'buffer', 'tag']
+let deoplete#tag#cache_limit_size = 10000000
+
+imap <expr><TAB>
+ \ neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" :
+ \ pumvisible() ? "\<C-n>" : "\<TAB>"
+
 Plug 'junegunn/vim-emoji'
 nnoremap <leader>emo :<C-u>%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
 
