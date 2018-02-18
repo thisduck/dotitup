@@ -1,3 +1,13 @@
+" ### Search
+"
+" | *Primary Search*   |                                                              |
+" | `<leader>/`        | search for word(s) in project, results in quickfix           |
+" | `K`                | search for work under cursor in project, results in quickfix |
+" | *Secondary Search* |                                                              |
+" | `<leader>\`        | search for word(s) in project, using FZF                     |
+" | `L`                | search for work under cursor in project, using FZF           |
+" ###
+
 " use ag as the grepping program if is exists
 if executable('ag')
   set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
