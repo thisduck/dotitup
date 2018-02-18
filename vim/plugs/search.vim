@@ -21,6 +21,7 @@ Plug 'skwp/greplace.vim'
 " | `<leader>e`  | will highlight end of words after the cursor  |
 " ###
 Plug 'Lokaltog/vim-easymotion'
+map <Leader> <Plug>(easymotion-prefix)
 
 Plug 'skywind3000/asyncrun.vim'
 

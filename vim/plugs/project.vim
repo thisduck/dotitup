@@ -55,8 +55,26 @@ Plug 'fweep/vim-zsh-path-completion'
 
 Plug 'junegunn/vim-easy-align'
 
+" ### FZF Helpers
+" The FZF commands are prefixed with `Fzf`
+" So if you don't find the commands from the FZF docs
+" by running them, that is why.
+"
+" Shortcuts:
+" | `<C-p>`      | fuzzy file search, substitute for CTRL-P. `:FzfFiles`          |
+" | `<leader>bs` | fuzzy buffer and most recently used file search, `:FzfHistory` |
+" | `<leader>.`  | fuzzy tags search, `:FzfTags`                                  |
+" | `<leader>l`  | fuzzy search for the lines in current buffer, `:FzfBLines`     |
+" | `<leader>he` | fuzzy search for vim help, `:FzfHelptags`                      |
+" ###
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+let g:fzf_command_prefix = 'Fzf'
+nnoremap <C-p> :<C-u>FzfFiles<CR>
+nnoremap <leader>bs :<C-u>FzfHistory<CR>
+nnoremap <leader>. :<C-u>FzfTags<CR>
+nnoremap <leader>l :<C-u>FzfBLines<CR>
+nnoremap <leader>he :<C-u>FzfHelptags<CR>
 
 Plug 'mhinz/vim-startify'
 let g:startify_change_to_vcs_root = 1
