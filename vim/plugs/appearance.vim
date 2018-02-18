@@ -1,6 +1,9 @@
-" Plug 'chrisbra/color_highlight'
+Plug 'chrisbra/color_highlight'
+let g:colorizer_auto_filetype='css,html,sass,scss'
+
 Plug 'bling/vim-airline'
 Plug 'Keithbsmiley/tmux.vim'
+Plug 'edkolev/tmuxline.vim'
 
 " Themes
 Plug 'nanotech/jellybeans.vim'

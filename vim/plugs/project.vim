@@ -38,8 +38,6 @@ Plug 'airblade/vim-rooter'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 
-Plug 'edkolev/tmuxline.vim'
-
 Plug 'fweep/vim-zsh-path-completion'
 
 Plug 'junegunn/vim-easy-align'

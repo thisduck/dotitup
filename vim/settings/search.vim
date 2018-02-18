@@ -11,7 +11,7 @@ endif
 nnoremap <leader>\ :<C-u>FzfAg<SPACE>
 
 " Fzf Search for word under cursor
-nnoremap L :<C-u>FzfAg <C-R><C-W><CR>
+nnoremap L :<C-u>FzfAg \b<C-R><C-W>\b<CR>
 
 function! DotGrep(...)
   let l:query = join(a:000, ' ')
@@ -31,10 +31,10 @@ function! DotGrep(...)
     let &errorformat = l:eformat
   endtry
 endfunction
-command -nargs=+ -complete=file -bar DotGrep silent call DotGrep(<q-args>)
+command! -nargs=+ -complete=file -bar DotGrep silent call DotGrep(<q-args>)
 
 " DotGrep search <leader>/
 nnoremap <leader>/ :<C-u>DotGrep<SPACE>''<LEFT>
 
 " Search for word under cursor
-nnoremap K :<C-u>let cmd = 'DotGrep ''\b<C-R><C-W>\b''' <bar> call histadd("cmd", cmd) <bar> execute cmd<CR>
+nnoremap K :<C-u>let cmd = 'DotGrep -w ''<C-R><C-W>''' <bar> call histadd("cmd", cmd) <bar> execute cmd<CR>

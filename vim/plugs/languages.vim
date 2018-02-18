@@ -12,9 +12,20 @@ Plug 'sheerun/vim-polyglot'
 " ###
 Plug 'w0rp/ale'
 
+" ### Shougo/neosnippet.vim
+" You can create your own snippets that can be inserted into the 
+" code via the autocomplete functionality.
+"
+" Some default snippets are provided by honza/vim-snippets
+" ###
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
+let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets,~/.vim/custom/dotitup_snippets'
+
+" ### mattn/emmet-vim
+" The emmet plugin allows quick insertion of html into the code.
+" Follow the tutorial here: https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
 Plug 'mattn/emmet-vim'
 
 " ### kannokanno/previm

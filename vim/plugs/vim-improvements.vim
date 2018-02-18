@@ -28,4 +28,3 @@ Plug 'vim-scripts/lastpos.vim'
 " Plug 'vim-scripts/sudo.vim'
 " Plug 'goldfeld/ctrlr.vim'
 " Plug 'maksimr/vim-jsbeautify'
-

@@ -12,7 +12,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 "" Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R --exclude=.git --exclude=node_modules --exclude=bower_components --exclude=tmp --exclude=log --exclude=dist .<CR><CR>
+map <Leader>ct :!ctags -R --exclude=.git --exclude=node_modules --exclude=bower_components --exclude=tmp --exclude=log --exclude=dist --exclude=public --exclude=vendor/assets .<CR><CR>
 
 "" Nagivate cwindows and tags
 nnoremap <Leader>n :cnext<CR>
