@@ -1,6 +1,7 @@
 " -- Tim for Pope.
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-scriptease'
+
 " ### tpope/vim-dispatch
 " | `:Delete`    | Delete a buffer and the file on disk simultaneously.                   |
 " | `:Unlink`    | Like `:Delete`, but keeps the now empty buffer.                        |
@@ -29,6 +30,10 @@ Plug 'tpope/vim-dispatch'
 " | `:NERDTreeFind` / `<leader>nf`   | find current file in NERDTree                        |
 " | while in NERDTree                |                                                      |
 " | `m` while on file                | to see a menu (allows you to add/remove/rename dirs) |
+" | `i` while on file                | opens file in a split |
+" | `gi` while on file                | opens file in a split keep cursor in nerdtree |
+" | `s` while on file                | opens file in a vertical split |
+" | `gs` while on file                | opens file in a vertical split keep cursor in nerdtree |
 " | `R`                              | refresh the file listing to show any changes         |
 " ###
 Plug 'scrooloose/nerdtree'
