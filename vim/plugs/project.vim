@@ -55,6 +55,18 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'mhinz/vim-startify'
 let g:startify_change_to_vcs_root = 1
+let g:startify_list_order = [
+      \ ['   Most Recent Project Files'],
+      \ 'dir',
+      \ ['   Most Recent Files'],
+      \ 'files',
+      \ ['   Sessions:'],
+      \ 'sessions',
+      \ ['   Bookmarks:'],
+      \ 'bookmarks',
+      \ ['   Commands:'],
+      \ 'commands',
+      \ ]
 
 " adding csv functionality
 Plug 'chrisbra/csv.vim'
