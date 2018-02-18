@@ -1,3 +1,20 @@
+--recurse=yes
+--exclude=.git
+--exclude=node_modules
+--exclude=bower_components
+--exclude=tmp
+--exclude=log
+--exclude=dist
+--exclude=db/migrate
+--exclude=db/fixtures
+--exclude=db/*.json
+--exclude=*.css
+--exclude=*/vendor/*.js
+--exclude=vendor/*.js
+--exclude=vendor/*.css
+--exclude=*_spec.rb
+--exclude=public
+
 --fields=+l
 
 --langdef=coffee
@@ -22,9 +39,6 @@
 --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){9}/\8/f,field/
 
 --langmap=ruby:+.rake
---exclude=db/migrate
---exclude=vendor/assets
---exclude=public
 
 --regex-ruby=/(^|;)class[[:space:]]+([A-Z][[:alnum:]]+)::([A-Z][[:alnum:]]+)/\3/c,class,constant/
 --regex-ruby=/(^|;)class[[:space:]]+[A-Z][[:alnum:]]+::[A-Z][[:alnum:]]+::([A-Z][[:alnum:]]+)/\2/c,class,constant/

@@ -22,6 +22,7 @@ task :install do
   link_it 'gemrc'
   link_it 'agignore'
   link_it 'ctags'
+  link_it 'ctags', destination: '~/.ctags.d/default.ctags'
   link_it 'zshrc'
   link_it 'tmux.conf'
   link_it 'custom oh my zsh',
@@ -53,6 +54,8 @@ def link_it(name, options = {})
   source = options[:source] || options[:name]
   destination = options[:destination] || "~/.#{source}"
   destination = File.expand_path(destination)
+  base_destination = File.dirname(destination)
+  mkdir_p(base_destination) unless File.exist?(base_destination)
   source = File.expand_path(source.to_s)
   options[:pre_link].call if options[:pre_link]
 

@@ -35,6 +35,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-rooter'
 
+Plug 'majutsushi/tagbar'
+nnoremap <leader>tb :<C-u>TagbarToggle<CR>
+
+Plug 'ludovicchabant/vim-gutentags'
+
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 
