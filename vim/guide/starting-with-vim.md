@@ -156,7 +156,7 @@ Combining actions and motions makes vim so versatile.
 | `D`            | Delete from cursor position to the end of the line.                    |
 | `C`            | Change from cursor position to the end of the line.                    |
 
-Don't try an memorize any of these.  
+Don't try and memorize any of these.  
 Instead try to combine action and motion as needed.
 
 > | `yy`           | yank entire line.                                                      |

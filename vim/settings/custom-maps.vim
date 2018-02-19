@@ -54,14 +54,24 @@ map <Leader>> :s<Home>silent! <End>@:\([^: =({})]\+\)\s*=>\s*@\1: @g<CR> :nohlse
 "" --- Break up a long ruby line around commas
 
 function! DotSplitComma()
-  silent! execute a:firstline . "," . a:lastline . 's@\(.\),\s*\t*\(.\)@\1,\r\2@g'
-  let l:current_line = line('.')
-  silent! execute  a:firstline . "," . l:current_line . 's@}@\r}@g'
-  silent! execute  a:firstline . "," . l:current_line . 's@{@{\r@g'
-  silent! execute  a:firstline . "," . l:current_line . 's@)@\r)@g'
-  silent! execute  a:firstline . "," . l:current_line . 's@(@(\r@g'
-  silent! execute 'normal!' . a:firstline . 'GV%='
+  let l:first = a:firstline
   silent! execute  ':' . a:firstline
+  silent! execute  'normal! O'
+  silent! execute  'normal! ma'
+  silent! execute  ':' . (a:lastline + 1)
+  silent! execute  'normal! o'
+  silent! execute  'normal! mb'
+  let l:last = line('.')
+
+  silent! execute l:first . "," . l:last . 's@\(.\),\s*\t*\(.\)@\1,\r\2@g'
+  let l:last = line('.')
+  silent! execute l:first . "," . (l:last + 1).  's@}@\r}@g'
+  silent! execute l:first . "," . (l:last + 1). 's@{@{\r@g'
+  silent! execute l:first . "," . (l:last + 1).  's@)@\r)@g'
+  silent! execute l:first . "," . (l:last + 1). 's@(@(\r@g'
+  silent! execute  'normal! ''ajvip='
+  silent! execute  'normal! ''bdd'
+  silent! execute  'normal! ''add'
   set nohlsearch
 endfunction
 
