@@ -51,15 +51,21 @@ set rtp+=~/.vim/custom/
 "" --- Replace old style ruby hashes with new style
 map <Leader>> :s<Home>silent! <End>@:\([^: =({})]\+\)\s*=>\s*@\1: @g<CR> :nohlsearch<CR>
 
-"" --- Break up a long ruby line
-map <Leader>bb :s<Home>silent! <End>@,\(?!$\)@,\r@g<CR> 
-      \ :s<Home>silent! <End>@}@\r}@g<CR> 
-      \ :s<Home>silent! <End>@{@{\r@g<CR> 
-      \ :s<Home>silent! <End>@(@(\r@g<CR> 
-      \ :s<Home>silent! <End>@)@\r)@g<CR> 
-      \ =
-      \ :set nohlsearch<CR>
-      " \ :silent! s@&@&\r@g<CR> 
+"" --- Break up a long ruby line around commas
+
+function! DotSplitComma()
+  silent! execute a:firstline . "," . a:lastline . 's@\(.\),\s*\t*\(.\)@\1,\r\2@g'
+  let l:current_line = line('.')
+  silent! execute  a:firstline . "," . l:current_line . 's@}@\r}@g'
+  silent! execute  a:firstline . "," . l:current_line . 's@{@{\r@g'
+  silent! execute  a:firstline . "," . l:current_line . 's@)@\r)@g'
+  silent! execute  a:firstline . "," . l:current_line . 's@(@(\r@g'
+  silent! execute 'normal!' . a:firstline . 'GV%='
+  silent! execute  ':' . a:firstline
+  set nohlsearch
+endfunction
+
+vnoremap <leader>s, :call DotSplitComma()<cr>
 
 " --- 
 nnoremap <silent> <Leader>gf   :vertical botright wincmd F<CR>
