@@ -105,18 +105,11 @@ Plug 'bogado/file-line'
 " ### vim-scripts/camelcasemotion
 " Adds motion helpers to move through camelcase words.
 "
-" | `W` | equivalent of `w` for camel case motion |
-" | `B` | equivalent of `b` for camel case motion |
-" | `E` | equivalent of `e` for camel case motion |
+" | `,w` | equivalent of `w` for camel case motion |
+" | `,b` | equivalent of `b` for camel case motion |
+" | `,e` | equivalent of `e` for camel case motion |
 " ###
 Plug 'vim-scripts/camelcasemotion'
-map W <Plug>CamelCaseMotion_w
-map B <Plug>CamelCaseMotion_b
-map E <Plug>CamelCaseMotion_e
-
-sunmap W
-sunmap B
-sunmap E
 
 " Misc/Utilities
 Plug 'tpope/vim-endwise'
