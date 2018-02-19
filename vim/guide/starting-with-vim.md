@@ -1,4 +1,4 @@
-# Vim Things with Dotitup
+# A Minimal and Hurried Guide to Vim (with Dotitup)
 
 Vim is a modal editor. Not like modals that pop up on websites. But that it has different modes.
 
@@ -38,25 +38,32 @@ For more on writing and quitting use the help commands:
 | `gg`        | Moves cursor to the first line in the file.                                       |
 | `:1`        | Also moves cursor to the first line in the file.                                  |
 | `:[number]` | Moves cursor to the `[number]` line in the file.                                  |
+| `[number]G` | Moves cursor to the `[number]` line in the file.                                  |
 |             | This is essentially the goto line feature in vim.                                 |
 
 ### Character/Word Navigation
-| Command   | Description              |
-| --------- | :-------------           |
-| `j`       | Move one line down.      |
-| `k`       | Move one line up.        |
-| `h`       | Move one characer right. |
-| `l`       | Move character left.     |
-| `w`       | Go to next word.         |
-| `b`       | Go to previous word.     |
-| `e`       | Go to end of word.       |
-| `W`       | While `w` would treat "www.google.com" as 5 words ("www", ".", "google", ".", "com"), `W` will treat "www.google.com" all as one WORD. |
-| `B`       | Same as above, but goes back a WORD.                                                                                                   |
-| `E`       | Same as above, but goes to the end of a WORD.                                                                                          |
+| Command        | Description                                                                                                                            |
+| ---------      | :-------------                                                                                                                         |
+| `j`            | Move one line down.                                                                                                                    |
+| `k`            | Move one line up.                                                                                                                      |
+| `h`            | Move one characer right.                                                                                                               |
+| `l`            | Move character left.                                                                                                                   |
+| `w`            | Go to next word.                                                                                                                       |
+| `b`            | Go to previous word.                                                                                                                   |
+| `e`            | Go to end of word.                                                                                                                     |
+| `W`            | While `w` would treat "www.google.com" as 5 words ("www", ".", "google", ".", "com"), `W` will treat "www.google.com" all as one WORD. |
+| `B`            | Same as above, but goes back a WORD.                                                                                                   |
+| `E`            | Same as above, but goes to the end of a WORD.                                                                                          |
+| *Combinations* |                                                                                                                                        |
+| `tm`           | Will place the cursor right before the next occurance of 'm' on the line.                                                              |
+| `fm`           | Will place the cursor on before the next occurance of 'm' on the line.                                                                 |
+|                | This works for any character. `f.` will take you to the next occurance of the '.'                                                      |
 
 All of the above can be combined with a number.  
 So `2w` will move the cursor two words forward  
 and `10b` would move the cursor 10 words back.
+Movement and action in Vim is a language.  
+This is the beginning of that language.
 
 ### Current Line Navigation
 | Command   | Description                                                                                 |
@@ -76,102 +83,117 @@ and `10b` would move the cursor 10 words back.
 
 ## Basic Editing
 
+### Insert Mode
+
+| Command   | Description                                                 |
+| --------- | :-------------                                              |
+| `i`       | Enters insert mode at cursor position.                      |
+| `I`       | Enters insert mode at the start of the line.                |
+| `a`       | Moves cursor forward one character and enters insert mode.  |
+| `A`       | Moves cursor to the end of the line and enters insert mode. |
+| `o`       | Add an empty line below and enter insert mode.            |
+| `O`       | Add an empty line above and enter insert mode.            |
+
+Once in insert mode, you can type in text as you normally would in any text editor (for the most part, anyway).
+Remember that `<ESC>` or `<C-c>` will get you out of insert mode and back into normal mode.
+
+### Character Editing
+
 | Command        | Description                                                                   |
 | ---------      | :-------------                                                                |
-| `x`            | Delete/cut character on cursor.                                               |
+| `x`            | Delete/cut character under cursor.                                            |
 | `X`            | Delete/cut character before cursor.                                           |
 | `r[character]` | Replaces charcter under cursor with `[character]`, keeps cursor on character. |
 | `R[character]` | Replaces charcter under cursor with `[character]`, and moves cursor forward.  |
 | `~`            | Change case of character under cursor.                                        |
+| `p`            | Put/paste (after cursor position).                                            |
+| `P`            | Put/paste (before cursor position).                                           |
 
+The above commands also combine with numbers.
+`6x` will delete six characters and  
+`4~` will change the case of 4 characters.
 
-| Command        | Description                                                                   |
-| ---------      | :-------------                                                                |
-| `d`            | Delete/cut.                                                                 |
-| `c`            | Change.                                                                     |
-| `y`            | Yank/copy.                                                                  |
-| `p`            | Put/paste (after cursor position).                                          |
-| `P`            | Put/paste (before cursor position).                                         |
+The paste command is only useful once you're deleted or changed text.  
+Try deleting 5 characters and then moving elsewhere in the file to paste them.
 
-| Command   | Description                                                 |                                                     |
-| --------- | :-------------                                              | ---                                                 |
-| `D`       | - delete from cursor position to the end of the line.       | - delete will delete and remain in normal mode.     |
-| `C`       | - change from cursor position to the end of the line.       | - change will delete and change the mode to insert. |
+### Actions
 
-| Command   | Description                                                 |
-| --------- | :-------------                                              |
-| `i`       | enters insert mode at cursor position.                      |
-| `I`       | enters insert mode at the start of the line.                |
-| `a`       | moves cursor forward one character and enters insert mode.  |
-| `A`       | moves cursor to the end of the line and enters insert mode. |
+| Command   | Description    |
+| --------- | :------------- |
+| `d`       | Delete/cut.    |
+| `c`       | Change.        |
+> | `y`       | Yank/copy.     |
 
-| Command   | Description                                                 |
-| --------- | :-------------                                   |
-| `yy`      | - yank entire line.                              |
-| `dd`      | - delete entire line.                            |
-| `cc`      | - change entire line (indents things properly).  |
-| `u`       | - undo.                                          |
-| `<C-r>`   | - redo.                                          |
-|           |                                                  |
-| `o`       | - add an empty line below and enter insert mode. |
-| `O`       | - add an empty line above and enter insert mode. |
+Note that unlike `x` and `r`, the `d` and `c` commands don't do anything on their own.
+And paste is only useful when you're deleted or changed some text.
 
----
+### Action and Motion
 
-### you can combine actions and motions.
+Combining actions and motions makes vim so versatile.
 
-| Command   | Description                                                                    |
-| --------- | :-------------                                                                 |
-| `dw`      | will delete a word.                                                            |
-| `db`      | will delete to the start of the word.                                          |
-| `de`      | will delete to the end of the word.                                            |
-| `d$`      | will delete to the end of the line.                                            |
-| `d^`      | will delete to the start of the line.                                          |
-| `cw`      | will delete from the cursor to the end of the word and put you in insert mode. |
+| Command        | Description                                                            |
+| ---------      | :-------------                                                         |
+| `dw`           | Delete a word.                                                         |
+| `d5w`          | Delete 5 words.                                                        |
+| `5dw`          | Delete 5 words. (Same as above.)                                       |
+| `db`           | Delete to the start of the word.                                       |
+| `de`           | Delete to the end of the word.                                         |
+| `d$`           | Delete to the end of the line.                                         |
+| `d^`           | Delete to the start of the line.                                       |
+| `dk`           | Delete the current line and the line above.                            |
+| `cw`           | Change a word. (Deletes the word enters insert mode.)                  |
+|                | All of the actions done with `d` are possible with `c` in the same way |
+|                | `d` will delete and keep you in normal mode.                           |
+|                | `c` will delete and change into insert mode.                           |
+| `c5l`          | Change 5 characters to the right.                                      |
+| `c10j`         | Change current line and 10 lines below.                                |
+| `ct'`          | Change to the next occurance of "'" on the current line.               |
+| `cf|`          | Delete to and including next occurance of '\|' on the current line.    |
+| *Line Actions* |                                                                        |
+| `dd`           | Delete entire line.                                                    |
+| `5dd`          | Delete 5 lines.                                                        |
+| `cc`           | Change entire line.                                                    |
+| `D`            | Delete from cursor position to the end of the line.                    |
+| `C`            | Change from cursor position to the end of the line.                    |
 
-### you can tell vim how many times to do a certain action.
+Don't try an memorize any of these.  
+Instead try to combine action and motion as needed.
 
-| Command   | Description                   |
-| --------- | :-------------                |
-| `5dw`     | will delete the next 5 words. |
-| `5dd`     | will delete the next 5 lines. |
-| `5<C-d>`  | will page down 5 times.       |
+> | `yy`           | yank entire line.                                                      |
 
-this can work in a different order as well.
+### Undo/Redo/Repeat
 
-| Command   | Description                                                                                     |
-| --------- | :-------------                                                                                  |
-| `d5w`     | will delete 5 words.                                                                            |
-| `d5j`     | will delete 5 lines downward (since j moves down).                                              |
-| `d5k`     | will delete 5 lines upward (since k moves up).                                                  |
-| `d5l`     | will delete 5 characters to the right (since l moves right).                                    |
-| `42G`     | behaves a bit differently, doesn't go to end of file 42 times. instead, goes to line number 42. |
-
----
+This is a good time to learn undo and redo.
 
 | Command   | Description                                                                  |
 | --------- | :-------------                                                               |
-| `.`       | repeats the last action that you did.                                        |
+| `u`       | Undo.                                                                        |
+| `<C-r>`   | Redo.                                                                        |
+| `4u`      | These also work with numbers.                                                |
+| `.`       | Repeat actions. `dw` followed by `.` will delete another word.               |
 |           | if you did `dd`, then `.` will `dd` again.                                   |
 |           | if you did `cw[word]`, then `.` on another word will change it to the [word] |
 |           | `5dd` will delete 5 lines, `.` will delete the next 5 lines, and so on.      |
 
 ---
 
-### you can go in and around objects/words.
+### In and Around
 
-| Command   | Description                                                                                            |
-| --------- | :-------------                                                                                         |
-| `diw`     | will delete in the word. with the cursor anywhere inside a word, `diw` will delete the word.           |
-| `daw`     | will delete the word and around the word. it will also delete the surround whitespace around the word. |
+You can go in and around objects/words.
 
-### it gets cooler.
+| Command   | Description                                                                                               |
+| --------- | :-------------                                                                                            |
+| `diw`     | will delete in the word. with the cursor anywhere inside a word, `diw` will delete the word.              |
+| `daw`     | will delete the word and around the word. it will also delete the surrounding whitespace around the word. |
+
+It gets cooler.
 
 | Command   | Description                                                                               |
 | --------- | :-------------                                                                            |
 | `di"`     | when done inside a double quoted string, will delete everything inside the double quotes. |
 | `di(`     | will delete everything inside round brackets.                                             |
 | `ci"`     | will delete everything in the double quotes and put you in insert mode.                   |
+|           | This will work for all types of brackets and quotes. This is another.                                      |
 
 | Command   | Description                                  |
 | --------- | :------------------------------------------- |
@@ -202,10 +224,11 @@ this can work in a different order as well.
 ? - tells the current status
 
 | Command | Description |
-|-------|:-------------------------------------------|
+| -------                      | :-------------------------------------------      |
 | :set cursorline/nocursorline | hightlight/un-hightlight the line with the cursor |
 
 ## Windows
+
 | Command   | Description                                  |
 | -------   | :------------------------------------------- |
 | `:sp`     | horizontal split                             |
@@ -228,3 +251,9 @@ this can work in a different order as well.
 | `:gt` OR `:tabn`                            | go to next tab                               |
 | `:gT` OR `:tabl`                            | go to previous tab                           |
 | `[tabNumber]gt`                             | go to tabNumber tab                          |
+
+#### TODO: 
+- Yank Register.
+- Pasting in different modes.
+- undo plugin?
+- 
