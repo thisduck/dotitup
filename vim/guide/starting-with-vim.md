@@ -46,8 +46,8 @@ For more on writing and quitting use the help commands:
 | ---------      | :-------------                                                                                                                         |
 | `j`            | Move one line down.                                                                                                                    |
 | `k`            | Move one line up.                                                                                                                      |
-| `h`            | Move one characer right.                                                                                                               |
-| `l`            | Move character left.                                                                                                                   |
+| `h`            | Move one characer left.                                                                                                               |
+| `l`            | Move character right.                                                                                                                   |
 | `w`            | Go to next word.                                                                                                                       |
 | `b`            | Go to previous word.                                                                                                                   |
 | `e`            | Go to end of word.                                                                                                                     |
@@ -61,7 +61,7 @@ For more on writing and quitting use the help commands:
 
 All of the above can be combined with a number.  
 So `2w` will move the cursor two words forward  
-and `10b` would move the cursor 10 words back.
+and `10b` would move the cursor 10 words back.  
 Movement and action in Vim is a language.  
 This is the beginning of that language.
 
@@ -94,7 +94,7 @@ This is the beginning of that language.
 | `o`       | Add an empty line below and enter insert mode.            |
 | `O`       | Add an empty line above and enter insert mode.            |
 
-Once in insert mode, you can type in text as you normally would in any text editor (for the most part, anyway).
+Once in insert mode, you can type in text as you normally would in any text editor (for the most part, anyway).  
 Remember that `<ESC>` or `<C-c>` will get you out of insert mode and back into normal mode.
 
 ### Character Editing
@@ -109,7 +109,7 @@ Remember that `<ESC>` or `<C-c>` will get you out of insert mode and back into n
 | `p`            | Put/paste (after cursor position).                                            |
 | `P`            | Put/paste (before cursor position).                                           |
 
-The above commands also combine with numbers.
+The above commands also combine with numbers.  
 `6x` will delete six characters and  
 `4~` will change the case of 4 characters.
 
@@ -124,7 +124,7 @@ Try deleting 5 characters and then moving elsewhere in the file to paste them.
 | `c`       | Change.        |
 > | `y`       | Yank/copy.     |
 
-Note that unlike `x` and `r`, the `d` and `c` commands don't do anything on their own.
+Note that unlike `x` and `r`, the `d` and `c` commands don't do anything on their own.  
 And paste is only useful when you're deleted or changed some text.
 
 ### Action and Motion
