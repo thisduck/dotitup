@@ -67,11 +67,10 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-
 " ### FZF Helpers
 " The FZF commands are prefixed with `Fzf`
 " So if you don't find the commands from the FZF docs
-" by running them, that is why.
+  " by running them, that is why.
 "
 " Shortcuts:
 " | `<C-p>`      | fuzzy file search, substitute for CTRL-P. `:FzfFiles`          |

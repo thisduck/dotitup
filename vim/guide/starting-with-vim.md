@@ -42,22 +42,24 @@ For more on writing and quitting use the help commands:
 |             | This is essentially the goto line feature in vim.                                 |
 
 ### Character/Word Navigation
-| Command        | Description                                                                                                                            |
-| ---------      | :-------------                                                                                                                         |
-| `j`            | Move one line down.                                                                                                                    |
-| `k`            | Move one line up.                                                                                                                      |
-| `h`            | Move one characer left.                                                                                                               |
-| `l`            | Move character right.                                                                                                                   |
-| `w`            | Go to next word.                                                                                                                       |
-| `b`            | Go to previous word.                                                                                                                   |
-| `e`            | Go to end of word.                                                                                                                     |
-| `W`            | While `w` would treat "www.google.com" as 5 words ("www", ".", "google", ".", "com"), `W` will treat "www.google.com" all as one WORD. |
-| `B`            | Same as above, but goes back a WORD.                                                                                                   |
-| `E`            | Same as above, but goes to the end of a WORD.                                                                                          |
-| *Combinations* |                                                                                                                                        |
-| `tm`           | Will place the cursor right before the next occurance of 'm' on the line.                                                              |
-| `fm`           | Will place the cursor on before the next occurance of 'm' on the line.                                                                 |
-|                | This works for any character. `f.` will take you to the next occurance of the '.'                                                      |
+| Command   | Description                                                                                                                            |
+| --------- | :-------------                                                                                                                         |
+| `j`       | Move one line down.                                                                                                                    |
+| `k`       | Move one line up.                                                                                                                      |
+| `h`       | Move one characer left.                                                                                                                |
+| `l`       | Move character right.                                                                                                                  |
+| `w`       | Go to next word.                                                                                                                       |
+| `b`       | Go to previous word.                                                                                                                   |
+| `e`       | Go to end of word.                                                                                                                     |
+| `W`       | While `w` would treat "www.google.com" as 5 words ("www", ".", "google", ".", "com"), `W` will treat "www.google.com" all as one WORD. |
+| `B`       | Same as above, but goes back a WORD.                                                                                                   |
+| `E`       | Same as above, but goes to the end of a WORD.                                                                                          |
+|           |                                                                                                                                        |
+| `tm`      | Will place the cursor right before the next occurance of 'm' on the line.                                                              |
+| `Tm`      | Will place the cursor right after the previous occurance of 'm' on the line.                                                           |
+| `fm`      | Will place the cursor on the next occurance of 'm' on the line.                                                                        |
+| `Fm`      | Will place the cursor on the previous occurance of 'm' on the line.                                                                    |
+|           | This works for any character. `f.` will take you to the next occurance of the '.'                                                      |
 
 All of the above can be combined with a number.  
 So `2w` will move the cursor two words forward  
@@ -74,12 +76,22 @@ This is the beginning of that language.
 | `0`       | Move to beginning of line.                                                                  |
 
 ### Page Navigation
+
 | Command   | Description              |
 | --------- | :-------------           |
 | `<C-u>`   | Page up half a screen.   |
 | `<C-d>`   | Page down half a screen. |
 | `<C-b>`   | Page up full screen.     |
 | `<C-f>`   | Page down full screen.   |
+
+### Other Navigation
+
+| Command   | Description                 |
+| --------- | :-------------              |
+| `(`       | Move to previous sentence.  |
+| `)`       | Move to next sentence.      |
+| `{`       | Move to previous paragraph. |
+| `}`       | Move to next paragraph.     |
 
 ## Basic Editing
 
@@ -144,7 +156,7 @@ Combining actions and motions makes vim so versatile.
 | `cw`           | Change a word. (Deletes the word enters insert mode.)                  |
 |                | All of the actions done with `d` are possible with `c` in the same way |
 |                | `d` will delete and keep you in normal mode.                           |
-|                | `c` will delete and change into insert mode.                           |
+|                | `c` will delete and change into insert mode.                      |
 | `c5l`          | Change 5 characters to the right.                                      |
 | `c10j`         | Change current line and 10 lines below.                                |
 | `ct'`          | Change to the next occurance of "'" on the current line.               |
@@ -177,23 +189,38 @@ This is a good time to learn undo and redo.
 
 ---
 
-### In and Around
+### In and Around (Text Objects)
 
-You can go in and around objects/words.
+Along with motions, Vim also has text objects. A `dw` with the cursor in the middle of the word will delete from the cursor to the end of the word. Since `w` alone is a motion. A `diw` with the cursor in the middle of the word will delete the word. Since `iw` signifies the word object.
+
+| Text Object | Description                                                                                                       |
+| ---------   | :-------------                                                                                                    |
+| `aw`        | a word. includes the word and any trailing space.                                                                 |
+|             | I generally like think about the `a` in `aw` as around word. Going to use 'around' for the rest of this document. |
+| `iw`        | inner word. just the word without any trailing space.                                                             |
+| `aW`        | around WORD.                                                                                                      |
+| `iW`        | inner WORD.                                                                                                       |
+|             | While `w` and `W` can act as both motions and text objects, the rest are just objects.                            |
+| `as`        | around sentence.                                                                                                  |
+| `is`        | inner sentence.                                                                                                   |
+| `ap`        | around paragraph.                                                                                                 |
+| `ip`        | inner paragraph.                                                                                                  |
+| `a]` / `a[` | around [] block.                                                                                                  |
+
 
 | Command   | Description                                                                                               |
 | --------- | :-------------                                                                                            |
 | `diw`     | will delete in the word. with the cursor anywhere inside a word, `diw` will delete the word.              |
-| `daw`     | will delete the word and around the word. it will also delete the surrounding whitespace around the word. |
+| `daw`     | will delete the word and any trailing whitespace. |
 
 It gets cooler.
 
 | Command   | Description                                                                               |
 | --------- | :-------------                                                                            |
 | `di"`     | when done inside a double quoted string, will delete everything inside the double quotes. |
-| `di(`     | will delete everything inside round brackets.                                             |
+| `di(`     | will delete everything inside round brackets. This works across multiple lines.           |
 | `ci"`     | will delete everything in the double quotes and put you in insert mode.                   |
-|           | This will work for all types of brackets and quotes. This is another.                                      |
+|           | This will work for all types of brackets (`[`, `]`, `{`, `}`, `(`, `<`) and quotes. This is another.                     |
 
 | Command   | Description                                  |
 | --------- | :------------------------------------------- |
