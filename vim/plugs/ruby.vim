@@ -6,7 +6,7 @@ Plug 'vim-ruby/vim-ruby'
 " | `gf` | will take you to the model/template/etc over the cursor |
 " | `:R` and `:A` | will switch between model to schema, template to helper, and controller to functional test, etc |
 " ###
-Plug 'thisduck/vim-rails'
+Plug 'tpope/vim-rails'
 
 " ### tpope/vim-rake
 " | `:Rake` | wraps the `rake` command |
