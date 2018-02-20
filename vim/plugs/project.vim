@@ -3,6 +3,8 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-scriptease'
 
 " ### tpope/vim-dispatch
+" | Instruction  | Description                                                            |
+" | ---          | ---                                                                    |
 " | `:Delete`    | Delete a buffer and the file on disk simultaneously.                   |
 " | `:Unlink`    | Like `:Delete`, but keeps the now empty buffer.                        |
 " | `:Move`      | Rename a buffer and the file on disk simultaneously.                   |
@@ -19,12 +21,16 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rsi'
 
 " ### tpope/vim-dispatch
+" | Instruction           | Description                                      |
+" | ---                   | ---                                              |
 " | `:Dispatch [command]` | will run the command and put results in quickfix |
 " |                       | e.g. `:Dispatch bundle install`                  |
 " ###
 Plug 'tpope/vim-dispatch'
 
 " ### scrooloose/nerdtree
+" | Instruction                      | Description                                            |
+" | ---                              | ---                                                    |
 " | `:NERDTreeToggle` / `<leader>nt` | toggle the NERDTree drawer                             |
 " |                                  | e.g. `:Dispatch bundle install`                        |
 " | `:NERDTreeFind` / `<leader>nf`   | find current file in NERDTree                          |
@@ -47,12 +53,6 @@ map <Leader>nf :NERDTreeFind<CR>
 
 " finds project root (usually a .git folder)
 Plug 'airblade/vim-rooter'
-
-" " ### majutsushi/tagbar
-" " | `<leader>tb` | displays the tagbar on the side |
-" " ###
-" Plug 'majutsushi/tagbar'
-" nnoremap <leader>tb :<C-u>TagbarToggle<CR>
 
 Plug 'ludovicchabant/vim-gutentags'
 
@@ -101,6 +101,8 @@ nmap ga <Plug>(EasyAlign)
   " by running them, that is why.
 "
 " Shortcuts:
+" | Instruction  | Description                                                    |
+" | ---          | ---                                                            |
 " | `<C-p>`      | fuzzy file search, substitute for CTRL-P. `:FzfFiles`          |
 " | `<leader>bs` | fuzzy buffer and most recently used file search, `:FzfHistory` |
 " | `<leader>.`  | fuzzy tags search, `:FzfTags`                                  |

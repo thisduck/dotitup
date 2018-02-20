@@ -13,6 +13,8 @@ Plug 'skwp/greplace.vim'
 " issuing an easymotion shortcut will highlight words/lines with keys
 " from the keyboard. when you press those keys, it will take you 
 " to that word or line. you have to try it.
+" | Instruction  | Description                                   |
+" | ---          | ---                                           |
 " | `<leader>w`  | will highlight words after the cursor         |
 " | `<leader>b`  | will highlight words before the cursor        |
 " | `<leader>j`  | will highlight lines after the cursor         |

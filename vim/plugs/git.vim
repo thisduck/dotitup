@@ -1,5 +1,7 @@
 " ### tpope/vim-fugitive
 "
+" | Instruction                 | Description                                                           |
+" | ---                         | ---                                                                   |
 " | `:Gedit [thing]`            | [thing] can be a commit,                                              |
 " |                             | blob, tree or tag (to view the commit etc)                            |
 " | `:Gstatus` / `<leader>gs`   | displays a buffer with git status.                                    |
@@ -39,6 +41,8 @@ Plug 'tpope/vim-git'
 " displays git diffs in the gutter (near line numbers)
 "
 " short cuts:
+" | Instruction   | Description                |
+" | ---           | ---                        |
 " | `<leader>hp`  | preview hunk               |
 " | `<leader>hs`  | stage hunk                 |
 " | `<leader>hu`  | undo hunk                  |
@@ -47,7 +51,9 @@ Plug 'tpope/vim-git'
 Plug 'airblade/vim-gitgutter'
 
 " ### gregsexton/gitv
-" | `:Gitv` | to see a visual git log |
+" | Instruction | Description             |
+" | ---         | ---                     |
+" | `:Gitv`     | to see a visual git log |
 " ###
 Plug 'gregsexton/gitv', {'on': ['Gitv']}
 

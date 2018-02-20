@@ -1,8 +1,10 @@
 " ### AndrewRadev/splitjoin.vim
 " Useful to join/split arrays, html blocks, if statements, ruby blocks, etc.
 "
-" | `gS` | splits line smartly |
-" | `gJ` | joins lines smartly, when done on first line of block |
+" | Instruction | Description                                           |
+" | ---         | ---                                                   |
+" | `gS`        | splits line smartly                                   |
+" | `gJ`        | joins lines smartly, when done on first line of block |
 " ###
 Plug 'AndrewRadev/splitjoin.vim'
 
@@ -30,9 +32,11 @@ nnoremap <leader>emo :<C-u>%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))
 " Plug 'briandoll/change-inside-surroundings.vim'
 
 " ### tpope/vim-commentary
-" | `gcc` | comments in/out a line |
+" | Instruction  | Description                            |
+" | ---          | ---                                    |
+" | `gcc`        | comments in/out a line                 |
 " | `gc[object]` | comments in/out an object, e.g. `gcap` |
-" | `gc` | comments in/out in visual mode |
+" | `gc`         | comments in/out in visual mode         |
 " ###
 Plug 'tpope/vim-commentary'
 
@@ -66,10 +70,12 @@ Plug 'tpope/vim-surround'
 " ### tpope/vim-unimpaired
 " Adds handy shortcuts for useful vim commands
 " using `[` for previous and `]` for next
-" | `[q` and `]q` | for `:cnext` and `:cprev` (navigating quickfix) |
-" | `[b` and `]b` | for `:bnext` and `:bprev` (navigating buffers) |
-" | `[f` and `]f` | for prev/next file in directory (navigating files) |
-" | `[f` and `]f` | for prev/next file in directory (navigating files) |
+" | Instruction   | Description                                                   |
+" | ---           | ---                                                           |
+" | `[q` and `]q` | for `:cnext` and `:cprev` (navigating quickfix)               |
+" | `[b` and `]b` | for `:bnext` and `:bprev` (navigating buffers)                |
+" | `[f` and `]f` | for prev/next file in directory (navigating files)            |
+" | `[f` and `]f` | for prev/next file in directory (navigating files)            |
 " | `[n` and `]n` | for prev/next git conflict in the file (navigating conflicts) |
 "
 " There are many more helpful shortcuts, see `:help unimpaired`
@@ -105,9 +111,11 @@ Plug 'bogado/file-line'
 " ### vim-scripts/camelcasemotion
 " Adds motion helpers to move through camelcase words.
 "
-" | `,w` | equivalent of `w` for camel case motion |
-" | `,b` | equivalent of `b` for camel case motion |
-" | `,e` | equivalent of `e` for camel case motion |
+" | Instruction | Description                             |
+" | ---         | ---                                     |
+" | `,w`        | equivalent of `w` for camel case motion |
+" | `,b`        | equivalent of `b` for camel case motion |
+" | `,e`        | equivalent of `e` for camel case motion |
 " ###
 Plug 'vim-scripts/camelcasemotion'
 

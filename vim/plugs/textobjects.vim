@@ -6,9 +6,11 @@
 " signified by what follow the `v`. Other actions like `c`
 " and `d` will work just as well.
 " For example:
-" | `vii` | will visual select everything aligned with indent |
-" | `vai` | will visual select everything aligned with indent, and the line above |
-" | `vaI` | will visual select everything aligned with indent, and the line above and below|
+" | Instruction | Description                                                                     |
+" | ---         | ---                                                                             |
+" | `vii`       | will visual select everything aligned with indent                               |
+" | `vai`       | will visual select everything aligned with indent, and the line above           |
+" | `vaI`       | will visual select everything aligned with indent, and the line above and below |
 " ###
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'bootleq/vim-textobj-rubysymbol'
@@ -21,11 +23,12 @@ Plug 'bootleq/vim-textobj-rubysymbol'
 " signified by what follow the `v`. Other actions like `c`
 " and `d` will work just as well.
 " For example:
-" | `vic` | will visual select everything aligned in the column |
-" | `vac` | will visual select everything aligned around the column |
+" | Instruction | Description                                             |
+" | ---         | ---                                                     |
+" | `vic`       | will visual select everything aligned in the column     |
+" | `vac`       | will visual select everything aligned around the column |
 " After the selection, press `I` to insert (`A` to append, `c` to change)
-" , and then `<esc>` or `<c-c>` " to see the change 
-" apply to the rest of the rows.
+" , and then `<esc>` or `<c-c>` to see the change apply to the rest of the rows.
 " ###
 Plug 'coderifous/textobj-word-column.vim'
 
@@ -35,8 +38,10 @@ Plug 'coderifous/textobj-word-column.vim'
 " signified by what follow the `v`. Other actions like `c`
 " and `d` will work just as well.
 " For example:
-" | `vida` | will visual select inside date |
-" | `vada` | will visual select around date |
+" | Instruction | Description                    |
+" | ---         | ---                            |
+" | `vida`      | will visual select inside date |
+" | `vada`      | will visual select around date |
 " ###
 Plug 'kana/vim-textobj-datetime'
 
@@ -55,8 +60,10 @@ Plug 'kana/vim-textobj-user'
 " signified by what follow the `v`. Other actions like `c`
 " and `d` will work just as well.
 " For example:
-" | `vi_` | will visual select inside underscores |
-" | `va_` | will visual select around underscores |
+" | Instruction | Description                           |
+" | ---         | ---                                   |
+" | `vi_`       | will visual select inside underscores |
+" | `va_`       | will visual select around underscores |
 " ###
 Plug 'lucapette/vim-textobj-underscore'
 
@@ -66,8 +73,10 @@ Plug 'lucapette/vim-textobj-underscore'
 " signified by what follow the `v`. Other actions like `c`
 " and `d` will work just as well.
 " For example:
-" | `vir` | will visual select inside the ruby block |
-" | `var` | will visual select around the ruby block |
+" | Instruction | Description                              |
+" | ---         | ---                                      |
+" | `vir`       | will visual select inside the ruby block |
+" | `var`       | will visual select around the ruby block |
 " ###
 Plug 'nelstrom/vim-textobj-rubyblock'
 
@@ -76,6 +85,8 @@ Plug 'vim-scripts/argtextobj.vim'
 " ### nathanaelkane/vim-indent-guides
 " Adds ability to visually display intent guides
 " For example:
+" | Instruction  | Description               |
+" | ---          | ---                       |
 " | `<leader>ig` | will toggle indent guides |
 " ###
 Plug 'nathanaelkane/vim-indent-guides'

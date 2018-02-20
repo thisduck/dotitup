@@ -1,12 +1,14 @@
 " ### Custom Shortcuts
 "
+" | Instruction                 | Description                                                                        |
+" | ---                         | ---                                                                                |
 " | `<C-c>`                     | For most purposes a remap to <ESC>                                                 |
 " | `<leader>y`                 | copy visual selection to clipboard                                                 |
 " | `<leader>ct`                | will run ctags on the project recursively, using the options in the ~/.ctags file. |
 " | `<leader><leader>p`         | toggle `:set paste/nopaste` for when you want to paste text from the clipboard     |
 " | `<leader>s`                 | sort the visual selection                                                          |
 " | `<leader>>`                 | replace old style ruby hashes with new style                                       |
-" | `<leader>bb`                | break up a ruby line somewhat sensibly                                             |
+" | `<leader>s,`                | break up a ruby line somewhat sensibly                                             |
 " | `<leader>gf`                | `gf` in a vertical split                                                           |
 " | *Window Movement Shortcuts* |                                                                                    |
 " | `<C-j>`                     | `<C-w>j`                                                                           |

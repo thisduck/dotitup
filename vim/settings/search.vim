@@ -1,5 +1,7 @@
 " ### Search
 
+" | Instruction        | Description                                                          |
+" | ---                | ---                                                                  |
 " | *Primary Search*   |                                                                      |
 " | `<leader>/`        | search for word(s) in project, results in quickfix                   |
 " | `K`                | search for work under cursor in project, results in quickfix         |

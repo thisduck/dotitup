@@ -59,6 +59,24 @@ EOF
   File.unlink "vimplugs.vim"
 end
 
+task :parse_docs do
+  files = Dir['./vim/settings/*.vim'] + Dir['./vim/plugs/*.vim']
+  results = []
+
+  files.each do |file|
+    contents = File.read file
+    results |= contents.scan(/" ###.*?" ###/m)
+  end
+
+  File.open('./vim/guide/dotitup_docs.md', 'w') do |f|
+    results.each do |result|
+      result = result.split("\n").collect { |line| line.sub(/^"\s*/, '') }.join("\n")
+      f.puts result
+      f.puts ''
+    end
+  end
+end
+
 task default: 'install'
 
 private
