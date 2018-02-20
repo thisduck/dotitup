@@ -29,6 +29,7 @@ Plug 'bootleq/vim-textobj-rubysymbol'
 " | ---         | ---                                                     |
 " | `vic`       | will visual select everything aligned in the column     |
 " | `vac`       | will visual select everything aligned around the column |
+"
 " After the selection, press `I` to insert (`A` to append, `c` to change)
 " , and then `<esc>` or `<c-c>` to see the change apply to the rest of the rows.
 " ###

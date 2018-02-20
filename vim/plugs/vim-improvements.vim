@@ -55,7 +55,7 @@ Plug 'tpope/vim-abolish'
 " Which says: change surrounding single quotes to double quotes.
 "
 " It works for tags as well, so for `"something"`,
-" `cs"<b>` will change it to `<b>something</b>.
+" `cs"<b>` will change it to `<b>something</b>`.
 " And then to change that to `'something'`, do `cst'`
 " Which says: change surrounding tag to single quotes.
 "

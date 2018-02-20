@@ -70,7 +70,8 @@ task :parse_docs do
 
   File.open('./vim/guide/dotitup_docs.md', 'w') do |f|
     results.each do |result|
-      result = result.split("\n").collect { |line| line.sub(/^"\s*/, '') }.join("\n")
+      result = result.split("\n").collect { |line| line.sub(/^"$/, '$ ') }.join("\n")
+      result = result.split("\n").collect { |line| line.sub(/^" /, '') }.join("\n")
       f.puts result
       f.puts ''
     end

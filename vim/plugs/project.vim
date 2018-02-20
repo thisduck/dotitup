@@ -35,7 +35,6 @@ Plug 'tpope/vim-dispatch'
 " | Instruction                      | Description                                            |
 " | ---                              | ---                                                    |
 " | `:NERDTreeToggle` / `<leader>nt` | toggle the NERDTree drawer                             |
-" |                                  | e.g. `:Dispatch bundle install`                        |
 " | `:NERDTreeFind` / `<leader>nf`   | find current file in NERDTree                          |
 " | while in NERDTree                |                                                        |
 " | `m` while on file                | to see a menu (allows you to add/remove/rename dirs)   |
@@ -87,7 +86,7 @@ Plug 'fweep/vim-zsh-path-completion'
 "
 " In this case, highlight the related lines and press `ga:`
 " `ga` activates the easy-align plugin, and 
-" then `:` tells it to align on the :
+" then `:` tells it to align on the `:` character.
 "
 " Probably best to visit https://github.com/junegunn/vim-easy-align for full usage.
 " ###
@@ -101,7 +100,7 @@ nmap ga <Plug>(EasyAlign)
 " ### FZF Helpers
 " The FZF commands are prefixed with `Fzf`
 " So if you don't find the commands from the FZF docs
-  " by running them, that is why.
+" by running them, that is why.
 "
 " Shortcuts:
 "
