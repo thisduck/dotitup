@@ -9,7 +9,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'kana/vim-smartinput'
 
 " provides autocomplete
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/neoinclude.vim'

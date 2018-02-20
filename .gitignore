@@ -9,4 +9,5 @@ zsh/plugins/**
 *.swp
 .DS_Store
 tags
+tags.*
 .netrwhist
