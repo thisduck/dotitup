@@ -19,7 +19,7 @@ the quickfix window and then asyncronously run
 ###
 
 ### Custom Shortcuts
-$ 
+
 | Instruction                 | Description                                                                        |
 | ---                         | ---                                                                                |
 | `<C-c>`                     | For most purposes a remap to <ESC>                                                 |
@@ -44,7 +44,7 @@ The `v` below is used for example, the object itself is
 signified by what follow the `v`. Other actions like `c`
 and `d` will work just as well.
 For example:
-$ 
+
 | Instruction | Description                                                                     |
 | ---         | ---                                                                             |
 | `vii`       | will visual select everything aligned with indent                               |
@@ -60,12 +60,12 @@ The `v` below is used for example, the object itself is
 signified by what follow the `v`. Other actions like `c`
 and `d` will work just as well.
 For example:
-$ 
+
 | Instruction | Description                                             |
 | ---         | ---                                                     |
 | `vic`       | will visual select everything aligned in the column     |
 | `vac`       | will visual select everything aligned around the column |
-$ 
+
 After the selection, press `I` to insert (`A` to append, `c` to change)
 , and then `<esc>` or `<c-c>` to see the change apply to the rest of the rows.
 ###
@@ -76,7 +76,7 @@ The `v` below is used for example, the object itself is
 signified by what follow the `v`. Other actions like `c`
 and `d` will work just as well.
 For example:
-$ 
+
 | Instruction | Description                    |
 | ---         | ---                            |
 | `vida`      | will visual select inside date |
@@ -94,7 +94,7 @@ The `v` below is used for example, the object itself is
 signified by what follow the `v`. Other actions like `c`
 and `d` will work just as well.
 For example:
-$ 
+
 | Instruction | Description                           |
 | ---         | ---                                   |
 | `vi_`       | will visual select inside underscores |
@@ -107,7 +107,7 @@ The `v` below is used for example, the object itself is
 signified by what follow the `v`. Other actions like `c`
 and `d` will work just as well.
 For example:
-$ 
+
 | Instruction | Description                              |
 | ---         | ---                                      |
 | `vir`       | will visual select inside the ruby block |
@@ -117,7 +117,7 @@ $
 ### nathanaelkane/vim-indent-guides
 Adds ability to visually display intent guides
 For example:
-$ 
+
 | Instruction  | Description               |
 | ---          | ---                       |
 | `<leader>ig` | will toggle indent guides |
@@ -135,7 +135,7 @@ From the docs:
 issuing an easymotion shortcut will highlight words/lines with keys
 from the keyboard. when you press those keys, it will take you 
 to that word or line. you have to try it.
-$ 
+
 | Instruction  | Description                                   |
 | ---          | ---                                           |
 | `<leader>w`  | will highlight words after the cursor         |
@@ -150,7 +150,7 @@ $
 syntax checking for multiple languages
 currently configured so that syntax 
 suggestions will be made on save
-$ 
+
 | Instruction   | Description                            |
 | ---           | ---                                    |
 | `:ALEFix`     | Fix things in buffer that can be fixed |
@@ -161,7 +161,7 @@ $
 ### Shougo/neosnippet.vim
 You can create your own snippets that can be inserted into the 
 code via the autocomplete functionality.
-$ 
+
 Some default snippets are provided by honza/vim-snippets
 ###
 
@@ -172,14 +172,14 @@ Follow the tutorial here: https://raw.githubusercontent.com/mattn/emmet-vim/mast
 
 ### kannokanno/previm
 Allows realtime preview of markdown (and some other) files
-$ 
+
 | Instruction                   | Description                              |
 | ---                           | ---                                      |
 | `:PrevimOpen` or `<leader>po` | opens current markdown buffer in browser |
 ###
 
 ### tpope/vim-rails
-$ 
+
 | Instruction   | Description                                                                                     |
 | ---           | ---                                                                                             |
 | `gf`          | will take you to the model/template/etc over the cursor                                         |
@@ -187,21 +187,21 @@ $
 ###
 
 ### tpope/vim-rake
-$ 
+
 | Instruction | Description              |
 | ---         | ---                      |
 | `:Rake`     | wraps the `rake` command |
 ###
 
 ### tpope/cucumber
-$ 
+
 | Instruction | Description                                  |
 | ---         | ---                                          |
 | `[d` / `]d` | opens cucumber step definition in new buffer |
 ###
 
 ### tpope/vim-bundler
-$ 
+
 | Instruction          | Description                |
 | ---                  | ---                        |
 | `:Bundle`            | wraps the `bundle` command |
@@ -209,14 +209,14 @@ $
 ###
 
 ### rainerborene/vim-reek
-$ 
+
 | Instruction | Description                                |
 | ---         | ---                                        |
 | `:RunReek`  | will run reek and show results in quickfix |
 ###
 
 ### tpope/vim-fugitive
-$ 
+
 | Instruction                 | Description                                                           |
 | ---                         | ---                                                                   |
 | `:Gedit [thing]`            | [thing] can be a commit,                                              |
@@ -240,9 +240,9 @@ $
 
 ### airblade/vim-gitgutter 
 displays git diffs in the gutter (near line numbers)
-$ 
+
 short cuts:
-$ 
+
 | Instruction   | Description                |
 | ---           | ---                        |
 | `<leader>hp`  | preview hunk               |
@@ -252,7 +252,7 @@ $
 ###
 
 ### gregsexton/gitv
-$ 
+
 | Instruction | Description             |
 | ---         | ---                     |
 | `:Gitv`     | to see a visual git log |
@@ -260,7 +260,7 @@ $
 
 ### AndrewRadev/splitjoin.vim
 Useful to join/split arrays, html blocks, if statements, ruby blocks, etc.
-$ 
+
 | Instruction | Description                                           |
 | ---         | ---                                                   |
 | `gS`        | splits line smartly                                   |
@@ -268,7 +268,7 @@ $
 ###
 
 ### tpope/vim-commentary
-$ 
+
 | Instruction  | Description                            |
 | ---          | ---                                    |
 | `gcc`        | comments in/out a line                 |
@@ -283,28 +283,28 @@ https://github.com/tpope/vim-abolish
 
 ### tpope/vim-surround
 Adds the ability to change surrounding quotes/tags.
-$ 
+
 For example `'something'` and change to `"something"`
 with the cursor over the word: `cs'"`
 Which says: change surrounding single quotes to double quotes.
-$ 
+
 It works for tags as well, so for `"something"`,
 `cs"<b>` will change it to `<b>something</b>`.
 And then to change that to `'something'`, do `cst'`
 Which says: change surrounding tag to single quotes.
-$ 
+
 You can also add surrounding characters to text objects 
 that have none. So for `something`, `ysaw'`
 Which says: add surrounding around word to single quotes.
 That's not proper English but you get the gist.
-$ 
+
 See vim-surround readme for more.
 ###
 
 ### tpope/vim-unimpaired
 Adds handy shortcuts for useful vim commands
 using `[` for previous and `]` for next
-$ 
+
 | Instruction   | Description                                                   |
 | ---           | ---                                                           |
 | `[q` and `]q` | for `:cnext` and `:cprev` (navigating quickfix)               |
@@ -312,7 +312,7 @@ $
 | `[f` and `]f` | for prev/next file in directory (navigating files)            |
 | `[f` and `]f` | for prev/next file in directory (navigating files)            |
 | `[n` and `]n` | for prev/next git conflict in the file (navigating conflicts) |
-$ 
+
 There are many more helpful shortcuts, see `:help unimpaired`
 ###
 
@@ -322,7 +322,7 @@ Use `<C-n>` to highlight the word under the cursor
 Repeat `<C-n>` to select the next instances of the word
 Then you can use normal editing comments, like `c` to change
 all the selected words together.
-$ 
+
 There are ways to use with visual selections as well, see docs.
 ###
 
@@ -334,7 +334,7 @@ it will take you to line 35 of file.rb
 Can also be used with opening files normally in vim:
 `:e part/to/file.rb:35`
 Would also take you to like 35 of file.rb
-$ 
+
 This is great for copy pasting file + line number from 
 error outputs and going directly to the source instead
 of additionally finding the line after opening the file.
@@ -342,7 +342,7 @@ of additionally finding the line after opening the file.
 
 ### vim-scripts/camelcasemotion
 Adds motion helpers to move through camelcase words.
-$ 
+
 | Instruction | Description                             |
 | ---         | ---                                     |
 | `,w`        | equivalent of `w` for camel case motion |
@@ -351,7 +351,7 @@ $
 ###
 
 ### tpope/vim-dispatch
-$ 
+
 | Instruction  | Description                                                            |
 | ---          | ---                                                                    |
 | `:Delete`    | Delete a buffer and the file on disk simultaneously.                   |
@@ -368,7 +368,7 @@ $
 ###
 
 ### tpope/vim-dispatch
-$ 
+
 | Instruction           | Description                                      |
 | ---                   | ---                                              |
 | `:Dispatch [command]` | will run the command and put results in quickfix |
@@ -376,7 +376,7 @@ $
 ###
 
 ### scrooloose/nerdtree
-$ 
+
 | Instruction                      | Description                                            |
 | ---                              | ---                                                    |
 | `:NERDTreeToggle` / `<leader>nt` | toggle the NERDTree drawer                             |
@@ -393,7 +393,7 @@ $
 
 ### junegunn/vim-easy-align
 Allows for easy alignment of text
-$ 
+
 From:
 ```ruby
 {
@@ -402,7 +402,7 @@ From:
   name: "Jameel"
 }
 ```
-$ 
+
 To:
 ```ruby
 {
@@ -411,11 +411,11 @@ To:
   name:  "Jameel"
 }
 ```
-$ 
+
 In this case, highlight the related lines and press `ga:`
 `ga` activates the easy-align plugin, and 
 then `:` tells it to align on the `:` character.
-$ 
+
 Probably best to visit https://github.com/junegunn/vim-easy-align for full usage.
 ###
 
@@ -423,9 +423,9 @@ Probably best to visit https://github.com/junegunn/vim-easy-align for full usage
 The FZF commands are prefixed with `Fzf`
 So if you don't find the commands from the FZF docs
 by running them, that is why.
-$ 
+
 Shortcuts:
-$ 
+
 | Instruction  | Description                                                    |
 | ---          | ---                                                            |
 | `<C-p>`      | fuzzy file search, substitute for CTRL-P. `:FzfFiles`          |
