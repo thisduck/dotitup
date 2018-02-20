@@ -43,6 +43,7 @@ Plug 'mattn/emmet-vim'
 
 " ### kannokanno/previm
 " Allows realtime preview of markdown (and some other) files
+"
 " | Instruction                   | Description                              |
 " | ---                           | ---                                      |
 " | `:PrevimOpen` or `<leader>po` | opens current markdown buffer in browser |

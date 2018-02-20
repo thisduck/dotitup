@@ -44,6 +44,7 @@ The `v` below is used for example, the object itself is
 signified by what follow the `v`. Other actions like `c`
 and `d` will work just as well.
 For example:
+
 | Instruction | Description                                                                     |
 | ---         | ---                                                                             |
 | `vii`       | will visual select everything aligned with indent                               |
@@ -59,6 +60,7 @@ The `v` below is used for example, the object itself is
 signified by what follow the `v`. Other actions like `c`
 and `d` will work just as well.
 For example:
+
 | Instruction | Description                                             |
 | ---         | ---                                                     |
 | `vic`       | will visual select everything aligned in the column     |
@@ -73,6 +75,7 @@ The `v` below is used for example, the object itself is
 signified by what follow the `v`. Other actions like `c`
 and `d` will work just as well.
 For example:
+
 | Instruction | Description                    |
 | ---         | ---                            |
 | `vida`      | will visual select inside date |
@@ -90,6 +93,7 @@ The `v` below is used for example, the object itself is
 signified by what follow the `v`. Other actions like `c`
 and `d` will work just as well.
 For example:
+
 | Instruction | Description                           |
 | ---         | ---                                   |
 | `vi_`       | will visual select inside underscores |
@@ -102,6 +106,7 @@ The `v` below is used for example, the object itself is
 signified by what follow the `v`. Other actions like `c`
 and `d` will work just as well.
 For example:
+
 | Instruction | Description                              |
 | ---         | ---                                      |
 | `vir`       | will visual select inside the ruby block |
@@ -111,6 +116,7 @@ For example:
 ### nathanaelkane/vim-indent-guides
 Adds ability to visually display intent guides
 For example:
+
 | Instruction  | Description               |
 | ---          | ---                       |
 | `<leader>ig` | will toggle indent guides |
@@ -128,6 +134,7 @@ From the docs:
 issuing an easymotion shortcut will highlight words/lines with keys
 from the keyboard. when you press those keys, it will take you 
 to that word or line. you have to try it.
+
 | Instruction  | Description                                   |
 | ---          | ---                                           |
 | `<leader>w`  | will highlight words after the cursor         |
@@ -164,12 +171,14 @@ Follow the tutorial here: https://raw.githubusercontent.com/mattn/emmet-vim/mast
 
 ### kannokanno/previm
 Allows realtime preview of markdown (and some other) files
+
 | Instruction                   | Description                              |
 | ---                           | ---                                      |
 | `:PrevimOpen` or `<leader>po` | opens current markdown buffer in browser |
 ###
 
 ### tpope/vim-rails
+
 | Instruction   | Description                                                                                     |
 | ---           | ---                                                                                             |
 | `gf`          | will take you to the model/template/etc over the cursor                                         |
@@ -177,18 +186,21 @@ Allows realtime preview of markdown (and some other) files
 ###
 
 ### tpope/vim-rake
+
 | Instruction | Description              |
 | ---         | ---                      |
 | `:Rake`     | wraps the `rake` command |
 ###
 
 ### tpope/cucumber
+
 | Instruction | Description                                  |
 | ---         | ---                                          |
 | `[d` / `]d` | opens cucumber step definition in new buffer |
 ###
 
 ### tpope/vim-bundler
+
 | Instruction          | Description                |
 | ---                  | ---                        |
 | `:Bundle`            | wraps the `bundle` command |
@@ -196,6 +208,7 @@ Allows realtime preview of markdown (and some other) files
 ###
 
 ### rainerborene/vim-reek
+
 | Instruction | Description                                |
 | ---         | ---                                        |
 | `:RunReek`  | will run reek and show results in quickfix |
@@ -228,6 +241,7 @@ Allows realtime preview of markdown (and some other) files
 displays git diffs in the gutter (near line numbers)
 
 short cuts:
+
 | Instruction   | Description                |
 | ---           | ---                        |
 | `<leader>hp`  | preview hunk               |
@@ -237,6 +251,7 @@ short cuts:
 ###
 
 ### gregsexton/gitv
+
 | Instruction | Description             |
 | ---         | ---                     |
 | `:Gitv`     | to see a visual git log |
@@ -252,6 +267,7 @@ Useful to join/split arrays, html blocks, if statements, ruby blocks, etc.
 ###
 
 ### tpope/vim-commentary
+
 | Instruction  | Description                            |
 | ---          | ---                                    |
 | `gcc`        | comments in/out a line                 |
@@ -287,6 +303,7 @@ See vim-surround readme for more.
 ### tpope/vim-unimpaired
 Adds handy shortcuts for useful vim commands
 using `[` for previous and `]` for next
+
 | Instruction   | Description                                                   |
 | ---           | ---                                                           |
 | `[q` and `]q` | for `:cnext` and `:cprev` (navigating quickfix)               |
@@ -333,6 +350,7 @@ Adds motion helpers to move through camelcase words.
 ###
 
 ### tpope/vim-dispatch
+
 | Instruction  | Description                                                            |
 | ---          | ---                                                                    |
 | `:Delete`    | Delete a buffer and the file on disk simultaneously.                   |
@@ -349,6 +367,7 @@ Adds motion helpers to move through camelcase words.
 ###
 
 ### tpope/vim-dispatch
+
 | Instruction           | Description                                      |
 | ---                   | ---                                              |
 | `:Dispatch [command]` | will run the command and put results in quickfix |
@@ -356,6 +375,7 @@ Adds motion helpers to move through camelcase words.
 ###
 
 ### scrooloose/nerdtree
+
 | Instruction                      | Description                                            |
 | ---                              | ---                                                    |
 | `:NERDTreeToggle` / `<leader>nt` | toggle the NERDTree drawer                             |
@@ -405,6 +425,7 @@ So if you don't find the commands from the FZF docs
   " by running them, that is why.
 
 Shortcuts:
+
 | Instruction  | Description                                                    |
 | ---          | ---                                                            |
 | `<C-p>`      | fuzzy file search, substitute for CTRL-P. `:FzfFiles`          |

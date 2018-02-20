@@ -41,6 +41,7 @@ Plug 'tpope/vim-git'
 " displays git diffs in the gutter (near line numbers)
 "
 " short cuts:
+"
 " | Instruction   | Description                |
 " | ---           | ---                        |
 " | `<leader>hp`  | preview hunk               |
@@ -51,6 +52,7 @@ Plug 'tpope/vim-git'
 Plug 'airblade/vim-gitgutter'
 
 " ### gregsexton/gitv
+"
 " | Instruction | Description             |
 " | ---         | ---                     |
 " | `:Gitv`     | to see a visual git log |

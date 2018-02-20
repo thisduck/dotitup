@@ -3,6 +3,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-scriptease'
 
 " ### tpope/vim-dispatch
+"
 " | Instruction  | Description                                                            |
 " | ---          | ---                                                                    |
 " | `:Delete`    | Delete a buffer and the file on disk simultaneously.                   |
@@ -21,6 +22,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rsi'
 
 " ### tpope/vim-dispatch
+"
 " | Instruction           | Description                                      |
 " | ---                   | ---                                              |
 " | `:Dispatch [command]` | will run the command and put results in quickfix |
@@ -29,6 +31,7 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-dispatch'
 
 " ### scrooloose/nerdtree
+"
 " | Instruction                      | Description                                            |
 " | ---                              | ---                                                    |
 " | `:NERDTreeToggle` / `<leader>nt` | toggle the NERDTree drawer                             |
@@ -101,6 +104,7 @@ nmap ga <Plug>(EasyAlign)
   " by running them, that is why.
 "
 " Shortcuts:
+"
 " | Instruction  | Description                                                    |
 " | ---          | ---                                                            |
 " | `<C-p>`      | fuzzy file search, substitute for CTRL-P. `:FzfFiles`          |

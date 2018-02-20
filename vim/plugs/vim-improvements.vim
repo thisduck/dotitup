@@ -32,6 +32,7 @@ nnoremap <leader>emo :<C-u>%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))
 " Plug 'briandoll/change-inside-surroundings.vim'
 
 " ### tpope/vim-commentary
+"
 " | Instruction  | Description                            |
 " | ---          | ---                                    |
 " | `gcc`        | comments in/out a line                 |
@@ -70,6 +71,7 @@ Plug 'tpope/vim-surround'
 " ### tpope/vim-unimpaired
 " Adds handy shortcuts for useful vim commands
 " using `[` for previous and `]` for next
+"
 " | Instruction   | Description                                                   |
 " | ---           | ---                                                           |
 " | `[q` and `]q` | for `:cnext` and `:cprev` (navigating quickfix)               |

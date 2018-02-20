@@ -6,6 +6,7 @@
 " signified by what follow the `v`. Other actions like `c`
 " and `d` will work just as well.
 " For example:
+"
 " | Instruction | Description                                                                     |
 " | ---         | ---                                                                             |
 " | `vii`       | will visual select everything aligned with indent                               |
@@ -23,6 +24,7 @@ Plug 'bootleq/vim-textobj-rubysymbol'
 " signified by what follow the `v`. Other actions like `c`
 " and `d` will work just as well.
 " For example:
+"
 " | Instruction | Description                                             |
 " | ---         | ---                                                     |
 " | `vic`       | will visual select everything aligned in the column     |
@@ -38,6 +40,7 @@ Plug 'coderifous/textobj-word-column.vim'
 " signified by what follow the `v`. Other actions like `c`
 " and `d` will work just as well.
 " For example:
+"
 " | Instruction | Description                    |
 " | ---         | ---                            |
 " | `vida`      | will visual select inside date |
@@ -60,6 +63,7 @@ Plug 'kana/vim-textobj-user'
 " signified by what follow the `v`. Other actions like `c`
 " and `d` will work just as well.
 " For example:
+"
 " | Instruction | Description                           |
 " | ---         | ---                                   |
 " | `vi_`       | will visual select inside underscores |
@@ -73,6 +77,7 @@ Plug 'lucapette/vim-textobj-underscore'
 " signified by what follow the `v`. Other actions like `c`
 " and `d` will work just as well.
 " For example:
+"
 " | Instruction | Description                              |
 " | ---         | ---                                      |
 " | `vir`       | will visual select inside the ruby block |
@@ -85,6 +90,7 @@ Plug 'vim-scripts/argtextobj.vim'
 " ### nathanaelkane/vim-indent-guides
 " Adds ability to visually display intent guides
 " For example:
+"
 " | Instruction  | Description               |
 " | ---          | ---                       |
 " | `<leader>ig` | will toggle indent guides |
