@@ -45,6 +45,7 @@ let g:NERDTreeWinSize = 30
 map <Leader>nt :NERDTreeToggle<CR>
 map <Leader>nf :NERDTreeFind<CR>
 
+" finds project root (usually a .git folder)
 Plug 'airblade/vim-rooter'
 
 " ### majutsushi/tagbar
@@ -60,6 +61,33 @@ Plug 'xolox/vim-notes'
 
 Plug 'fweep/vim-zsh-path-completion'
 
+" ### junegunn/vim-easy-align
+" Allows for easy alignment of text
+"
+" From:
+" ```ruby
+" {
+"   hello: "there",
+"   foo: "bar",
+"   name: "Jameel"
+" }
+" ```
+"
+" To:
+" ```ruby
+" {
+"   hello: "there",
+"   foo:   "bar",
+"   name:  "Jameel"
+" }
+" ```
+"
+" In this case, highlight the related lines and press `ga:`
+" `ga` activates the easy-align plugin, and 
+" then `:` tells it to align on the :
+"
+" Probably best to visit https://github.com/junegunn/vim-easy-align for full usage.
+" ###
 Plug 'junegunn/vim-easy-align'
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
