@@ -48,11 +48,11 @@ map <Leader>nf :NERDTreeFind<CR>
 " finds project root (usually a .git folder)
 Plug 'airblade/vim-rooter'
 
-" ### majutsushi/tagbar
-" | `<leader>tb` | displays the tagbar on the side |
-" ###
-Plug 'majutsushi/tagbar'
-nnoremap <leader>tb :<C-u>TagbarToggle<CR>
+" " ### majutsushi/tagbar
+" " | `<leader>tb` | displays the tagbar on the side |
+" " ###
+" Plug 'majutsushi/tagbar'
+" nnoremap <leader>tb :<C-u>TagbarToggle<CR>
 
 Plug 'ludovicchabant/vim-gutentags'
 
@@ -119,17 +119,17 @@ nnoremap <leader>he :<C-u>FzfHelptags<CR>
 Plug 'mhinz/vim-startify'
 let g:startify_change_to_vcs_root = 1
 let g:startify_list_order = [
-      \ ['   Most Recent Project Files'],
-      \ 'dir',
-      \ ['   Most Recent Files'],
-      \ 'files',
-      \ ['   Sessions:'],
-      \ 'sessions',
-      \ ['   Bookmarks:'],
-      \ 'bookmarks',
-      \ ['   Commands:'],
-      \ 'commands',
-      \ ]
+  \ ['   Most Recent Project Files'],
+  \ 'dir',
+  \ ['   Most Recent Files'],
+  \ 'files',
+  \ ['   Sessions:'],
+  \ 'sessions',
+  \ ['   Bookmarks:'],
+  \ 'bookmarks',
+  \ ['   Commands:'],
+  \ 'commands',
+  \ ]
 
 " adding csv functionality
 Plug 'chrisbra/csv.vim'

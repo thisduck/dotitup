@@ -37,7 +37,26 @@ task :install do
   # vim-plug installing
   puts '-- vim-plug Install'
   vim = `which vim`.chomp
-  run "#{vim} --noplugin -u vim/plug.vim +PlugInstall +qall"
+  before = <<-EOF
+filetype off                  " required
+
+set rtp+=~/.vim/plugs/
+call plug#begin('~/.vim/plugged')
+EOF
+  after = <<-EOF
+call plug#end()
+
+filetype plugin indent on    " required
+EOF
+
+  middle = `grep -h "Plug " vim/plugs/*`
+  File.open("vimplugs.vim", "w") do |f|
+    f.write before
+    f.write middle
+    f.write after
+  end
+  run "#{vim} --noplugin -u vimplugs.vim +PlugInstall +qall"
+  File.unlink "vimplugs.vim"
 end
 
 task default: 'install'

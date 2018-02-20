@@ -31,7 +31,7 @@ nnoremap <leader>emo :<C-u>%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))
 
 " ### tpope/vim-commentary
 " | `gcc` | comments in/out a line |
-" | `gc<object>` | comments in/out an object, e.g. `gcap` |
+" | `gc[object]` | comments in/out an object, e.g. `gcap` |
 " | `gc` | comments in/out in visual mode |
 " ###
 Plug 'tpope/vim-commentary'
