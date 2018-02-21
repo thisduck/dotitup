@@ -71,6 +71,8 @@ function! DotSplitComma()
   silent! execute l:first . "," . (l:last + 1). 's@{@{\r@g'
   silent! execute l:first . "," . (l:last + 1).  's@)@\r)@g'
   silent! execute l:first . "," . (l:last + 1). 's@(@(\r@g'
+  silent! execute l:first . "," . (l:last + 1).  's@\]@\r]@g'
+  silent! execute l:first . "," . (l:last + 1). 's@\[@[\r@g'
   silent! execute  'normal! ''ajvip='
   silent! execute  'normal! ''bdd'
   silent! execute  'normal! ''add'
