@@ -108,7 +108,7 @@ nmap ga <Plug>(EasyAlign)
 " | ---          | ---                                                            |
 " | `<C-p>`      | fuzzy file search, substitute for CTRL-P. `:FzfFiles`          |
 " | `<leader>bs` | fuzzy buffer and most recently used file search, `:FzfHistory` |
-" | `<leader>.`  | fuzzy tags search, `:FzfTags`                                  |
+" | `<leader>t`  | fuzzy tags search, `:FzfTags`                                  |
 " | `<leader>l`  | fuzzy search for the lines in current buffer, `:FzfBLines`     |
 " | `<leader>he` | fuzzy search for vim help, `:FzfHelptags`                      |
 " ###
@@ -117,7 +117,7 @@ Plug 'junegunn/fzf.vim'
 let g:fzf_command_prefix = 'Fzf'
 nnoremap <C-p> :<C-u>FzfFiles<CR>
 nnoremap <leader>bs :<C-u>FzfHistory<CR>
-nnoremap <leader>. :<C-u>FzfTags<CR>
+nnoremap <leader>t :<C-u>FzfTags<CR>
 nnoremap <leader>l :<C-u>FzfBLines<CR>
 nnoremap <leader>he :<C-u>FzfHelptags<CR>
 

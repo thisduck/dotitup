@@ -45,5 +45,5 @@ Plug 'tpope/vim-bundler'
 " | `:RunReek`  | will run reek and show results in quickfix |
 " ###
 Plug 'rainerborene/vim-reek'
-let g:reek_always_show = 1
-let g:reek_on_loading = 1
+let g:reek_always_show = 0
+let g:reek_on_loading = 0

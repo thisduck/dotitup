@@ -430,7 +430,7 @@ Shortcuts:
 | ---          | ---                                                            |
 | `<C-p>`      | fuzzy file search, substitute for CTRL-P. `:FzfFiles`          |
 | `<leader>bs` | fuzzy buffer and most recently used file search, `:FzfHistory` |
-| `<leader>.`  | fuzzy tags search, `:FzfTags`                                  |
+| `<leader>t`  | fuzzy tags search, `:FzfTags`                                  |
 | `<leader>l`  | fuzzy search for the lines in current buffer, `:FzfBLines`     |
 | `<leader>he` | fuzzy search for vim help, `:FzfHelptags`                      |
 ###
