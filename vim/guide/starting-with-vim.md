@@ -165,8 +165,8 @@ Combining actions and motions makes vim so versatile.
 |                | `c` will delete and change into insert mode.                           |
 | `c5l`          | Change 5 characters to the right.                                      |
 | `c10j`         | Change current line and 10 lines below.                                |
-| `ct'`          | Change to the next occurance of "'" on the current line.               |
-| `cf|`          | Delete to and including next occurance of '\|' on the current line.    |
+| `ct'`          | Change to the next occurance of `'` on the current line.               |
+| `cf\|`         | Delete to and including next occurance of '\|' on the current line.    |
 | *Line Actions* |                                                                        |
 | `dd`           | Delete entire line.                                                    |
 | `5dd`          | Delete 5 lines.                                                        |
@@ -176,7 +176,6 @@ Combining actions and motions makes vim so versatile.
 
 Don't try and memorize any of these.  
 Instead try to combine action and motion as needed.
-
 
 ### Undo/Redo/Repeat
 
@@ -244,9 +243,9 @@ we've learned above to select the block of text you want.
 
 | Command | Description                |
 | ----    | :-------                   |
-| `vip`   | Visualize inner paragraph. |
-| `vaw`   | Visualize a word. |
-| `vaw`   | Visualize a word. |
+| `vip`   | Visual select inner paragraph. |
+| `vaw`   | Visual select a word. |
+| `vi"`   | Visual select inside double quotes. |
 
 ## Other things *TODO*
 
