@@ -1,4 +1,4 @@
-# A Minimal and Hurried Guide to Vim (with Dotitup)
+# A Minimal and Hurried Guide to Starting Vim (with Dotitup)
 
 Vim is a modal editor. Not like modals that pop up on websites. But that it has different modes.
 
@@ -13,6 +13,7 @@ Vim is a modal editor. Not like modals that pop up on websites. But that it has 
 | More Modes   | There are more modes, but I don't know much about this.                                                          |
 
 ## Saving and Quitting
+
 | Command   | Description                                                                                      |
 | --------- | :-------------                                                                                   |
 | `:q`      | Quits vim. `:` will enter you into command line mode. and `q` is the command (short for `quit`). |
@@ -30,36 +31,40 @@ For more on writing and quitting use the help commands:
 
 ### Goto Line Navigation
 
-| Command     | Description                                                                       |
-| ---------   | :-------------                                                                    |
-| `G`         | Moves cursor to the last line in the file.                                        |
-|             | Note that this is not a command-line command. Since there is no `:` at the start. |
-|             | This `G` is entered in normal mode.                                               |
-| `gg`        | Moves cursor to the first line in the file.                                       |
-| `:1`        | Also moves cursor to the first line in the file.                                  |
-| `:[number]` | Moves cursor to the `[number]` line in the file.                                  |
-| `[number]G` | Moves cursor to the `[number]` line in the file.                                  |
-|             | This is essentially the goto line feature in vim.                                 |
+| Command      | Description                                                                                             |
+| ---------    | :-------------                                                                                          |
+| `G`          | Moves cursor to the last line in the file.                                                              |
+|              | Note that this is not a command-line command. Since there is no `:` at the start.                       |
+|              | This `G` is entered in normal mode.                                                                     |
+| `gg`         | Moves cursor to the first line in the file.                                                             |
+| `:1`         | Also moves cursor to the first line in the file.                                                        |
+| `:[number]`  | Moves cursor to the `[number]` line in the file.                                                        |
+| `[number]G`  | Moves cursor to the `[number]` line in the file.                                                        |
+| `[number]gg` | Moves cursor to the `[number]` line in the file.                                                        |
+|              | This is essentially the goto line feature in vim.                                                       |
+|              | There is a reason why there are so many ways to go to a line in Vim. We may or may not learn about why. |
 
 ### Character/Word Navigation
-| Command   | Description                                                                                                                            |
-| --------- | :-------------                                                                                                                         |
-| `j`       | Move one line down.                                                                                                                    |
-| `k`       | Move one line up.                                                                                                                      |
-| `h`       | Move one characer left.                                                                                                                |
-| `l`       | Move character right.                                                                                                                  |
-| `w`       | Go to next word.                                                                                                                       |
-| `b`       | Go to previous word.                                                                                                                   |
-| `e`       | Go to end of word.                                                                                                                     |
-| `W`       | While `w` would treat "www.google.com" as 5 words ("www", ".", "google", ".", "com"), `W` will treat "www.google.com" all as one WORD. |
-| `B`       | Same as above, but goes back a WORD.                                                                                                   |
-| `E`       | Same as above, but goes to the end of a WORD.                                                                                          |
-|           |                                                                                                                                        |
-| `tm`      | Will place the cursor right before the next occurance of 'm' on the line.                                                              |
-| `Tm`      | Will place the cursor right after the previous occurance of 'm' on the line.                                                           |
-| `fm`      | Will place the cursor on the next occurance of 'm' on the line.                                                                        |
-| `Fm`      | Will place the cursor on the previous occurance of 'm' on the line.                                                                    |
-|           | This works for any character. `f.` will take you to the next occurance of the '.'                                                      |
+
+| Command        | Description                                                                                                                            |
+| ---------      | :-------------                                                                                                                         |
+| `j`            | Move one line down.                                                                                                                    |
+| `k`            | Move one line up.                                                                                                                      |
+| `h`            | Move one character left.                                                                                                                |
+| `l`            | Move character right.                                                                                                                  |
+| `w`            | Go to next word.                                                                                                                       |
+| `b`            | Go to previous word.                                                                                                                   |
+| `e`            | Go to end of word.                                                                                                                     |
+| `W`            | While `w` would treat "www.google.com" as 5 words ("www", ".", "google", ".", "com"), `W` will treat "www.google.com" all as one WORD. |
+| `B`            | Same as above, but goes back a WORD.                                                                                                   |
+| `E`            | Same as above, but goes to the end of a WORD.                                                                                          |
+| --- |                                                                                                                                        |
+| `t[character]` | Will place the cursor right before the next occurance of '[character]' on the line.                                                    |
+|                | e.g. `tm` will go before the next occurance of 'm' on the line.                                                                        |
+| `T[character]`           | Will place the cursor right after the previous occurance of '[character]' on the line.                                                           |
+| `f[character]`           | Will place the cursor on the next occurance of '[character]' on the line.                                                                        |
+| `F[character]`           | Will place the cursor on the previous occurance of '[character]' on the line.                                                                    |
+|                | This works for any character. `f.` will take you to the next occurance of the '.'                                                      |
 
 All of the above can be combined with a number.  
 So `2w` will move the cursor two words forward  
@@ -68,6 +73,7 @@ Movement and action in Vim is a language.
 This is the beginning of that language.
 
 ### Current Line Navigation
+
 | Command   | Description                                                                                 |
 | --------- | :-------------                                                                              |
 | `^`       | Move to first non-whitespace character on the line.                                         |
@@ -103,8 +109,8 @@ This is the beginning of that language.
 | `I`       | Enters insert mode at the start of the line.                |
 | `a`       | Moves cursor forward one character and enters insert mode.  |
 | `A`       | Moves cursor to the end of the line and enters insert mode. |
-| `o`       | Add an empty line below and enter insert mode.            |
-| `O`       | Add an empty line above and enter insert mode.            |
+| `o`       | Add an empty line below and enter insert mode.              |
+| `O`       | Add an empty line above and enter insert mode.              |
 
 Once in insert mode, you can type in text as you normally would in any text editor (for the most part, anyway).  
 Remember that `<ESC>` or `<C-c>` will get you out of insert mode and back into normal mode.
@@ -134,7 +140,6 @@ Try deleting 5 characters and then moving elsewhere in the file to paste them.
 | --------- | :------------- |
 | `d`       | Delete/cut.    |
 | `c`       | Change.        |
-> | `y`       | Yank/copy.     |
 
 Note that unlike `x` and `r`, the `d` and `c` commands don't do anything on their own.  
 And paste is only useful when you're deleted or changed some text.
@@ -148,6 +153,7 @@ Combining actions and motions makes vim so versatile.
 | `dw`           | Delete a word.                                                         |
 | `d5w`          | Delete 5 words.                                                        |
 | `5dw`          | Delete 5 words. (Same as above.)                                       |
+| `2d4w`         | Delete 6 words. (2 * 4 words.)                                         |
 | `db`           | Delete to the start of the word.                                       |
 | `de`           | Delete to the end of the word.                                         |
 | `d$`           | Delete to the end of the line.                                         |
@@ -156,7 +162,7 @@ Combining actions and motions makes vim so versatile.
 | `cw`           | Change a word. (Deletes the word enters insert mode.)                  |
 |                | All of the actions done with `d` are possible with `c` in the same way |
 |                | `d` will delete and keep you in normal mode.                           |
-|                | `c` will delete and change into insert mode.                      |
+|                | `c` will delete and change into insert mode.                           |
 | `c5l`          | Change 5 characters to the right.                                      |
 | `c10j`         | Change current line and 10 lines below.                                |
 | `ct'`          | Change to the next occurance of "'" on the current line.               |
@@ -171,7 +177,6 @@ Combining actions and motions makes vim so versatile.
 Don't try and memorize any of these.  
 Instead try to combine action and motion as needed.
 
-> | `yy`           | yank entire line.                                                      |
 
 ### Undo/Redo/Repeat
 
@@ -186,8 +191,6 @@ This is a good time to learn undo and redo.
 |           | if you did `dd`, then `.` will `dd` again.                                   |
 |           | if you did `cw[word]`, then `.` on another word will change it to the [word] |
 |           | `5dd` will delete 5 lines, `.` will delete the next 5 lines, and so on.      |
-
----
 
 ### In and Around (Text Objects)
 
@@ -215,27 +218,42 @@ Along with motions, Vim also has text objects. A `dw` with the cursor in the mid
 
 It gets cooler.
 
-| Command   | Description                                                                               |
-| --------- | :-------------                                                                            |
-| `di"`     | when done inside a double quoted string, will delete everything inside the double quotes. |
-| `di(`     | will delete everything inside round brackets. This works across multiple lines.           |
-| `ci"`     | will delete everything in the double quotes and put you in insert mode.                   |
-|           | This will work for all types of brackets (`[`, `]`, `{`, `}`, `(`, `<`) and quotes. This is another.                     |
+| Command   | Description                                                                                          |
+| --------- | :-------------                                                                                       |
+| `di"`     | when done inside a double quoted string, will delete everything inside the double quotes.            |
+| `di(`     | will delete everything inside round brackets. This works across multiple lines.                      |
+| `ci"`     | will delete everything in the double quotes and put you in insert mode.                              |
+|           | This will work for all types of brackets (`[`, `]`, `{`, `}`, `(`, `<`) and quotes. This is another. |
 
-| Command   | Description                                  |
-| --------- | :------------------------------------------- |
-| `<<`      | move back one tab                            |
-| `>>`      | move forward one tab                         |
+## Visual Mode
 
-## Text objects
-| Shortcut | Text Object                                  |
-| -------  | :---------------------                       |
-| w        | word as a series of letters                  |
-| W        | WORD surrounded by whitespace                |
-| s        | sentence                                     |
-| l        | line                                         |
-| i        | inner text object - leaves the borders alone |
-| a        | all - includes the borders of the object     |
+So far we've dealt with the normal and insert modes.
+
+Visual mode is Vim's way of selecting a block of text.
+
+There are 3 ways of starting visual mode in Vim:
+
+| Command | Description                |
+| ----    | :-------                   |
+| `v`     | Character-wise visual mode |
+| `V`     | Line-wise visual mode      |
+| `<C-v>` | Block-wise visual mode     |
+
+Once you enter visual mode, you can use any of the motions or text-objects  
+we've learned above to select the block of text you want.
+
+| Command | Description                |
+| ----    | :-------                   |
+| `vip`   | Visualize inner paragraph. |
+| `vaw`   | Visualize a word. |
+| `vaw`   | Visualize a word. |
+
+## Other things *TODO*
+
+| Command   | Description          |
+| --------- | :--------            |
+| `<<`      | move back one tab    |
+| `>>`      | move forward one tab |
 
 ## Marks aka bookmarks
 | Command   | Description                                                 |
@@ -280,7 +298,7 @@ It gets cooler.
 | `[tabNumber]gt`                             | go to tabNumber tab                          |
 
 #### TODO: 
-- Yank Register.
+- Yank/Yank Register.
 - Pasting in different modes.
 - undo plugin?
 - 

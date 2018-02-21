@@ -1,4 +1,5 @@
 Plug 'vim-scripts/IndexedSearch'
+Plug 'junegunn/vim-slash'
 
 " ### skwp/greplace.vim
 " From the docs:
