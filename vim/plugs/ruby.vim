@@ -1,6 +1,8 @@
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'tpope/vim-rvm'
 Plug 'vim-ruby/vim-ruby'
+let ruby_no_expensive=1
+
 
 " ### tpope/vim-rails
 "

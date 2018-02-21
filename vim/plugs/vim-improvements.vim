@@ -135,3 +135,5 @@ Plug 'vim-scripts/lastpos.vim'
 " Plug 'goldfeld/ctrlr.vim'
 " Plug 'sjl/gundo.vim'
 " Plug 'vim-scripts/AnsiEsc.vim'
+
+Plug 'Konfekt/FastFold'
