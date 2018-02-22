@@ -11,15 +11,21 @@ Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'kana/vim-smartinput'
 
 " provides autocomplete
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
 Plug 'Shougo/neoinclude.vim'
 Plug 'fszymanski/deoplete-emoji'
 let g:deoplete#enable_at_startup = 1
 
 let g:deoplete#sources = {}
-let g:deoplete#sources._ = ['neosnippet', 'emoji', 'buffer', 'tag']
+let g:deoplete#sources._ = ['neosnippet', 'emoji', 'file', 'buffer', 'tag']
 let deoplete#tag#cache_limit_size = 10000000
 
 imap <expr><TAB>

@@ -17,8 +17,6 @@ task :install do
            )
 
   puts '-- Linking files and folders'
-  link_it 'vim'
-  link_it 'vimrc'
   link_it 'gemrc'
   link_it 'agignore'
   link_it 'ctags'
@@ -34,29 +32,7 @@ task :install do
             end
           }
 
-  # vim-plug installing
-  puts '-- vim-plug Install'
-  vim = `which vim`.chomp
-  before = <<-EOF
-filetype off                  " required
-
-set rtp+=~/.vim/plugs/
-call plug#begin('~/.vim/plugged')
-EOF
-  after = <<-EOF
-call plug#end()
-
-filetype plugin indent on    " required
-EOF
-
-  middle = `grep -h "Plug " vim/plugs/*`
-  File.open("vimplugs.vim", "w") do |f|
-    f.write before
-    f.write middle
-    f.write after
-  end
-  run "#{vim} --noplugin -u vimplugs.vim +PlugInstall +qall"
-  File.unlink "vimplugs.vim"
+  setup_vim
 end
 
 task :parse_docs do
@@ -81,6 +57,37 @@ end
 task default: 'install'
 
 private
+
+def setup_vim
+  link_it 'vim'
+  link_it 'vimrc'
+  link_it 'vimrc', destination: '~/.config/nvim/init.vim'
+  # vim-plug installing
+  puts '-- vim-plug Install'
+  vim = `which vim`.chomp
+  vim = `which nvim`.chomp if vim == ''
+  before = <<-BEF
+  filetype off                  " required
+
+  set rtp+=~/.vim/plugs/
+  call plug#begin('~/.vim/plugged')
+  BEF
+  after = <<-AFT
+  call plug#end()
+
+  filetype plugin indent on    " required
+  AFT
+
+  middle = `grep -h "Plug " vim/plugs/*`
+  File.open("vimplugs.vim", "w") do |f|
+    f.write before
+    f.write middle
+    f.write after
+  end
+  run "#{vim} --noplugin -u vimplugs.vim +PlugInstall +qall"
+  File.unlink "vimplugs.vim"
+
+end
 
 def run(command)
   puts "-- Running [#{command}]"

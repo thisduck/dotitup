@@ -115,11 +115,12 @@ nmap ga <Plug>(EasyAlign)
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 let g:fzf_command_prefix = 'Fzf'
-nnoremap <C-p> :<C-u>FzfFiles<CR>
-nnoremap <leader>bs :<C-u>FzfHistory<CR>
-nnoremap <leader>t :<C-u>FzfTags<CR>
 nnoremap <leader>l :<C-u>FzfBLines<CR>
-nnoremap <leader>he :<C-u>FzfHelptags<CR>
+
+nnoremap <C-p> :<C-u>DeniteProjectDir file_rec -reversed<CR>
+nnoremap <leader>he :<C-u>Denite help<CR>
+nnoremap <leader>t :<C-u>Denite tag<CR>
+nnoremap <leader>bs :<C-u>Denite buffer file_mru<CR>
 
 Plug 'mhinz/vim-startify'
 let g:startify_change_to_vcs_root = 1
