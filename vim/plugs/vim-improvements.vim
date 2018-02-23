@@ -127,12 +127,23 @@ Plug 'bogado/file-line'
 " ###
 Plug 'vim-scripts/camelcasemotion'
 
+
+" ### Keithbsmiley/investigate.vim
+" Plugin for looking up documentation.
+"
+" | Instruction | Description                                                              |
+" | ---         | ---                                                                      |
+" | `gK`        | over a word or in visual mode, will search for the selected text on Dash |
+" ###
+Plug 'Keithbsmiley/investigate.vim'
+let g:investigate_use_dash=1
+let g:investigate_use_url_for_rails=1
+
 " Misc/Utilities
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'vim-scripts/matchit.zip'
-Plug 'Keithbsmiley/investigate.vim'
 Plug 'chrisbra/NrrwRgn'
 Plug 'vim-scripts/AutoTag'
 Plug 'vim-scripts/lastpos.vim'

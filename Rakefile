@@ -7,6 +7,11 @@ task :install do
   curl_it 'vim-plug',
           source: 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',
           destination: current_path('vim', 'autoload', 'plug.vim')
+
+  curl_it 'vim-plug',
+          source: 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',
+          destination: '~/.local/share/nvim/site/autoload/plug.vim'
+
   clone_it 'oh-my-zsh',
            source: 'https://github.com/robbyrussell/oh-my-zsh',
            destination: File.expand_path('~/.oh-my-zsh')
@@ -64,8 +69,8 @@ def setup_vim
   link_it 'vimrc', destination: '~/.config/nvim/init.vim'
   # vim-plug installing
   puts '-- vim-plug Install'
-  vim = `which vim`.chomp
-  vim = `which nvim`.chomp if vim == ''
+  vim = `which nvim`.chomp
+  vim = `which vim`.chomp if vim == ''
   before = <<-BEF
   filetype off                  " required
 
@@ -110,6 +115,7 @@ end
 def curl_it(name, options = {})
   options[:name] = name
   return if File.exist?(options[:destination])
+  options[:destination] = File.expand_path(options[:destination])
   puts "-- Cloning #{options[:name]}"
   run "curl -fLo #{options[:destination]} --create-dirs #{options[:source]}"
 end
