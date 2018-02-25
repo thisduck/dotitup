@@ -1,1 +1,3 @@
-tnoremap jj <C-\><C-n>
+if has('nvim')
+  tnoremap jj <C-\><C-n>
+endif

@@ -102,25 +102,13 @@ nmap ga <Plug>(EasyAlign)
 " So if you don't find the commands from the FZF docs
 " by running them, that is why.
 "
-" Shortcuts:
+" Look at the FZF docs for usage.
 "
-" | Instruction  | Description                                                    |
-" | ---          | ---                                                            |
-" | `<C-p>`      | fuzzy file search, substitute for CTRL-P. `:FzfFiles`          |
-" | `<leader>bs` | fuzzy buffer and most recently used file search, `:FzfHistory` |
-" | `<leader>t`  | fuzzy tags search, `:FzfTags`                                  |
-" | `<leader>l`  | fuzzy search for the lines in current buffer, `:FzfBLines`     |
-" | `<leader>he` | fuzzy search for vim help, `:FzfHelptags`                      |
 " ###
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 let g:fzf_command_prefix = 'Fzf'
-nnoremap <leader>l :<C-u>FzfBLines<CR>
 
-nnoremap <C-p> :<C-u>DeniteProjectDir file_rec -reversed<CR>
-nnoremap <leader>he :<C-u>Denite help<CR>
-nnoremap <leader>t :<C-u>Denite tag<CR>
-nnoremap <leader>bs :<C-u>Denite buffer file_mru<CR>
 
 Plug 'mhinz/vim-startify'
 let g:startify_change_to_vcs_root = 1
@@ -141,3 +129,11 @@ let g:startify_list_order = [
 Plug 'chrisbra/csv.vim'
 
 Plug 'machakann/vim-highlightedyank'
+
+" ### majutsushi/tagbar
+"
+" | Instruction | Description              |
+" | ---         | ---                      |
+" | `:Tagbar`   | toggle the Tagbar window |
+" ###
+Plug 'majutsushi/tagbar'

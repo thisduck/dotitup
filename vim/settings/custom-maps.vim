@@ -6,7 +6,6 @@
 " | `<leader>y`                 | copy visual selection to clipboard                                                 |
 " | `<leader>ct`                | will run ctags on the project recursively, using the options in the ~/.ctags file. |
 " | `<leader><leader>p`         | toggle `:set paste/nopaste` for when you want to paste text from the clipboard     |
-" | `<leader>s`                 | sort the visual selection                                                          |
 " | `<leader>>`                 | replace old style ruby hashes with new style                                       |
 " | `<leader>s,`                | break up a ruby line somewhat sensibly                                             |
 " | `<leader>gf`                | `gf` in a vertical split                                                           |
@@ -31,10 +30,6 @@ map <Leader>ct :AsyncOpenRun ctags -R .<CR><CR>
 "" toggle set paste
 nnoremap <Leader>pp :set invpaste<CR>:set paste?<CR>
 nnoremap <Leader><Leader>p :set invpaste<CR>:set paste?<CR>
-
-" ---
-
-vmap <leader>s :sort<cr>
 
 "" ---
 

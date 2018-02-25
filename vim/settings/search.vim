@@ -74,12 +74,17 @@ call denite#custom#map('insert', '<C-s>',
 
 call denite#custom#map('insert', '<C-j>',
       \ '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('normal', '/',
-      \ 'i', 'noremap')
 call denite#custom#map('insert', '<C-k>',
+      \ '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('normal', '<C-j>',
+      \ '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('normal', '<C-k>',
       \ '<denite:move_to_previous_line>', 'noremap')
 call denite#custom#map('insert', "'",
       \ '<denite:move_to_next_line>', 'noremap')
+
+call denite#custom#map('normal', '/',
+      \ 'denite:enter_mode:insert', 'noremap')
 
 call denite#custom#map('normal', 'r',
       \ '<denite:do_action:quickfix>', 'noremap')
