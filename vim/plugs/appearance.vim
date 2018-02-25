@@ -29,3 +29,5 @@ Plug 'sickill/vim-monokai'
 Plug 'tpope/vim-vividchalk'
 Plug 'thisduck/tomorrow-theme', {'rtp': 'vim/'}
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'mhinz/vim-janah'
+Plug 'joshdick/onedark.vim'

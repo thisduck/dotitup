@@ -90,8 +90,8 @@ def setup_vim
     f.write after
   end
   run "#{vim} --noplugin -u vimplugs.vim +PlugInstall +qall"
+  run "#{vim} +PlugClean! +UpdateRemotePlugins +qall" if vim.include?('nvim')
   File.unlink "vimplugs.vim"
-
 end
 
 def run(command)

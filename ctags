@@ -12,7 +12,6 @@
 --exclude=*/vendor/*.js
 --exclude=vendor/*.js
 --exclude=vendor/*.css
---exclude=*_spec.rb
 --exclude=public
 
 --fields=+l
@@ -71,6 +70,11 @@
 --regex-ruby=/(^|;)[ \t]*delegate\(? *[:"]?([[:alnum:]_?!]+[?!]?)/\2/m,method,delegate/
 --regex-ruby=/(^|;)[ \t]*delegate\(? *[:"]?[[:alnum:]_?!]+[?!]?"?,[ \t]*[:"]?([[:alnum:]_]+[?!]?)/\2/m,method,delegate/
 --regex-ruby=/(^|;)[ \t]*delegate\(? *[:"]?[[:alnum:]_?!]+[?!]?"?,*[:"]?[[:alnum:]_]+[?!]?"?,[ \t]*[:"]?([[:alnum:]_]+[?!]?)/\2/m,method,delegate/
+
+--regex-ruby=/^[ \t]*describe ['"](.*)['"] do/\1/d,rspec describe/
+--regex-ruby=/^[ \t]*context ['"](.*)['"] do/\1/C,rspec context/
+--regex-ruby=/^[ \t]*it ['"](.*)['"] do/\1/i,rspec tests/
+
 
 --langdef=js
 --langmap=js:.js

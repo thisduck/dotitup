@@ -30,12 +30,12 @@ map <Leader> <Plug>(easymotion-prefix)
 Plug 'skywind3000/asyncrun.vim'
 
 " real time visualization for search and replace (substitution)
-Plug 'xtal8/traces.vim'
-
 if has('nvim')
-  Plug 'Shougo/denite.nvim' , { 'do': ':UpdateRemotePlugins' }
+  set inccommand=nosplit
 else
-  Plug 'Shougo/denite.nvim'
+  Plug 'xtal8/traces.vim'
 endif
+
+Plug 'Shougo/denite.nvim'
 " Plug 'nixprime/cpsm', { 'do': 'PY3=ON ./install.sh' }
 Plug 'Shougo/neomru.vim'
