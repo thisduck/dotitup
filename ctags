@@ -1,3 +1,19 @@
+--recurse=yes
+--exclude=.git
+--exclude=node_modules
+--exclude=bower_components
+--exclude=tmp
+--exclude=log
+--exclude=dist
+--exclude=db/migrate
+--exclude=db/fixtures
+--exclude=db/*.json
+--exclude=*.css
+--exclude=*/vendor/*.js
+--exclude=vendor/*.js
+--exclude=vendor/*.css
+--exclude=public
+
 --fields=+l
 
 --langdef=coffee
@@ -22,9 +38,6 @@
 --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){9}/\8/f,field/
 
 --langmap=ruby:+.rake
---exclude=db/migrate
---exclude=vendor/assets
---exclude=public
 
 --regex-ruby=/(^|;)class[[:space:]]+([A-Z][[:alnum:]]+)::([A-Z][[:alnum:]]+)/\3/c,class,constant/
 --regex-ruby=/(^|;)class[[:space:]]+[A-Z][[:alnum:]]+::[A-Z][[:alnum:]]+::([A-Z][[:alnum:]]+)/\2/c,class,constant/
@@ -36,6 +49,8 @@
 
 --regex-ruby=/(^|[:;])[ \t]*([A-Z][[:alnum:]_]+) *=/\2/c,class,constant/
 --regex-ruby=/(^|;)[ \t]*(has_many|belongs_to|has_one|has_and_belongs_to_many)\(? *:([[:alnum:]_]+)/\3/f,function,association/
+--regex-ruby=/(^|;)[ \t]*(has_many|belongs_to|has_one|has_and_belongs_to_many)\(? *:([[:alnum:]_]+)/create_\3/f,function,association/
+--regex-ruby=/(^|;)[ \t]*(has_many|belongs_to|has_one|has_and_belongs_to_many)\(? *:([[:alnum:]_]+)/build_\3/f,function,association/
 --regex-ruby=/(^|;)[ \t]*(named_)?scope\(? *:([[:alnum:]_?!]+)/\3/f,function,named_scope/
 --regex-ruby=/(^|;)[ \t]*expose\(? *:([[:alnum:]_]+)/\2/f,function,exposure/
 --regex-ruby=/(^|;)[ \t]*event\(? *:([[:alnum:]_]+)/\2/f,function,aasm_event/
@@ -49,11 +64,17 @@
 --regex-ruby=/(^|;)[ \t]*alias_attribute\(? *[:"]?([[:alnum:]_?!]+)/\2/m,method,alias/
 
 --regex-ruby=/(^|;)[ \t]*t\.(boolean|integer|decimal|float|datetime|date|text)\(? *[:"]?([[:alnum:]_]+)/\3/f,field,database/
+--regex-ruby=/(^|;)[ \t]*t\.(boolean|integer|decimal|float|datetime|date|text)\(? *[:"]?([[:alnum:]_]+)/\3=/f,field,database/
 --regex-ruby=/(^|;)[ \t]*t\.boolean\(? *[:"]?([[:alnum:]_]+)/\2?/f,field,database/
 
 --regex-ruby=/(^|;)[ \t]*delegate\(? *[:"]?([[:alnum:]_?!]+[?!]?)/\2/m,method,delegate/
 --regex-ruby=/(^|;)[ \t]*delegate\(? *[:"]?[[:alnum:]_?!]+[?!]?"?,[ \t]*[:"]?([[:alnum:]_]+[?!]?)/\2/m,method,delegate/
 --regex-ruby=/(^|;)[ \t]*delegate\(? *[:"]?[[:alnum:]_?!]+[?!]?"?,*[:"]?[[:alnum:]_]+[?!]?"?,[ \t]*[:"]?([[:alnum:]_]+[?!]?)/\2/m,method,delegate/
+
+--regex-ruby=/^[ \t]*describe ['"](.*)['"] do/\1/d,rspec describe/
+--regex-ruby=/^[ \t]*context ['"](.*)['"] do/\1/C,rspec context/
+--regex-ruby=/^[ \t]*it ['"](.*)['"] do/\1/i,rspec tests/
+
 
 --langdef=js
 --langmap=js:.js
@@ -76,7 +97,7 @@
 --regex-js=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*[^=]+([,;]|$)/\2/,variable/
 
 --langdef=markdown
---langmap=markdown:.mkd
+--langmap=markdown:.md
 --regex-markdown=/^#[ \t]+(.*)/\1/h,Heading_L1/
 --regex-markdown=/^##[ \t]+(.*)/\1/i,Heading_L2/
 --regex-markdown=/^###[ \t]+(.*)/\1/k,Heading_L3/

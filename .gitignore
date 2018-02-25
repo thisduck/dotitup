@@ -1,9 +1,13 @@
 vim/bundle/**
 vim/autoload/**
-vim/plugged/**
+vim/plugged
 vim/backups/**
 vim/sessions/**
 
 zsh/plugins/**
 
 *.swp
+.DS_Store
+tags
+tags.*
+.netrwhist

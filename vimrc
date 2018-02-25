@@ -18,6 +18,7 @@ set cursorline
 " ---
 
 syntax on
+set regexpengine=1 " speeds up syntax highlighting
 set number " displays line numbers.
 
 " ---
@@ -29,6 +30,25 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
+
+set foldmethod=indent
+set foldlevelstart=20
+
+" ---
+
+set showbreak=⇇
+set wrap
+
+" ---
+
+"" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" ---
+
+set updatetime=250
+set timeoutlen=500
 
 " ---
 
@@ -84,6 +104,8 @@ set list listchars=tab:▸\ ,trail:·
 
 " ---
 
+set background=light
+
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
@@ -94,10 +116,14 @@ if has('persistent_undo')
 endif
 
 " ---
+
 source ~/.vim/settings.vim
 
 " ---
 
+set rtp+=/usr/local/opt/fzf
+
+" ---
 if filereadable(expand("~/.vimrc.after"))
   source ~/.vimrc.after
 endif
