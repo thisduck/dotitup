@@ -11,14 +11,12 @@ Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'kana/vim-smartinput'
 
 " provides autocomplete
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim'
-else
+Plug 'Shougo/deoplete.nvim'
+if !has('nvim')
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-let g:deoplete#enable_at_startup = 1
 
 Plug 'Shougo/neoinclude.vim'
 Plug 'fszymanski/deoplete-emoji'
