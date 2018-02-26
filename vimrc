@@ -31,7 +31,7 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
-set foldmethod=syntax
+set foldmethod=indent
 set foldlevelstart=20
 
 " ---
