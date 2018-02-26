@@ -43,7 +43,7 @@ nnoremap <C-]> g<C-]>
 
 let g:notes_directories = ['~/Desktop/vim-notes']
 
-set rtp+=~/.vim/custom/
+set rtp+=~/.dotvim/custom/
 
 "" --- Replace old style ruby hashes with new style
 map <Leader>> :s<Home>silent! <End>@:\([^: =({})]\+\)\s*=>\s*@\1: @g<CR> :nohlsearch<CR>

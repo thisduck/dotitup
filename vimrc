@@ -6,8 +6,8 @@ set nocompatible " turns vi compatibility off.
 
 let mapleader=" "
 
-if filereadable(expand("~/.vim/plug.vim"))
-  source ~/.vim/plug.vim
+if filereadable(expand("~/.dotvim/plug.vim"))
+  source ~/.dotvim/plug.vim
 endif
 
 " ---
@@ -31,7 +31,7 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevelstart=20
 
 " ---
@@ -110,14 +110,14 @@ set background=light
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
 if has('persistent_undo')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
+  silent !mkdir ~/.dotvim/backups > /dev/null 2>&1
+  set undodir=~/.dotvim/backups
   set undofile
 endif
 
 " ---
 
-source ~/.vim/settings.vim
+source ~/.dotvim/settings.vim
 
 " ---
 

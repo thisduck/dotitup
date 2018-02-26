@@ -12,6 +12,7 @@
 --exclude=*/vendor/*.js
 --exclude=vendor/*.js
 --exclude=vendor/*.css
+--exclude=*_spec.rb
 --exclude=public
 
 --fields=+l

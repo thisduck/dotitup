@@ -1,7 +1,7 @@
 filetype off                  " required
 
-set rtp+=~/.vim/plugs/
-call plug#begin('~/.vim/plugged')
+set rtp+=~/.dotvim/plugs/
+call plug#begin('~/.dotvim/plugged')
 
 runtime project.vim
 runtime appearance.vim

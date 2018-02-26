@@ -34,7 +34,7 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 " originally 'honza/vim-snippets', but cloned to remove some duplicates.
 Plug 'thisduck/vim-snippets'
-let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets,~/.vim/custom/dotitup_snippets'
+let g:neosnippet#snippets_directory='~/.dotvim/plugged/vim-snippets/snippets,~/.dotvim/custom/dotitup_snippets'
 
 " ### mattn/emmet-vim
 " The emmet plugin allows quick insertion of html into the code.

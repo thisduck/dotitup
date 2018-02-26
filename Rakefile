@@ -4,14 +4,6 @@ require 'fileutils'
 task :install do
   puts '-- Installing dotitup'
 
-  curl_it 'vim-plug',
-          source: 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',
-          destination: current_path('vim', 'autoload', 'plug.vim')
-
-  curl_it 'vim-plug',
-          source: 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',
-          destination: '~/.local/share/nvim/site/autoload/plug.vim'
-
   clone_it 'oh-my-zsh',
            source: 'https://github.com/robbyrussell/oh-my-zsh',
            destination: File.expand_path('~/.oh-my-zsh')
@@ -24,8 +16,7 @@ task :install do
   puts '-- Linking files and folders'
   link_it 'gemrc'
   link_it 'agignore'
-  link_it 'ctags'
-  link_it 'ctags', destination: '~/.ctags.d/default.ctags'
+  Rake::Task["setup_ctags"].execute
   link_it 'zshrc'
   link_it 'tmux.conf'
   link_it 'custom oh my zsh',
@@ -37,8 +28,31 @@ task :install do
             end
           }
 
+
+  neovim = `which nvim`.chomp
+  if neovim != ''
+    setup_neovim
+  end
+
+  vim = `which vim`.chomp
+  if vim != ''
+    setup_vim
+  end
+end
+
+task :setup_ctags do
+  link_it 'ctags'
+  link_it 'ctags', destination: '~/.ctags.d/default.ctags'
+end
+
+task :setup_neovim do
+  setup_neovim
+end
+
+task :setup_vim do
   setup_vim
 end
+
 
 task :parse_docs do
   files = Dir['./vim/settings/*.vim'] + Dir['./vim/plugs/*.vim']
@@ -63,19 +77,39 @@ task default: 'install'
 
 private
 
-def setup_vim
-  link_it 'vim'
-  link_it 'vimrc'
+def setup_neovim
+  curl_it 'vim-plug',
+          source: 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',
+          destination: '~/.local/share/nvim/site/autoload/plug.vim'
+
+  link_it 'vim', destination: '~/.dotvim'
   link_it 'vimrc', destination: '~/.config/nvim/init.vim'
+
+  vim = `which nvim`.chomp
+  vimplugs(vim)
+end
+
+def setup_vim
+  curl_it 'vim-plug',
+          source: 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',
+          destination: current_path('vim', 'autoload', 'plug.vim')
+
+  link_it 'vim', destination: '~/.dotvim'
+  link_it 'vimrc'
+
   # vim-plug installing
   puts '-- vim-plug Install'
-  vim = `which nvim`.chomp
-  vim = `which vim`.chomp if vim == ''
+  vim = `which vim`.chomp
+
+  vimplugs(vim)
+end
+
+def vimplugs(vim)
   before = <<-BEF
   filetype off                  " required
 
-  set rtp+=~/.vim/plugs/
-  call plug#begin('~/.vim/plugged')
+  set rtp+=~/.dotvim/plugs/
+  call plug#begin('~/.dotvim/plugged')
   BEF
   after = <<-AFT
   call plug#end()
