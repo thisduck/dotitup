@@ -74,10 +74,6 @@
 --regex-ruby=/(^|;)[ \t]*delegate\(? *[:"]?[[:alnum:]_?!]+[?!]?"?,[ \t]*[:"]?([[:alnum:]_]+[?!]?)/\2/m,method,delegate/
 --regex-ruby=/(^|;)[ \t]*delegate\(? *[:"]?[[:alnum:]_?!]+[?!]?"?,*[:"]?[[:alnum:]_]+[?!]?"?,[ \t]*[:"]?([[:alnum:]_]+[?!]?)/\2/m,method,delegate/
 
---regex-ruby=/^[ \t]*describe ['"](.*)['"] do/\1/d,rspec describe/
---regex-ruby=/^[ \t]*context ['"](.*)['"] do/\1/C,rspec context/
-
-
 --langdef=js
 --langmap=js:.js
 --regex-js=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*\{/\5/,object/
