@@ -137,3 +137,4 @@ Plug 'machakann/vim-highlightedyank'
 " | `:Tagbar`   | toggle the Tagbar window |
 " ###
 Plug 'majutsushi/tagbar'
+let g:airline#extensions#tagbar#enabled = 0
