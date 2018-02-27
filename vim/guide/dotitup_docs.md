@@ -26,7 +26,6 @@ the quickfix window and then asyncronously run
 | `<leader>y`                 | copy visual selection to clipboard                                                 |
 | `<leader>ct`                | will run ctags on the project recursively, using the options in the ~/.ctags file. |
 | `<leader><leader>p`         | toggle `:set paste/nopaste` for when you want to paste text from the clipboard     |
-| `<leader>s`                 | sort the visual selection                                                          |
 | `<leader>>`                 | replace old style ruby hashes with new style                                       |
 | `<leader>s,`                | break up a ruby line somewhat sensibly                                             |
 | `<leader>gf`                | `gf` in a vertical split                                                           |
@@ -136,23 +135,39 @@ issuing an easymotion shortcut will highlight words/lines with keys
 from the keyboard. when you press those keys, it will take you 
 to that word or line. you have to try it.
 
-| Instruction  | Description                                   |
-| ---          | ---                                           |
-| `<leader>w`  | will highlight words after the cursor         |
-| `<leader>b`  | will highlight words before the cursor        |
-| `<leader>j`  | will highlight lines after the cursor         |
-| `<leader>k`  | will highlight lines before the cursor        |
-| `<leader>ge` | will highlight end of words before the cursor |
-| `<leader>e`  | will highlight end of words after the cursor  |
+| Instruction            | Description                                   |
+| ---                    | ---                                           |
+| `<leader>w`            | will highlight words after the cursor         |
+| `<leader><leader>w`    | will highlight all words even across windows  |
+| `<leader>b`            | will highlight words before the cursor        |
+| `<leader>j`            | will highlight lines after the cursor         |
+| `<leader><leader>j`    | will highlight all lines even across windows  |
+| `<leader>k`            | will highlight lines before the cursor        |
+| `<leader>ge`           | will highlight end of words before the cursor |
+| `<leader>e`            | will highlight end of words after the cursor  |
+| `<leader>s[character]` | will highlight `[character]` across windows   |
+###
+
+### Shougo/denite.nvim
+Shortcuts:
+
+| Instruction  | Description                                      |
+| ---          | ---                                              |
+| `<C-p>`      | fuzzy file search, substitute for CTRL-P.        |
+| `<leader>bs` | fuzzy buffer and most recently used file search. |
+| `<leader>dl` | fuzzy search for the lines in current buffer.    |
+| `<leader>he` | fuzzy search for vim help.                       |
+
 ###
 
 ### w0rp/ale
 syntax checking for multiple languages
 currently configured so that syntax 
-suggestions will be made on save
+suggestions will be made when you run `:ALELint`
 
 | Instruction   | Description                            |
 | ---           | ---                                    |
+| `:ALELint`    | Fix things in buffer that can be fixed |
 | `:ALEFix`     | Fix things in buffer that can be fixed |
 | `:ALEDisable` | disbles ale                            |
 | `:ALEEnable`  | enables ale                            |
@@ -350,6 +365,14 @@ Adds motion helpers to move through camelcase words.
 | `,e`        | equivalent of `e` for camel case motion |
 ###
 
+### Keithbsmiley/investigate.vim
+Plugin for looking up documentation.
+
+| Instruction | Description                                                              |
+| ---         | ---                                                                      |
+| `gK`        | over a word or in visual mode, will search for the selected text on Dash |
+###
+
 ### tpope/vim-dispatch
 
 | Instruction  | Description                                                            |
@@ -424,14 +447,14 @@ The FZF commands are prefixed with `Fzf`
 So if you don't find the commands from the FZF docs
 by running them, that is why.
 
-Shortcuts:
+Look at the FZF docs for usage.
 
-| Instruction  | Description                                                    |
-| ---          | ---                                                            |
-| `<C-p>`      | fuzzy file search, substitute for CTRL-P. `:FzfFiles`          |
-| `<leader>bs` | fuzzy buffer and most recently used file search, `:FzfHistory` |
-| `<leader>t`  | fuzzy tags search, `:FzfTags`                                  |
-| `<leader>l`  | fuzzy search for the lines in current buffer, `:FzfBLines`     |
-| `<leader>he` | fuzzy search for vim help, `:FzfHelptags`                      |
+###
+
+### majutsushi/tagbar
+
+| Instruction | Description              |
+| ---         | ---                      |
+| `:Tagbar`   | toggle the Tagbar window |
 ###
 
