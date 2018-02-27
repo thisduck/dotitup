@@ -14,6 +14,7 @@
 --exclude=vendor/*.css
 --exclude=*_spec.rb
 --exclude=public
+--sort=no
 
 --fields=+l
 
@@ -39,6 +40,7 @@
 --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){9}/\8/f,field/
 
 --langmap=ruby:+.rake
+--langmap=ruby:+..Rakefile
 
 --regex-ruby=/(^|;)class[[:space:]]+([A-Z][[:alnum:]]+)::([A-Z][[:alnum:]]+)/\3/c,class,constant/
 --regex-ruby=/(^|;)class[[:space:]]+[A-Z][[:alnum:]]+::[A-Z][[:alnum:]]+::([A-Z][[:alnum:]]+)/\2/c,class,constant/
@@ -60,7 +62,7 @@
 --regex-ruby=/(^|;)[ \t]*state\(? *:([[:alnum:]_]+)/\2?/f,function,aasm_state/
 
 --regex-ruby=/(^|;)[ \t]*namespace\(? *[:"]?([[:alnum:]_]+)/\2/f,module,namespace/
---regex-ruby=/(^|;)[ \t]*task\(? *[:"]?([[:alnum:]_]+)/\2/t,task,task/
+--regex-ruby=/(^|;)[ \t]*task\(? *[:"]?([[:alnum:]_]+)/\2/m,task,task/
 --regex-ruby=/(^|;)[ \t]*alias_method\(? *[:"]?([[:alnum:]_?!]+)/\2/m,method,alias/
 --regex-ruby=/(^|;)[ \t]*alias_attribute\(? *[:"]?([[:alnum:]_?!]+)/\2/m,method,alias/
 
@@ -74,7 +76,6 @@
 
 --regex-ruby=/^[ \t]*describe ['"](.*)['"] do/\1/d,rspec describe/
 --regex-ruby=/^[ \t]*context ['"](.*)['"] do/\1/C,rspec context/
---regex-ruby=/^[ \t]*it ['"](.*)['"] do/\1/i,rspec tests/
 
 
 --langdef=js
