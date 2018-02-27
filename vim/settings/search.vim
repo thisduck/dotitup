@@ -1,14 +1,16 @@
 " ### Search
 
-" | Instruction        | Description                                                          |
-" | ---                | ---                                                                  |
-" | *Primary Search*   |                                                                      |
-" | `<leader>/`        | search for word(s) in project, results in quickfix                   |
-" | `K`                | search for work under cursor in project, results in quickfix         |
-" | `<leader>./`       | takes you back to the point where to executed the two above searches |
-" | *Secondary Search* |                                                                      |
-" | `<leader>\`        | search for word(s) in project, using FZF                             |
-" | `L`                | search for work under cursor in project, using FZF                   |
+" | Instruction        | Description                                                                               |
+" | ---                | ---                                                                                       |
+" | *Primary Search*   |                                                                                           |
+" | `<leader>/`        | search for word(s) in project                                                             |
+" | `K`                | search for work under cursor in project                                                   |
+" |                    | use `<C-j>` and `<C-k>` to navigate the results `j`/`k` work also. `<CR>` to go to result |
+" |                    | `]/` and `[/` will take you to prev and next results                                      |
+" | `<leader>./`       | takes you back to the search listing                                                      |
+" | *Secondary Search* |                                                                                           |
+" | `<leader>\`        | search for word(s) in project, using FZF                                                  |
+" | `L`                | search for work under cursor in project, using FZF                                        |
 " ###
 
 " use ag as the grepping program if is exists
