@@ -109,6 +109,9 @@ call denite#custom#option('default', {
             \ 'winheight': 15,
             \ 'updatetime': 100,
             \ 'prompt': '❯',
+            \ 'prompt_highlight': 'Search',
+            \ 'highlight_matched_char': 'Search',
+            \ 'highlight_matched_range': 'Search',
             \ 'highlight_mode_insert': 'IncSearch'
             \ })
 
