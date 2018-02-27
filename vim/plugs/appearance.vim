@@ -31,3 +31,4 @@ Plug 'thisduck/tomorrow-theme', {'rtp': 'vim/'}
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'mhinz/vim-janah'
 Plug 'joshdick/onedark.vim'
+Plug 'chriskempson/base16-vim'

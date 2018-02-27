@@ -4,10 +4,11 @@ Plug 'sheerun/vim-polyglot'
 " ### w0rp/ale
 " syntax checking for multiple languages
 " currently configured so that syntax 
-" suggestions will be made on save
+" suggestions will be made when you run `:ALELint`
 "
 " | Instruction   | Description                            |
 " | ---           | ---                                    |
+" | `:ALELint`    | Fix things in buffer that can be fixed |
 " | `:ALEFix`     | Fix things in buffer that can be fixed |
 " | `:ALEDisable` | disbles ale                            |
 " | `:ALEEnable`  | enables ale                            |
@@ -16,6 +17,7 @@ Plug 'w0rp/ale'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_set_highlights = 0
+let g:ale_lint_on_save = 0
 
 let g:ale_fixers = {
 \   'ruby': ['rubocop'],

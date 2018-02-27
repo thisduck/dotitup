@@ -92,12 +92,13 @@ This is the beginning of that language.
 
 ### Other Navigation
 
-| Command   | Description                 |
-| --------- | :-------------              |
-| `(`       | Move to previous sentence.  |
-| `)`       | Move to next sentence.      |
-| `{`       | Move to previous paragraph. |
-| `}`       | Move to next paragraph.     |
+| Command   | Description                                      |
+| --------- | :-------------                                   |
+| `(`       | Move to previous sentence.                       |
+| `)`       | Move to next sentence.                           |
+| `{`       | Move to previous paragraph.                      |
+| `}`       | Moairve to next paragraph.                       |
+| `%`       | Move to matching bracket (or function start/end) |
 
 ## Basic Search
 

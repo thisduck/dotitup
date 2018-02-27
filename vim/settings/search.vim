@@ -109,10 +109,7 @@ call denite#custom#option('default', {
             \ 'winheight': 15,
             \ 'updatetime': 100,
             \ 'prompt': '❯',
-            \ 'prompt_highlight': 'Function',
-            \ 'highlight_matched_char': 'Function',
-            \ 'highlight_matched_range': 'Normal',
-            \ 'highlight_mode_insert': 'WildMenu'
+            \ 'highlight_mode_insert': 'IncSearch'
             \ })
 
 nnoremap ]/ :<C-u>:Denite -resume -select=+1 -immediately<CR>
