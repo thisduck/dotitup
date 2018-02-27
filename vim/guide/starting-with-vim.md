@@ -99,6 +99,18 @@ This is the beginning of that language.
 | `{`       | Move to previous paragraph. |
 | `}`       | Move to next paragraph.     |
 
+## Basic Search
+
+| Command       | Description                                                                                           |
+| ---------     | :-------------                                                                                        |
+| `/[text]<CR>` | Searches forward for occurances of `[text]` in the current file. (this can use regular expressions)   |
+| `?[text]<CR>` | Searches backwards for occurances of `[text]` in the current file. (this can use regular expressions) |
+| `n`           | Repeat the last `/` or `?` search.                                                                    |
+| `N`           | Repeat the last `/` or `?` search but in the opposite direction.                                      |
+| `*`           | Search forward for occurances of the word under the cursor.                                           |
+| `#`           | Search backwards for occurances of the word under the cursor.                                         |
+|               | `n` and `N` can be used for navigation after `*` and `#` based searches.                              |
+
 ## Basic Editing
 
 ### Insert Mode
