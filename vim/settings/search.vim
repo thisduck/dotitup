@@ -114,7 +114,8 @@ call denite#custom#option('default', {
             \ 'prompt_highlight': 'Search',
             \ 'highlight_matched_char': 'Search',
             \ 'highlight_matched_range': 'Search',
-            \ 'highlight_mode_insert': 'IncSearch'
+            \ 'highlight_mode_insert': 'CursorLine',
+            \ 'highlight_mode_normal': 'CursorLine'
             \ })
 
 nnoremap ]/ :<C-u>:Denite -resume -select=+1 -immediately<CR>
