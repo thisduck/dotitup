@@ -1,6 +1,3 @@
-Plug 'vim-scripts/IndexedSearch'
-Plug 'junegunn/vim-slash'
-
 " ### skwp/greplace.vim
 " From the docs:
 " 1. Use `:Gsearch` to get a buffer window of your search results
@@ -63,3 +60,20 @@ nnoremap <leader>bs :<C-u>Denite buffer file_mru<CR>
 
 " Plug 'nixprime/cpsm', { 'do': 'PY3=ON ./install.sh' }
 Plug 'Shougo/neomru.vim'
+
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+let g:incsearch#auto_nohlsearch = 1
+
+map z/ <Plug>(incsearch-fuzzy-/)
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
