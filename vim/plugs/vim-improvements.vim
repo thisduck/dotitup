@@ -152,3 +152,4 @@ Plug 'vim-scripts/lastpos.vim'
 " Plug 'vim-scripts/AnsiEsc.vim'
 
 Plug 'Konfekt/FastFold'
+Plug 'jiangmiao/auto-pairs'
