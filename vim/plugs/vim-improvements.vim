@@ -137,6 +137,19 @@ Plug 'Keithbsmiley/investigate.vim'
 let g:investigate_use_dash=1
 let g:investigate_use_url_for_rails=1
 
+" ### simeji/winresizer
+" Plugin for resizing/moving windows.
+"
+" | Instruction | Description                                                                            |
+" | ---         | ---                                                                                    |
+" | `<C-w>e`    | Enters resizing mode                                                                   |
+" |             | Once in resizing mode you can resize the current window by `h` `j` `k` `l`             |
+" |             | `q` to exit resize mode, and cancel any changes                                        |
+" |             | `<CR>` to exit resize mode, and keep any changes                                       |
+" |             | `e` will change the mode to move window mode, and `h` `j` `k` `l` will move the window |
+" ###
+Plug 'simeji/winresizer'
+
 " Misc/Utilities
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-ragtag'

@@ -379,6 +379,18 @@ Plugin for looking up documentation.
 | `gK`        | over a word or in visual mode, will search for the selected text on Dash |
 ###
 
+### simeji/winresizer
+Plugin for resizing/moving windows.
+
+| Instruction | Description                                                                            |
+| ---         | ---                                                                                    |
+| `<C-w>e`    | Enters resizing mode                                                                   |
+|             | Once in resizing mode you can resize the current window by `h` `j` `k` `l`             |
+|             | `q` to exit resize mode, and cancel any changes                                        |
+|             | `<CR>` to exit resize mode, and keep any changes                                       |
+|             | `e` will change the mode to move window mode, and `h` `j` `k` `l` will move the window |
+###
+
 ### tpope/vim-dispatch
 
 | Instruction  | Description                                                            |
