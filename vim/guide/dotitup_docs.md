@@ -36,6 +36,8 @@ the quickfix window and then asyncronously run
 | `<C-k>`                     | `<C-w>k`                                                                           |
 | `<C-h>`                     | `<C-w>h`                                                                           |
 | `<C-l>`                     | `<C-w>l`                                                                           |
+| `<C-w>o`                    | Focus on current window                                                            |
+| `<C-w>u`                    | Return to window layout after `<C-w>o`                                             |
 ###
 
 ### michaeljsmith/vim-indent-object
