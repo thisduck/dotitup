@@ -240,6 +240,8 @@ Allows realtime preview of markdown (and some other) files
 |                             | blob, tree or tag (to view the commit etc)                            |
 | `:Gstatus` / `<leader>gs`   | displays a buffer with git status.                                    |
 |                             | use `-` on filename to add / reset from staging                       |
+|                             | use `D` on filename to see the diff                                   |
+|                             | use `C` to commit                                                     |
 | `:Gcommit` / `<leader>gc`   | will commit staged changes (with buffer for                           |
 |                             | commit message)                                                       |
 | `:Gblame` / `<leader>gb`    | vertical buffer to show git blame results                             |
