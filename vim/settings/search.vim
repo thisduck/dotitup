@@ -52,7 +52,7 @@ endfunction
 command! -nargs=+ -complete=file -bar DotGrep silent call DotGrep(<q-args>)
 
 " DotGrep search <leader>/
-nnoremap <leader>/ :<C-u>DeniteProjectDir grep -mode=normal<CR>
+nnoremap <leader>/ :<C-u>DeniteProjectDir grep -mode=normal -no-quit<CR>
 
 " takes you back to the point where you started your search
 nnoremap <leader>./ :<C-u>Denite -resume<CR>
@@ -84,6 +84,31 @@ call denite#custom#map('normal', '<C-k>',
       \ '<denite:move_to_previous_line>', 'noremap')
 call denite#custom#map('insert', "'",
       \ '<denite:move_to_next_line>', 'noremap')
+
+call denite#custom#map(
+      \ 'normal',
+      \ '<Down>',
+      \ '<denite:move_to_next_line>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'normal',
+      \ '<Up>',
+      \ '<denite:move_to_previous_line>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<Down>',
+      \ '<denite:move_to_next_line>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<Up>',
+      \ '<denite:move_to_previous_line>',
+      \ 'noremap'
+      \)
 
 call denite#custom#map('normal', '/',
       \ 'denite:enter_mode:insert', 'noremap')
