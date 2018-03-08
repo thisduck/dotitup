@@ -14,6 +14,8 @@
 " | `<C-k>`                     | `<C-w>k`                                                                           |
 " | `<C-h>`                     | `<C-w>h`                                                                           |
 " | `<C-l>`                     | `<C-w>l`                                                                           |
+" | `<C-w>o`                    | Focus on current window                                                            |
+" | `<C-w>u`                    | Return to window layout after `<C-w>o`                                             |
 " ###
 
 "" copy to clipboard
@@ -78,3 +80,8 @@ vnoremap <leader>s, :call DotSplitComma()<cr>
 
 " --- 
 nnoremap <silent> <Leader>gf   :vertical botright wincmd F<CR>
+
+" ---
+
+nnoremap <C-w>o :mksession! ~/session.vim<CR>:wincmd o<CR>
+nnoremap <C-w>u :source ~/session.vim<CR>
