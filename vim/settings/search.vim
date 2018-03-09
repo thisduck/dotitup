@@ -52,7 +52,7 @@ endfunction
 command! -nargs=+ -complete=file -bar DotGrep silent call DotGrep(<q-args>)
 
 " DotGrep search <leader>/
-nnoremap <leader>/ :<C-u>DeniteProjectDir grep -mode=normal -no-quit<CR>
+nnoremap <leader>/ :<C-u>DeniteProjectDir grep -mode=normal<CR>
 
 " takes you back to the point where you started your search
 nnoremap <leader>./ :<C-u>Denite -resume<CR>
