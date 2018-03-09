@@ -136,11 +136,10 @@ call denite#custom#option('default', {
             \ 'winheight': 15,
             \ 'updatetime': 100,
             \ 'prompt': '❯',
-            \ 'prompt_highlight': 'Search',
-            \ 'highlight_matched_char': 'Search',
-            \ 'highlight_matched_range': 'Search',
-            \ 'highlight_mode_insert': 'CursorLine',
-            \ 'highlight_mode_normal': 'CursorLine'
+            \ 'highlight_matched_char': 'DeniteSearch',
+            \ 'highlight_matched_range': 'DeniteSearch',
+            \ 'highlight_mode_insert': 'DeniteCursorLine',
+            \ 'highlight_mode_normal': 'DeniteCursorLine'
             \ })
 
 nnoremap ]/ :<C-u>:Denite -resume -select=+1 -immediately<CR>

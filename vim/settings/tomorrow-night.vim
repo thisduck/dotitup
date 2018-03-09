@@ -11,6 +11,9 @@ hi Search ctermfg=NONE ctermbg=NONE cterm=standout guifg=NONE guibg=NONE gui=und
 
 highlight ALEWarning cterm=standout
 
+hi DeniteSearch ctermfg=235 ctermbg=186 cterm=NONE guifg=#272822 guibg=#e6db74 gui=NONE
+hi DeniteCursorLine cterm=reverse
+
 hi EasyMotionTarget ctermbg=black ctermfg=white cterm=bold
 hi EasyMotionShade  ctermbg=black ctermfg=darkgray
 
