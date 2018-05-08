@@ -34,10 +34,10 @@ task :install do
     setup_neovim
   end
 
-  vim = `which vim`.chomp
-  if vim != ''
-    setup_vim
-  end
+  # vim = `which vim`.chomp
+  # if vim != ''
+  #   setup_vim
+  # end
 end
 
 task :setup_ctags do
