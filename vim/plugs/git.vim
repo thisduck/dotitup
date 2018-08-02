@@ -51,7 +51,7 @@ Plug 'tpope/vim-git'
 " | `<leader>hu`  | undo hunk                  |
 " | `[c` and `]c` | navigate to prev/next hunk |
 " ###
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 
 " ### gregsexton/gitv
 "

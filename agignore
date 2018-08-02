@@ -9,7 +9,6 @@ zsh/plugins/
 *DS_Store*
 vendor/rails/
 vendor/cache/
-vendor/gems/
 files/development/
 files/production/
 files/test/

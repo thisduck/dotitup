@@ -23,7 +23,10 @@ let g:ale_fixers = {
 \   'json': ['prettier'],
 \   'sass': ['stylelint'],
 \   'scss': ['stylelint'],
+\   'javascript': ['eslint'],
 \}
+nnoremap <silent> <leader>af :ALEFix<CR>
+nnoremap <silent> <leader>al :ALELint<CR>
 
 " ### Shougo/neosnippet.vim
 " You can create your own snippets that can be inserted into the 

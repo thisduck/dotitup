@@ -15,7 +15,7 @@ task :install do
 
   puts '-- Linking files and folders'
   link_it 'gemrc'
-  link_it 'agignore'
+  Rake::Task["setup_agignore"].execute
   Rake::Task["setup_ctags"].execute
   link_it 'zshrc'
   link_it 'tmux.conf'
@@ -43,6 +43,10 @@ end
 task :setup_ctags do
   link_it 'ctags'
   link_it 'ctags', destination: '~/.ctags.d/default.ctags'
+end
+
+task :setup_agignore do
+  link_it 'agignore'
 end
 
 task :setup_neovim do
