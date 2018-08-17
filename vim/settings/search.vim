@@ -122,6 +122,12 @@ call denite#custom#map('normal', 'v',
 call denite#custom#map('normal', 's',
       \ '<denite:do_action:split>', 'noremap')
 
+call denite#custom#map('insert', '<c-v>',
+      \ '<denite:do_action:vsplit>', 'noremap')
+
+call denite#custom#map('insert', '<c-s>',
+      \ '<denite:do_action:split>', 'noremap')
+
 call denite#custom#alias('source', 'file_rec/git', 'file_rec')
 call denite#custom#var('file_rec/git', 'command',
       \ ['git', 'ls-files', '-co', '--exclude-standard'])
