@@ -63,7 +63,7 @@ nnoremap K :<C-u>Denite grep::-w:<C-r><C-w> -mode=normal<CR>
 
 " denite
 call denite#custom#var('file_rec', 'command',
-      \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+      \ ['ag', '--follow', '--nocolor', '--hidden', '--nogroup', '-g', ''])
 
 " if has('nvim')
 "   call denite#custom#source('file_rec,grep', 'matchers',
