@@ -471,8 +471,8 @@ Look at the FZF docs for usage.
 
 ### majutsushi/tagbar
 
-| Instruction | Description              |
-| ---         | ---                      |
-| `:Tagbar`   | toggle the Tagbar window |
+| Instruction             | Description              |
+| ---                     | ---                      |
+| `:Tagbar` / `<leader>t` | toggle the Tagbar window |
 ###
 

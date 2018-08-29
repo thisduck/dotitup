@@ -133,9 +133,10 @@ Plug 'machakann/vim-highlightedyank'
 
 " ### majutsushi/tagbar
 "
-" | Instruction | Description              |
-" | ---         | ---                      |
-" | `:Tagbar`   | toggle the Tagbar window |
+" | Instruction             | Description              |
+" | ---                     | ---                      |
+" | `:Tagbar` / `<leader>t` | toggle the Tagbar window |
 " ###
 Plug 'majutsushi/tagbar'
+map <Leader>t :Tagbar<CR>
 " let g:airline#extensions#tagbar#enabled = 0
