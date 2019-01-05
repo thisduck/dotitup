@@ -10,6 +10,7 @@
 --exclude=db/fixtures
 --exclude=db/*.json
 --exclude=*.css
+--exclude=*.json
 --exclude=*/vendor/*.js
 --exclude=vendor/*.js
 --exclude=vendor/*.css

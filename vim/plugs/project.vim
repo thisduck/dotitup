@@ -60,7 +60,9 @@ Plug 'airblade/vim-rooter'
 Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
+
+" Commenting out because it asks a question on install
+" Plug 'xolox/vim-notes'
 
 Plug 'fweep/vim-zsh-path-completion'
 
