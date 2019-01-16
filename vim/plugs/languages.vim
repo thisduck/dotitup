@@ -29,6 +29,7 @@ let g:ale_fixers = {
 \   'sass': ['stylelint'],
 \   'scss': ['stylelint'],
 \   'javascript': ['eslint'],
+\   'coffeescript': ['coffeelint'],
 \}
 nnoremap <silent> <leader>af :ALEFix<CR>
 nnoremap <silent> <leader>al :ALELint<CR>
@@ -61,3 +62,9 @@ Plug 'mattn/emmet-vim'
 Plug 'kannokanno/previm'
 Plug 'tyru/open-browser.vim'
 nnoremap <silent> <leader>po :PrevimOpen<CR>
+
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+Plug 'alvan/vim-closetag'
+let g:closetag_filenames = '*.htm,*.html,*.xhtml,*.phtml,*.hbs,*.jsx'
+let g:closetag_filetypes = 'html,xhtml,phtml'
