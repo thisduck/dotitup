@@ -6,7 +6,6 @@ Vim is a modal editor. Not like modals that pop up on websites. But that it has 
 | ---------    | :-------------                                                                                                   |
 | Normal       | Vim starts in this mode. It's for navigating and modifying text via commands.                                    |
 |              | You can return to this mode by pressing `<ESC>` or `<C-c>` (notation for `CTRL-C`)                               |
-|              | Note that the `<C-c>` shortcut is configured by Dotitup. Vim's own default is `<ESC>`.                           |
 | Insert       | This mode is for inserting text. You can enter this mode from by pressing `i`                                    |
 | Visual       | This mode is for selecting text. You can enter this mode from by pressing `v` or `V`. (covered later)            |
 | Command-Line | This mode is for entering commands. You can enter this mode from by pressing `:` often followed by some command. |
