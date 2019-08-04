@@ -52,7 +52,7 @@ endfunction
 command! -nargs=+ -complete=file -bar DotGrep silent call DotGrep(<q-args>)
 
 " DotGrep search <leader>/
-nnoremap <leader>/ :<C-u>Leaderf rg -e 
+nnoremap <leader>/ :<C-u>Leaderf! rg -e 
 
 " takes you back to the point where you started your search
 nnoremap <leader>./ :<C-U>Leaderf! rg --recall<CR>

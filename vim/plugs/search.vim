@@ -55,7 +55,7 @@ endif
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 nnoremap <leader>dl :<C-u>Leaderf line<CR>
-nnoremap <C-p> :<C-u>Leaderf! file<CR>
+nnoremap <C-p> :<C-u>Leaderf file<CR>
 nnoremap <leader>he :<C-u>Leaderf help<CR>
 nnoremap <leader>bs :<C-u>Leaderf buffer<CR>
 
