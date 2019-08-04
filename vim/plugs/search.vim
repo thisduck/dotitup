@@ -41,7 +41,7 @@ else
   Plug 'xtal8/traces.vim'
 endif
 
-" ### Shougo/denite.nvim
+" ### Yggdroot/LeaderF
 " Shortcuts:
 "
 " | Instruction  | Description                                      |
@@ -52,14 +52,12 @@ endif
 " | `<leader>he` | fuzzy search for vim help.                       |
 "
 " ###
-Plug 'Shougo/denite.nvim'
-nnoremap <leader>dl :<C-u>Denite line<CR>
-nnoremap <C-p> :<C-u>DeniteProjectDir file_rec -reversed<CR>
-nnoremap <leader>he :<C-u>Denite help<CR>
-nnoremap <leader>bs :<C-u>Denite buffer file_mru<CR>
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
-" Plug 'nixprime/cpsm', { 'do': 'PY3=ON ./install.sh' }
-Plug 'Shougo/neomru.vim'
+nnoremap <leader>dl :<C-u>Leaderf line<CR>
+nnoremap <C-p> :<C-u>Leaderf! file<CR>
+nnoremap <leader>he :<C-u>Leaderf help<CR>
+nnoremap <leader>bs :<C-u>Leaderf buffer<CR>
 
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'

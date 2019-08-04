@@ -152,7 +152,7 @@ to that word or line. you have to try it.
 | `<leader>s[character]` | will highlight `[character]` across windows   |
 ###
 
-### Shougo/denite.nvim
+### Yggdroot/LeaderF
 Shortcuts:
 
 | Instruction  | Description                                      |

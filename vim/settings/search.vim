@@ -52,107 +52,13 @@ endfunction
 command! -nargs=+ -complete=file -bar DotGrep silent call DotGrep(<q-args>)
 
 " DotGrep search <leader>/
-nnoremap <leader>/ :<C-u>DeniteProjectDir grep -mode=normal<CR>
+nnoremap <leader>/ :<C-u>Leaderf rg -e 
 
 " takes you back to the point where you started your search
-nnoremap <leader>./ :<C-u>Denite -resume<CR>
+nnoremap <leader>./ :<C-U>Leaderf! rg --recall<CR>
 
 " Search for word under cursor
-nnoremap K :<C-u>Denite grep::-w:<C-r><C-w> -mode=normal<CR>
+nnoremap K :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
 
-
-" denite
-call denite#custom#var('file_rec', 'command',
-      \ ['ag', '--follow', '--nocolor', '--hidden', '--nogroup', '-g', ''])
-
-" if has('nvim')
-"   call denite#custom#source('file_rec,grep', 'matchers',
-"         \ ['matcher_cpsm'])
-" endif
-call denite#custom#map('insert', '<C-r>',
-      \ '<denite:toggle_matchers:matcher_substring>', 'noremap')
-call denite#custom#map('insert', '<C-s>',
-      \ '<denite:toggle_sorters:sorter_reverse>', 'noremap')
-
-call denite#custom#map('insert', '<C-j>',
-      \ '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-k>',
-      \ '<denite:move_to_previous_line>', 'noremap')
-call denite#custom#map('normal', '<C-j>',
-      \ '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('normal', '<C-k>',
-      \ '<denite:move_to_previous_line>', 'noremap')
-call denite#custom#map('insert', "'",
-      \ '<denite:move_to_next_line>', 'noremap')
-
-call denite#custom#map(
-      \ 'normal',
-      \ '<Down>',
-      \ '<denite:move_to_next_line>',
-      \ 'noremap'
-      \)
-call denite#custom#map(
-      \ 'normal',
-      \ '<Up>',
-      \ '<denite:move_to_previous_line>',
-      \ 'noremap'
-      \)
-call denite#custom#map(
-      \ 'insert',
-      \ '<Down>',
-      \ '<denite:move_to_next_line>',
-      \ 'noremap'
-      \)
-call denite#custom#map(
-      \ 'insert',
-      \ '<Up>',
-      \ '<denite:move_to_previous_line>',
-      \ 'noremap'
-      \)
-
-call denite#custom#map('normal', '/',
-      \ 'denite:enter_mode:insert', 'noremap')
-
-call denite#custom#map('normal', 'r',
-      \ '<denite:do_action:quickfix>', 'noremap')
-
-call denite#custom#map('normal', 'v',
-      \ '<denite:do_action:vsplit>', 'noremap')
-
-call denite#custom#map('normal', 's',
-      \ '<denite:do_action:split>', 'noremap')
-
-call denite#custom#map('insert', '<c-v>',
-      \ '<denite:do_action:vsplit>', 'noremap')
-
-call denite#custom#map('insert', '<c-s>',
-      \ '<denite:do_action:split>', 'noremap')
-
-call denite#custom#alias('source', 'file_rec/git', 'file_rec')
-call denite#custom#var('file_rec/git', 'command',
-      \ ['git', 'ls-files', '-co', '--exclude-standard'])
-
-call denite#custom#var('grep', 'command', ['ag'])
-call denite#custom#var('grep', 'default_opts',
-      \ ['-i', '--vimgrep'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', [])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-
-call denite#custom#var('outline', 'options', ['-u'])
-
-call denite#custom#option('default', {
-            \ 'auto_resize': 1,
-            \ 'statusline': 0,
-            \ 'winheight': 15,
-            \ 'updatetime': 100,
-            \ 'prompt': '❯',
-            \ 'highlight_matched_char': 'DeniteSearch',
-            \ 'highlight_matched_range': 'DeniteSearch',
-            \ 'highlight_mode_insert': 'DeniteCursorLine',
-            \ 'highlight_mode_normal': 'DeniteCursorLine'
-            \ })
-
-nnoremap ]/ :<C-u>:Denite -resume -select=+1 -immediately<CR>
-nnoremap [/ :<C-u>:Denite -resume -select=-1 -immediately<CR>
+" nnoremap ]/ :<C-u>Leaderf --next<CR>
+" nnoremap [/ :<C-u>Leaderf --previous<CR>
