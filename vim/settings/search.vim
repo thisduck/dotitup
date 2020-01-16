@@ -22,7 +22,7 @@ endif
 
 " Search shortcuts
 
-" Fzf search <leader>\ (note the backslack)
+" Fzf search <leader>\ (note the backslash)
 nnoremap <leader>\ :<C-u>FzfAg<SPACE>
 
 " Fzf Search for word under cursor
