@@ -1,5 +1,5 @@
 ```vim
-call plug#begin('~/dotitup/nvim/plugged')
+call plug#begin('~/.dotvim/plugged')
 
 execute literatevimrc#load("~/.dotvim/plugins/project.md")
 execute literatevimrc#load("~/.dotvim/plugins/appearance.md")
