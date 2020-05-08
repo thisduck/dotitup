@@ -7,37 +7,30 @@ task :install do
   clone_it 'oh-my-zsh',
            source: 'https://github.com/robbyrussell/oh-my-zsh',
            destination: File.expand_path('~/.oh-my-zsh')
-  clone_it 'zsh-syntax-highlighting',
-           source: 'https://github.com/zsh-users/zsh-syntax-highlighting',
-           destination: current_path(
-             'zsh', 'plugins', 'zsh-syntax-highlighting'
-           )
+  # clone_it 'zsh-syntax-highlighting',
+  #          source: 'https://github.com/zsh-users/zsh-syntax-highlighting',
+  #          destination: current_path(
+  #            'zsh', 'plugins', 'zsh-syntax-highlighting'
+  #          )
+  clone_it 'powerlevel10k',
+           source: 'https://github.com/romkatv/powerlevel10k.git',
+           destination: File.expand_path('~/.oh-my-zsh/custom')
+
+  run "pip3 install --user neovim"
 
   puts '-- Linking files and folders'
+  `cp ./iterm2/com.googlecode.iterm2.plist ~/Library/Preferences/.`
   link_it 'gemrc'
   Rake::Task["setup_agignore"].execute
   Rake::Task["setup_ctags"].execute
   link_it 'zshrc'
   link_it 'tmux.conf'
-  link_it 'custom oh my zsh',
-          source: 'zsh',
-          destination: '~/.oh-my-zsh/custom',
-          pre_link: lambda {
-            if File.exist?(File.expand_path('~/.oh-my-zsh/custom/example.zsh'))
-              FileUtils.rm_rf(File.expand_path('~/.oh-my-zsh/custom/'))
-            end
-          }
-
+  link_it 'p10k.zh'
 
   neovim = `which nvim`.chomp
   if neovim != ''
     setup_neovim
   end
-
-  # vim = `which vim`.chomp
-  # if vim != ''
-  #   setup_vim
-  # end
 end
 
 task :setup_ctags do
@@ -52,11 +45,6 @@ end
 task :setup_neovim do
   setup_neovim
 end
-
-task :setup_vim do
-  setup_vim
-end
-
 
 task :parse_docs do
   files = Dir['./vim/settings/*.vim'] + Dir['./vim/plugs/*.vim']
