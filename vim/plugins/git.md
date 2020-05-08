@@ -71,3 +71,7 @@ Plug 'gregsexton/gitv', {'on': ['Gitv']}
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 ```
+
+```vim
+Plug 'rhysd/committia.vim'
+```

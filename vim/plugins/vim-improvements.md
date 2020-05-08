@@ -28,7 +28,8 @@ Plug 'fishbullet/deoplete-ruby'
 let g:deoplete#enable_at_startup = 1
 
 let g:deoplete#sources = {}
-let g:deoplete#sources._ = ['neosnippet', 'ruby', 'emoji', 'file', 'buffer', 'member', 'around', 'tag']
+let g:deoplete#sources._ = ['ale', 'buffer', 'tag', 'around', 'member']
+" "let g:deoplete#sources._ = ['neosnippet', 'ruby', 'emoji', 'file', 'buffer', 'member', 'around', 'tag']
 let deoplete#tag#cache_limit_size = 10000000
 
 imap <expr><TAB>
