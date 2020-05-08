@@ -1,21 +1,8 @@
+```vim
 Plug 'chrisbra/color_highlight'
 let g:colorizer_auto_filetype='css,html,sass,scss'
 
-Plug 'bling/vim-airline'
-let g:airline_mode_map = {
-  \ '__' : '-',
-  \ 'n'  : 'N',
-  \ 'i'  : 'I',
-  \ 'R'  : 'R',
-  \ 'c'  : 'C',
-  \ 'v'  : 'V',
-  \ 'V'  : 'V',
-  \ '' : 'V',
-  \ 's'  : 'S',
-  \ 'S'  : 'S',
-  \ '' : 'S',
-  \ 'h'  : 'H'
-  \ }
+Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
 
 Plug 'Keithbsmiley/tmux.vim'
@@ -32,3 +19,5 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'mhinz/vim-janah'
 Plug 'joshdick/onedark.vim'
 Plug 'chriskempson/base16-vim'
+```
+
