@@ -1,3 +1,4 @@
+```vim
 " Tomorrow-Night compatible diff colours.
 " highlight DiffChange term=reverse cterm=bold ctermbg=229 ctermfg=244
 " highlight DiffText term=reverse cterm=bold ctermbg=011 ctermfg=232
@@ -14,3 +15,4 @@ set t_Co=256
 
 hi DeniteSearch ctermfg=235 ctermbg=186 cterm=NONE guifg=#272822 guibg=#e6db74 gui=NONE
 hi DeniteCursorLine cterm=reverse
+```

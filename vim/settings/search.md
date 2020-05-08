@@ -1,18 +1,18 @@
-" ### Search
+### Search
 
-" | Instruction        | Description                                                                               |
-" | ---                | ---                                                                                       |
-" | *Primary Search*   |                                                                                           |
-" | `<leader>/`        | search for word(s) in project                                                             |
-" | `K`                | search for work under cursor in project                                                   |
-" |                    | use `<C-j>` and `<C-k>` to navigate the results `j`/`k` work also. `<CR>` to go to result |
-" |                    | `]/` and `[/` will take you to prev and next results                                      |
-" | `<leader>./`       | takes you back to the search listing                                                      |
-" | *Secondary Search* |                                                                                           |
-" | `<leader>\`        | search for word(s) in project, using FZF                                                  |
-" | `L`                | search for work under cursor in project, using FZF                                        |
-" ###
+| Instruction        | Description                                                                               |
+| ---                | ---                                                                                       |
+| *Primary Search*   |                                                                                           |
+| `<leader>/`        | search for word(s) in project                                                             |
+| `K`                | search for work under cursor in project                                                   |
+|                    | use `<C-j>` and `<C-k>` to navigate the results `j`/`k` work also. `<CR>` to go to result |
+|                    | `]/` and `[/` will take you to prev and next results                                      |
+| `<leader>./`       | takes you back to the search listing                                                      |
+| *Secondary Search* |                                                                                           |
+| `<leader>\`        | search for word(s) in project, using FZF                                                  |
+| `L`                | search for work under cursor in project, using FZF                                        |
 
+```vim
 " use ag as the grepping program if is exists
 if executable('ag')
   set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
@@ -62,3 +62,4 @@ nnoremap K :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
 
 " nnoremap ]/ :<C-u>Leaderf --next<CR>
 " nnoremap [/ :<C-u>Leaderf --previous<CR>
+```

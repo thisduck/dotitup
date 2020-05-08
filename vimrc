@@ -1,14 +1,20 @@
+let mapleader=" "
+
+source ~/.dotvim/autoload/literatevimrc.vim
+
+execute literatevimrc#load("~/.dotvim/plugins.md")
+execute literatevimrc#load("~/.dotvim/settings.md")
+
 " ---
 
 set nocompatible " turns vi compatibility off.
 
 " ---
 
-let mapleader=" "
 
-if filereadable(expand("~/.dotvim/plug.vim"))
-  source ~/.dotvim/plug.vim
-endif
+" if filereadable(expand("~/.dotvim/plug.vim"))
+"   source ~/.dotvim/plug.vim
+" endif
 
 " ---
 
