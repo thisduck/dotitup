@@ -53,7 +53,9 @@ Plug 'tpope/vim-dispatch'
 
 ```vim
 Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeShowHidden=1
