@@ -14,18 +14,24 @@ task :install do
   #          )
   clone_it 'powerlevel10k',
            source: 'https://github.com/romkatv/powerlevel10k.git',
-           destination: File.expand_path('~/.oh-my-zsh/custom')
+           destination: File.expand_path('~/.oh-my-zsh/custom/themes/powerlevel10k')
+  clone_it 'powerlevel10k-media',
+           source: 'https://github.com/romkatv/powerlevel10k-media.git',
+           destination:  current_path(
+             'tmp', 'media', 'powerlevel10k-media'
+           )
 
   run "pip3 install --user neovim"
 
   puts '-- Linking files and folders'
   `cp ./iterm2/com.googlecode.iterm2.plist ~/Library/Preferences/.`
+  `cp ./tmp/media/powerlevel10k-media/*.ttf ~/Library/Fonts/.`
   link_it 'gemrc'
   Rake::Task["setup_agignore"].execute
   Rake::Task["setup_ctags"].execute
   link_it 'zshrc'
   link_it 'tmux.conf'
-  link_it 'p10k.zh'
+  link_it 'p10k.zsh'
 
   neovim = `which nvim`.chomp
   if neovim != ''

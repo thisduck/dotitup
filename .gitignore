@@ -11,3 +11,4 @@ zsh/plugins/**
 tags
 tags.*
 .netrwhist
+tmp/
