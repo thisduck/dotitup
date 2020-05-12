@@ -15,5 +15,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'chriskempson/base16-vim'
-```
 
+" syntax highlighting for multiple languages
+Plug 'sheerun/vim-polyglot'
+```

@@ -46,3 +46,5 @@ let g:reek_on_loading = 0
 | Instruction | Description                                |
 | ---         | ---                                        |
 | `:RunReek`  | will run reek and show results in quickfix |
+
+

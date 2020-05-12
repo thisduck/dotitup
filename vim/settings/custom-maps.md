@@ -9,25 +9,10 @@
 | `<leader>>`                 | replace old style ruby hashes with new style                                       |
 | `<leader>s,`                | break up a ruby line somewhat sensibly                                             |
 | `<leader>gf`                | `gf` in a vertical split                                                           |
-| *Window Movement Shortcuts* |                                                                                    |
-| `<C-j>`                     | `<C-w>j`                                                                           |
-| `<C-k>`                     | `<C-w>k`                                                                           |
-| `<C-h>`                     | `<C-w>h`                                                                           |
-| `<C-l>`                     | `<C-w>l`                                                                           |
-| `<C-w>o`                    | Focus on current window                                                            |
-| `<C-w>u`                    | Return to window layout after `<C-w>o`                                             |
 
 ```vim
 "" copy to clipboard
 map <Leader>y "*y
-
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
-map <Leader>ct :AsyncOpenRun ctags -R .<CR><CR>
 
 "" toggle set paste
 nnoremap <Leader>pp :set invpaste<CR>:set paste?<CR>
@@ -36,6 +21,7 @@ nnoremap <Leader><Leader>p :set invpaste<CR>:set paste?<CR>
 "" ---
 
 inoremap <c-c> <ESC>
+map <Leader>ct :AsyncOpenRun ctags -R .<CR><CR>
 
 "" --- Taken from vim-ruby to map <C-]> to g<C-]>
 
@@ -81,9 +67,5 @@ vnoremap <leader>s, :call DotSplitComma()<cr>
 " --- 
 nnoremap <silent> <Leader>gf   :vertical botright wincmd F<CR>
 
-" ---
-
-nnoremap <C-w>o :mksession! ~/session.vim<CR>:wincmd o<CR>
-nnoremap <C-w>u :source ~/session.vim<CR>
 ```
 

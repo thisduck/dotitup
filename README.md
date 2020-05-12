@@ -1,3 +1,14 @@
-Dot file setups copied from various sources.
+## Dotitup
 
-Mostly from [Yan Pritzker's dotfiles](https://github.com/skwp/dotfiles) and (Bailey Ling's dotvim)[https://github.com/bling/dotvim].
+### Install
+
+```zsh
+# install brew
+sh install_brew.sh
+
+# install packages from Brewfile
+brew bundle
+
+# setup dot files, oh-my-zsh, and nvim plugins
+rake
+```

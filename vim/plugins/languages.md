@@ -1,9 +1,4 @@
 ```vim
-" syntax highlighting for multiple languages
-Plug 'sheerun/vim-polyglot'
-```
-
-```vim
 Plug 'dense-analysis/ale'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
@@ -60,23 +55,4 @@ Plug 'mattn/emmet-vim'
 The emmet plugin allows quick insertion of html into the code.
 Follow the tutorial here: https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
 
-```vim
-Plug 'kannokanno/previm'
-Plug 'tyru/open-browser.vim'
-nnoremap <silent> <leader>md :PrevimOpen<CR>
-```
 
-### kannokanno/previm
-Allows realtime preview of markdown (and some other) files
-
-| Instruction                   | Description                              |
-| ---                           | ---                                      |
-| `:PrevimOpen` or `<leader>md` | opens current markdown buffer in browser |
-
-```vim
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-
-Plug 'alvan/vim-closetag'
-let g:closetag_filenames = '*.htm,*.html,*.xhtml,*.phtml,*.hbs,*.jsx'
-let g:closetag_filetypes = 'html,xhtml,phtml'
-```

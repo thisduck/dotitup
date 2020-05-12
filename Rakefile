@@ -7,11 +7,9 @@ task :install do
   clone_it 'oh-my-zsh',
            source: 'https://github.com/robbyrussell/oh-my-zsh',
            destination: File.expand_path('~/.oh-my-zsh')
-  # clone_it 'zsh-syntax-highlighting',
-  #          source: 'https://github.com/zsh-users/zsh-syntax-highlighting',
-  #          destination: current_path(
-  #            'zsh', 'plugins', 'zsh-syntax-highlighting'
-  #          )
+  clone_it 'zsh-syntax-highlighting',
+           source: 'https://github.com/zsh-users/zsh-syntax-highlighting',
+           destination: File.expand_path('~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting')
   clone_it 'powerlevel10k',
            source: 'https://github.com/romkatv/powerlevel10k.git',
            destination: File.expand_path('~/.oh-my-zsh/custom/themes/powerlevel10k')
@@ -32,6 +30,9 @@ task :install do
   link_it 'zshrc'
   link_it 'tmux.conf'
   link_it 'p10k.zsh'
+  link_it 'alacritty.yml'
+  link_it 'gitignore'
+  run "git config --global core.excludesfile ~/.gitignore"
 
   neovim = `which nvim`.chomp
   if neovim != ''

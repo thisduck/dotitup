@@ -1,22 +1,3 @@
-```vim
-Plug 'tpope/vim-fugitive'
-nnoremap <silent> <leader>gs :Gstatus<CR>
-nnoremap <silent> <leader>gd :Gvdiff<CR> " always split vertically
-nnoremap <silent> <leader>gc :Gcommit<CR>
-nnoremap <silent> <leader>gb :Gblame<CR>
-nnoremap <silent> <leader>gl :Glog<CR>
-nnoremap <silent> <leader>gp :AsyncOpenRun git push origin HEAD<CR>
-nnoremap <silent> <leader>gw :Gwrite<CR> " adds the current file
-nnoremap <silent> <leader>ga :Gwrite<CR> " to make it feel like git add
-nnoremap <silent> <leader>grm :Gdelete!<CR>
-
-nnoremap <silent> <Leader>dg :diffget<CR>
-nnoremap <silent> <Leader>dp :diffput<CR>
-
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-git'
-```
-
 ### tpope/vim-fugitive
 
 | Instruction                 | Description                                                           |
@@ -42,7 +23,22 @@ Plug 'tpope/vim-git'
 | `:Git`                      | for any git command e.g. `:Git status`                                |
 
 ```vim
-Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-git'
+
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gd :Gvdiff<CR> " always split vertically
+nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>gl :Glog<CR>
+nnoremap <silent> <leader>gp :AsyncOpenRun git push origin HEAD<CR>
+nnoremap <silent> <leader>gw :Gwrite<CR> " adds the current file
+nnoremap <silent> <leader>ga :Gwrite<CR> " to make it feel like git add
+nnoremap <silent> <leader>grm :Gdelete!<CR>
+
+nnoremap <silent> <Leader>dg :diffget<CR>
+nnoremap <silent> <Leader>dp :diffput<CR>
 ```
 
 ### airblade/vim-gitgutter 
@@ -57,8 +53,9 @@ short cuts:
 | `<leader>hu`  | undo hunk                  |
 | `[c` and `]c` | navigate to prev/next hunk |
 
+
 ```vim
-Plug 'gregsexton/gitv', {'on': ['Gitv']}
+Plug 'airblade/vim-gitgutter'
 ```
 
 ### gregsexton/gitv
@@ -66,6 +63,12 @@ Plug 'gregsexton/gitv', {'on': ['Gitv']}
 | Instruction | Description             |
 | ---         | ---                     |
 | `:Gitv`     | to see a visual git log |
+
+
+```vim
+Plug 'gregsexton/gitv', {'on': ['Gitv']}
+```
+
 
 ```vim
 Plug 'mattn/gist-vim'
