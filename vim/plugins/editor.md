@@ -1,6 +1,9 @@
-## Editor
+## Editor Plugins
 
-Let's start with startify.
+### mhinz/vim-startify
+
+Let's start with startify. It shows most recently used files and sessions in the
+project and overall.
 
 ```vim
 Plug 'mhinz/vim-startify'
@@ -17,22 +20,15 @@ let g:startify_list_order = [
   \ ['   Commands:'],
   \ 'commands',
   \ ]
-
 ```
 
-Let's save the session before we exit vim. This way statify will show 
-the last session if we want to return to the previous layout.
+### simnalamburt/vim-mundo
 
-```vim
-fu! SaveSess()
-    execute 'NERDTreeClose'
-    execute 'mksession! ' . getcwd() . '/session.vim'
-endfunction
-
-autocmd VimLeave * call SaveSess()
-```
-
-Magic undo functionality.
+Magic undo functionality. This plugin will open an undo window that will display
+the changes you've made to the file in a git commit style. It will show all the
+diffs. Amazingly, it stores an undo tree. So even if you did and undo, and typed
+something by mistake, you don't lose your undo chain. You can revert to any
+state of the file.
 
 ```vim
 Plug 'simnalamburt/vim-mundo'
@@ -58,109 +54,14 @@ File tree navigation
 
 ```vim
 Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'Xuyuanp/nerdtree-git-plugin' " shows git changes
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " shows nice icons
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize = 30
 map <Leader>nt :NERDTreeToggle<CR>
 map <Leader>nf :NERDTreeFind<CR>
-```
-
-
-```vim
-```
-
-```vim
-" Plug 'dense-analysis/ale'
-" 
-" let g:ale_linters = { 'ruby': ['standardrb'], 'javascript': ['standard']  }
-" let g:ale_fixers = { 'ruby': ['standardrb'], 'javascript': ['standard'] }
-```
-
-```vim
-" -- Tim for Pope.
-Plug 'tpope/vim-sensible'
-```
-
-### tpope/vim-eunuch
-
-| Instruction  | Description                                                            |
-| ---          | ---                                                                    |
-| `:Delete`    | Delete a buffer and the file on disk simultaneously.                   |
-| `:Unlink`    | Like `:Delete`, but keeps the now empty buffer.                        |
-| `:Move`      | Rename a buffer and the file on disk simultaneously.                   |
-| `:Rename`    | Like `:Move`, but relative to the current file's containing directory. |
-| `:Chmod`     | Change the permissions of the current file.                            |
-| `:Mkdir`     | Create a directory, defaulting to the parent of the current file.      |
-| `:Find`      | Run `find` and load the results into the quickfix list.                |
-| `:Locate`    | Run `locate` and load the results into the quickfix list.              |
-| `:Wall`      | Write every open window.  Handy for kicking off tools like [guard][].  |
-| `:SudoWrite` | Write a privileged file with `sudo`.                                   |
-| `:SudoEdit`  | Edit a privileged file with `sudo`.                                    |
-
-```vim
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-rsi'
-```
-
-Automatically run ctags on projects
-
-```vim
-Plug 'ludovicchabant/vim-gutentags'
-
-" finds project root (usually a .git folder)
-Plug 'airblade/vim-rooter'
-```
-
-### junegunn/vim-easy-align
-Allows for easy alignment of text
-
-In this case, highlight the related lines and press `ga:`
-`ga` activates the easy-align plugin, and 
-then `:` tells it to align on the `:` character.
-
-Probably best to visit https://github.com/junegunn/vim-easy-align for full usage.
-
-```vim
-Plug 'junegunn/vim-easy-align'
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-```
-
-Highlight yanked text
-
-```vim
-Plug 'machakann/vim-highlightedyank'
-```
-
-Snippets
-
-```vim
-Plug 'honza/vim-snippets'
-```
-
-### kannokanno/previm
-Allows realtime preview of markdown (and some other) files
-
-| Instruction                   | Description                              |
-| ---                           | ---                                      |
-| `:PrevimOpen` or `<leader>md` | opens current markdown buffer in browser |
-
-```vim
-Plug 'kannokanno/previm'
-Plug 'tyru/open-browser.vim'
-nnoremap <silent> <leader>md :PrevimOpen<CR>
-```
-
-```vim
-Plug 'alvan/vim-closetag'
-let g:closetag_filenames = '*.htm,*.html,*.xhtml,*.phtml,*.hbs,*.jsx'
-let g:closetag_filetypes = 'html,xhtml,phtml'
 ```
 
 ### tpope/vim-commentary
@@ -217,6 +118,55 @@ There are many more helpful shortcuts, see `:help unimpaired`
 Plug 'tpope/vim-unimpaired'
 ```
 
+
+### tpope/vim-sensible
+
+Some sensible settings from Tim.
+
+```vim
+" -- Tim for Pope.
+Plug 'tpope/vim-sensible'
+```
+
+### tpope/vim-eunuch
+
+| Instruction  | Description                                                            |
+| ---          | ---                                                                    |
+| `:Delete`    | Delete a buffer and the file on disk simultaneously.                   |
+| `:Unlink`    | Like `:Delete`, but keeps the now empty buffer.                        |
+| `:Move`      | Rename a buffer and the file on disk simultaneously.                   |
+| `:Rename`    | Like `:Move`, but relative to the current file's containing directory. |
+| `:Chmod`     | Change the permissions of the current file.                            |
+| `:Mkdir`     | Create a directory, defaulting to the parent of the current file.      |
+| `:Find`      | Run `find` and load the results into the quickfix list.                |
+| `:Locate`    | Run `locate` and load the results into the quickfix list.              |
+| `:Wall`      | Write every open window.  Handy for kicking off tools like [guard][].  |
+| `:SudoWrite` | Write a privileged file with `sudo`.                                   |
+| `:SudoEdit`  | Edit a privileged file with `sudo`.                                    |
+
+```vim
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-rsi'
+```
+
+### junegunn/vim-easy-align
+Allows for easy alignment of text
+
+In this case, highlight the related lines and press `ga:`
+`ga` activates the easy-align plugin, and 
+then `:` tells it to align on the `:` character.
+
+Probably best to visit https://github.com/junegunn/vim-easy-align for full usage.
+
+```vim
+Plug 'junegunn/vim-easy-align'
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+```
+
 ### terryma/vim-multiple-cursors
 Adds multiple cursor editing support
 Use `<C-n>` to highlight the word under the cursor
@@ -228,6 +178,7 @@ There are ways to use with visual selections as well, see docs.
 
 ```vim
 Plug 'terryma/vim-multiple-cursors'
+let g:multi_cursor_quit_key            = '<C-c>'
 ```
 
 ### bogado/file-line
@@ -262,9 +213,65 @@ Plugin for resizing/moving windows.
 Plug 'simeji/winresizer'
 ```
 
+### AndrewRadev/splitjoin.vim
+Useful to join/split arrays, html blocks, if statements, ruby blocks, etc.
+
+| Instruction | Description                                           |
+| ---         | ---                                                   |
+| `gS`        | splits line smartly                                   |
+| `gJ`        | joins lines smartly, when done on first line of block |
+
+```vim
+Plug 'AndrewRadev/splitjoin.vim'
+```
+
+### suan/vim-instant-markdown
+Allows realtime preview of markdown (and some other) files
+
+| Instruction                   | Description                              |
+| ---                           | ---                                      |
+| `:InstantMarkdownPreview` or `<leader>md` | opens current markdown buffer in browser |
+
+```vim
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+let g:instant_markdown_autostart = 0
+nnoremap <silent> <leader>md :InstantMarkdownPreview<CR>
+```
+
+Automatically run ctags on projects.
+
+```vim
+Plug 'ludovicchabant/vim-gutentags'
+
+" finds project root (usually a .git folder)
+Plug 'airblade/vim-rooter'
+```
+
+Highlight yanked text. Try it. You'll never again be confused about what you
+yanked.
+
+```vim
+Plug 'machakann/vim-highlightedyank'
+
+Plug 'junegunn/vim-peekaboo'
+```
+
+Snippets
+
+```vim
+" Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+```
+
+```vim
+Plug 'alvan/vim-closetag'
+let g:closetag_filenames = '*.htm,*.html,*.xhtml,*.phtml,*.hbs,*.jsx'
+let g:closetag_filetypes = 'html,xhtml,phtml'
+```
+
 ```vim
 " Misc/Utilities
-Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'vim-scripts/matchit.zip'
@@ -279,16 +286,3 @@ Plug 'vim-scripts/lastpos.vim'
 
 Plug 'jiangmiao/auto-pairs'
 ```
-
-### AndrewRadev/splitjoin.vim
-Useful to join/split arrays, html blocks, if statements, ruby blocks, etc.
-
-| Instruction | Description                                           |
-| ---         | ---                                                   |
-| `gS`        | splits line smartly                                   |
-| `gJ`        | joins lines smartly, when done on first line of block |
-
-```vim
-Plug 'AndrewRadev/splitjoin.vim'
-```
-

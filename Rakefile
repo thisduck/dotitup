@@ -20,6 +20,7 @@ task :install do
            )
 
   run "pip3 install --user neovim"
+  run "npm -g install instant-markdown-d"
 
   puts '-- Linking files and folders'
   `cp ./iterm2/com.googlecode.iterm2.plist ~/Library/Preferences/.`

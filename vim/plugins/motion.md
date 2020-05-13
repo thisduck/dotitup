@@ -1,7 +1,13 @@
 ### easymotion/vim-easymotion
-issuing an easymotion shortcut will highlight words/lines with keys
+
+Issuing an easymotion shortcut will highlight words/lines with keys
 from the keyboard. when you press those keys, it will take you 
 to that word or line. you have to try it.
+
+If you're thinking in vim motions (such as `fe`, which would go to next 
+occurence of the letter `e`), then the motion can be combined with an action.
+Like `dte` will delete everything till the letter `e`. Similarly `d<leader>w`
+combined with the motion will delete till the word you choose.
 
 | Instruction            | Description                                   |
 | ---                    | ---                                           |

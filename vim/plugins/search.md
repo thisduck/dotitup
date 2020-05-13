@@ -1,53 +1,3 @@
-```vim
-Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch-fuzzy.vim'
-let g:incsearch#auto_nohlsearch = 1
-
-map z/ <Plug>(incsearch-fuzzy-/)
-
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-```
-
-Visual star search allows you to select some text in visual mode and press `*`
-and have vim search for the selected text in the buffer.
-
-```vim
-Plug 'nelstrom/vim-visual-star-search'
-Plug 'rhysd/clever-f.vim'
-```
-
-### skwp/greplace.vim
-From the docs:
-1. Use `:Gsearch` to get a buffer window of your search results
-2. then you can make the replacements inside the buffer window using traditional tools (%s/foo/bar/)
-3. Invoke `:Greplace` to make your changes across all files. It will ask you interatively y/n/a - you can hit 'a' to do all.
-4. Save changes to all files with `:wall` (write all)
-
-```vim
-Plug 'skwp/greplace.vim'
-```
-
-
-```vim
-Plug 'skywind3000/asyncrun.vim'
-
-" real time visualization for search and replace (substitution)
-if has('nvim')
-  set inccommand=nosplit
-else
-  Plug 'xtal8/traces.vim'
-endif
-```
-
 ### Search and Grep Files
 Shortcuts:
 
@@ -93,6 +43,57 @@ xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 ```
 
+### skwp/greplace.vim
+From the docs:
+1. Use `:Gsearch` to get a buffer window of your search results
+2. then you can make the replacements inside the buffer window using traditional tools (%s/foo/bar/)
+3. Invoke `:Greplace` to make your changes across all files. It will ask you interatively y/n/a - you can hit 'a' to do all.
+4. Save changes to all files with `:wall` (write all)
+
+```vim
+Plug 'skwp/greplace.vim'
+```
+
+
+```vim
+Plug 'skywind3000/asyncrun.vim'
+
+" real time visualization for search and replace (substitution)
+if has('nvim')
+  set inccommand=nosplit
+else
+  Plug 'xtal8/traces.vim'
+endif
+```
+
+```vim
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+let g:incsearch#auto_nohlsearch = 1
+
+map z/ <Plug>(incsearch-fuzzy-/)
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+```
+
+Visual star search allows you to select some text in visual mode and press `*`
+and have vim search for the selected text in the buffer.
+
+```vim
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'rhysd/clever-f.vim'
+```
+
+
 ### Keithbsmiley/investigate.vim
 Plugin for looking up documentation.
 
@@ -114,4 +115,28 @@ set incsearch
 
 set modelines=0
 set nomodeline
+```
+
+I used to use denite for file search, buffer search and other things. I do miss
+it from time to time.
+
+```vim
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
+
 ```
