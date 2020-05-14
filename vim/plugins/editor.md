@@ -165,6 +165,10 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+nmap <Leader>at gaip*<Bar>
+
+Plug 'godlygeek/tabular'
 ```
 
 ### terryma/vim-multiple-cursors
@@ -284,5 +288,5 @@ Plug 'vim-scripts/lastpos.vim'
 " Plug 'sjl/gundo.vim'
 " Plug 'vim-scripts/AnsiEsc.vim'
 
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 ```

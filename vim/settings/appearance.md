@@ -14,6 +14,8 @@ let g:onedark_color_overrides = {
 
 " 1989
 let g:preferred_colorschemes = [
+  \ "deep-space",
+  \ "neodark",
   \ "colorsbox-material",
   \ "colorsbox-steighties",
   \ "colorsbox-stnight",
@@ -31,13 +33,8 @@ let g:preferred_colorschemes = [
   \ "codeschool",
   \ "crunchbang",
   \ "Dark2",
-  \ "dawn",
-  \ "deep-space",
   \ "dracula",
-  \ "heroku-terminal",
-  \ "neodark",
   \ "OceanicNext",
-  \ "base16-railscasts",
 \ ]
 
 colorscheme bubblegum

@@ -23,16 +23,13 @@ Plug 'junegunn/fzf.vim'
 let g:fzf_command_prefix = 'Fzf'
 
 
-nnoremap <C-p> :<C-u>FzfFiles<CR>
-nnoremap <leader>/ :<C-u>FzfRg<Space>
-nnoremap <leader>bs :<C-u>FzfBuffers<CR>
-nnoremap <leader>he :<C-u>FzfHelptags<CR>
-
-" takes you back to the point where you started your search
-" nnoremap <leader>./ :<C-U>Leaderf! rg --recall<CR>
+nnoremap <C-t> :<C-u>FzfFiles<CR>
+nnoremap <leader>\ :<C-u>FzfRg<Space>
+" nnoremap <leader>bs :<C-u>FzfBuffers<CR>
+" nnoremap <leader>he :<C-u>FzfHelptags<CR>
 
 " Fzf Search for word under cursor
-nnoremap K :<C-u>FzfRg \b<C-R><C-W>\b<CR>
+nnoremap ;; :<C-u>FzfRg \b<C-R><C-W>\b<CR>
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
@@ -122,21 +119,6 @@ it from time to time.
 
 ```vim
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-  \ denite#do_map('toggle_select').'j'
-endfunction
-
+Plug 'Shougo/neomru.vim'
+Plug 'neoclide/denite-git'
 ```
