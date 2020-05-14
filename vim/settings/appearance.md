@@ -20,19 +20,8 @@ let g:preferred_colorschemes = [
   \ "colorsbox-steighties",
   \ "colorsbox-stnight",
   \ "anderson",
-  \ "bubblegum-256-light",
   \ "bubblegum",
-  \ "Tomorrow-Night-Eighties",
-  \ "afterglow",
   \ "clearance",
-  \ "antares",
-  \ "boa",
-  \ "candyman",
-  \ "codedark",
-  \ "codeschool",
-  \ "crunchbang",
-  \ "dracula",
-  \ "OceanicNext",
 \ ]
 
 colorscheme bubblegum

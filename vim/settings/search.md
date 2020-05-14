@@ -78,6 +78,13 @@ function! s:denite_my_settings() abort
   nnoremap <silent><buffer> <C-q> :<C-u>call <SID>denite_quickfix()<CR>
 endfunction
 
+function! s:change_scheme(scheme)
+  call xolox#colorscheme_switcher#switch_to(scheme)
+endfunction
+
+call denite#custom#action('directory', 'change_scheme', function('s:change_scheme'))
+call denite#custom#kind('colorscheme', 'default_action', 'change_scheme')
+
 function! s:denite_quickfix()
   call denite#call_map('toggle_select_all')
   call denite#call_map('do_action', 'quickfix')
@@ -109,6 +116,7 @@ endfunction
 
 
 call denite#custom#option('_', {
+      \ 'max_dynamic_update_candidates': '100000',
       \ 'winminheight': '10',
       \ 'vertical_preview': '10',
       \ 'preview_width': '75',

@@ -58,6 +58,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'flazz/vim-colorschemes'
+Plug 'chriskempson/base16-vim'
 
 " allows us to make a random theme switcher
 Plug 'xolox/vim-colorscheme-switcher'

@@ -27,7 +27,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-git'
 
-nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gs :10split<Bar>0Gstatus<CR>
 nnoremap <silent> <leader>gd :Gvdiff<CR> " always split vertically
 nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
