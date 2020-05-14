@@ -152,6 +152,24 @@ Plug 'tpope/vim-rsi'
 ### junegunn/vim-easy-align
 Allows for easy alignment of text
 
+From:
+```ruby
+{
+  hello: "there",
+  foo: "bar",
+  name: "Jameel"
+}
+```
+
+To:
+```ruby
+{
+  hello: "there",
+  foo:   "bar",
+  name:  "Jameel"
+}
+```
+
 In this case, highlight the related lines and press `ga:`
 `ga` activates the easy-align plugin, and 
 then `:` tells it to align on the `:` character.

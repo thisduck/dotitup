@@ -53,6 +53,7 @@ set visualbell                  " No sounds
 " this allows you to open new files in a window without having to save/undo changes in the current file.
 set hidden
 set autoread                    " Reload files changed outside vim
+set cmdheight=2
 ```
 
 Indenting
@@ -73,6 +74,8 @@ Additional escapes.
 inoremap jk <ESC>
 noremap <C-C> <ESC>
 xnoremap <C-C> <ESC>
+
+noremap <TAB> %
 
 set updatetime=250
 set timeoutlen=500

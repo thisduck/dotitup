@@ -28,11 +28,9 @@ let g:preferred_colorschemes = [
   \ "antares",
   \ "boa",
   \ "candyman",
-  \ "chance-of-storm",
   \ "codedark",
   \ "codeschool",
   \ "crunchbang",
-  \ "Dark2",
   \ "dracula",
   \ "OceanicNext",
 \ ]
@@ -60,7 +58,7 @@ set splitright
 set number " displays line numbers.
 set cursorline
 set textwidth=80
-set colorcolumn=+1
+set colorcolumn=0
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:▸\ ,trail:·

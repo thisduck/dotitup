@@ -15,7 +15,6 @@ When in the results use:
 `C-v` to open the result in a vertical split.  
 `C-x` to open the result in a horizontal split.  
 `C-t` to open the result in a tab split.  
-`C-q` to open the result in a vertical split.  
 
 ```vim
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }

@@ -38,7 +38,12 @@ languages, this plugins does the job for us.
 
 ```vim
 " syntax highlighting for multiple languages
+let g:polyglot_disabled = ['markdown']
 Plug 'sheerun/vim-polyglot'
+
+let g:markdown_fenced_languages = ['html', 'python', 'ruby', 'vim', 'bash=sh']
+
+Plug 'tpope/vim-markdown'
 ```
 
 ### Themes
