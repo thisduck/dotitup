@@ -11,6 +11,8 @@ brew "node"
 brew "htop"
 brew "bat"
 brew "tmux"
+brew "fd"
+brew "ruby"
 
 cask "iterm2"
 cask "google-chrome"

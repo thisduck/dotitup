@@ -1,20 +1,21 @@
 ### Search and Grep Files
+
 Shortcuts:
 
-| Instruction  | Description                                      |
-| ---          | ---                                              |
-| `<C-p>`      | fuzzy file search, substitute for CTRL-P.        |
-| `<leader>bs` | fuzzy buffer and most recently used file search. |
-| `<leader>dl` | fuzzy search for the lines in current buffer.    |
-| `<leader>he` | fuzzy search for vim help.                       |
-| `<leader>/`  | greps the entire project.                        |
-| `K`          | greps for the word under the curson in the entire project. | 
+| Instruction  | Description                                                |
+| ------------ | ---------------------------------------------------------- |
+| `<C-p>`      | fuzzy file search, substitute for CTRL-P.                  |
+| `<leader>bs` | fuzzy buffer and most recently used file search.           |
+| `<leader>dl` | fuzzy search for the lines in current buffer.              |
+| `<leader>he` | fuzzy search for vim help.                                 |
+| `<leader>/`  | greps the entire project.                                  |
+| `K`          | greps for the word under the curson in the entire project. |
 
 When in the results use:
 
 `C-v` to open the result in a vertical split.  
 `C-x` to open the result in a horizontal split.  
-`C-t` to open the result in a tab split.  
+`C-t` to open the result in a tab split.
 
 ```vim
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -40,7 +41,9 @@ omap <leader><tab> <plug>(fzf-maps-o)
 ```
 
 ### skwp/greplace.vim
+
 From the docs:
+
 1. Use `:Gsearch` to get a buffer window of your search results
 2. then you can make the replacements inside the buffer window using traditional tools (%s/foo/bar/)
 3. Invoke `:Greplace` to make your changes across all files. It will ask you interatively y/n/a - you can hit 'a' to do all.
@@ -49,7 +52,6 @@ From the docs:
 ```vim
 Plug 'skwp/greplace.vim'
 ```
-
 
 ```vim
 Plug 'skywind3000/asyncrun.vim'
@@ -89,12 +91,12 @@ Plug 'nelstrom/vim-visual-star-search'
 Plug 'rhysd/clever-f.vim'
 ```
 
-
 ### Keithbsmiley/investigate.vim
+
 Plugin for looking up documentation.
 
 | Instruction | Description                                                              |
-| ---         | ---                                                                      |
+| ----------- | ------------------------------------------------------------------------ |
 | `gK`        | over a word or in visual mode, will search for the selected text on Dash |
 
 ```vim
@@ -118,6 +120,9 @@ it from time to time.
 
 ```vim
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+
 Plug 'Shougo/neomru.vim'
 Plug 'neoclide/denite-git'
 ```

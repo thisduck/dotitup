@@ -1,27 +1,12 @@
 # Appearance Settings
 
 ```vim
-set encoding=utf-8
-
 set termguicolors
-let base16colorspace=256
-set background=dark
 
-let g:ruby_operators = 1
-let g:onedark_color_overrides = {
-\ 'comment_grey': { "gui": "#9e9e90", "cterm": "246", "cterm16": "16" }
-\ }
-
-" 1989
 let g:preferred_colorschemes = [
   \ "deep-space",
-  \ "neodark",
-  \ "colorsbox-material",
-  \ "colorsbox-steighties",
   \ "colorsbox-stnight",
-  \ "anderson",
   \ "bubblegum",
-  \ "clearance",
 \ ]
 
 colorscheme bubblegum
@@ -37,7 +22,7 @@ highlight CocHighlightText ctermbg=238  guibg=#444444
 " set foldmethod=indent
 " set foldlevelstart=20
 
-set showbreak=⇇
+set showbreak=↪
 set wrap
 
 "" Open new split panes to right and bottom, which feels more natural

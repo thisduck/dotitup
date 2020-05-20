@@ -1,6 +1,20 @@
+augroup MyVimrc
+  autocmd!
+augroup END
+
+if has('vim_starting')
+  let g:startuptime = reltime()
+  " profile start vim-startup-profile.log
+  " profile file *
+  " profile func *
+  autocmd MyVimrc VimEnter * let g:startuptime = reltime(g:startuptime) | redraw
+  \ | echomsg 'startuptime: ' . reltimestr(g:startuptime)
+endif
+
 " mapping leader to space as the first thing since a number of plugins require
 " this to be setup before hand.
-let mapleader=" "
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
 
 " The rest of this vim configuration is in markdown.
 " The documentation is the configuration and vice versa.

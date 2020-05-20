@@ -52,8 +52,12 @@ command! -nargs=+ -complete=file -bar DotGrep silent call DotGrep(<q-args>)
 call denite#custom#var('file/rec', 'command',
 \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
+call denite#custom#source('grep', 'max_candidates', 100000)
+call denite#custom#source('file/rec', 'max_candidates', 100000)
+
 " Ripgrep command on grep source
 call denite#custom#var('grep', {
+\ 'max_candidates': '100000',
 \ 'command': ['rg'],
 \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
 \ 'recursive_opts': [],
@@ -71,10 +75,13 @@ function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
   nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
   nnoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
+  nnoremap <silent><buffer><expr> <C-[> denite#do_map('quit')
+  nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
   nnoremap <silent><buffer> <C-j> j
   nnoremap <silent><buffer> <C-k> k
   nnoremap <silent><buffer><expr> <C-v> denite#do_map('do_action', 'vsplit')
   nnoremap <silent><buffer><expr> <C-x> denite#do_map('do_action', 'split')
+  nnoremap <silent><buffer><expr> <C-t> denite#do_map('do_action', 'tabopen')
   nnoremap <silent><buffer> <C-q> :<C-u>call <SID>denite_quickfix()<CR>
 endfunction
 
@@ -90,43 +97,44 @@ function! s:denite_quickfix()
   call denite#call_map('do_action', 'quickfix')
 endfunction
 
-	autocmd FileType denite-filter call s:denite_filter_my_settings()
-	function! s:denite_filter_my_settings() abort
-	  inoremap <silent><buffer> <C-j> <Esc>
-	        \:call denite#move_to_parent()<CR>
-	        \:call cursor(line('.')+1,0)<CR>
-	        \:call denite#move_to_filter()<CR>A
-	  inoremap <silent><buffer> <C-k> <Esc>
-	        \:call denite#move_to_parent()<CR>
-	        \:call cursor(line('.')-1,0)<CR>
-	        \:call denite#move_to_filter()<CR>A
+autocmd FileType denite-filter call s:denite_filter_my_settings()
+function! s:denite_filter_my_settings() abort
+  inoremap <silent><buffer> <C-j> <Esc>
+        \:call denite#move_to_parent()<CR>
+        \:call cursor(line('.')+1,0)<CR>
+        \:call denite#move_to_filter()<CR>A
+  inoremap <silent><buffer> <C-k> <Esc>
+        \:call denite#move_to_parent()<CR>
+        \:call cursor(line('.')-1,0)<CR>
+        \:call denite#move_to_filter()<CR>A
 
-    inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-    inoremap <silent><buffer><expr> <C-v> denite#do_map('do_action', 'vsplit')
-    inoremap <silent><buffer><expr> <C-x> denite#do_map('do_action', 'split')
-    inoremap <silent><buffer><expr> <C-p> denite#do_map('do_action', 'preview')
-    imap <silent><buffer> <C-c> <Plug>(denite_filter_quit)q
-    imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
-	endfunction
+  inoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+  inoremap <silent><buffer><expr> <C-v> denite#do_map('do_action', 'vsplit')
+  inoremap <silent><buffer><expr> <C-x> denite#do_map('do_action', 'split')
+  inoremap <silent><buffer><expr> <C-t> denite#do_map('do_action', 'tabopen')
+  inoremap <silent><buffer><expr> <C-p> denite#do_map('do_action', 'preview')
+  imap <silent><buffer> <C-c> <Plug>(denite_filter_quit)q
+  imap <silent><buffer> <C-[> <Plug>(denite_filter_quit)q
+  imap <silent><buffer> <ESC> <Plug>(denite_filter_quit)q
+  imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+endfunction
 
-	autocmd User denite-preview call s:denite_preview()
-	function! s:denite_preview() abort
-    doautocmd BufReadPost " so we can get syntax highlighting
-	endfunction
-
+autocmd User denite-preview call s:denite_preview()
+function! s:denite_preview() abort
+  "doautocmd BufRead
+endfunction
 
 call denite#custom#option('_', {
       \ 'max_dynamic_update_candidates': '100000',
+      \ 'max_candidates': '100000',
       \ 'winminheight': '10',
       \ 'vertical_preview': '10',
       \ 'preview_width': '75',
       \ 'preview_height': '50',
-      \ 'filter_updatetime': '200',
-      \ 'filter_split_direction': 'floating',
       \ 'prompt': '>',
       \ })
 
-nnoremap <silent><C-p> :<C-u>Denite file/rec -start-filter -filter-updatetime=100 -match-highlight<CR>
+nnoremap <silent><C-p> :<C-u>Denite file/rec -start-filter<CR>
 
 nnoremap <silent>K :<C-u>DeniteCursorWord grep:. -auto-action=preview<CR>
 nnoremap <silent><Leader>/ :<C-u>Denite grep:.  -auto-action=preview<CR>

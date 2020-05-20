@@ -56,7 +56,7 @@ Plug 'kana/vim-textobj-datetime'
 
 ### kana/vim-textobj-entire
 Use `vae` to select the entire buffer.
-`vie` to ignore the black spaces at the ends.
+`vie` to ignore the blank spaces at the ends.
 
 ```vim
 Plug 'kana/vim-textobj-entire'

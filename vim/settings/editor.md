@@ -75,8 +75,6 @@ inoremap jk <ESC>
 noremap <C-C> <ESC>
 xnoremap <C-C> <ESC>
 
-noremap <TAB> %
-
 set updatetime=250
 set timeoutlen=500
 ```
@@ -94,4 +92,11 @@ Copy to clipboard
 ```vim
 "" copy to clipboard
 map <Leader>y "*y
+```
+
+Always split the diff vertically.
+
+```vim
+" prefer vertical orientation when using :diffsplit
+set diffopt+=vertical
 ```

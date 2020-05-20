@@ -1,34 +1,47 @@
 ```vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'liuchengxu/vista.vim'
 
-Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
+let g:coc_global_extensions = [
+\ 'coc-prettier',
+\ 'coc-eslint',
+\ 'coc-css',
+\ 'coc-highlight',
+\ 'coc-json',
+\ 'coc-tsserver',
+\ 'coc-html',
+\ 'coc-yaml',
+\ 'coc-snippets',
+\ 'coc-solargraph',
+\ 'coc-git',
+\ 'coc-markdownlint',
+\ 'coc-lists',
+\ 'coc-actions',
+\ 'coc-emmet',
+\ 'coc-svelte',
+\ 'coc-svg',
+\ 'coc-vimlsp',
+\ 'coc-pairs',
+\ 'coc-tag',
+\ 'coc-syntax',
+\ 'coc-emoji',
+\ 'coc-ember'
+\ ]
 
 set shortmess+=c
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+inoremap <silent><expr> <C-Space>
+      \ pumvisible() ? "\<C-y>" :
+      \ "\<C-r>=coc#refresh()\<CR>\<C-n>"
 
-inoremap <silent><expr> <c-space> coc#_select_confirm()
+inoremap <expr> <C-c> pumvisible() ? "\<C-[>" : "\<C-c>"
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<C-g>u\<TAB>"
 
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+" Life saver: https://xdg.me/blog/combining-vim-closer-with-pumvisible/
+function! EnterOnMenu() abort
+  return pumvisible() ? "\<C-e>\<CR>" : "\<CR>\<c-r>=coc#on_enter()\<CR>"
 endfunction
-
-let g:coc_snippet_next = '<tab>'
+inoremap <silent> <CR> <C-R>=EnterOnMenu()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -39,24 +52,12 @@ function! s:show_documentation()
 endfunction
 nnoremap <silent> L :call <SID>show_documentation()<CR>
 
-" show error, otherwise documentation, on hold
-function! ShowDocIfNoDiagnostic(timer_id)
-  if (coc#util#has_float() == 0)
-    silent call CocActionAsync('doHover')
-  endif
-endfunction
-function! s:show_hover_doc()
-  call timer_start(200, 'ShowDocIfNoDiagnostic')
-endfunction
-" autocmd CursorHoldI * :call <SID>show_hover_doc()
-" autocmd CursorHold * :call <SID>show_hover_doc()
-
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
 nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format)
 
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -77,4 +78,13 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
 ```

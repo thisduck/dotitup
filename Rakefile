@@ -20,7 +20,7 @@ task :install do
            )
 
   run "pip3 install --user neovim"
-  run "npm -g install instant-markdown-d"
+  run "npm -g install instant-markdown-d neovim"
 
   puts '-- Linking files and folders'
   `cp ./iterm2/com.googlecode.iterm2.plist ~/Library/Preferences/.`
@@ -149,6 +149,7 @@ end
 def curl_it(name, options = {})
   options[:name] = name
   return if File.exist?(options[:destination])
+
   options[:destination] = File.expand_path(options[:destination])
   puts "-- Cloning #{options[:name]}"
   run "curl -fLo #{options[:destination]} --create-dirs #{options[:source]}"

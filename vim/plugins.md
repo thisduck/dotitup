@@ -24,5 +24,12 @@ if filereadable(expand("~/.vimrc.plugins.after"))
   source ~/.vimrc.plugins.after
 endif
 
+if filereadable(expand("~/.vimrc.plugins.after.md"))
+  execute literatevimrc#load("~/.vimrc.plugins.after.md")
+endif
+
+let g:webdevicons_enable_denite = 0
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 ```
