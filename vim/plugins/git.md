@@ -1,7 +1,7 @@
 ### tpope/vim-fugitive
 
 | Instruction                 | Description                                                           |
-| ---                         | ---                                                                   |
+| --------------------------- | --------------------------------------------------------------------- |
 | `:Gedit [thing]`            | [thing] can be a commit,                                              |
 |                             | blob, tree or tag (to view the commit etc)                            |
 | `:Gstatus` / `<leader>gs`   | displays a buffer with git status.                                    |
@@ -32,7 +32,7 @@ nnoremap <silent> <leader>gd :Gvdiff<CR> " always split vertically
 nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gl :Glog<CR>
-nnoremap <silent> <leader>gp :AsyncOpenRun git push origin HEAD<CR>
+nnoremap <silent> <leader>gp :Gpush<CR>
 nnoremap <silent> <leader>gw :Gwrite<CR> " adds the current file
 nnoremap <silent> <leader>ga :Gwrite<CR> " to make it feel like git add
 nnoremap <silent> <leader>grm :Gdelete!<CR>
@@ -41,18 +41,18 @@ nnoremap <silent> <Leader>dg :diffget<CR>
 nnoremap <silent> <Leader>dp :diffput<CR>
 ```
 
-### airblade/vim-gitgutter 
+### airblade/vim-gitgutter
+
 displays git diffs in the gutter (near line numbers)
 
 short cuts:
 
 | Instruction   | Description                |
-| ---           | ---                        |
+| ------------- | -------------------------- |
 | `<leader>hp`  | preview hunk               |
 | `<leader>hs`  | stage hunk                 |
 | `<leader>hu`  | undo hunk                  |
 | `[c` and `]c` | navigate to prev/next hunk |
-
 
 ```vim
 Plug 'airblade/vim-gitgutter'
@@ -61,14 +61,12 @@ Plug 'airblade/vim-gitgutter'
 ### gregsexton/gitv
 
 | Instruction | Description             |
-| ---         | ---                     |
+| ----------- | ----------------------- |
 | `:Gitv`     | to see a visual git log |
-
 
 ```vim
 Plug 'gregsexton/gitv', {'on': ['Gitv']}
 ```
-
 
 ```vim
 Plug 'mattn/gist-vim'
