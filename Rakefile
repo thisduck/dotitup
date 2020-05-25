@@ -119,7 +119,7 @@ def vimplugs(vim)
   filetype plugin indent on    " required
   AFT
 
-  middle = `grep -h "Plug " vim/plugs/*`
+  middle = `grep -h "Plug " vim/plugins/*`
   File.open("vimplugs.vim", "w") do |f|
     f.write before
     f.write middle
