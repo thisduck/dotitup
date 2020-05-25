@@ -1,0 +1,14 @@
+{
+  "codeLens.enable": true,
+  "solargraph.autoformat": true,
+  "solargraph.formatting": true,
+  "solargraph.diagnostics": true,
+  "solargraph.hover": true,
+  "coc.preferences.colorSupport": true,
+  "highlight.colors.enable": true,
+  "suggest.autoTrigger": "trigger",
+  "suggest.noselect": false,
+  "suggest.minTriggerInputLength": 2,
+  "snippets.priority": 100,
+  "eslint.run": "onSave"
+}

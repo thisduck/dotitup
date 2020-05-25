@@ -84,6 +84,7 @@ def setup_neovim
 
   link_it 'vim', destination: '~/.dotvim'
   link_it 'vimrc', destination: '~/.config/nvim/init.vim'
+  link_it 'vim/coc-settings.json', destination: '~/.config/nvim/coc-settings.json'
 
   vim = `which nvim`.chomp
   vimplugs(vim)
