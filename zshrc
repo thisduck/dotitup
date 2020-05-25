@@ -12,7 +12,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-plugins=(git gitfast history zeus ssh-agent bundler zsh-syntax-highlighting history-substring-search brew)
+plugins=(git gitfast history zeus ssh-agent bundler zsh-syntax-highlighting history-substring-search brew rvm)
 
 source $ZSH/oh-my-zsh.sh
 

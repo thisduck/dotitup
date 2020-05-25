@@ -33,7 +33,7 @@ Layout/ArrayAlignment:
   EnforcedStyle: with_fixed_indentation
 
 Layout/HashAlignment:
-  Enabled: true
+  Enabled: false
   EnforcedHashRocketStyle: key
   EnforcedColonStyle: key
   EnforcedLastArgumentHashStyle: always_inspect

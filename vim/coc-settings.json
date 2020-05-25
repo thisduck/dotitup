@@ -6,7 +6,6 @@
   "solargraph.hover": true,
   "coc.preferences.colorSupport": true,
   "highlight.colors.enable": true,
-  "suggest.autoTrigger": "trigger",
   "suggest.noselect": false,
   "suggest.minTriggerInputLength": 2,
   "snippets.priority": 100,

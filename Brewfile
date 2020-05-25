@@ -13,6 +13,7 @@ brew "bat"
 brew "tmux"
 brew "fd"
 brew "ruby"
+brew "gpg"
 
 cask "iterm2"
 cask "google-chrome"
