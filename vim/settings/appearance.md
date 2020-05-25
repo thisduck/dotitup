@@ -3,20 +3,19 @@
 ```vim
 set termguicolors
 
-let g:preferred_colorschemes = [
-  \ "deep-space",
-  \ "colorsbox-stnight",
-  \ "bubblegum",
-\ ]
+" let g:preferred_colorschemes = [
+"   \ "deep-space",
+"   \ "colorsbox-stnight",
+"   \ "bubblegum",
+" \ ]
+" 
+" let scheme_index = xolox#colorscheme_switcher#random_number(len(g:preferred_colorschemes))
+" call xolox#colorscheme_switcher#switch_to(g:preferred_colorschemes[scheme_index])
 
-colorscheme bubblegum
-
-let scheme_index = xolox#colorscheme_switcher#random_number(len(g:preferred_colorschemes))
-call xolox#colorscheme_switcher#switch_to(g:preferred_colorschemes[scheme_index])
+colorscheme colorsbox-stnight
 
 highlight CocHighlightText ctermbg=238  guibg=#444444
 ```
-
 
 ```vim
 " set foldmethod=indent

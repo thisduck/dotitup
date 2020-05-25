@@ -10,6 +10,7 @@ execute literatevimrc#load("~/.dotvim/plugins/git.md")
 execute literatevimrc#load("~/.dotvim/plugins/lsp.md")
 execute literatevimrc#load("~/.dotvim/plugins/editor.md")
 execute literatevimrc#load("~/.dotvim/plugins/ruby.md")
+execute literatevimrc#load("~/.dotvim/plugins/db.md")
 execute literatevimrc#load("~/.dotvim/plugins/textobjects.md")
 
 " execute literatevimrc#load("~/.dotvim/plugins/project.md")

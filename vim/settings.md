@@ -24,4 +24,8 @@ endif
 if filereadable(expand("~/.vimrc.settings.after"))
   source ~/.vimrc.settings.after
 endif
+
+if filereadable(expand("~/.vimrc.settings.after.md"))
+  execute literatevimrc#load("~/.vimrc.settings.after.md")
+endif
 ```
