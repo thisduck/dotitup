@@ -33,6 +33,7 @@ task :install do
   link_it 'p10k.zsh'
   link_it 'alacritty.yml'
   link_it 'gitignore'
+  link_it 'rubocop.yml'
   run "git config --global core.excludesfile ~/.gitignore"
 
   neovim = `which nvim`.chomp
