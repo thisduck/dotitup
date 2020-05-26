@@ -1,4 +1,5 @@
 {
+  "diagnostic.messageTarget": "echo",
   "codeLens.enable": true,
   "solargraph.autoformat": true,
   "solargraph.formatting": true,

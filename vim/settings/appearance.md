@@ -8,7 +8,6 @@ set termguicolors
 "   \ "colorsbox-stnight",
 "   \ "bubblegum",
 " \ ]
-" 
 " let scheme_index = xolox#colorscheme_switcher#random_number(len(g:preferred_colorschemes))
 " call xolox#colorscheme_switcher#switch_to(g:preferred_colorschemes[scheme_index])
 
@@ -32,6 +31,7 @@ set number " displays line numbers.
 set cursorline
 set textwidth=80
 set colorcolumn=0
+set signcolumn=yes
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:▸\ ,trail:·
