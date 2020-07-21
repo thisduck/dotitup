@@ -50,8 +50,8 @@ augroup seeingIsBelievingSettings
   " clear the settings if they already exist (so we don't run them twice)
   autocmd!
   autocmd FileType ruby nmap <buffer> <Leader>n :call SibAnnotateMarked("%")<CR>;
-  autocmd FileType ruby nmap <buffer> <Enter>   :call SibToggleMark()<CR>;
-  autocmd FileType ruby vmap <buffer> <Enter>   :call SibToggleMark()<CR>;
+  autocmd FileType ruby nmap <buffer> <C-Enter>   :call SibToggleMark()<CR>;
+  autocmd FileType ruby vmap <buffer> <C-Enter>   :call SibToggleMark()<CR>;
 
   autocmd FileType ruby vmap <buffer> <Leader>n :call SibAnnotateMarked("'<,'>")<CR>;
   autocmd FileType ruby vmap <buffer> <Leader>v :call SibCleanAnnotations("'<,'>")<CR>;
