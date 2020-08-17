@@ -22,14 +22,16 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 let g:fzf_command_prefix = 'Fzf'
 
+command! -bang -nargs=* FzfRg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0) 
+nnoremap <leader>/ :<C-u>FzfRg<Space>
 
-nnoremap <C-t> :<C-u>FzfFiles<CR>
-nnoremap <leader>\ :<C-u>FzfRg<Space>
-" nnoremap <leader>bs :<C-u>FzfBuffers<CR>
-" nnoremap <leader>he :<C-u>FzfHelptags<CR>
+nnoremap <C-p> :<C-u>FzfFiles<CR>
+nnoremap <leader>bs :<C-u>FzfBuffers<CR>
+nnoremap <leader>he :<C-u>FzfHelptags<CR>
+nnoremap <silent><Leader>' :FzfMarks<CR>
 
 " Fzf Search for word under cursor
-nnoremap ;; :<C-u>FzfRg \b<C-R><C-W>\b<CR>
+nnoremap <silent>K :<C-u>FzfRg \b<C-R><C-W>\b<CR>
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
@@ -113,16 +115,3 @@ set incsearch
 
 set modelines=0
 set nomodeline
-```
-
-I used to use denite for file search, buffer search and other things. I do miss
-it from time to time.
-
-```vim
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-
-Plug 'Shougo/neomru.vim'
-Plug 'neoclide/denite-git'
-```
