@@ -51,4 +51,6 @@ command! -nargs=+ -complete=file -bar DotGrep silent call DotGrep(<q-args>)
 function! s:change_scheme(scheme)
   call xolox#colorscheme_switcher#switch_to(scheme)
 endfunction
+
+map <Leader>ct :AsyncOpenRun ctags -R .<CR><CR>
 ```
