@@ -80,25 +80,6 @@ else
 endif
 ```
 
-```vim
-Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch-fuzzy.vim'
-let g:incsearch#auto_nohlsearch = 1
-
-map z/ <Plug>(incsearch-fuzzy-/)
-
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-```
-
 Visual star search allows you to select some text in visual mode and press `*`
 and have vim search for the selected text in the buffer.
 
@@ -129,3 +110,5 @@ set incsearch
 
 set modelines=0
 set nomodeline
+nnoremap // :<C-u>nohlsearch<CR>
+```
