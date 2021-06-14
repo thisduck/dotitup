@@ -1,6 +1,6 @@
 {
   "diagnostic.messageTarget": "echo",
-  "codeLens.enable": true,
+  "codeLens.enable": false,
   "solargraph.promptDownload": false,
   "solargraph.checkGemVersion": false,
   "solargraph.autoformat": true,
