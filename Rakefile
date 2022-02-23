@@ -19,8 +19,8 @@ task :install do
              'tmp', 'media', 'powerlevel10k-media'
            )
 
-  run "pip3 install --user neovim"
-  run "npm -g install instant-markdown-d neovim eslint eslint-config-airbnb-base eslint-plugin-import"
+  # run "pip3 install --user neovim"
+  # run "npm -g install instant-markdown-d neovim eslint eslint-config-airbnb-base eslint-plugin-import"
   puts '-- Linking files and folders'
   `cp ./iterm2/com.googlecode.iterm2.plist ~/Library/Preferences/.`
   `cp ./tmp/media/powerlevel10k-media/*.ttf ~/Library/Fonts/.`
@@ -34,11 +34,6 @@ task :install do
   link_it 'gitignore'
   link_it 'rubocop.yml'
   run "git config --global core.excludesfile ~/.gitignore"
-
-  neovim = `which nvim`.chomp
-  if neovim != ''
-    setup_neovim
-  end
 end
 
 task :setup_ctags do

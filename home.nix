@@ -39,9 +39,9 @@
     zlib
     openssl
 
-    # elmPackages.nodejs
-    # ruby
-    # ruby.gems.rake
+    elmPackages.nodejs
+    ruby
+    ruby.gems.rake
   ];
 
   # This value determines the Home Manager release that your
