@@ -5,19 +5,43 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    # base
+    wget
+
+    # for neovim
     neovim
     ripgrep
     silver-searcher
+    fd
     python3
     python3Packages.setuptools
     python3Packages.pip
     universal-ctags
-    nodejs
+
+    # for system
     htop
     bat
     tmux
-    ruby
-    ruby.gems.rake
+    rustc
+    cargo
+    cmake
+
+    # for rvm
+    gnupg
+    autoconf
+    automake
+    libtool
+    pkg-config
+    coreutils
+    libyaml
+    libksba
+    readline
+    zlib
+    openssl
+
+    # elmPackages.nodejs
+    # ruby
+    # ruby.gems.rake
   ];
 
   # This value determines the Home Manager release that your

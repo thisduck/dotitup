@@ -5,7 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -35,12 +36,13 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 alias vi=vim
 alias vim=nvim
 
-export TERM=xterm-256color
+# export TERM=xterm-256color
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 PATH=/usr/local/bin:$PATH
+PATH=$PATH:~/.npm-packages/bin:/Users/adnanali/.nix-profile/bin:/nix/var/nix/profiles/default/bin
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -51,3 +53,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+###-tns-completion-start-###
+if [ -f /Users/adnanali/.tnsrc ]; then 
+    source /Users/adnanali/.tnsrc 
+fi
+###-tns-completion-end-###
