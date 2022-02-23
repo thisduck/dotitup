@@ -1,3 +1,6 @@
+tap "AdoptOpenJDK/openjdk"
+
+cask "adoptopenjdk15"
 cask "iterm2"
 cask "google-chrome"
 cask "alacritty"
@@ -9,3 +12,4 @@ cask "1password"
 cask "discord"
 cask "android-studio"
 cask "docker"
+cask "istat-menus"
