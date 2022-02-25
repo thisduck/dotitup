@@ -1,6 +1,24 @@
+tap "universal-ctags/universal-ctags"
 tap "AdoptOpenJDK/openjdk"
 
-cask "adoptopenjdk15"
+brew "wget"
+brew "neovim"
+brew "ripgrep"
+brew "fd"
+brew "python"
+brew "ctags", link: false
+brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
+brew "the_silver_searcher"
+brew "htop"
+brew "bat"
+brew "tmux"
+brew "gpg"
+brew "rust" 
+brew "watchman" 
+brew "zlib" 
+brew "coreutils" 
+
+
 cask "iterm2"
 cask "google-chrome"
 cask "alacritty"
