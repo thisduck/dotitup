@@ -18,6 +18,9 @@ task :install do
            destination:  current_path(
              'tmp', 'media', 'powerlevel10k-media'
            )
+  clone_it 'packer.nvim',
+           source: 'https://github.com/wbthomason/packer.nvim',
+           destination: File.expand_path('~/.local/share/nvim/site/pack/packer/start/packer.nvim')
 
   # run "pip3 install --user neovim"
   # run "npm -g install instant-markdown-d neovim eslint eslint-config-airbnb-base eslint-plugin-import"
@@ -34,6 +37,8 @@ task :install do
   link_it 'gitignore'
   link_it 'rubocop.yml'
   run "git config --global core.excludesfile ~/.gitignore"
+
+  link_it 'nvim', destination: '~/.config/nvim'
 end
 
 task :setup_ctags do
