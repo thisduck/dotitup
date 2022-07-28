@@ -17,6 +17,8 @@ brew "rust"
 brew "watchman" 
 brew "zlib" 
 brew "coreutils" 
+brew "shared-mime-info"
+brew "libpq"
 
 
 cask "iterm2"
@@ -31,3 +33,6 @@ cask "discord"
 cask "android-studio"
 cask "docker"
 cask "istat-menus"
+cask "signal"
+
+# npm install remark.

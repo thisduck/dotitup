@@ -5,9 +5,27 @@ local opts = { noremap = true, silent = true }
 -- vim.api.nvim_set_keymap('n', ']g', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap("n", "<Leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
+local lsp_formatting = function(bufnr)
+  vim.lsp.buf.formatting {
+    filter = function(clients)
+      -- filter out clients that you don't want to use
+      return vim.tbl_filter(function(client)
+        return not (
+            client.name == "null-ls"
+            or client.name == "vuels"
+            or client.name == "tsserver"
+            or client.name == "sumneko_lua"
+          )
+      end, clients)
+    end,
+    bufnr = bufnr,
+  }
+end
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  local opts = { noremap = true, silent = true }
   -- Mappings.
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -18,7 +36,6 @@ local on_attach = function(client, bufnr)
   -- -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>dd", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
   local map = vim.api.nvim_buf_set_keymap
   map(bufnr, "n", "<Leader>rn", "<cmd>Lspsaga rename<cr>", { silent = true, noremap = true })
@@ -33,15 +50,13 @@ local on_attach = function(client, bufnr)
   -- map(bufnr, "n", "gd", "<cmd>Lspsaga preview_definition<cr>", { silent = true, noremap = true })
   -- map(bufnr, "n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", {})
   -- map(bufnr, "n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", {})
-  if client.name == "volar" then
-    client.resolved_capabilities.document_formatting = false
-  end
-  if client.name == "vuels" then
-    client.resolved_capabilities.document_formatting = false
-  end
-  if client.name == "tsserver" then
-    client.resolved_capabilities.document_formatting = false
-  end
+  client.server_capabilities.document_formatting = false
+  client.resolved_capabilities.document_formatting = false
+  client.server_capabilities.documentFormattingProvider = false
+  client.resolved_capabilities.documentFormattingProvider = false
+  vim.keymap.set("n", "<Leader>f", function()
+    lsp_formatting(bufnr)
+  end, { noremap = true, silent = true, buffer = bufnr })
 end
 
 local lsp_installer_servers = require "nvim-lsp-installer.servers"
@@ -53,7 +68,7 @@ local servers = {
   "dockerls",
   "efm",
   "eslint",
-  "emmet_ls",
+  -- "emmet_ls",
   "html",
   "jsonls",
   "sumneko_lua",
@@ -66,7 +81,7 @@ local servers = {
   "tsserver",
   "vimls",
   "volar",
-  "vuels",
+  -- "vuels",
   "yamlls",
 }
 

@@ -29,7 +29,7 @@ cmp.setup {
   },
   sources = {
     { name = "nvim_lsp", priority = 101 },
-    { name = "vsnip", priority = 1000 },
+    { name = "vsnip", priority = 100 },
     { name = "buffer" },
     { name = "path" },
     { name = "tags" },
@@ -47,15 +47,20 @@ cmp.setup {
 }
 
 cmp.setup.cmdline("/", {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = "buffer" },
   },
 })
 
 cmp.setup.cmdline(":", {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = "path" },
   }, {
     { name = "cmdline" },
+    { name = "tags" },
+    { name = "buffer" },
+    { name = "rg" },
   }),
 })

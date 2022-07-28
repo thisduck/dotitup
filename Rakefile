@@ -24,6 +24,9 @@ task :install do
 
   # run "pip3 install --user neovim"
   # run "npm -g install instant-markdown-d neovim eslint eslint-config-airbnb-base eslint-plugin-import"
+  # npm install -g vls
+  # npm install -g @volar/server
+
   puts '-- Linking files and folders'
   `cp ./iterm2/com.googlecode.iterm2.plist ~/Library/Preferences/.`
   `cp ./tmp/media/powerlevel10k-media/*.ttf ~/Library/Fonts/.`

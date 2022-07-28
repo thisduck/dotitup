@@ -60,3 +60,9 @@ if [ -f /Users/adnanali/.tnsrc ]; then
     source /Users/adnanali/.tnsrc 
 fi
 ###-tns-completion-end-###
+
+###-tns-completion-start-###
+if [ -f /Users/adnan/.tnsrc ]; then 
+    source /Users/adnan/.tnsrc 
+fi
+###-tns-completion-end-###

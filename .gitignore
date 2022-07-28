@@ -2,6 +2,8 @@ vim/bundle/**
 vim/plugged
 vim/backups/**
 vim/sessions/**
+nvim/plugged
+nvim/plugin/packer_compiled.lua
 
 zsh/plugins/**
 
