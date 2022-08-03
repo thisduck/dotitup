@@ -218,5 +218,18 @@ require('packer').startup(function(use)
 			require("telescope").load_extension("persisted")
 		end,
 	})
+
+	use {
+		"kyazdani42/nvim-tree.lua",
+		requires = {
+			"kyazdani42/nvim-web-devicons",
+		},
+		tag = "nightly",
+		config = function()
+			require("nvim-tree").setup()
+			vim.keymap.set("n", "<leader>nt", "<cmd>NvimTreeToggle<cr>")
+			vim.keymap.set("n", "<leader>nf", "<cmd>NvimTreeFindFile<cr>")
+		end,
+	}
 end)
 
