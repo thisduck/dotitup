@@ -80,5 +80,7 @@ require('packer').startup(function(use)
 			vim.keymap.set('', ';', '<cmd>HopChar1<cr>')
 		end
 	}
+
+	use "tversteeg/registers.nvim"
 end)
 
