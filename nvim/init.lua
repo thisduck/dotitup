@@ -11,6 +11,9 @@ vim.opt.shiftwidth = 2
 vim.opt.smartindent = true
 vim.cmd [[set list listchars=tab:▸\ ,trail:·]]
 
+-- peristent undo.
+vim.opt.undofile = true
+
 -- plugins.
 vim.cmd [[packadd packer.nvim]]
 vim.cmd([[
