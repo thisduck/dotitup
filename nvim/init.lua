@@ -66,12 +66,22 @@ require('packer').startup(function(use)
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+		requires = {
+			"windwp/nvim-ts-autotag",
+			"RRethy/nvim-treesitter-endwise",
+		},
 		config = function()
 			require'nvim-treesitter.configs'.setup {
 				auto_install = true,
 				highlight = {
 					enable = true,
-				}
+				},
+				autotag = {
+					enable = true,
+				},
+				endwise = {
+					enable = true,
+				},
 			}
 		end
 	}
