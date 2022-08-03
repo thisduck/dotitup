@@ -14,6 +14,12 @@ vim.cmd [[set list listchars=tab:▸\ ,trail:·]]
 -- peristent undo.
 vim.opt.undofile = true
 
+-- return to last position.
+vim.cmd [[
+    autocmd BufRead * autocmd FileType <buffer> ++once
+      \ if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif
+]]
+
 -- plugins.
 vim.cmd [[packadd packer.nvim]]
 vim.cmd([[
@@ -53,7 +59,6 @@ require('packer').startup(function(use)
 			}
 		end
 	}
-
 
 	use 'simnalamburt/vim-mundo'
 end)
