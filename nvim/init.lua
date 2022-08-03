@@ -210,5 +210,13 @@ require('packer').startup(function(use)
 
 	use 'airblade/vim-rooter'
 	use 'mhinz/vim-startify'
+
+	use({
+		"olimorris/persisted.nvim",
+		config = function()
+			require("persisted").setup()
+			require("telescope").load_extension("persisted")
+		end,
+	})
 end)
 
