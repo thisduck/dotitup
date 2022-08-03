@@ -25,6 +25,11 @@ vim.cmd [[
 -- esc.
 vim.keymap.set('i', '<C-c>', '<Esc>')
 
+-- window.
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.equalalways = false
+
 -- plugins.
 vim.cmd [[packadd packer.nvim]]
 vim.cmd([[
