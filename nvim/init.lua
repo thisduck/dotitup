@@ -207,5 +207,8 @@ require('packer').startup(function(use)
 			vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]]
 		end
 	}
+
+	use 'airblade/vim-rooter'
+	use 'mhinz/vim-startify'
 end)
 
