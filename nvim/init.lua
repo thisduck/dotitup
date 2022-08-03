@@ -30,6 +30,11 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.equalalways = false
 
+-- search.
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.keymap.set('n', 'g/', '<cmd>nohlsearch<cr>')
+
 -- plugins.
 vim.cmd [[packadd packer.nvim]]
 vim.cmd([[
