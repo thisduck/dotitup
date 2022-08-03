@@ -18,7 +18,7 @@ plugins=(git gitfast history zeus ssh-agent bundler zsh-syntax-highlighting hist
 source $ZSH/oh-my-zsh.sh
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export EDITOR='vim'
+export EDITOR='nvim'
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 # export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
