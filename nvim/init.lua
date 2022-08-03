@@ -59,9 +59,29 @@ require("packer").startup(function(use)
 
   use {
     "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    requires = { { "kyazdani42/nvim-web-devicons", opt = true }, "SmiteshP/nvim-gps" },
     config = function()
-      require("lualine").setup {}
+      local gps = require "nvim-gps"
+      gps.setup()
+
+      local theme = require "lualine.themes.onenord"
+      local fg = "#a1a1aa"
+      local bg = "#3f3f46"
+      theme.inactive.a.fg = fg
+      theme.inactive.b.fg = fg
+      theme.inactive.c.fg = fg
+      theme.inactive.a.bg = bg
+      theme.inactive.b.bg = bg
+      theme.inactive.c.bg = bg
+
+      require("lualine").setup {
+        options = {
+          theme = theme,
+        },
+        sections = {
+          lualine_c = { "filename", { gps.get_location, cond = gps.is_available } },
+        },
+      }
     end,
   }
 
