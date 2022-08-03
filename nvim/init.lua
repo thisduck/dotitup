@@ -1,3 +1,5 @@
+vim.g.mapleader = ' '
+
 vim.opt.number = true
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
@@ -61,5 +63,19 @@ require('packer').startup(function(use)
 	}
 
 	use 'simnalamburt/vim-mundo'
+
+	use {
+		'phaazon/hop.nvim',
+		branch = 'v2',
+		config = function()
+			require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+
+			vim.keymap.set('', '<leader>w', '<cmd>HopWord<cr>')
+			vim.keymap.set('', '<leader>j', '<cmd>HopLineStartAC<cr>')
+			vim.keymap.set('', '<leader>k', '<cmd>HopLineStartBC<cr>')
+			vim.keymap.set('', '<leader>e', "<cmd>lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>")
+			vim.keymap.set('', ';', '<cmd>HopChar1<cr>')
+		end
+	}
 end)
 
