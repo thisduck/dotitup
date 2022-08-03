@@ -69,6 +69,7 @@ require('packer').startup(function(use)
 		requires = {
 			"windwp/nvim-ts-autotag",
 			"RRethy/nvim-treesitter-endwise",
+			"JoosepAlviste/nvim-ts-context-commentstring"
 		},
 		config = function()
 			require'nvim-treesitter.configs'.setup {
@@ -85,6 +86,9 @@ require('packer').startup(function(use)
 				matchup = {
 					enable = true,
 				},
+				context_commentstring = {
+					enable = true
+				}
 			}
 		end
 	}
@@ -258,5 +262,8 @@ require('packer').startup(function(use)
 			vim.cmd [[nnoremap <c-k> <cmd>MatchupWhereAmI?<cr>]]
 		end,
 	}
+
+
+	use "tpope/vim-commentary"
 end)
 
