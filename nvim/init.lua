@@ -30,6 +30,7 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.equalalways = false
+vim.cmd "set diffopt+=vertical,followwrap"
 
 -- search.
 vim.opt.ignorecase = true
@@ -583,6 +584,17 @@ require("packer").startup(function(use)
           map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
         end,
       }
+    end,
+  }
+
+  use {
+    "tpope/vim-fugitive",
+    config = function()
+      vim.cmd [[nnoremap <silent> <Leader>gs :10split<Bar>0Git<CR>]]
+      vim.cmd [[nnoremap <silent> <Leader>gl :Gclog %<CR>]]
+
+      vim.cmd [[nnoremap <silent> <Leader>dg :diffget<CR>]]
+      vim.cmd [[nnoremap <silent> <Leader>dp :diffput<CR>]]
     end,
   }
 end)
