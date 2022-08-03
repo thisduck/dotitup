@@ -128,5 +128,36 @@ require('packer').startup(function(use)
 			vim.keymap.set("n", "sxc", "<cmd>lua require('substitute.exchange').cancel()<cr>", { noremap = true })
 		end
 	})
+
+	use {
+		"kana/vim-textobj-user",
+		"kana/vim-textobj-entire",
+		"michaeljsmith/vim-indent-object",
+		"beloglazov/vim-textobj-quotes",
+		"coderifous/textobj-word-column.vim",
+		{
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			config = function()
+				require'nvim-treesitter.configs'.setup {
+					textobjects = {
+						select = {
+							enable = true,
+
+							lookahead = true,
+
+							keymaps = {
+								["af"] = "@function.outer",
+								["if"] = "@function.inner",
+								["ac"] = "@class.outer",
+								["ic"] = "@class.inner",
+								["aa"] = "@parameter.outer",
+								["ia"] = "@parameter.inner",
+							},
+						},
+					},
+				}
+			end
+		}
+	}
 end)
 
