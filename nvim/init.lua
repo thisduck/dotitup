@@ -169,5 +169,7 @@ require('packer').startup(function(use)
 	use "tpope/vim-repeat"
 
 	use "troydm/zoomwintab.vim"
+
+	use "chrisbra/nrrwrgn"
 end)
 
