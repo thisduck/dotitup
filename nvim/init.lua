@@ -47,6 +47,7 @@ augroup end
 ]]
 
 require("packer").startup(function(use)
+  local more = require "dotfiles.more"
   use "wbthomason/packer.nvim"
 
   use {
@@ -245,12 +246,16 @@ require("packer").startup(function(use)
       }
       require("telescope").load_extension "ui-select"
 
+      vim.api.nvim_create_user_command("Search", function(opts)
+        require("telescope.builtin").grep_string { search = opts.args }
+      end, { nargs = 1 })
+
       vim.cmd [[
 				nnoremap <leader>; <cmd>Telescope find_files<cr>
 				nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 				nnoremap <leader>fb <cmd>Telescope buffers<cr>
 				nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-				nnoremap <leader>/ <cmd>lua require'telescope.builtin'.grep_string({ search = vim.fn.input("Search: ") })<cr>
+				nnoremap <leader>/ :Search<space>
 				nnoremap K <cmd>lua require'telescope.builtin'.grep_string()<cr>
 				nnoremap <leader>fr <cmd>Telescope resume<cr>
 			]]
@@ -510,7 +515,14 @@ require("packer").startup(function(use)
           { name = "nvim_lsp", prority = 100 },
           { name = "nvim_lsp_signature_help" },
           { name = "luasnip", prority = 100 },
-          { name = "buffer" },
+          {
+            name = "buffer",
+            option = {
+              get_bufnrs = function()
+                return vim.api.nvim_list_bufs()
+              end,
+            },
+          },
           { name = "path" },
           { name = "tags" },
           { name = "treesitter" },
@@ -541,6 +553,8 @@ require("packer").startup(function(use)
           { name = "path" },
         }, {
           { name = "cmdline" },
+          { name = "buffer" },
+          { name = "rg" },
         }),
       })
 
@@ -617,4 +631,6 @@ require("packer").startup(function(use)
       vim.cmd [[nnoremap <silent> <Leader>dp :diffput<CR>]]
     end,
   }
+
+  more.run(use)
 end)
