@@ -161,6 +161,8 @@ require("packer").startup(function(use)
       vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
 
       vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
+
+      require("telescope").load_extension "yank_history"
     end,
   }
 
@@ -229,7 +231,7 @@ require("packer").startup(function(use)
     config = function()
       local actions = require "telescope.actions"
       require("telescope").setup {
-        defaults = {
+        defaults = require("telescope.themes").get_ivy {
           wrap_results = true,
           mappings = {
             i = {
@@ -264,7 +266,12 @@ require("packer").startup(function(use)
     end,
   }
 
-  use "airblade/vim-rooter"
+  use {
+    "airblade/vim-rooter",
+    config = function()
+      vim.cmd [[ let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'build/env.sh'] ]]
+    end,
+  }
 
   use {
     "olimorris/persisted.nvim",
@@ -337,7 +344,9 @@ require("packer").startup(function(use)
         cucumber_language_server = {},
         dockerls = {},
         efm = {},
-        eslint = {},
+        eslint = {
+          formatting = true,
+        },
         ember = {},
         emmet_ls = {},
         graphql = {},
@@ -376,7 +385,9 @@ require("packer").startup(function(use)
         taplo = {},
         tailwindcss = {},
         vimls = {},
-        volar = {},
+        volar = {
+          formatting = false,
+        },
         yamlls = {},
       }
       require("nvim-lsp-setup").setup {
@@ -401,8 +412,13 @@ require("packer").startup(function(use)
             client.resolved_capabilities.document_formatting = false
             client.resolved_capabilities.document_range_formatting = false
           end
+          if servers[client.name].formatting == true then
+            client.resolved_capabilities.document_formatting = true
+            client.resolved_capabilities.document_range_formatting = true
+          end
         end,
         servers = servers,
+        format_on_save_timeout = 6000,
       }
 
       vim.diagnostic.config {
@@ -424,13 +440,8 @@ require("packer").startup(function(use)
       require("null-ls").setup {
         sources = {
           null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.eslint_d,
-          null_ls.builtins.formatting.prettierd,
           null_ls.builtins.formatting.markdownlint,
           null_ls.builtins.formatting.cbfmt,
-          null_ls.builtins.formatting.erb_lint,
-          null_ls.builtins.formatting.nginx_beautifier,
-          null_ls.builtins.formatting.rubocop,
           null_ls.builtins.hover.dictionary,
         },
       }
@@ -449,6 +460,7 @@ require("packer").startup(function(use)
       "petertriho/cmp-git",
       "lukas-reineke/cmp-rg",
       "quangnguyen30192/cmp-nvim-tags",
+      "andersevenrud/cmp-tmux",
 
       "L3MON4D3/LuaSnip",
       "rafamadriz/friendly-snippets",
@@ -527,6 +539,12 @@ require("packer").startup(function(use)
           { name = "tags" },
           { name = "treesitter" },
           { name = "rg" },
+          {
+            name = "tmux",
+            option = {
+              all_panes = true,
+            },
+          },
         },
       }
 
@@ -633,4 +651,11 @@ require("packer").startup(function(use)
   }
 
   more.run(use)
+
+  use {
+    "rcarriga/nvim-notify",
+    config = function()
+      require("notify").setup()
+    end,
+  }
 end)
