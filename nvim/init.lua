@@ -14,6 +14,13 @@ vim.opt.shiftwidth = 2
 vim.opt.smartindent = true
 vim.cmd [[set list listchars=tab:▸\ ,trail:·]]
 
+-- fold.
+vim.o.foldcolumn = "1"
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- peristent undo.
 vim.opt.undofile = true
 
@@ -53,10 +60,19 @@ require("packer").startup(function(use)
   use {
     "rmehri01/onenord.nvim",
     config = function()
-      require("onenord").setup()
-      vim.cmd [[ highlight IncSearch gui=bold ]]
+      -- require("onenord").setup()
+      -- vim.cmd [[ highlight IncSearch gui=bold ]]
     end,
   }
+
+  use "rebelot/kanagawa.nvim"
+  use "lewpoly/sherbet.nvim"
+  use "kaiuri/nvim-juliana"
+  use "EdenEast/nightfox.nvim"
+  use "titanzero/zephyrium"
+  use "folke/tokyonight.nvim"
+  use "savq/melange"
+  use "cooperuser/glowbeam.nvim"
 
   use {
     "nvim-lualine/lualine.nvim",
@@ -122,9 +138,15 @@ require("packer").startup(function(use)
 
   use {
     "phaazon/hop.nvim",
+    requires = { "~/codes/hop_extensions" },
     branch = "v2",
     config = function()
-      require("hop").setup { keys = "etovxqpdygfblzhckisuran" }
+      require("hop").setup {
+        keys = "etovxqpdygfblzhckisuran",
+        extensions = {
+          "hop_extensions.hint_char1",
+        },
+      }
 
       vim.keymap.set("", "<leader>w", "<cmd>HopWord<cr>")
       vim.keymap.set("", "<leader>j", "<cmd>HopLineStartAC<cr>")
@@ -134,7 +156,7 @@ require("packer").startup(function(use)
         "<leader>e",
         "<cmd>lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>"
       )
-      vim.keymap.set("", ";", "<cmd>HopChar1<cr>")
+      vim.keymap.set("", ";", "<cmd>HopChar1NoLeadingSpaces<cr>")
     end,
   }
 
@@ -195,6 +217,7 @@ require("packer").startup(function(use)
     "coderifous/textobj-word-column.vim",
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
+      requires = { "RRethy/nvim-treesitter-textsubjects" },
       config = function()
         require("nvim-treesitter.configs").setup {
           textobjects = {
@@ -209,6 +232,15 @@ require("packer").startup(function(use)
                 ["aa"] = "@parameter.outer",
                 ["ia"] = "@parameter.inner",
               },
+            },
+          },
+          textsubjects = {
+            enable = true,
+            prev_selection = ",", -- (Optional) keymap to select the previous selection
+            keymaps = {
+              ["."] = "textsubjects-smart",
+              [";"] = "textsubjects-container-outer",
+              ["i;"] = "textsubjects-container-inner",
             },
           },
         }
@@ -227,7 +259,11 @@ require("packer").startup(function(use)
 
   use {
     "thisduck/telescope.nvim",
-    requires = { { "nvim-lua/plenary.nvim" }, "nvim-telescope/telescope-ui-select.nvim" },
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      "nvim-telescope/telescope-ui-select.nvim",
+      use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+    },
     config = function()
       local actions = require "telescope.actions"
       require("telescope").setup {
@@ -244,23 +280,29 @@ require("packer").startup(function(use)
           ["ui-select"] = {
             require("telescope.themes").get_dropdown {},
           },
+          fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+          },
         },
       }
       require("telescope").load_extension "ui-select"
+      require("telescope").load_extension "fzf"
 
       vim.api.nvim_create_user_command("Search", function(opts)
         require("telescope.builtin").grep_string { search = opts.args }
       end, { nargs = 1 })
 
       vim.cmd [[
-				nnoremap <leader>; <cmd>Telescope find_files<cr>
-				nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-				nnoremap <leader>fb <cmd>Telescope buffers<cr>
-				nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-				nnoremap <leader>/ :Search<space>
-				nnoremap K <cmd>lua require'telescope.builtin'.grep_string()<cr>
-				nnoremap <leader>fr <cmd>Telescope resume<cr>
-			]]
+        nnoremap <leader>; <cmd>Telescope find_files<cr>
+        nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+        nnoremap <leader>fb <cmd>Telescope oldfiles only_cwd=true include_current_session=true<cr>
+        nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+        nnoremap <leader>/ :Search<space>
+        nnoremap K <cmd>Telescope grep_string<cr>
+        nnoremap <leader>fr <cmd>Telescope resume<cr>
+      ]]
 
       vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]]
     end,
@@ -285,13 +327,13 @@ require("packer").startup(function(use)
     "mhinz/vim-startify",
     config = function()
       vim.cmd [[
-				let g:startify_lists = [
-							\ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
-							\ { 'type': 'sessions',  'header': ['   Sessions']       },
-							\ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-							\ { 'type': 'commands',  'header': ['   Commands']       },
-							\ ]
-			]]
+        let g:startify_lists = [
+              \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+              \ { 'type': 'sessions',  'header': ['   Sessions']       },
+              \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+              \ { 'type': 'commands',  'header': ['   Commands']       },
+              \ ]
+      ]]
       vim.g.startify_session_dir = vim.fn.expand(vim.fn.stdpath "data" .. "/sessions/")
     end,
   }
@@ -326,7 +368,7 @@ require("packer").startup(function(use)
   use "tpope/vim-commentary"
 
   use {
-    "thisduck/nvim-lsp-setup",
+    "junnplus/lsp-setup.nvim",
     requires = {
       "neovim/nvim-lspconfig",
       "williamboman/mason.nvim",
@@ -343,7 +385,6 @@ require("packer").startup(function(use)
         cssls = {},
         cucumber_language_server = {},
         dockerls = {},
-        efm = {},
         eslint = {
           formatting = true,
         },
@@ -378,6 +419,9 @@ require("packer").startup(function(use)
         perlnavigator = {},
         prismals = {},
         solargraph = {},
+        remark_ls = {
+          formatting = false,
+        },
         rust_analyzer = {},
         sqlls = {},
         sorbet = {},
@@ -399,7 +443,7 @@ require("packer").startup(function(use)
           gi = "Telescope lsp_implementations",
           gr = "Telescope lsp_references",
           L = "lua vim.lsp.buf.hover({ border = 'single'})",
-          ["<C-k>"] = "lua vim.lsp.buf.signature_help()",
+          ["<leader>sh"] = "lua vim.lsp.buf.signature_help()",
           ["<Leader>rn"] = "lua vim.lsp.buf.rename()",
           ["<Leader>ca"] = "lua vim.lsp.buf.code_action()",
           ["<Leader>ff"] = "lua vim.lsp.buf.formatting()",
@@ -421,6 +465,14 @@ require("packer").startup(function(use)
         format_on_save_timeout = 6000,
       }
 
+      local lsp_format_augroup = vim.api.nvim_create_augroup("LspFormat", { clear = true })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = lsp_format_augroup,
+        callback = function()
+          vim.lsp.buf.formatting_sync({}, 4000)
+        end,
+      })
+
       vim.diagnostic.config {
         virtual_text = {
           source = "always",
@@ -440,9 +492,11 @@ require("packer").startup(function(use)
       require("null-ls").setup {
         sources = {
           null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.markdownlint,
-          null_ls.builtins.formatting.cbfmt,
-          null_ls.builtins.hover.dictionary,
+          null_ls.builtins.formatting.prettierd.with {
+            filetypes = {
+              "markdown",
+            },
+          },
         },
       }
     end,
@@ -524,9 +578,9 @@ require("packer").startup(function(use)
           end, { "i", "s" }),
         },
         sources = cmp.config.sources {
-          { name = "nvim_lsp", prority = 100 },
+          { name = "nvim_lsp", priority = 100 },
+          { name = "luasnip", priority = 100 },
           { name = "nvim_lsp_signature_help" },
-          { name = "luasnip", prority = 100 },
           {
             name = "buffer",
             option = {
@@ -538,7 +592,7 @@ require("packer").startup(function(use)
           { name = "path" },
           { name = "tags" },
           { name = "treesitter" },
-          { name = "rg" },
+          -- { name = "rg", pattern = [[[\w_-]{5,30}]] },
           {
             name = "tmux",
             option = {
@@ -571,6 +625,7 @@ require("packer").startup(function(use)
           { name = "path" },
         }, {
           { name = "cmdline" },
+          { name = "tags" },
           { name = "buffer" },
           { name = "rg" },
         }),
@@ -650,12 +705,54 @@ require("packer").startup(function(use)
     end,
   }
 
-  more.run(use)
-
   use {
     "rcarriga/nvim-notify",
     config = function()
       require("notify").setup()
     end,
   }
+
+  use {
+    "akinsho/nvim-toggleterm.lua",
+    tag = "v2.*",
+    config = function()
+      require("toggleterm").setup { open_mapping = [[<c-t>]] }
+
+      vim.cmd [[tnoremap <silent>jk <C-\><C-n>]]
+      vim.cmd [[nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>]]
+      vim.cmd [[inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]]
+    end,
+  }
+
+  use {
+    "nmac427/guess-indent.nvim",
+    config = function()
+      require("guess-indent").setup {}
+    end,
+  }
+
+  -- Unless you are still migrating, remove the deprecated commands from v1.x
+  vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
+
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+  }
+
+  use {
+    "~/codes/markdown-preview.nvim",
+    run = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  }
+
+  more.run(use)
 end)
+
+-- vim.cmd [[ colorscheme zephyrium ]]
+vim.cmd [[ colorscheme onenord ]]

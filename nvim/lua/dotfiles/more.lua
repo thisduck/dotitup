@@ -18,23 +18,6 @@ function M.run(use)
       vim.cmd [[nnoremap <silent> <Leader>df :DiffviewFileHistory<CR>]]
     end,
   }
-
-  use {
-    "akinsho/toggleterm.nvim",
-    config = function()
-      vim.cmd [[let g:toggleterm_terminal_mapping = '<C-t>']]
-      vim.cmd [[tnoremap <silent>jk <C-\><C-n>]]
-      vim.cmd [[nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>]]
-      vim.cmd [[inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]]
-    end,
-  }
-
-  use {
-    "iamcco/markdown-preview.nvim",
-    run = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-  }
 end
 
 return M
