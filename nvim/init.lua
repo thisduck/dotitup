@@ -44,12 +44,32 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.keymap.set("n", "g/", "<cmd>nohlsearch<cr>")
 
+-- remove item from quickfix
+vim.cmd [[
+function! QFdelete(bufnr) range
+  " get current qflist
+  let l:qfl = getqflist()
+  " no need for filter() and such; just drop the items in range
+  call remove(l:qfl, a:firstline - 1, a:lastline - 1)
+  " replace items in the current list, do not make a new copy of it;
+  " this also preserves the list title
+  call setqflist([], 'r', {'items': l:qfl})
+  " restore current line
+  call setpos('.', [a:bufnr, a:firstline, 1, 0])
+endfunction
+
+:command! RemoveQFItem :call RemoveQFItem()
+autocmd FileType qf nnoremap <silent><buffer>dd :call QFdelete(bufnr())<CR>
+]]
+
 -- plugins.
 vim.cmd [[packadd packer.nvim]]
+
 vim.cmd [[
 augroup packer_user_config
-	autocmd!
-	autocmd BufWritePost init.lua source <afile> | PackerCompile
+  autocmd!
+  autocmd User PackerComplete PackerCompile
+  autocmd BufWritePost init.lua source <afile> | PackerInstall
 augroup end
 ]]
 
@@ -60,8 +80,8 @@ require("packer").startup(function(use)
   use {
     "rmehri01/onenord.nvim",
     config = function()
-      -- require("onenord").setup()
-      -- vim.cmd [[ highlight IncSearch gui=bold ]]
+      require("onenord").setup()
+      vim.cmd [[ highlight IncSearch gui=bold ]]
     end,
   }
 
@@ -111,6 +131,7 @@ require("packer").startup(function(use)
       "windwp/nvim-ts-autotag",
       "RRethy/nvim-treesitter-endwise",
       "JoosepAlviste/nvim-ts-context-commentstring",
+      "p00f/nvim-ts-rainbow",
     },
     config = function()
       require("nvim-treesitter.configs").setup {
@@ -124,13 +145,24 @@ require("packer").startup(function(use)
         endwise = {
           enable = true,
         },
-        matchup = {
-          enable = true,
-        },
         context_commentstring = {
           enable = true,
         },
+        rainbow = {
+          enable = true,
+          extended_mode = true,
+        },
+        matchup = {
+          enable = true,
+        },
       }
+    end,
+  }
+
+  use {
+    "nmac427/guess-indent.nvim",
+    config = function()
+      require("guess-indent").setup {}
     end,
   }
 
@@ -138,7 +170,7 @@ require("packer").startup(function(use)
 
   use {
     "phaazon/hop.nvim",
-    requires = { "~/codes/hop_extensions" },
+    requires = { "thisduck/hop_extensions.nvim" },
     branch = "v2",
     config = function()
       require("hop").setup {
@@ -162,8 +194,6 @@ require("packer").startup(function(use)
 
   use "tversteeg/registers.nvim"
 
-  use "machakann/vim-highlightedyank"
-
   use {
     "gbprod/yanky.nvim",
     config = function()
@@ -173,6 +203,7 @@ require("packer").startup(function(use)
           on_yank = false,
         },
       }
+      require("telescope").load_extension "yank_history"
 
       vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
       vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
@@ -183,8 +214,6 @@ require("packer").startup(function(use)
       vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
 
       vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
-
-      require("telescope").load_extension "yank_history"
     end,
   }
 
@@ -261,8 +290,8 @@ require("packer").startup(function(use)
     "thisduck/telescope.nvim",
     requires = {
       { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
       "nvim-telescope/telescope-ui-select.nvim",
-      use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
     },
     config = function()
       local actions = require "telescope.actions"
@@ -277,22 +306,33 @@ require("packer").startup(function(use)
           },
         },
         extensions = {
-          ["ui-select"] = {
-            require("telescope.themes").get_dropdown {},
-          },
           fzf = {
             fuzzy = true,
             override_generic_sorter = true,
             override_file_sorter = true,
           },
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown {},
+          },
         },
       }
-      require("telescope").load_extension "ui-select"
       require("telescope").load_extension "fzf"
+      require("telescope").load_extension "ui-select"
 
       vim.api.nvim_create_user_command("Search", function(opts)
         require("telescope.builtin").grep_string { search = opts.args }
       end, { nargs = 1 })
+      vim.cmd [[
+        function! DotVisualText()
+          try
+            let a_save = @a
+            normal! "ay
+            return @a
+          finally
+            let @a = a_save
+          endtry
+        endfunction
+      ]]
 
       vim.cmd [[
         nnoremap <leader>; <cmd>Telescope find_files<cr>
@@ -301,6 +341,7 @@ require("packer").startup(function(use)
         nnoremap <leader>fh <cmd>Telescope help_tags<cr>
         nnoremap <leader>/ :Search<space>
         nnoremap K <cmd>Telescope grep_string<cr>
+        vnoremap K <cmd>execute "Search " . DotVisualText()<cr>
         nnoremap <leader>fr <cmd>Telescope resume<cr>
       ]]
 
@@ -724,13 +765,6 @@ require("packer").startup(function(use)
     end,
   }
 
-  use {
-    "nmac427/guess-indent.nvim",
-    config = function()
-      require("guess-indent").setup {}
-    end,
-  }
-
   -- Unless you are still migrating, remove the deprecated commands from v1.x
   vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
 
@@ -751,8 +785,7 @@ require("packer").startup(function(use)
     end,
   }
 
+  use "mfussenegger/nvim-dap"
+
   more.run(use)
 end)
-
--- vim.cmd [[ colorscheme zephyrium ]]
-vim.cmd [[ colorscheme onenord ]]
