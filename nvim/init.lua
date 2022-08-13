@@ -246,7 +246,6 @@ require("packer").startup(function(use)
     "coderifous/textobj-word-column.vim",
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
-      requires = { "RRethy/nvim-treesitter-textsubjects" },
       config = function()
         require("nvim-treesitter.configs").setup {
           textobjects = {
@@ -261,15 +260,6 @@ require("packer").startup(function(use)
                 ["aa"] = "@parameter.outer",
                 ["ia"] = "@parameter.inner",
               },
-            },
-          },
-          textsubjects = {
-            enable = true,
-            prev_selection = ",", -- (Optional) keymap to select the previous selection
-            keymaps = {
-              ["."] = "textsubjects-smart",
-              [";"] = "textsubjects-container-outer",
-              ["i;"] = "textsubjects-container-inner",
             },
           },
         }
