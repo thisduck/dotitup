@@ -10,9 +10,17 @@ require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 	use {
-	  'rmehri01/onenord.nvim',
-	  config = function()
-	    require('onenord').setup()
-	  end
+		'rmehri01/onenord.nvim',
+		config = function()
+			require('onenord').setup()
+		end
+	}
+	
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+		config = function()
+			require('lualine').setup()
+		end
 	}
 end)
