@@ -29,6 +29,9 @@ autocmd BufRead * autocmd FileType <buffer> ++once
   \ if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif
 ]]
 
+-- esc.
+vim.keymap.set("i", "<C-c>", "<Esc>")
+
 -- plugins.
 vim.cmd [[packadd packer.nvim]]
 
