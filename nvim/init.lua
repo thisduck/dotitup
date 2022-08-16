@@ -304,4 +304,6 @@ require('packer').startup(function(use)
 			vim.cmd [[nnoremap <c-k> <cmd>MatchupWhereAmI?<cr>]]
 		end,
 	}
+
+	use "tpope/vim-commentary"
 end)
