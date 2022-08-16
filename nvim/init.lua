@@ -50,6 +50,7 @@ require('packer').startup(function(use)
 		'rmehri01/onenord.nvim',
 		config = function()
 			require('onenord').setup()
+			vim.cmd[[ highlight IncSearch gui=bold ]]
 		end
 	}
 	
@@ -108,4 +109,6 @@ require('packer').startup(function(use)
 	}
 
 	use "tversteeg/registers.nvim"
+
+	use "machakann/vim-highlightedyank"
 end)
