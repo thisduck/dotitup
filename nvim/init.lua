@@ -268,4 +268,11 @@ require('packer').startup(function(use)
 			vim.keymap.set("n", "<leader>nf", "<cmd>NvimTreeFindFile<cr>")
 		end,
 	}
+
+	use {
+		"windwp/nvim-autopairs",
+		config = function()
+			require('nvim-autopairs').setup()
+		end
+	}
 end)
