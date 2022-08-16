@@ -11,6 +11,13 @@ vim.opt.shiftwidth = 2
 vim.opt.smartindent = true
 vim.cmd [[set list listchars=tab:▸\ ,trail:·]]
 
+-- fold.
+vim.o.foldcolumn = "1"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+
 -- plugins.
 vim.cmd [[packadd packer.nvim]]
 
