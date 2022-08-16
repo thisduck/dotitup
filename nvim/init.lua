@@ -200,4 +200,45 @@ require('packer').startup(function(use)
 	use "chrisbra/nrrwrgn"
 
 	use "tpope/vim-unimpaired"
+
+	use {
+		'nvim-telescope/telescope.nvim', tag = '0.1.0',
+		requires = {
+			{'nvim-lua/plenary.nvim'} ,
+			use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+		},
+		config = function()
+			local actions = require "telescope.actions"
+			require'telescope'.setup {
+				defaults = require("telescope.themes").get_ivy {
+					mappings = {
+						i = {
+							["<C-j>"] = actions.move_selection_next,
+							["<C-k>"] = actions.move_selection_previous,
+						},
+					},
+				},
+				extensions = {
+					fzf = {
+						fuzzy = true,
+						override_generic_sorter = true,
+						override_file_sorter = true,
+					},
+				},
+			}
+			require("telescope").load_extension "fzf"
+
+			vim.cmd [[
+				nnoremap <leader>; <cmd>Telescope find_files<cr>
+				nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+				nnoremap <leader>fb <cmd>Telescope oldfiles only_cwd=true include_current_session=true<cr>
+				nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+				nnoremap <leader>/ <cmd>lua require'telescope.builtin'.grep_string({ search = vim.fn.input("Search: ") })<cr>
+				nnoremap K <cmd>Telescope grep_string<cr>
+				nnoremap <leader>fr <cmd>Telescope resume<cr>
+			]]
+
+			vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]]
+		end
+	}
 end)
