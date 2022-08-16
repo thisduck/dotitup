@@ -6,6 +6,15 @@ vim.opt.mouse = 'a'
 
 -- plugins.
 vim.cmd [[packadd packer.nvim]]
+
+vim.cmd [[
+augroup packer_user_config
+  autocmd!
+  autocmd User PackerComplete PackerCompile
+  autocmd BufWritePost init.lua source <afile> | PackerInstall
+augroup end
+]]
+
 require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
