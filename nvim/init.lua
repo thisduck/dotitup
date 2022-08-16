@@ -241,4 +241,18 @@ require('packer').startup(function(use)
 			vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]]
 		end
 	}
+
+	use {
+		'mhinz/vim-startify',
+		config = function()
+			vim.cmd[[
+				let g:startify_lists = [
+					\ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+					\ { 'type': 'sessions',  'header': ['   Sessions']       },
+					\ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+					\ { 'type': 'commands',  'header': ['   Commands']       },
+					\ ]
+			]]
+		end
+	}
 end)
