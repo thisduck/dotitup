@@ -18,6 +18,9 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 
+-- persistent undo.
+vim.opt.undofile = true
+
 -- plugins.
 vim.cmd [[packadd packer.nvim]]
 
