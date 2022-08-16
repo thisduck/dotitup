@@ -198,4 +198,6 @@ require('packer').startup(function(use)
 	use "troydm/zoomwintab.vim"
 
 	use "chrisbra/nrrwrgn"
+
+	use "tpope/vim-unimpaired"
 end)
