@@ -69,4 +69,6 @@ require('packer').startup(function(use)
 			require("guess-indent").setup {}
 		end,
 	}
+
+	use 'simnalamburt/vim-mundo'
 end)
