@@ -100,6 +100,9 @@ require('packer').startup(function(use)
 					enable = true,
 					extended_mode = true,
 				},
+				matchup = {
+					enable = true,
+				},
 			}
 		end
 	}
@@ -293,5 +296,12 @@ require('packer').startup(function(use)
 		config = function()
 			require('nvim-autopairs').setup()
 		end
+	}
+
+	use {
+		"andymass/vim-matchup",
+		config = function()
+			vim.cmd [[nnoremap <c-k> <cmd>MatchupWhereAmI?<cr>]]
+		end,
 	}
 end)
