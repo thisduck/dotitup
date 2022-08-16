@@ -21,6 +21,12 @@ vim.o.foldlevelstart = 99
 -- persistent undo.
 vim.opt.undofile = true
 
+-- return to last file position.
+vim.cmd [[
+autocmd BufRead * autocmd FileType <buffer> ++once
+  \ if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif
+]]
+
 -- plugins.
 vim.cmd [[packadd packer.nvim]]
 
