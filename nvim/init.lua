@@ -181,4 +181,7 @@ require('packer').startup(function(use)
 			end,
 		},
 	}
+
+	use "tpope/vim-surround"
+	use "tpope/vim-repeat"
 end)
