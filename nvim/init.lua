@@ -111,4 +111,26 @@ require('packer').startup(function(use)
 	use "tversteeg/registers.nvim"
 
 	use "machakann/vim-highlightedyank"
+
+	use({
+		"gbprod/yanky.nvim",
+		config = function()
+			require("yanky").setup({
+				highlight = {
+					on_put = false,
+					on_yank = false,
+				},
+			})
+
+			vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
+			vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
+			vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
+			vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
+
+			vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
+			vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
+
+			vim.keymap.set({"n","x"}, "y", "<Plug>(YankyYank)")
+		end
+	})
 end)
