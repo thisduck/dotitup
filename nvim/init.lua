@@ -42,6 +42,9 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.keymap.set('n', 'g/', '<cmd>nohlsearch<cr>')
 
+-- sign column.
+vim.opt.signcolumn = "yes"
+
 -- plugins.
 vim.cmd [[packadd packer.nvim]]
 
