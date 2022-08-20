@@ -60,15 +60,15 @@ require('packer').startup(function(use)
 		'rmehri01/onenord.nvim',
 		config = function()
 			require('onenord').setup()
-			vim.cmd[[ highlight IncSearch gui=bold ]]
+			vim.cmd [[ highlight IncSearch gui=bold ]]
 		end
 	}
-	
+
 	use {
 		'nvim-lualine/lualine.nvim',
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
 		config = function()
-			require('lualine').setup()
+			require('lualine').setup({})
 		end
 	}
 
@@ -82,7 +82,7 @@ require('packer').startup(function(use)
 			"p00f/nvim-ts-rainbow",
 		},
 		config = function()
-			require'nvim-treesitter.configs'.setup {
+			require 'nvim-treesitter.configs'.setup {
 				auto_install = true,
 				highlight = {
 					enable = true,
@@ -132,9 +132,9 @@ require('packer').startup(function(use)
 			vim.keymap.set("", "<leader>j", "<cmd>HopLineStartAC<cr>")
 			vim.keymap.set("", "<leader>k", "<cmd>HopLineStartBC<cr>")
 			vim.keymap.set(
-			"",
-			"<leader>e",
-			"<cmd>lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>"
+				"",
+				"<leader>e",
+				"<cmd>lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>"
 			)
 			vim.keymap.set("", ";", "<cmd>HopChar1NoLeadingSpaces<cr>")
 		end
@@ -154,15 +154,15 @@ require('packer').startup(function(use)
 				},
 			})
 
-			vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
-			vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
-			vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
-			vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
+			vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+			vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+			vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+			vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 
 			vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
 			vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
 
-			vim.keymap.set({"n","x"}, "y", "<Plug>(YankyYank)")
+			vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
 		end
 	})
 
@@ -226,12 +226,12 @@ require('packer').startup(function(use)
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.0',
 		requires = {
-			{'nvim-lua/plenary.nvim'} ,
+			{ 'nvim-lua/plenary.nvim' },
 			use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 		},
 		config = function()
 			local actions = require "telescope.actions"
-			require'telescope'.setup {
+			require 'telescope'.setup {
 				defaults = require("telescope.themes").get_ivy {
 					mappings = {
 						i = {
@@ -267,7 +267,7 @@ require('packer').startup(function(use)
 	use {
 		'mhinz/vim-startify',
 		config = function()
-			vim.cmd[[
+			vim.cmd [[
 				let g:startify_lists = [
 					\ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
 					\ { 'type': 'sessions',  'header': ['   Sessions']       },
@@ -306,4 +306,31 @@ require('packer').startup(function(use)
 	}
 
 	use "tpope/vim-commentary"
+
+	use {
+		'neovim/nvim-lspconfig',
+		config = function()
+			require 'lspconfig'.sumneko_lua.setup {
+				settings = {
+					Lua = {
+						runtime = {
+							-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+							version = 'LuaJIT',
+						},
+						diagnostics = {
+							-- Get the language server to recognize the `vim` global
+							globals = { 'vim' },
+						},
+						workspace = {
+							-- Make the server aware of Neovim runtime files
+							library = vim.api.nvim_get_runtime_file("", true),
+						},
+						-- Do not send telemetry data containing a randomized but unique identifier
+						telemetry = { enable = false,
+						},
+					},
+				},
+			}
+		end
+	}
 end)
