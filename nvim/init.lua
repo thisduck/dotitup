@@ -319,6 +319,22 @@ require('packer').startup(function(use)
 		},
 		config = function()
 			require('lsp-setup').setup({
+				default_mappings = false,
+				mappings = {
+					gD = "lua vim.lsp.buf.declaration()",
+					gd = "Telescope lsp_definitions",
+					gt = "Telescope lsp_type_definitions",
+					gi = "Telescope lsp_implementations",
+					gr = "Telescope lsp_references",
+					L = "lua vim.lsp.buf.hover({ border = 'single'})",
+					["<leader>sh"] = "lua vim.lsp.buf.signature_help()",
+					["<Leader>rn"] = "lua vim.lsp.buf.rename()",
+					["<Leader>ca"] = "lua vim.lsp.buf.code_action()",
+					["<Leader>ff"] = "lua vim.lsp.buf.formatting()",
+					["<Leader>fd"] = "lua vim.diagnostic.open_float()",
+					["[d"] = 'lua vim.diagnostic.goto_prev({ popup_opts = { border = "single" }})',
+					["]d"] = 'lua vim.diagnostic.goto_next({ popup_opts = { border = "single" }})',
+				},
 				servers = {
 					sumneko_lua = {
 						settings = {
