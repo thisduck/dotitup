@@ -309,4 +309,37 @@ require('packer').startup(function(use)
 	}
 
 	use "tpope/vim-commentary"
+
+	use {
+		'junnplus/lsp-setup.nvim',
+		requires = {
+			'neovim/nvim-lspconfig',
+			'williamboman/mason.nvim',
+			'williamboman/mason-lspconfig.nvim',
+		},
+		config = function()
+			require('lsp-setup').setup({
+				servers = {
+					sumneko_lua = {
+						settings = {
+							Lua = {
+								runtime = {
+									version = "LuaJIT",
+								},
+								diagnostics = {
+									globals = { "vim" },
+								},
+								workspace = {
+									library = vim.api.nvim_get_runtime_file("", true),
+								},
+								telemetry = {
+									enable = false,
+								},
+							},
+						},
+					},
+				}
+			})
+		end
+	}
 end)
