@@ -656,4 +656,13 @@ require("packer").startup(function(use)
       }
     end,
   }
+
+  use {
+    "tpope/vim-fugitive",
+    config = function()
+      vim.cmd [[nnoremap <silent> <Leader>gs :10split<Bar>0Git<CR>]]
+      vim.cmd [[nnoremap <silent> <Leader>gl :Gclog %<CR>]]
+      vim.cmd [[nnoremap <silent> <Leader>gb :Git blame<CR>]]
+    end,
+  }
 end)
