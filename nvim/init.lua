@@ -321,6 +321,16 @@ require('packer').startup(function(use)
 		config = function()
 			require("fidget").setup {}
 
+			vim.diagnostic.config {
+				virtual_text = {
+					source = "always",
+				},
+				float = {
+					source = "always",
+					border = "rounded",
+				},
+			}
+
 			local servers = {
 				pylsp = {},
 				ansiblels = {},
