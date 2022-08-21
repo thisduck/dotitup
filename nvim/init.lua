@@ -600,6 +600,13 @@ require("packer").startup(function(use)
   }
 
   use {
+    "ludovicchabant/vim-gutentags",
+    config = function()
+      vim.cmd [[let g:gutentags_file_list_command = 'rg --files']]
+    end,
+  }
+
+  use {
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup {
