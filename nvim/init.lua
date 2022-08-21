@@ -256,12 +256,16 @@ require("packer").startup(function(use)
       }
       require("telescope").load_extension "fzf"
 
+      vim.api.nvim_create_user_command("Search", function(opts)
+        require("telescope.builtin").grep_string { search = opts.args }
+      end, { nargs = 1 })
+
       vim.cmd [[
 				nnoremap <leader>; <cmd>Telescope find_files<cr>
 				nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 				nnoremap <leader>fb <cmd>Telescope oldfiles only_cwd=true include_current_session=true<cr>
 				nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-				nnoremap <leader>/ <cmd>lua require'telescope.builtin'.grep_string({ search = vim.fn.input("Search: ") })<cr>
+				nnoremap <leader>/ :Search<space>
 				nnoremap K <cmd>Telescope grep_string<cr>
 				nnoremap <leader>fr <cmd>Telescope resume<cr>
 			]]
@@ -495,7 +499,7 @@ require("packer").startup(function(use)
 
       cmp.setup {
         completion = {
-          keyword_length = 3,
+          keyword_length = 2,
         },
         formatting = {
           format = function(entry, vim_item)
@@ -542,7 +546,7 @@ require("packer").startup(function(use)
         },
         sources = cmp.config.sources {
           { name = "nvim_lsp", priority = 100 },
-          { name = "luasnip", priority = 100, keyword_length = 2 },
+          { name = "luasnip", priority = 100 },
           { name = "nvim_lsp_signature_help" },
           {
             name = "buffer",
