@@ -356,6 +356,22 @@ require('packer').startup(function(use)
 					["]d"] = 'lua vim.diagnostic.goto_next({ popup_opts = { border = "single" }})',
 				},
 				servers = servers,
+				on_attach = function(client)
+					local formatting = servers[client.name].formatting
+					local formatting_is_empty = formatting == nil or formatting == ''
+					if not formatting_is_empty then
+						client.resolved_capabilities.document_formatting = formatting
+						client.resolved_capabilities.document_range_formatting = formatting
+					end
+				end,
+			})
+
+			local lsp_format_augroup = vim.api.nvim_create_augroup("LspFormat", { clear = true })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = lsp_format_augroup,
+				callback = function()
+					vim.lsp.buf.formatting_sync({}, 4000)
+				end,
 			})
 		end
 	}
