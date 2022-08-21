@@ -271,6 +271,21 @@ require("packer").startup(function(use)
   }
 
   use {
+    "airblade/vim-rooter",
+    config = function()
+      vim.cmd [[ let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'build/env.sh'] ]]
+    end,
+  }
+
+  use {
+    "olimorris/persisted.nvim",
+    config = function()
+      require("persisted").setup()
+      require("telescope").load_extension "persisted"
+    end,
+  }
+
+  use {
     "mhinz/vim-startify",
     config = function()
       vim.cmd [[
