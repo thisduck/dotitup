@@ -427,13 +427,20 @@ require("packer").startup(function(use)
           ["]d"] = 'lua vim.diagnostic.goto_next({ popup_opts = { border = "single" }})',
         },
         servers = servers,
-        on_attach = function(client)
+        on_attach = function(client, bufnr)
           local formatting = servers[client.name].formatting
           local formatting_is_empty = formatting == nil or formatting == ""
           if not formatting_is_empty then
             client.resolved_capabilities.document_formatting = formatting
             client.resolved_capabilities.document_range_formatting = formatting
           end
+
+          vim.keymap.set(
+            "v",
+            "<space>ca",
+            vim.lsp.buf.range_code_action,
+            { noremap = true, silent = true, buffer = bufnr }
+          )
         end,
       }
 
