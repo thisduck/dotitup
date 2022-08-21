@@ -318,6 +318,26 @@ require('packer').startup(function(use)
 			'williamboman/mason-lspconfig.nvim',
 		},
 		config = function()
+			local servers = {
+				sumneko_lua = {
+					settings = {
+						Lua = {
+							runtime = {
+								version = "LuaJIT",
+							},
+							diagnostics = {
+								globals = { "vim" },
+							},
+							workspace = {
+								library = vim.api.nvim_get_runtime_file("", true),
+							},
+							telemetry = {
+								enable = false,
+							},
+						},
+					},
+				},
+			}
 			require('lsp-setup').setup({
 				default_mappings = false,
 				mappings = {
@@ -335,26 +355,7 @@ require('packer').startup(function(use)
 					["[d"] = 'lua vim.diagnostic.goto_prev({ popup_opts = { border = "single" }})',
 					["]d"] = 'lua vim.diagnostic.goto_next({ popup_opts = { border = "single" }})',
 				},
-				servers = {
-					sumneko_lua = {
-						settings = {
-							Lua = {
-								runtime = {
-									version = "LuaJIT",
-								},
-								diagnostics = {
-									globals = { "vim" },
-								},
-								workspace = {
-									library = vim.api.nvim_get_runtime_file("", true),
-								},
-								telemetry = {
-									enable = false,
-								},
-							},
-						},
-					},
-				}
+				servers = servers,
 			})
 		end
 	}
