@@ -311,7 +311,12 @@ require("packer").startup(function(use)
     },
     tag = "nightly",
     config = function()
-      require("nvim-tree").setup()
+      require("nvim-tree").setup {
+        update_focused_file = {
+          enable = true,
+          update_cwd = true,
+        },
+      }
       vim.keymap.set("n", "<leader>nt", "<cmd>NvimTreeToggle<cr>")
       vim.keymap.set("n", "<leader>nf", "<cmd>NvimTreeFindFile<cr>")
     end,
