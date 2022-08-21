@@ -665,4 +665,16 @@ require("packer").startup(function(use)
       vim.cmd [[nnoremap <silent> <Leader>gb :Git blame<CR>]]
     end,
   }
+
+  use {
+    "akinsho/nvim-toggleterm.lua",
+    tag = "v2.*",
+    config = function()
+      require("toggleterm").setup { open_mapping = [[<c-t>]] }
+
+      vim.cmd [[tnoremap <silent>jk <C-\><C-n>]]
+      vim.cmd [[nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>]]
+      vim.cmd [[inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]]
+    end,
+  }
 end)
