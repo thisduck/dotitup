@@ -234,7 +234,6 @@ require("packer").startup(function(use)
     requires = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-      "nvim-telescope/telescope-ui-select.nvim",
     },
     config = function()
       local actions = require "telescope.actions"
@@ -253,13 +252,9 @@ require("packer").startup(function(use)
             override_generic_sorter = true,
             override_file_sorter = true,
           },
-          ["ui-select"] = {
-            require("telescope.themes").get_dropdown {},
-          },
         },
       }
       require("telescope").load_extension "fzf"
-      require("telescope").load_extension "ui-select"
 
       vim.api.nvim_create_user_command("Search", function(opts)
         require("telescope.builtin").grep_string { search = opts.args }
@@ -453,11 +448,19 @@ require("packer").startup(function(use)
   }
 
   use {
+    "stevearc/dressing.nvim",
+    config = function()
+      require("dressing").setup {}
+    end,
+  }
+
+  use {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
       local null_ls = require "null-ls"
       require("null-ls").setup {
         sources = {
+          null_ls.builtins.code_actions.gitsigns,
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.prettierd.with {
             filetypes = {
@@ -684,4 +687,13 @@ require("packer").startup(function(use)
       vim.cmd [[inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]]
     end,
   }
+
+  use {
+    "~/codes/markdown-preview.nvim",
+    run = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  }
+
+  use "diepm/vim-rest-console"
 end)
