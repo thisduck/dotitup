@@ -316,8 +316,11 @@ require('packer').startup(function(use)
 			'neovim/nvim-lspconfig',
 			'williamboman/mason.nvim',
 			'williamboman/mason-lspconfig.nvim',
+			'j-hui/fidget.nvim',
 		},
 		config = function()
+			require("fidget").setup {}
+
 			local servers = {
 				pylsp = {},
 				ansiblels = {},
