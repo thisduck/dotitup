@@ -36,6 +36,7 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.equalalways = false
+vim.cmd "set diffopt+=vertical,followwrap"
 
 -- search.
 vim.opt.ignorecase = true
