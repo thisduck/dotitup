@@ -319,7 +319,25 @@ require('packer').startup(function(use)
 		},
 		config = function()
 			local servers = {
+				pylsp = {},
+				ansiblels = {},
+				bashls = {},
+				cssls = {},
+				cucumber_language_server = {},
+				dockerls = {},
+				eslint = {
+					formatting = true,
+				},
+				ember = {},
+				emmet_ls = {},
+				graphql = {},
+				html = {},
+				jsonls = {},
+				tsserver = {
+					formatting = false,
+				},
 				sumneko_lua = {
+					formatting = false,
 					settings = {
 						Lua = {
 							runtime = {
@@ -337,6 +355,24 @@ require('packer').startup(function(use)
 						},
 					},
 				},
+				intelephense = {},
+				perlnavigator = {},
+				prismals = {},
+				solargraph = {},
+				remark_ls = {
+					formatting = false,
+				},
+				rust_analyzer = {},
+				sqlls = {},
+				sorbet = {},
+				svelte = {},
+				taplo = {},
+				tailwindcss = {},
+				vimls = {},
+				volar = {
+					formatting = false,
+				},
+				yamlls = {},
 			}
 			require('lsp-setup').setup({
 				default_mappings = false,
