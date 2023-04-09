@@ -100,7 +100,9 @@ require("lazy").setup({
           enable = true,
           extended_mode = true,
         },
-
+        matchup = {
+          enable = true,
+        },
       }
     end
   },
@@ -310,5 +312,12 @@ require("lazy").setup({
     config = function()
       require('nvim-autopairs').setup()
     end
+  },
+  {
+    -- "andymass/vim-matchup",
+    "thisduck/vim-matchup",
+    config = function()
+      vim.cmd [[nnoremap <c-k> <cmd>MatchupWhereAmI?<cr>]]
+    end,
   },
 })
