@@ -38,6 +38,11 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.equalalways = false
 
+-- search.
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.keymap.set('n', 'g/', '<cmd>nohlsearch<cr>')
+
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
