@@ -232,5 +232,11 @@ require("lazy").setup({
 
       vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]]
     end
-  }
+  },
+  {
+    "airblade/vim-rooter",
+    config = function()
+      vim.cmd [[ let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'build/env.sh'] ]]
+    end,
+  },
 })
