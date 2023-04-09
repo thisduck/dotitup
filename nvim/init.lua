@@ -193,4 +193,5 @@ require("lazy").setup({
   "tpope/vim-repeat",
   "troydm/zoomwintab.vim",
   "chrisbra/nrrwrgn",
+  "tpope/vim-unimpaired",
 })
