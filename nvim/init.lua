@@ -284,4 +284,5 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader>nf", "<cmd>Neotree filesystem reveal left<cr>", { desc = "File tree for filesystem" })
     end
   },
+  'jghauser/mkdir.nvim',
 })
