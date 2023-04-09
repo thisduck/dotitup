@@ -33,6 +33,11 @@ autocmd BufRead * autocmd FileType <buffer> ++once
 -- esc.
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
+-- window.
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.equalalways = false
+
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
