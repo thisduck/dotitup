@@ -85,7 +85,7 @@ require("lazy").setup({
       "p00f/nvim-ts-rainbow",
     },
     config = function()
-      require'nvim-treesitter.configs'.setup {
+      require 'nvim-treesitter.configs'.setup {
         auto_install = true,
         highlight = {
           enable = true,
@@ -132,10 +132,10 @@ require("lazy").setup({
       vim.keymap.set("", "<leader>j", "<cmd>HopLineStartAC<cr>", { desc = "Hop line (below cursor)" })
       vim.keymap.set("", "<leader>k", "<cmd>HopLineStartBC<cr>", { desc = "Hop line (above cursor)" })
       vim.keymap.set(
-      "",
-      "<leader>e",
-      "<cmd>lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>",
-      { desc = "Hop word (end of word)" }
+        "",
+        "<leader>e",
+        "<cmd>lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>",
+        { desc = "Hop word (end of word)" }
       )
       vim.keymap.set("", ";", "<cmd>HopChar1Start<cr>", { desc = "Hop char" })
     end
@@ -153,15 +153,15 @@ require("lazy").setup({
     config = function()
       require("yanky").setup({})
 
-      vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
-      vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
-      vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
-      vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
+      vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+      vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+      vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+      vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 
       vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
       vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
 
-      vim.keymap.set({"n","x"}, "y", "<Plug>(YankyYank)")
+      vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
     end
   },
   {
@@ -220,14 +220,15 @@ require("lazy").setup({
   "chrisbra/nrrwrgn",
   "tpope/vim-unimpaired",
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.1',
     dependencies = {
-      {'nvim-lua/plenary.nvim'} ,
+      { 'nvim-lua/plenary.nvim' },
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()
       local actions = require "telescope.actions"
-      require'telescope'.setup {
+      require 'telescope'.setup {
         defaults = require("telescope.themes").get_ivy {
           mappings = {
             i = {
@@ -248,12 +249,16 @@ require("lazy").setup({
 
       vim.keymap.set('n', '<leader>;', [[<cmd>Telescope find_files<cr>]], { desc = "Find files in project" })
       vim.keymap.set('n', '<leader>fg', [[<cmd>Telescope live_grep<cr> ]], { desc = "Live search in project" })
-      vim.keymap.set('n', '<leader>ff', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>]], { desc = "Search in current file" })
-      vim.keymap.set('n', '<leader>fb', [[<cmd>Telescope oldfiles only_cwd=true include_current_session=true<cr>]], { desc = "Recent files and buffers" })
+      vim.keymap.set('n', '<leader>ff', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>]],
+        { desc = "Search in current file" })
+      vim.keymap.set('n', '<leader>fb', [[<cmd>Telescope oldfiles only_cwd=true include_current_session=true<cr>]],
+        { desc = "Recent files and buffers" })
       vim.keymap.set('n', '<leader>fh', [[<cmd>Telescope help_tags<cr>]], { desc = "Help tags" })
       vim.keymap.set('n', '<leader>fr', [[<cmd>Telescope resume<cr>]], { desc = "Resume last search" })
       vim.keymap.set('n', 'K', [[<cmd>Telescope grep_string<cr>]], { desc = "Search word under cursor" })
-      vim.keymap.set('n', '<leader>/', [[<cmd>lua require'telescope.builtin'.grep_string({ search = vim.fn.input("Search: ") })<cr>]], { desc = "Search word under cursor" })
+      vim.keymap.set('n', '<leader>/',
+        [[<cmd>lua require'telescope.builtin'.grep_string({ search = vim.fn.input("Search: ") })<cr>]],
+        { desc = "Search word under cursor" })
 
       vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]]
     end
@@ -325,30 +330,36 @@ require("lazy").setup({
   },
   "tpope/vim-commentary",
   {
-    'neovim/nvim-lspconfig',
+    'junnplus/lsp-setup.nvim',
+    dependencies = {
+      'neovim/nvim-lspconfig',
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+    },
     config = function()
-      require'lspconfig'.lua_ls.setup {
-        settings = {
-          Lua = {
-            runtime = {
-              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-              version = 'LuaJIT',
-            },
-            diagnostics = {
-              -- Get the language server to recognize the `vim` global
-              globals = {'vim'},
-            },
-            workspace = {
-              -- Make the server aware of Neovim runtime files
-              library = vim.api.nvim_get_runtime_file("", true),
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-              enable = false,
+      require('lsp-setup').setup({
+        servers = {
+          lua_ls = {
+            settings = {
+              Lua = {
+                runtime = {
+                  version = "LuaJIT",
+                },
+                diagnostics = {
+                  globals = { "vim" },
+                },
+                workspace = {
+                  checkThirdParty = false,
+                  library = vim.api.nvim_get_runtime_file("", true),
+                },
+                telemetry = {
+                  enable = false,
+                },
+              },
             },
           },
-        },
-      }
+        }
+      })
     end
-  }
+  },
 })
