@@ -9,6 +9,7 @@
   "nrrwrgn": { "branch": "master", "commit": "e027db9d94f94947153cd7b5ac9abd04371ab2b0" },
   "nui.nvim": { "branch": "main", "commit": "1f43b13d133eb4b4f53a4485379d9afa58808389" },
   "nvim-autopairs": { "branch": "master", "commit": "7470af886ffb3df32800e5ef9c072a6cd825770d" },
+  "nvim-lspconfig": { "branch": "master", "commit": "27e9e1d2638ffd133b06f314a49ac55825cb1017" },
   "nvim-treesitter": { "branch": "master", "commit": "fa9fe9a95ba481e26e11eede4657f8c5350a0eaa" },
   "nvim-treesitter-endwise": { "branch": "master", "commit": "0cf4601c330cf724769a2394df555a57d5fd3f34" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "b55fe6175f0001347a433c9df358c8cbf8a4e90f" },
