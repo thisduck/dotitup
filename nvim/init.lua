@@ -285,4 +285,10 @@ require("lazy").setup({
     end
   },
   'jghauser/mkdir.nvim',
+  {
+    "windwp/nvim-autopairs",
+    config = function()
+      require('nvim-autopairs').setup()
+    end
+  },
 })
