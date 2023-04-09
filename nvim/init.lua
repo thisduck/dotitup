@@ -25,5 +25,12 @@ require("lazy").setup({
     config = function()
       require('onenord').setup()
     end
+  },
+  {
+	  'nvim-lualine/lualine.nvim',
+	  dependencies = { 'kyazdani42/nvim-web-devicons' },
+	  config = function()
+		  require('lualine').setup()
+	  end
   }
 })
