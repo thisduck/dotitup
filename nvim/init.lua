@@ -179,4 +179,6 @@ require("lazy").setup({
       end,
     },
   },
+  "tpope/vim-surround",
+  "tpope/vim-repeat",
 })
