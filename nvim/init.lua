@@ -186,4 +186,5 @@ require("lazy").setup({
   },
   "tpope/vim-surround",
   "tpope/vim-repeat",
+  "troydm/zoomwintab.vim",
 })
