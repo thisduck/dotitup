@@ -148,5 +148,35 @@ require("lazy").setup({
       vim.keymap.set("x", "X", "<cmd>lua require('substitute.exchange').visual()<cr>", { noremap = true })
       vim.keymap.set("n", "sxc", "<cmd>lua require('substitute.exchange').cancel()<cr>", { noremap = true })
     end
-  }
+  },
+  {
+    {
+      "kana/vim-textobj-user",
+      dependencies = {
+        "kana/vim-textobj-entire",
+        "beloglazov/vim-textobj-quotes",
+      }
+    },
+    "michaeljsmith/vim-indent-object",
+    "coderifous/textobj-word-column.vim",
+    {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      config = function()
+        require("nvim-treesitter.configs").setup {
+          textobjects = {
+            select = {
+              enable = true,
+              lookahead = true,
+              keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["aa"] = "@parameter.outer",
+                ["ia"] = "@parameter.inner",
+              },
+            },
+          },
+        }
+      end,
+    },
+  },
 })
