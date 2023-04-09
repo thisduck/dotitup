@@ -12,6 +12,12 @@ vim.opt.smartindent = true
 vim.opt.expandtab = true
 vim.cmd [[set list listchars=tab:▸\ ,trail:·]]
 
+-- fold.
+vim.o.foldcolumn = "1"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldlevel = 99
+
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
