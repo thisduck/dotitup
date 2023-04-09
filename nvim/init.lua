@@ -18,6 +18,9 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldlevel = 99
 
+-- persistent undo.
+vim.opt.undofile = true
+
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -64,5 +67,6 @@ require("lazy").setup({
     config = function()
       require("guess-indent").setup {}
     end,
-  }
+  },
+  'simnalamburt/vim-mundo'
 })
