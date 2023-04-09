@@ -75,12 +75,32 @@ require("lazy").setup({
   {
     'nvim-treesitter/nvim-treesitter',
     build = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    dependencies = {
+      "windwp/nvim-ts-autotag",
+      "RRethy/nvim-treesitter-endwise",
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      "p00f/nvim-ts-rainbow",
+    },
     config = function()
       require'nvim-treesitter.configs'.setup {
         auto_install = true,
         highlight = {
           enable = true,
-        }
+        },
+        autotag = {
+          enable = true,
+        },
+        endwise = {
+          enable = true,
+        },
+        context_commentstring = {
+          enable = true,
+        },
+        rainbow = {
+          enable = true,
+          extended_mode = true,
+        },
+
       }
     end
   },
