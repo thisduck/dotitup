@@ -270,4 +270,18 @@ require("lazy").setup({
       ]]
     end
   },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    config = function()
+      -- Unless you are still migrating, remove the deprecated commands from v1.x
+      vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+      vim.keymap.set("n", "<leader>nt", "<cmd>Neotree toggle<cr>", { desc = "Toggle file tree" })
+      vim.keymap.set("n", "<leader>nf", "<cmd>Neotree filesystem reveal left<cr>", { desc = "File tree for filesystem" })
+    end
+  },
 })
