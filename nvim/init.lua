@@ -194,4 +194,43 @@ require("lazy").setup({
   "troydm/zoomwintab.vim",
   "chrisbra/nrrwrgn",
   "tpope/vim-unimpaired",
+  {
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    dependencies = {
+      {'nvim-lua/plenary.nvim'} ,
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    },
+    config = function()
+      local actions = require "telescope.actions"
+      require'telescope'.setup {
+        defaults = require("telescope.themes").get_ivy {
+          mappings = {
+            i = {
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
+            },
+          },
+        },
+        extensions = {
+          fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+          },
+        },
+      }
+      require("telescope").load_extension "fzf"
+
+      vim.keymap.set('n', '<leader>;', [[<cmd>Telescope find_files<cr>]], { desc = "Find files in project" })
+      vim.keymap.set('n', '<leader>fg', [[<cmd>Telescope live_grep<cr> ]], { desc = "Live search in project" })
+      vim.keymap.set('n', '<leader>ff', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>]], { desc = "Search in current file" })
+      vim.keymap.set('n', '<leader>fb', [[<cmd>Telescope oldfiles only_cwd=true include_current_session=true<cr>]], { desc = "Recent files and buffers" })
+      vim.keymap.set('n', '<leader>fh', [[<cmd>Telescope help_tags<cr>]], { desc = "Help tags" })
+      vim.keymap.set('n', '<leader>fr', [[<cmd>Telescope resume<cr>]], { desc = "Resume last search" })
+      vim.keymap.set('n', 'K', [[<cmd>Telescope grep_string<cr>]], { desc = "Search word under cursor" })
+      vim.keymap.set('n', '<leader>/', [[<cmd>lua require'telescope.builtin'.grep_string({ search = vim.fn.input("Search: ") })<cr>]], { desc = "Search word under cursor" })
+
+      vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]]
+    end
+  }
 })
