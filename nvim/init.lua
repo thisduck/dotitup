@@ -337,6 +337,64 @@ require("lazy").setup({
       'williamboman/mason-lspconfig.nvim',
     },
     config = function()
+      local servers = {
+        pylsp = {},
+        ansiblels = {},
+        bashls = {},
+        cssls = {},
+        cucumber_language_server = {},
+        dockerls = {},
+        eslint = {
+          formatting = true,
+        },
+        ember = {},
+        emmet_ls = {},
+        graphql = {},
+        html = {},
+        jsonls = {},
+        tsserver = {
+          formatting = false,
+        },
+        lua_ls = {
+          formatting = false,
+          settings = {
+            Lua = {
+              runtime = {
+                version = "LuaJIT",
+              },
+              diagnostics = {
+                globals = { "vim" },
+              },
+              workspace = {
+                checkThirdParty = false,
+                library = vim.api.nvim_get_runtime_file("", true),
+              },
+              telemetry = {
+                enable = false,
+              },
+            },
+          },
+        },
+        intelephense = {},
+        perlnavigator = {},
+        prismals = {},
+        solargraph = {},
+        remark_ls = {
+          formatting = false,
+        },
+        rust_analyzer = {},
+        sqlls = {},
+        sorbet = {},
+        svelte = {},
+        taplo = {},
+        tailwindcss = {},
+        vimls = {},
+        volar = {
+          formatting = false,
+        },
+        yamlls = {},
+      }
+
       require('lsp-setup').setup({
         default_mappings = false,
         mappings = {
@@ -354,27 +412,31 @@ require("lazy").setup({
           ["[d"] = '<cmd>lua vim.diagnostic.goto_prev({ popup_opts = { border = "single" }})<cr>',
           ["]d"] = '<cmd>lua vim.diagnostic.goto_next({ popup_opts = { border = "single" }})<cr>',
         },
-        servers = {
-          lua_ls = {
-            settings = {
-              Lua = {
-                runtime = {
-                  version = "LuaJIT",
-                },
-                diagnostics = {
-                  globals = { "vim" },
-                },
-                workspace = {
-                  checkThirdParty = false,
-                  library = vim.api.nvim_get_runtime_file("", true),
-                },
-                telemetry = {
-                  enable = false,
-                },
-              },
-            },
-          },
-        }
+        servers = servers,
+        on_attach = function(client, bufnr)
+          local formatting = servers[client.name].formatting
+          local formatting_is_empty = formatting == nil or formatting == ""
+
+          if not formatting_is_empty then
+            client.server_capabilities.documentFormattingProvider = formatting
+            client.server_capabilities.documentRangeFormattingProvider = formatting
+          end
+
+          vim.keymap.set(
+            "v",
+            "<space>ca",
+            vim.lsp.buf.range_code_action,
+            { noremap = true, silent = true, buffer = bufnr }
+          )
+        end,
+      })
+
+      local lsp_format_augroup = vim.api.nvim_create_augroup("LspFormat", { clear = true })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = lsp_format_augroup,
+        callback = function()
+          vim.lsp.buf.format()
+        end,
       })
     end
   },
