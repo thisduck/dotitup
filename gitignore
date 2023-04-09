@@ -2,3 +2,5 @@ Session.vim
 session.vim
 tags
 node_modules
+.DS_Store
+.luarc.json

@@ -124,14 +124,10 @@ require("packer").startup(function(use)
 
   use {
     "phaazon/hop.nvim",
-    requires = { "thisduck/hop_extensions.nvim" },
     branch = "v2",
     config = function()
       require("hop").setup {
         keys = "etovxqpdygfblzhckisuran",
-        extensions = {
-          "hop_extensions.hint_char1",
-        },
       }
 
       vim.keymap.set("", "<leader>w", "<cmd>HopWord<cr>")
@@ -142,7 +138,7 @@ require("packer").startup(function(use)
         "<leader>e",
         "<cmd>lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>"
       )
-      vim.keymap.set("", ";", "<cmd>HopChar1NoLeadingSpaces<cr>")
+      vim.keymap.set("", ";", "<cmd>HopChar1<cr>")
     end,
   }
 
@@ -566,6 +562,8 @@ require("packer").startup(function(use)
         sources = cmp.config.sources {
           { name = "nvim_lsp", priority = 100 },
           { name = "luasnip", priority = 100 },
+          { name = "copilot", priority = 1 },
+
           { name = "nvim_lsp_signature_help" },
           {
             name = "buffer",
@@ -709,4 +707,140 @@ require("packer").startup(function(use)
   }
 
   use "diepm/vim-rest-console"
+  use {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "VimEnter",
+    config = function()
+      vim.defer_fn(function()
+        require("copilot").setup()
+      end, 100)
+    end,
+  }
+
+  use {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  }
+
+  use {
+    "mfussenegger/nvim-dap",
+    requires = {
+      "rcarriga/nvim-dap-ui",
+      "mxsdev/nvim-dap-vscode-js",
+      { "microsoft/vscode-js-debug", opt = true, run = "npm install --legacy-peer-deps && npm run compile" },
+    },
+    config = function()
+      vim.keymap.set("n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<cr>")
+      vim.keymap.set("n", "<leader>dc", "<cmd>lua require('dap').continue()<cr>")
+      vim.keymap.set("n", "<leader>do", "<cmd>lua require('dap').step_out()<cr>")
+      vim.keymap.set("n", "<leader>di", "<cmd>lua require('dap').step_into()<cr>")
+      vim.keymap.set("n", "<leader>dv", "<cmd>lua require('dap').step_over()<cr>")
+      vim.keymap.set("n", "<leader>dk", "<cmd>lua require('dap').up()<cr>")
+      vim.keymap.set("n", "<leader>dj", "<cmd>lua require('dap').down()<cr>")
+      vim.keymap.set(
+        "n",
+        "<leader>d_",
+        "<cmd>lua require'dap'.disconnect();require'dap'.stop();require'dap'.run_last()<cr>"
+      )
+      vim.keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.repl.open({}, 'vsplit')<cr><C-w>l")
+      vim.keymap.set({ "n", "v" }, "<leader>dl", "<cmd>lua require'dap.ui.widgets'.hover()<cr>")
+      vim.keymap.set(
+        "n",
+        "<leader>d?",
+        "<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<cr>"
+      )
+      vim.keymap.set("n", "<leader>de", "<cmd>lua require'dap'.set_exception_breakpoints({'all'})<cr>")
+
+      vim.keymap.set("n", "<leader>du", "<cmd>lua require('dapui').toggle()<cr>")
+
+      vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
+      vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", numhl = "" })
+
+      require("dapui").setup()
+      require("dap-vscode-js").setup {}
+
+      for _, language in ipairs { "typescript", "javascript" } do
+        require("dap").configurations[language] = {
+          {
+            type = "pwa-node",
+            request = "launch",
+            name = "Launch file",
+            program = "${file}",
+            cwd = "${workspaceFolder}",
+          },
+          {
+            type = "pwa-node",
+            request = "attach",
+            name = "Attach",
+            processId = require("dap.utils").pick_process,
+            cwd = "${workspaceFolder}",
+          },
+          {
+            type = "pwa-node",
+            request = "launch",
+            name = "Debug Jest Tests",
+            -- trace = true, -- include debugger info
+            runtimeExecutable = "node",
+            runtimeArgs = {
+              "./node_modules/jest/bin/jest.js",
+              "--runInBand",
+            },
+            rootPath = "${workspaceFolder}",
+            cwd = "${workspaceFolder}",
+            console = "integratedTerminal",
+            internalConsoleOptions = "neverOpen",
+          },
+        }
+      end
+
+      local dap = require "dap"
+
+      dap.adapters.ruby = function(callback, config)
+        callback {
+          type = "server",
+          host = "0.0.0.0",
+          port = "38697",
+          executable = {
+            command = "rdbg",
+            args = {
+              "--open",
+              "--port",
+              "38697",
+              config.script,
+            },
+          },
+        }
+      end
+
+      dap.configurations.ruby = {
+        {
+          type = "ruby",
+          name = "debug current file",
+          request = "attach",
+          localfs = true,
+          command = "ruby",
+          script = "${file}",
+        },
+        {
+          type = "ruby",
+          name = "run current spec file",
+          request = "attach",
+          localfs = true,
+          command = "rspec",
+          script = "${file}",
+        },
+        {
+          type = "ruby",
+          request = "attach",
+          name = "Attach",
+          processId = require("dap.utils").pick_process,
+          cwd = "${workspaceFolder}",
+        },
+      }
+    end,
+  }
 end)
