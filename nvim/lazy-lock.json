@@ -4,6 +4,7 @@
   "hop_extensions.nvim": { "branch": "main", "commit": "774f84a05a67a38a4e5562578b02eeccb45eb433" },
   "lazy.nvim": { "branch": "main", "commit": "57cce98dfdb2f2dd05a0567d89811e6d0505e13b" },
   "lualine.nvim": { "branch": "master", "commit": "84ffb80e452d95e2c46fa29a98ea11a240f7843e" },
+  "nrrwrgn": { "branch": "master", "commit": "e027db9d94f94947153cd7b5ac9abd04371ab2b0" },
   "nvim-treesitter": { "branch": "master", "commit": "fa9fe9a95ba481e26e11eede4657f8c5350a0eaa" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "b55fe6175f0001347a433c9df358c8cbf8a4e90f" },
   "nvim-web-devicons": { "branch": "master", "commit": "f16ec8f6e5d23e4349501dae46e0a661918e086e" },
