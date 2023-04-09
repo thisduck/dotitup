@@ -320,4 +320,5 @@ require("lazy").setup({
       vim.cmd [[nnoremap <c-k> <cmd>MatchupWhereAmI?<cr>]]
     end,
   },
+  "tpope/vim-commentary",
 })
