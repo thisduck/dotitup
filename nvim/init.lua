@@ -338,6 +338,22 @@ require("lazy").setup({
     },
     config = function()
       require('lsp-setup').setup({
+        default_mappings = false,
+        mappings = {
+          gD = "<cmd>lua vim.lsp.buf.declaration()<cr>",
+          gd = "<cmd>Telescope lsp_definitions<cr>",
+          gt = "<cmd>Telescope lsp_type_definitions<cr>",
+          gi = "<cmd>Telescope lsp_implementations<cr>",
+          gr = "<cmd>Telescope lsp_references<cr>",
+          L = "<cmd>lua vim.lsp.buf.hover({ border = 'single'})<cr>",
+          ["<leader>sh"] = "<cmd>lua vim.lsp.buf.signature_help()<cr>",
+          ["<Leader>rn"] = "<cmd>lua vim.lsp.buf.rename()<cr>",
+          ["<Leader>ca"] = "<cmd>lua vim.lsp.buf.code_action()<cr>",
+          ["<Leader>fo"] = "<cmd>lua vim.lsp.buf.format()<cr>",
+          ["<Leader>fd"] = "<cmd>lua vim.diagnostic.open_float()<cr>",
+          ["[d"] = '<cmd>lua vim.diagnostic.goto_prev({ popup_opts = { border = "single" }})<cr>',
+          ["]d"] = '<cmd>lua vim.diagnostic.goto_next({ popup_opts = { border = "single" }})<cr>',
+        },
         servers = {
           lua_ls = {
             settings = {
