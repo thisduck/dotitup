@@ -239,4 +239,20 @@ require("lazy").setup({
       vim.cmd [[ let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'build/env.sh'] ]]
     end,
   },
+  {
+    "folke/persistence.nvim",
+    config = function()
+      require("persistence").setup()
+      -- restore the session for the current directory
+      vim.keymap.set("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]],
+        { desc = "Restore session for current directory" })
+
+      -- restore the last session
+      vim.keymap.set("n", "<leader>ql", [[<cmd>lua require("persistence").load({ last = true })<cr>]],
+        { desc = "Restore last session" })
+
+      -- stop Persistence => session won't be saved on exit
+      vim.keymap.set("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]], { desc = "Stop Persistence" })
+    end,
+  },
 })
