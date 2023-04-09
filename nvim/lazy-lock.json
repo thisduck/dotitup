@@ -7,6 +7,7 @@
   "nvim-treesitter": { "branch": "master", "commit": "fa9fe9a95ba481e26e11eede4657f8c5350a0eaa" },
   "nvim-web-devicons": { "branch": "master", "commit": "f16ec8f6e5d23e4349501dae46e0a661918e086e" },
   "onenord.nvim": { "branch": "main", "commit": "9a59d47db81e566d4e254904479f129cfffe5f21" },
+  "substitute.nvim": { "branch": "main", "commit": "14eea5563234424e9a732cba2e8acb2e4e1f9bb4" },
   "vim-mundo": { "branch": "master", "commit": "b53d35fb5ca9923302b9ef29e618ab2db4cc675e" },
   "which-key.nvim": { "branch": "main", "commit": "4b73390eec680b4c061ea175eb32c0ff3412271d" },
   "yanky.nvim": { "branch": "main", "commit": "c4c794afd762a00ca543972e5b9e34ce9aa14a87" }
