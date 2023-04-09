@@ -19,4 +19,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- plugins.
-require("lazy").setup({})
+require("lazy").setup({
+  {
+    'rmehri01/onenord.nvim',
+    config = function()
+      require('onenord').setup()
+    end
+  }
+})
