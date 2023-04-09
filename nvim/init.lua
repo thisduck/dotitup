@@ -1,3 +1,6 @@
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 vim.opt.number = true
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
@@ -74,5 +77,29 @@ require("lazy").setup({
       require("guess-indent").setup {}
     end,
   },
-  'simnalamburt/vim-mundo'
+  'simnalamburt/vim-mundo',
+  {
+    'phaazon/hop.nvim',
+    dependencies = { "thisduck/hop_extensions.nvim" },
+    branch = 'v2',
+    config = function()
+      require("hop").setup {
+        keys = "etovxqpdygfblzhckisuran",
+        extensions = {
+          "hop_extensions.hint_char1",
+        },
+      }
+
+      vim.keymap.set("", "<leader>w", "<cmd>HopWord<cr>", { desc = "Hop word" })
+      vim.keymap.set("", "<leader>j", "<cmd>HopLineStartAC<cr>", { desc = "Hop line (below cursor)" })
+      vim.keymap.set("", "<leader>k", "<cmd>HopLineStartBC<cr>", { desc = "Hop line (above cursor)" })
+      vim.keymap.set(
+      "",
+      "<leader>e",
+      "<cmd>lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>",
+      { desc = "Hop word (end of word)" }
+      )
+      vim.keymap.set("", ";", "<cmd>HopChar1Start<cr>", { desc = "Hop char" })
+    end
+  }
 })
