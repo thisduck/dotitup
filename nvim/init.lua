@@ -71,9 +71,27 @@ require("lazy").setup({
   },
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    dependencies = {
+      'kyazdani42/nvim-web-devicons',
+      "SmiteshP/nvim-navic",
+    },
     config = function()
-      require('lualine').setup({})
+      local navic = require("nvim-navic")
+      require('lualine').setup({
+        sections = {
+          lualine_x = { 'encoding', 'fileformat', 'filetype', 'filename' },
+          lualine_c = {
+            {
+              function()
+                return navic.get_location()
+              end,
+              cond = function()
+                return navic.is_available()
+              end
+            },
+          }
+        }
+      })
     end
   },
   {
@@ -338,6 +356,7 @@ require("lazy").setup({
       'neovim/nvim-lspconfig',
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'SmiteshP/nvim-navic',
     },
     config = function()
       vim.diagnostic.config {
@@ -432,6 +451,11 @@ require("lazy").setup({
           if not formatting_is_empty then
             client.server_capabilities.documentFormattingProvider = formatting
             client.server_capabilities.documentRangeFormattingProvider = formatting
+          end
+
+          local navic = require("nvim-navic")
+          if client.server_capabilities.documentSymbolProvider then
+            navic.attach(client, bufnr)
           end
 
           if vim.lsp.buf.range_code_action then
