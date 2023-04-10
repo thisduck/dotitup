@@ -466,4 +466,19 @@ require("lazy").setup({
       "rcarriga/nvim-notify",
     }
   },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      local null_ls = require "null-ls"
+      require("null-ls").setup {
+        sources = {
+          null_ls.builtins.formatting.prettierd.with {
+            filetypes = {
+              "markdown",
+            },
+          },
+        },
+      }
+    end,
+  },
 })
