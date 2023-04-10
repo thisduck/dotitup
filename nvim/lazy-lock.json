@@ -48,6 +48,7 @@
   "telescope.nvim": { "branch": "master", "commit": "c1a2af0af69e80e14e6b226d3957a064cd080805" },
   "textobj-word-column.vim": { "branch": "master", "commit": "cb40e1459817a7fa23741ff6df05e4481bde5a33" },
   "vim-commentary": { "branch": "master", "commit": "e87cd90dc09c2a203e13af9704bd0ef79303d755" },
+  "vim-fugitive": { "branch": "master", "commit": "ef99f1d90cdb33a52931aed5868785b51fb9411d" },
   "vim-gutentags": { "branch": "master", "commit": "1337b1891b9d98d6f4881982f27aa22b02c80084" },
   "vim-indent-object": { "branch": "master", "commit": "5c5b24c959478929b54a9e831a8e2e651a465965" },
   "vim-matchup": { "branch": "master", "commit": "41be677bb3f16078dde6d7b510e438538d6c32ef" },

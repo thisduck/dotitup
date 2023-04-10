@@ -37,6 +37,7 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.equalalways = false
+vim.cmd "set diffopt+=vertical,followwrap"
 
 -- search.
 vim.opt.ignorecase = true
@@ -476,6 +477,7 @@ require("lazy").setup({
       local null_ls = require "null-ls"
       require("null-ls").setup {
         sources = {
+          null_ls.builtins.code_actions.gitsigns,
           null_ls.builtins.formatting.prettierd.with {
             filetypes = {
               "markdown",
@@ -712,6 +714,15 @@ require("lazy").setup({
           map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
         end,
       }
+    end,
+  },
+  {
+    "tpope/vim-fugitive",
+    config = function()
+      vim.keymap.set("n", "<Leader>gs", ":10split<Bar>0Git<CR>", { silent = true, desc = "Git status" })
+      vim.keymap.set("n", "<Leader>gl", ":Gclog %<CR>", { silent = true, desc = "Git log" })
+      vim.keymap.set("v", "<Leader>gl", ":Gclog<CR>", { silent = true, desc = "Git log" })
+      vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", { silent = true, desc = "Git blame" })
     end,
   },
 })
