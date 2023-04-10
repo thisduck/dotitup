@@ -72,7 +72,7 @@ require("lazy").setup({
     'nvim-lualine/lualine.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     config = function()
-      require('lualine').setup()
+      require('lualine').setup({})
     end
   },
   {
@@ -479,6 +479,12 @@ require("lazy").setup({
           },
         },
       }
+    end,
+  },
+  {
+    "stevearc/dressing.nvim",
+    config = function()
+      require("dressing").setup {}
     end,
   },
 })

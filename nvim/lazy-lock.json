@@ -1,4 +1,5 @@
 {
+  "dressing.nvim": { "branch": "master", "commit": "91b9ba8a9474d2c4156dc2f3e858e07ae8faecf0" },
   "guess-indent.nvim": { "branch": "main", "commit": "b8ae749fce17aa4c267eec80a6984130b94f80b2" },
   "hop.nvim": { "branch": "v2", "commit": "90db1b2c61b820e230599a04fedcd2679e64bd07" },
   "hop_extensions.nvim": { "branch": "main", "commit": "774f84a05a67a38a4e5562578b02eeccb45eb433" },
