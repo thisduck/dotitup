@@ -725,4 +725,15 @@ require("lazy").setup({
       vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", { silent = true, desc = "Git blame" })
     end,
   },
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    config = function()
+      require("toggleterm").setup { open_mapping = [[<c-t>]] }
+
+      vim.cmd [[tnoremap <silent>jk <C-\><C-n>]]
+      vim.cmd [[nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>]]
+      vim.cmd [[inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]]
+    end,
+  },
 })
