@@ -337,6 +337,16 @@ require("lazy").setup({
       'williamboman/mason-lspconfig.nvim',
     },
     config = function()
+      vim.diagnostic.config {
+        virtual_text = {
+          source = "always",
+        },
+        float = {
+          source = "always",
+          border = "rounded",
+        },
+      }
+
       local servers = {
         pylsp = {},
         ansiblels = {},
@@ -356,7 +366,6 @@ require("lazy").setup({
           formatting = false,
         },
         lua_ls = {
-          formatting = false,
           settings = {
             Lua = {
               runtime = {
@@ -439,5 +448,22 @@ require("lazy").setup({
         end,
       })
     end
+  },
+  {
+    "folke/noice.nvim",
+    config = function()
+      require("noice").setup({
+        messages = {
+          enabled = false,
+        },
+        notify = {
+          enabled = false,
+        },
+      })
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    }
   },
 })
