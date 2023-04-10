@@ -24,6 +24,9 @@ vim.o.foldlevel = 99
 -- persistent undo.
 vim.opt.undofile = true
 
+-- disable swapfile.
+vim.opt.swapfile = false
+
 -- return to last file position.
 vim.cmd [[
 autocmd BufRead * autocmd FileType <buffer> ++once
