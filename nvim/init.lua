@@ -476,7 +476,7 @@ require("lazy").setup({
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = lsp_format_augroup,
         callback = function()
-          vim.lsp.buf.format()
+          vim.lsp.buf.format({ timeout_ms = 6000 })
         end,
       })
     end
@@ -505,6 +505,7 @@ require("lazy").setup({
       require("null-ls").setup {
         sources = {
           null_ls.builtins.code_actions.gitsigns,
+          null_ls.builtins.formatting.rubocop,
           null_ls.builtins.formatting.prettierd.with {
             filetypes = {
               "markdown",
@@ -568,8 +569,9 @@ require("lazy").setup({
 
       local luasnip = require "luasnip"
       local has_words_before = function()
+        unpack = unpack or table.unpack
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
 
       cmp.setup {
@@ -590,27 +592,31 @@ require("lazy").setup({
         window = {
           documentation = cmp.config.window.bordered(),
         },
-        mapping = cmp.mapping.preset.insert {
-          ["<C-k>"] = cmp.mapping.select_prev_item(),
-          ["<C-j>"] = cmp.mapping.select_next_item(),
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
+        mapping = cmp.mapping.preset.insert({
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
           ["<Tab>"] = cmp.mapping(function(fallback)
+            print "in tab mapping"
             if cmp.visible() then
+              print "in tab mapping visible"
               cmp.select_next_item()
               -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
               -- they way you will only jump inside the snippet region
             elseif luasnip.expand_or_jumpable() then
+              print "in tab mapping expand_or_jumpable"
               luasnip.expand_or_jump()
             elseif has_words_before() then
-              cmp.complete()
+              print "in tab mapping has_words_before"
+              -- cmp.complete()
+              cmp.mapping.confirm({ select = true })
             else
+              print "in tab mapping fallback"
               fallback()
             end
           end, { "i", "s" }),
-
           ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
@@ -620,7 +626,38 @@ require("lazy").setup({
               fallback()
             end
           end, { "i", "s" }),
-        },
+        }),
+
+        -- mapping = {
+        --   ["<C-k>"] = cmp.mapping.select_prev_item(),
+        --   ["<C-j>"] = cmp.mapping.select_next_item(),
+        --   ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        --   ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        --   ["<C-Space>"] = cmp.mapping.complete(),
+        --   ["<C-e>"] = cmp.mapping.abort(),
+        --   ["<Tab>"] = cmp.mapping(function(fallback)
+        --     if cmp.visible() then
+        --       cmp.select_next_item()
+        --       -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+        --       -- they way you will only jump inside the snippet region
+        --     elseif luasnip.expand_or_jumpable() then
+        --       luasnip.expand_or_jump()
+        --     elseif has_words_before() then
+        --       cmp.complete()
+        --     else
+        --       fallback()
+        --     end
+        --   end, { "i", "s" }),
+        --   ["<S-Tab>"] = cmp.mapping(function(fallback)
+        --     if cmp.visible() then
+        --       cmp.select_prev_item()
+        --     elseif luasnip.jumpable(-1) then
+        --       luasnip.jump(-1)
+        --     else
+        --       fallback()
+        --     end
+        --   end, { "i", "s" }),
+        -- },
         sources = cmp.config.sources {
           { name = "copilot",                priority = 99 },
           { name = "nvim_lsp",               priority = 100 },
@@ -638,7 +675,14 @@ require("lazy").setup({
           { name = "tags" },
           { name = "treesitter" },
           { name = "rg",        option = { pattern = [[[\w_-]{5,60}]] } },
-          { name = "tmux",      max_item_count = 10,                    option = { all_panes = true } },
+          {
+            name = "tmux",
+            max_item_count = 10,
+            option = {
+              all_panes = true,
+              keyword_pattern = [[[\w_-]{5,60}]],
+            }
+          },
         },
       }
 
