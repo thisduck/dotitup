@@ -141,9 +141,13 @@ require("lazy").setup({
   {
     -- 'phaazon/hop.nvim',
     'thisduck/hop.nvim',
+    -- dependencies = { "thisduck/hop_extensions.nvim" },
     config = function()
       require("hop").setup {
         keys = "etovxqpdygfblzhckisuran",
+        -- extensions = {
+        --   "hop_extensions.hint_char1",
+        -- },
       }
 
       vim.keymap.set("", "<leader>w", "<cmd>HopWord<cr>", { desc = "Hop word" })
