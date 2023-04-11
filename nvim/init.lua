@@ -139,15 +139,11 @@ require("lazy").setup({
   },
   'simnalamburt/vim-mundo',
   {
-    'phaazon/hop.nvim',
-    dependencies = { "thisduck/hop_extensions.nvim" },
-    branch = 'v2',
+    -- 'phaazon/hop.nvim',
+    'thisduck/hop.nvim',
     config = function()
       require("hop").setup {
         keys = "etovxqpdygfblzhckisuran",
-        extensions = {
-          "hop_extensions.hint_char1",
-        },
       }
 
       vim.keymap.set("", "<leader>w", "<cmd>HopWord<cr>", { desc = "Hop word" })
@@ -346,8 +342,7 @@ require("lazy").setup({
     end
   },
   {
-    -- "andymass/vim-matchup",
-    "thisduck/vim-matchup",
+    "andymass/vim-matchup",
     config = function()
       vim.cmd [[nnoremap <c-k> <cmd>MatchupWhereAmI?<cr>]]
     end,
@@ -485,6 +480,22 @@ require("lazy").setup({
     "folke/noice.nvim",
     config = function()
       require("noice").setup({
+        cmdline = {
+          format = {
+            cmdline = { pattern = "^:", icon = "", lang = "vim", conceal = false },
+            search_down = { kind = "search", pattern = "^/", icon = "", lang = "regex", conceal = false },
+            search_up = { kind = "search", pattern = "^%?", icon = "", lang = "regex", conceal = false },
+            filter = { pattern = "^:%s*!", icon = "", lang = "bash", conceal = false },
+            lua = {
+              pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" },
+              icon = "",
+              lang = "lua",
+              conceal = false
+            },
+            help = { pattern = "^:%s*he?l?p?%s+", icon = "", conceal = false },
+            input = {}, -- Used by input()
+          }
+        },
         messages = {
           enabled = false,
         },
