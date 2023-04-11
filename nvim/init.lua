@@ -36,8 +36,9 @@ autocmd BufRead * autocmd FileType <buffer> ++once
 -- esc.
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
--- share system clipboard.
-vim.opt.clipboard = "unnamedplus"
+-- yank/paste from system clipboard.
+vim.keymap.set({ "n", "v" }, "<leader>cy", '"+y', { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<leader>cp", '"+p', { noremap = true, silent = true })
 
 -- window.
 vim.opt.splitbelow = true
@@ -179,7 +180,11 @@ require("lazy").setup({
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
-      require("which-key").setup({})
+      require("which-key").setup({
+        window = {
+          border = "single",
+        }
+      })
     end,
   },
   {
