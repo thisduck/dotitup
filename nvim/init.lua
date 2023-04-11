@@ -36,6 +36,9 @@ autocmd BufRead * autocmd FileType <buffer> ++once
 -- esc.
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
+-- share system clipboard.
+vim.opt.clipboard = "unnamedplus"
+
 -- window.
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -49,6 +52,9 @@ vim.keymap.set('n', 'g/', '<cmd>nohlsearch<cr>')
 
 -- sign column.
 vim.opt.signcolumn = "yes"
+
+-- project config.
+vim.o.exrc = true
 
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -105,6 +111,12 @@ require("lazy").setup({
       "RRethy/nvim-treesitter-endwise",
       "JoosepAlviste/nvim-ts-context-commentstring",
       "p00f/nvim-ts-rainbow",
+      {
+        'nvim-treesitter/playground',
+        config = function()
+          require "nvim-treesitter.configs".setup {}
+        end
+      }
     },
     config = function()
       require 'nvim-treesitter.configs'.setup {
@@ -194,7 +206,7 @@ require("lazy").setup({
           require("yanky").init_ring("p", event.register, event.count, event.vmode:match("[vV�]"))
         end,
       })
-
+      vim.cmd [[ onoremap <silent> . :<c-u>normal! i \<ESC>v<cr> ]]
       vim.keymap.set("n", "s", "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
       vim.keymap.set("n", "ss", "<cmd>lua require('substitute').line()<cr>", { noremap = true })
       vim.keymap.set("n", "S", "<cmd>lua require('substitute').eol()<cr>", { noremap = true })
@@ -348,7 +360,8 @@ require("lazy").setup({
   {
     "andymass/vim-matchup",
     config = function()
-      vim.cmd [[nnoremap <c-k> <cmd>MatchupWhereAmI?<cr>]]
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+      vim.keymap.set("n", "<C-k>", "<cmd>MatchupWhereAmI?<cr>")
     end,
   },
   "tpope/vim-commentary",
@@ -359,6 +372,12 @@ require("lazy").setup({
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'SmiteshP/nvim-navic',
+      {
+        "smjonas/inc-rename.nvim",
+        config = function()
+          require("inc_rename").setup()
+        end,
+      }
     },
     config = function()
       vim.diagnostic.config {
@@ -412,9 +431,6 @@ require("lazy").setup({
         perlnavigator = {},
         prismals = {},
         solargraph = {},
-        remark_ls = {
-          formatting = false,
-        },
         rust_analyzer = {},
         sqlls = {},
         sorbet = {},
@@ -438,7 +454,7 @@ require("lazy").setup({
           gr = "<cmd>Telescope lsp_references<cr>",
           L = "<cmd>lua vim.lsp.buf.hover({ border = 'single'})<cr>",
           ["<leader>sh"] = "<cmd>lua vim.lsp.buf.signature_help()<cr>",
-          ["<Leader>rn"] = "<cmd>lua vim.lsp.buf.rename()<cr>",
+          -- ["<Leader>rn"] = "<cmd>lua vim.lsp.buf.rename()<cr>",
           ["<Leader>ca"] = "<cmd>lua vim.lsp.buf.code_action()<cr>",
           ["<Leader>fo"] = "<cmd>lua vim.lsp.buf.format()<cr>",
           ["<Leader>fd"] = "<cmd>lua vim.diagnostic.open_float()<cr>",
@@ -460,6 +476,9 @@ require("lazy").setup({
             navic.attach(client, bufnr)
           end
 
+          vim.keymap.set("n", "<leader>rn", ":IncRename ",
+            { noremap = true, silent = true, buffer = bufnr })
+
           if vim.lsp.buf.range_code_action then
             vim.keymap.set(
               "v",
@@ -471,11 +490,23 @@ require("lazy").setup({
         end,
       })
 
+      vim.g.local_auto_format = true
+
+      vim.api.nvim_create_user_command("AutoFormatDisable", function()
+        vim.g.local_auto_format = false
+      end, { nargs = 0 })
+
+      vim.api.nvim_create_user_command("AutoFormatEnable", function()
+        vim.g.local_auto_format = true
+      end, { nargs = 0 })
+
       local lsp_format_augroup = vim.api.nvim_create_augroup("LspFormat", { clear = true })
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = lsp_format_augroup,
         callback = function()
-          vim.lsp.buf.format({ timeout_ms = 6000 })
+          if vim.g.local_auto_format then
+            vim.lsp.buf.format({ timeout_ms = 6000 })
+          end
         end,
       })
     end
@@ -521,7 +552,7 @@ require("lazy").setup({
         sources = {
           null_ls.builtins.code_actions.gitsigns,
           null_ls.builtins.formatting.rubocop,
-          null_ls.builtins.formatting.prettierd.with {
+          null_ls.builtins.formatting.prettier.with {
             filetypes = {
               "markdown",
             },
@@ -765,6 +796,9 @@ require("lazy").setup({
   },
   {
     "tpope/vim-fugitive",
+    dependencies = {
+      "tpope/vim-rhubarb"
+    },
     config = function()
       vim.keymap.set("n", "<Leader>gs", ":10split<Bar>0Git<CR>", { silent = true, desc = "Git status" })
       vim.keymap.set("n", "<Leader>gl", ":Gclog %<CR>", { silent = true, desc = "Git log" })
