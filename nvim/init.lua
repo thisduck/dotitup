@@ -347,6 +347,7 @@ require("lazy").setup({
     dependencies = {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
+      { "s1n7ax/nvim-window-picker", opts = {} },
     },
     config = function()
       -- Unless you are still migrating, remove the deprecated commands from v1.x
