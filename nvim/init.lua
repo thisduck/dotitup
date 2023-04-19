@@ -248,7 +248,7 @@ require("lazy").setup({
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     dependencies = {
-      {'nvim-lua/plenary.nvim'} ,
+      {'nvim-lua/plenary.nvim'},
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()
@@ -283,7 +283,9 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>fh', [[<cmd>Telescope help_tags<cr>]], { desc = 'Help tags' })
       vim.keymap.set('n', '<leader>fr', [[<cmd>Telescope resume<cr>]], { desc = 'Resume last search' })
       vim.keymap.set('n', 'K', [[<cmd>Telescope grep_string<cr>]], { desc = 'Search word under cursor' })
-      vim.keymap.set('n', '<leader>/', [[<cmd>lua require'telescope.builtin'.grep_string({ search = vim.fn.input('Search: ') })<cr>]], { desc = 'Search in project' })
+      vim.keymap.set('n', '<leader>/',
+        [[<cmd>lua require'telescope.builtin'.grep_string({ search = vim.fn.input('Search: ') })<cr>]],
+        { desc = 'Search in project' })
 
       vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]]
 
@@ -398,19 +400,8 @@ require("lazy").setup({
           formatting = false,
           settings = {
             Lua = {
-              runtime = {
-                version = "LuaJIT",
-              },
-              diagnostics = {
-                globals = { "vim" },
-              },
-              workspace = {
-                checkThirdParty = false,
-                library = vim.api.nvim_get_runtime_file("", true),
-              },
-              telemetry = {
-                enable = false,
-              },
+              workspace = { checkThirdParty = false },
+              diagnostics = { globals = { 'vim' } },
             },
           },
         },
