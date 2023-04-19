@@ -17,8 +17,11 @@ plugins=(git gitfast history zeus ssh-agent bundler zsh-syntax-highlighting hist
 
 source $ZSH/oh-my-zsh.sh
 
+alias vi=vim
+alias vim=nvim
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export EDITOR='nvim'
+export EDITOR='vim'
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 # export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
@@ -32,9 +35,6 @@ bindkey '^e' end-of-line
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
-
-alias vi=vim
-alias vim=nvim
 
 # export TERM=xterm-256color
 

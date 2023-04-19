@@ -1,3 +1,5 @@
+-- start of neovim config
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -54,8 +56,8 @@ vim.keymap.set('n', 'g/', '<cmd>nohlsearch<cr>')
 -- sign column.
 vim.opt.signcolumn = "yes"
 
--- project config.
-vim.o.exrc = true
+-- per-project config.
+vim.opt.exrc = true
 
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -83,25 +85,24 @@ require("lazy").setup({
     'nvim-lualine/lualine.nvim',
     dependencies = {
       'kyazdani42/nvim-web-devicons',
-      "SmiteshP/nvim-navic",
+      'SmiteshP/nvim-navic',
     },
     config = function()
-      local navic = require("nvim-navic")
-      require('lualine').setup({
+      require('lualine').setup {
         sections = {
           lualine_x = { 'encoding', 'fileformat', 'filetype', 'filename' },
           lualine_c = {
             {
               function()
-                return navic.get_location()
+                return require("nvim-navic").get_location()
               end,
               cond = function()
-                return navic.is_available()
+                return require("nvim-navic").is_available()
               end
             },
           }
         }
-      })
+      }
     end
   },
   {
@@ -112,15 +113,9 @@ require("lazy").setup({
       "RRethy/nvim-treesitter-endwise",
       "JoosepAlviste/nvim-ts-context-commentstring",
       "p00f/nvim-ts-rainbow",
-      {
-        'nvim-treesitter/playground',
-        config = function()
-          require "nvim-treesitter.configs".setup {}
-        end
-      }
     },
     config = function()
-      require 'nvim-treesitter.configs'.setup {
+      require'nvim-treesitter.configs'.setup {
         auto_install = true,
         highlight = {
           enable = true,
@@ -154,14 +149,8 @@ require("lazy").setup({
   {
     -- 'phaazon/hop.nvim',
     'thisduck/hop.nvim',
-    -- dependencies = { "thisduck/hop_extensions.nvim" },
     config = function()
-      require("hop").setup {
-        keys = "etovxqpdygfblzhckisuran",
-        -- extensions = {
-        --   "hop_extensions.hint_char1",
-        -- },
-      }
+      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
 
       vim.keymap.set("", "<leader>w", "<cmd>HopWord<cr>", { desc = "Hop word" })
       vim.keymap.set("", "<leader>j", "<cmd>HopLineStartAC<cr>", { desc = "Hop line (below cursor)" })
@@ -192,26 +181,24 @@ require("lazy").setup({
     config = function()
       require("yanky").setup({})
 
-      vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-      vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-      vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-      vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+      vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
+      vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
+      vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
+      vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
 
       vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
       vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
 
-      vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
+      vim.keymap.set({"n","x"}, "y", "<Plug>(YankyYank)")
     end
   },
   {
     "gbprod/substitute.nvim",
     config = function()
       require("substitute").setup({
-        on_substitute = function(event)
-          require("yanky").init_ring("p", event.register, event.count, event.vmode:match("[vV�]"))
-        end,
+        on_substitute = require("yanky.integration").substitute(),
       })
-      vim.cmd [[ onoremap <silent> . :<c-u>normal! i \<ESC>v<cr> ]]
+
       vim.keymap.set("n", "s", "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
       vim.keymap.set("n", "ss", "<cmd>lua require('substitute').line()<cr>", { noremap = true })
       vim.keymap.set("n", "S", "<cmd>lua require('substitute').eol()<cr>", { noremap = true })
@@ -259,15 +246,14 @@ require("lazy").setup({
   "chrisbra/nrrwrgn",
   "tpope/vim-unimpaired",
   {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
     dependencies = {
-      { 'nvim-lua/plenary.nvim' },
+      {'nvim-lua/plenary.nvim'} ,
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()
       local actions = require "telescope.actions"
-      require 'telescope'.setup {
+      require'telescope'.setup {
         defaults = require("telescope.themes").get_ivy {
           mappings = {
             i = {
@@ -286,16 +272,18 @@ require("lazy").setup({
       }
       require("telescope").load_extension "fzf"
 
-      vim.keymap.set('n', '<leader>;', [[<cmd>Telescope find_files<cr>]], { desc = "Find files in project" })
-      vim.keymap.set('n', '<leader>fg', [[<cmd>Telescope live_grep<cr> ]], { desc = "Live search in project" })
+      vim.keymap.set('n', '<leader>;', [[<cmd>Telescope find_files<cr>]], { desc = 'Find files in project' })
+      vim.keymap.set('n', '<leader>fg', [[<cmd>Telescope live_grep<cr> ]], { desc = 'Live search in project' })
       vim.keymap.set('n', '<leader>ff', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>]],
-        { desc = "Search in current file" })
+        { desc = 'Search in current file' })
       vim.keymap.set('n', '<leader>fb', [[<cmd>Telescope oldfiles only_cwd=true include_current_session=true<cr>]],
-        { desc = "Recent files and buffers" })
-      vim.keymap.set('n', '<leader>fh', [[<cmd>Telescope help_tags<cr>]], { desc = "Help tags" })
-      vim.keymap.set('n', '<leader>fr', [[<cmd>Telescope resume<cr>]], { desc = "Resume last search" })
-      vim.keymap.set('n', 'K', [[<cmd>Telescope grep_string<cr>]], { desc = "Search word under cursor" })
-      vim.keymap.set('n', '<leader>/', [[:Search<space>]], { desc = "Search in project" })
+        { desc = 'Recent files and buffers in current project' })
+      vim.keymap.set('n', '<leader>fa', [[<cmd>Telescope oldfiles include_current_session=true<cr>]],
+        { desc = 'Recent files and buffers' })
+      vim.keymap.set('n', '<leader>fh', [[<cmd>Telescope help_tags<cr>]], { desc = 'Help tags' })
+      vim.keymap.set('n', '<leader>fr', [[<cmd>Telescope resume<cr>]], { desc = 'Resume last search' })
+      vim.keymap.set('n', 'K', [[<cmd>Telescope grep_string<cr>]], { desc = 'Search word under cursor' })
+      vim.keymap.set('n', '<leader>/', [[<cmd>lua require'telescope.builtin'.grep_string({ search = vim.fn.input('Search: ') })<cr>]], { desc = 'Search in project' })
 
       vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]]
 
@@ -378,12 +366,6 @@ require("lazy").setup({
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'SmiteshP/nvim-navic',
-      {
-        "smjonas/inc-rename.nvim",
-        config = function()
-          require("inc_rename").setup()
-        end,
-      }
     },
     config = function()
       vim.diagnostic.config {
@@ -406,8 +388,6 @@ require("lazy").setup({
         eslint = {
           formatting = true,
         },
-        ember = {},
-        emmet_ls = {},
         graphql = {},
         html = {},
         jsonls = {},
@@ -415,6 +395,7 @@ require("lazy").setup({
           formatting = false,
         },
         lua_ls = {
+          formatting = false,
           settings = {
             Lua = {
               runtime = {
@@ -449,7 +430,6 @@ require("lazy").setup({
         },
         yamlls = {},
       }
-
       require('lsp-setup').setup({
         default_mappings = false,
         mappings = {
@@ -460,7 +440,7 @@ require("lazy").setup({
           gr = "<cmd>Telescope lsp_references<cr>",
           L = "<cmd>lua vim.lsp.buf.hover({ border = 'single'})<cr>",
           ["<leader>sh"] = "<cmd>lua vim.lsp.buf.signature_help()<cr>",
-          -- ["<Leader>rn"] = "<cmd>lua vim.lsp.buf.rename()<cr>",
+          ["<Leader>rn"] = "<cmd>lua vim.lsp.buf.rename()<cr>",
           ["<Leader>ca"] = "<cmd>lua vim.lsp.buf.code_action()<cr>",
           ["<Leader>fo"] = "<cmd>lua vim.lsp.buf.format()<cr>",
           ["<Leader>fd"] = "<cmd>lua vim.diagnostic.open_float()<cr>",
@@ -482,9 +462,6 @@ require("lazy").setup({
             navic.attach(client, bufnr)
           end
 
-          vim.keymap.set("n", "<leader>rn", ":IncRename ",
-            { noremap = true, silent = true, buffer = bufnr })
-
           if vim.lsp.buf.range_code_action then
             vim.keymap.set(
               "v",
@@ -497,11 +474,9 @@ require("lazy").setup({
       })
 
       vim.g.local_auto_format = true
-
       vim.api.nvim_create_user_command("AutoFormatDisable", function()
         vim.g.local_auto_format = false
       end, { nargs = 0 })
-
       vim.api.nvim_create_user_command("AutoFormatEnable", function()
         vim.g.local_auto_format = true
       end, { nargs = 0 })
@@ -511,7 +486,7 @@ require("lazy").setup({
         group = lsp_format_augroup,
         callback = function()
           if vim.g.local_auto_format then
-            vim.lsp.buf.format({ timeout_ms = 6000 })
+            vim.lsp.buf.format({ timeout_ms = 2000 })
           end
         end,
       })
@@ -519,6 +494,10 @@ require("lazy").setup({
   },
   {
     "folke/noice.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
     config = function()
       require("noice").setup({
         cmdline = {
@@ -540,10 +519,6 @@ require("lazy").setup({
         },
       })
     end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    }
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
@@ -552,10 +527,10 @@ require("lazy").setup({
       require("null-ls").setup {
         sources = {
           null_ls.builtins.code_actions.gitsigns,
-          null_ls.builtins.formatting.rubocop,
           null_ls.builtins.formatting.prettier.with {
             filetypes = {
               "markdown",
+              "yaml",
             },
           },
         },
@@ -668,9 +643,9 @@ require("lazy").setup({
           end, { "i", "s" }),
         }),
         sources = cmp.config.sources({
-          { name = "copilot",                priority = 99 },
-          { name = "nvim_lsp",               priority = 100 },
-          { name = "luasnip",                priority = 100 },
+          { name = "copilot", priority = 99 },
+          { name = "nvim_lsp", priority = 100 },
+          { name = "luasnip", priority = 100 },
           { name = "nvim_lsp_signature_help" },
           {
             name = "buffer",
@@ -683,7 +658,7 @@ require("lazy").setup({
           { name = "path" },
           { name = "tags" },
           { name = "treesitter" },
-          { name = "rg",        option = { pattern = [[[\w_-]{5,60}]] } },
+          { name = "rg", option = { pattern = [[[\w_-]{5,60}]] } },
           {
             name = "tmux",
             option = {
@@ -724,7 +699,7 @@ require("lazy").setup({
           { name = "cmdline" },
           { name = "tags" },
           { name = "buffer" },
-          { name = "rg",     option = { pattern = [[[\w_-]{5,60}]] } },
+          { name = "rg", option = { pattern = [[[\w_-]{5,60}]] } },
         }),
       })
 
@@ -814,6 +789,7 @@ require("lazy").setup({
       require("toggleterm").setup { open_mapping = [[<c-t>]] }
 
       vim.cmd [[tnoremap <silent>jk <C-\><C-n>]]
+      vim.cmd [[tnoremap <silent><C-k> <C-\><C-n><C-w>k]]
       vim.cmd [[nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>]]
       vim.cmd [[inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]]
     end,
@@ -866,8 +842,9 @@ require("lazy").setup({
     'bennypowers/splitjoin.nvim',
     lazy = true,
     keys = {
-      { 'gj', function() require 'splitjoin'.join() end,  desc = 'Join the object under cursor' },
+      { 'gj', function() require 'splitjoin'.join() end, desc = 'Join the object under cursor' },
       { 'g,', function() require 'splitjoin'.split() end, desc = 'Split the object under cursor' },
     },
   },
 })
+
