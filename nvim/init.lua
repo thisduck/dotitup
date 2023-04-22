@@ -15,13 +15,14 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.smartindent = true
 vim.opt.expandtab = true
-vim.cmd [[set list listchars=tab:▸\ ,trail:·]]
+vim.opt.list = true
+vim.opt.listchars = "tab:▸ ,trail:·"
 
 -- fold.
-vim.o.foldcolumn = "1"
+vim.opt.foldcolumn = "1"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.o.foldlevel = 99
+vim.opt.foldlevel = 99
 
 -- persistent undo.
 vim.opt.undofile = true
@@ -39,8 +40,8 @@ autocmd BufRead * autocmd FileType <buffer> ++once
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- yank/paste from system clipboard.
-vim.keymap.set({ "n", "v" }, "<leader>cy", '"+y', { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<leader>cp", '"+p', { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<leader>cy", '"+y')
+vim.keymap.set({ "n", "v" }, "<leader>cp", '"+p')
 
 -- window.
 vim.opt.splitbelow = true
@@ -167,8 +168,8 @@ require("lazy").setup({
   {
     "folke/which-key.nvim",
     config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
+      vim.opt.timeout = true
+      vim.opt.timeoutlen = 300
       require("which-key").setup({
         window = {
           border = "single",
@@ -246,7 +247,8 @@ require("lazy").setup({
   "chrisbra/nrrwrgn",
   "tpope/vim-unimpaired",
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.1',
     dependencies = {
       {'nvim-lua/plenary.nvim'},
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -383,14 +385,18 @@ require("lazy").setup({
       local servers = {
         pylsp = {},
         ansiblels = {},
+        awk_ls = {},
         bashls = {},
+        clangd = {},
         cssls = {},
         cucumber_language_server = {},
+        docker_compose_language_service = {},
         dockerls = {},
         eslint = {
           formatting = true,
         },
         graphql = {},
+        gopls = {},
         html = {},
         jsonls = {},
         tsserver = {
@@ -400,6 +406,7 @@ require("lazy").setup({
           formatting = false,
           settings = {
             Lua = {
+              runtime = { version = 'LuaJIT' },
               workspace = { checkThirdParty = false },
               diagnostics = { globals = { 'vim' } },
             },
