@@ -148,8 +148,7 @@ require("lazy").setup({
   },
   'simnalamburt/vim-mundo',
   {
-    -- 'phaazon/hop.nvim',
-    'thisduck/hop.nvim',
+    'smoka7/hop.nvim',
     config = function()
       require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
 
@@ -162,7 +161,7 @@ require("lazy").setup({
         "<cmd>lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>",
         { desc = "Hop word (end of word)" }
       )
-      vim.keymap.set("", ";", "<cmd>HopChar1Start<cr>", { desc = "Hop char" })
+      vim.keymap.set("", ";", "<cmd>HopChar1<cr>", { desc = "Hop char" })
     end
   },
   {
@@ -257,6 +256,16 @@ require("lazy").setup({
       local actions = require "telescope.actions"
       require'telescope'.setup {
         defaults = require("telescope.themes").get_ivy {
+          vimgrep_arguments = {
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+            '--hidden'
+          },
           mappings = {
             i = {
               ["<C-j>"] = actions.move_selection_next,
@@ -274,7 +283,7 @@ require("lazy").setup({
       }
       require("telescope").load_extension "fzf"
 
-      vim.keymap.set('n', '<leader>;', [[<cmd>Telescope find_files<cr>]], { desc = 'Find files in project' })
+      vim.keymap.set('n', '<leader>;', [[<cmd>Telescope find_files hidden=true<cr>]], { desc = 'Find files in project' })
       vim.keymap.set('n', '<leader>fg', [[<cmd>Telescope live_grep<cr> ]], { desc = 'Live search in project' })
       vim.keymap.set('n', '<leader>ff', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>]],
         { desc = 'Search in current file' })
@@ -285,14 +294,12 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>fh', [[<cmd>Telescope help_tags<cr>]], { desc = 'Help tags' })
       vim.keymap.set('n', '<leader>fr', [[<cmd>Telescope resume<cr>]], { desc = 'Resume last search' })
       vim.keymap.set('n', 'K', [[<cmd>Telescope grep_string<cr>]], { desc = 'Search word under cursor' })
-      vim.keymap.set('n', '<leader>/',
-        [[<cmd>lua require'telescope.builtin'.grep_string({ search = vim.fn.input('Search: ') })<cr>]],
-        { desc = 'Search in project' })
+      vim.keymap.set('n', '<leader>/', [[:Search<space>]], { desc = "Search in project" })
 
       vim.cmd [[ autocmd User TelescopePreviewerLoaded setlocal wrap ]]
 
       vim.api.nvim_create_user_command("Search", function(opts)
-        require("telescope.builtin").grep_string { search = opts.args }
+        require("telescope.builtin").grep_string { search = opts.args, use_regex = true }
       end, { nargs = 1 })
     end
   },
@@ -417,7 +424,7 @@ require("lazy").setup({
         solargraph = {},
         rust_analyzer = {},
         sqlls = {},
-        sorbet = {},
+        -- sorbet = {},
         svelte = {},
         taplo = {},
         tailwindcss = {},
@@ -425,7 +432,13 @@ require("lazy").setup({
         volar = {
           formatting = false,
         },
-        yamlls = {},
+        yamlls = {
+          settings = {
+            yaml = {
+              keyOrdering = false,
+            }
+          }
+        },
       }
       require('lsp-setup').setup({
         default_mappings = false,
@@ -462,7 +475,7 @@ require("lazy").setup({
           if vim.lsp.buf.range_code_action then
             vim.keymap.set(
               "v",
-              "<space>ca",
+              "<leader>ca",
               vim.lsp.buf.range_code_action,
               { noremap = true, silent = true, buffer = bufnr }
             )
@@ -487,6 +500,13 @@ require("lazy").setup({
           end
         end,
       })
+
+      vim.keymap.set(
+        "n",
+        "<leader>lr",
+        "<cmd>:LspRestart<CR>",
+        { noremap = true, silent = true }
+      )
     end
   },
   {
@@ -505,7 +525,7 @@ require("lazy").setup({
             filter = { icon = "", conceal = false },
             lua = { icon = "", conceal = false },
             help = { icon = "", conceal = false },
-            input = {}, -- Used by input()
+            input = {},
           }
         },
         messages = {
@@ -552,31 +572,9 @@ require("lazy").setup({
       "quangnguyen30192/cmp-nvim-tags",
       "andersevenrud/cmp-tmux",
       "petertriho/cmp-git",
-
       "L3MON4D3/LuaSnip",
       "rafamadriz/friendly-snippets",
       "saadparwaiz1/cmp_luasnip",
-      {
-        "zbirenbaum/copilot.lua",
-        config = function()
-          require("copilot").setup({
-            suggestion = {
-              enabled = true,
-              auto_trigger = true,
-              debounce = 75,
-              keymap = {
-                accept = "<C-l>",
-                accept_word = false,
-                accept_line = false,
-                next = "<C-;>",
-                prev = "<C-h>",
-                dismiss = "<C-]>",
-              },
-            },
-          })
-        end,
-      },
-      { "zbirenbaum/copilot-cmp", after = { "copilot.lua" }, opts = {} },
     },
     config = function()
       vim.cmd([[set completeopt=menu,menuone,noselect]])
@@ -592,6 +590,17 @@ require("lazy").setup({
         return col ~= 0
             and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
+
+      local cmp_all_buffers = {
+        name = "buffer",
+        option = {
+          get_bufnrs = function()
+            return vim.api.nvim_list_bufs()
+            end,
+        }
+      }
+
+      local pattern = [[[\w_-]{5,60}]]
 
       cmp.setup({
         completion = {
@@ -640,27 +649,19 @@ require("lazy").setup({
           end, { "i", "s" }),
         }),
         sources = cmp.config.sources({
-          { name = "copilot", priority = 99 },
           { name = "nvim_lsp", priority = 100 },
           { name = "luasnip", priority = 100 },
           { name = "nvim_lsp_signature_help" },
-          {
-            name = "buffer",
-            option = {
-              get_bufnrs = function()
-                return vim.api.nvim_list_bufs()
-              end,
-            },
-          },
+          cmp_all_buffers,
           { name = "path" },
           { name = "tags" },
           { name = "treesitter" },
-          { name = "rg", option = { pattern = [[[\w_-]{5,60}]] } },
+          { name = "rg",        option = { pattern = pattern, additional_arguments = "--hidden" } },
           {
             name = "tmux",
             option = {
               all_panes = true,
-              keyword_pattern = [[[\w_-]{5,60}]]
+              keyword_pattern = pattern
             }
           },
         }),
@@ -670,14 +671,7 @@ require("lazy").setup({
       cmp.setup.filetype("gitcommit", {
         sources = cmp.config.sources({
           { name = "git" },
-          {
-            name = "buffer",
-            option = {
-              get_bufnrs = function()
-                return vim.api.nvim_list_bufs()
-              end,
-            },
-          },
+          cmp_all_buffers,
         }),
       })
 
@@ -693,10 +687,10 @@ require("lazy").setup({
         sources = cmp.config.sources({
           { name = "path" },
         }, {
-          { name = "cmdline" },
+          { name = "cmdline", priority = 100 },
           { name = "tags" },
-          { name = "buffer" },
-          { name = "rg", option = { pattern = [[[\w_-]{5,60}]] } },
+          cmp_all_buffers,
+          { name = "rg", option = { pattern = pattern, additional_arguments = "--hidden" } },
         }),
       })
 
@@ -708,6 +702,30 @@ require("lazy").setup({
     "ludovicchabant/vim-gutentags",
     config = function()
       vim.cmd [[let g:gutentags_file_list_command = 'rg --files']]
+    end,
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    config = function()
+      require("copilot").setup({
+        filetypes = {
+          yaml = true,
+          markdown = true,
+        },
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          debounce = 75,
+          keymap = {
+            accept = "<C-l>",
+            accept_word = false,
+            accept_line = false,
+            next = "<C-;>",
+            prev = "<C-h>",
+            dismiss = "<C-]>",
+          },
+        },
+      })
     end,
   },
   {
@@ -770,15 +788,37 @@ require("lazy").setup({
     end,
   },
   {
+    "aaronhallaert/advanced-git-search.nvim",
+    config = function()
+      require("telescope").setup {
+        extensions = {
+          advanced_git_search = {
+            diff_plugin = "fugitive",
+            git_flags = {},
+            git_diff_flags = {},
+            show_builtin_git_pickers = false,
+          }
+        }
+      }
+
+      require("telescope").load_extension("advanced_git_search")
+    end,
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "tpope/vim-fugitive",
+      "tpope/vim-rhubarb",
+    },
+  },
+  {
     "akinsho/toggleterm.nvim",
     version = "*",
     config = function()
-      require("toggleterm").setup { open_mapping = [[<c-t>]] }
+      require("toggleterm").setup { open_mapping = [[<C-t>]] }
 
       vim.cmd [[tnoremap <silent>jk <C-\><C-n>]]
       vim.cmd [[tnoremap <silent><C-k> <C-\><C-n><C-w>k]]
-      vim.cmd [[nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>]]
-      vim.cmd [[inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]]
+      vim.cmd [[nnoremap <silent><C-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>]]
+      vim.cmd [[inoremap <silent><C-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]]
     end,
   },
   {
@@ -798,12 +838,20 @@ require("lazy").setup({
     end,
   },
   {
-    'bennypowers/splitjoin.nvim',
-    lazy = true,
-    keys = {
-      { 'gj', function() require 'splitjoin'.join() end, desc = 'Join the object under cursor' },
-      { 'g,', function() require 'splitjoin'.split() end, desc = 'Split the object under cursor' },
-    },
+    'Wansmer/treesj',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('treesj').setup({
+        use_default_keymaps = false,
+      })
+      -- For use default preset and it work with dot
+      vim.keymap.set('n', 'g,', require('treesj').split)
+      vim.keymap.set('n', 'gJ', require('treesj').join)
+    end,
   },
+  "tpope/vim-rails",
+  "vim-ruby/vim-ruby",
+  "bogado/file-line",
+  "sheerun/vim-polyglot"
 })
 
