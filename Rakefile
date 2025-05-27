@@ -37,7 +37,7 @@ task :install do
   Rake::Task["setup_agignore"].execute
   Rake::Task["setup_ctags"].execute
   link_it "zshrc"
-  link_it "tmux.conf"
+  # link_it "tmux.conf"
   link_it "p10k.zsh"
   link_it "alacritty.yml"
   link_it "gitignore"
@@ -45,7 +45,7 @@ task :install do
   run "git config --global core.excludesfile ~/.gitignore"
 
   link_it "nvim", destination: "~/.config/nvim"
-  link_it ".tmux.conf", destination: "~/.tmux.conf", source: ".tmux/.tmux.conf"
+  link_it ".tmux.conf", destination: "~/.tmux.conf", source: "~/.tmux/.tmux.conf"
   link_it "tmux.conf.local", destination: "~/.tmux.conf.local"
 end
 

@@ -5,6 +5,9 @@ inherit_gem:
 # require:
 #   - rubocop-performance
 
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: space
+
 # AllCops:
 #   # Prevent RuboCop from exploding when it finds an older-than-2.4 .ruby-version
 #   TargetRubyVersion: 2.5

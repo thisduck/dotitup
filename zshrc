@@ -66,3 +66,10 @@ if [ -f /Users/adnan/.tnsrc ]; then
     source /Users/adnan/.tnsrc 
 fi
 ###-tns-completion-end-###
+
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# source ~/.env if it exists
+if [ -f ~/.env ]; then
+  source ~/.env
+fi

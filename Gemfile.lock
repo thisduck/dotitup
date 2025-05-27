@@ -1,4 +1,5 @@
 GEM
+  remote: https://rubygems.org/
   specs:
     ast (2.4.2)
     json (2.6.1)
@@ -6,6 +7,7 @@ GEM
     parser (3.1.2.0)
       ast (~> 2.4.1)
     rainbow (3.1.1)
+    rake (13.2.1)
     regexp_parser (2.5.0)
     rexml (3.2.5)
     rubocop (1.32.0)
@@ -31,8 +33,10 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  arm64-darwin-24
 
 DEPENDENCIES
+  rake (~> 13.0)
   rubocop (~> 1.32)
   standard (~> 1.14)
 
