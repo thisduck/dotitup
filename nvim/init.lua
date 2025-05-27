@@ -76,17 +76,13 @@ vim.opt.rtp:prepend(lazypath)
 -- plugins.
 require("lazy").setup({
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "rmehri01/onenord.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("catppuccin").setup({
-        flavour = "macchiato",
-        no_italic = true,
-      })
-      vim.cmd.colorscheme "catppuccin"
-    end,
+      vim.opt.background = "dark"
+      require("onenord").setup({})
+    end
   },
   {
     'nvim-lualine/lualine.nvim',
