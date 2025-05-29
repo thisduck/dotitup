@@ -632,6 +632,8 @@ require("lazy").setup({
 
       local pattern = [[[\w_-]{5,60}]]
 
+      local cmp_rg = { name = "rg", option = { pattern = pattern, additional_arguments = "--hidden" } }
+
       cmp.setup({
         performance = {
           max_view_entries = 15,
@@ -689,7 +691,7 @@ require("lazy").setup({
           { name = "path" },
           { name = "tags" },
           { name = "treesitter" },
-          { name = "rg", option = { pattern = pattern, additional_arguments = "--hidden" } },
+          cmp_rg,
         }),
       })
 
@@ -698,6 +700,7 @@ require("lazy").setup({
         sources = cmp.config.sources({
           { name = "git" },
           cmp_all_buffers,
+          cmp_rg,
         }),
       })
 
@@ -716,7 +719,7 @@ require("lazy").setup({
           { name = "cmdline", priority = 100 },
           { name = "tags" },
           cmp_all_buffers,
-          { name = "rg", option = { pattern = pattern, additional_arguments = "--hidden" } },
+          cmp_rg,
         }),
       })
 
@@ -727,7 +730,7 @@ require("lazy").setup({
         }, {
           { name = "tags" },
           cmp_all_buffers,
-          { name = "rg", option = { pattern = pattern, additional_arguments = "--hidden" } },
+          cmp_rg,
         }),
       })
 
