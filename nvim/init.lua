@@ -82,7 +82,7 @@ require("lazy").setup({
     priority = 1000,
     config = function()
       require("catppuccin").setup({
-        flavour = "frappe",
+        flavour = "frappe", -- latte, frappe, macchiato, mocha
       })
       vim.cmd.colorscheme("catppuccin")
     end,
@@ -101,6 +101,7 @@ require("lazy").setup({
         auto_install = true,
         highlight = {
           enable = true,
+          -- ruby depends on regex highlighting for proper indenting.
           additional_vim_regex_highlighting = { "ruby" },
         },
         indent = { enable = true, disable = { "ruby" } },
@@ -108,10 +109,7 @@ require("lazy").setup({
       })
     end,
   },
-  {
-    "nmac427/guess-indent.nvim",
-    config = true,
-  },
+  { "nmac427/guess-indent.nvim", config = true },
   {
     "luukvbaal/statuscol.nvim",
     config = function()
@@ -219,25 +217,7 @@ require("lazy").setup({
     },
     "michaeljsmith/vim-indent-object",
     "coderifous/textobj-word-column.vim",
-    {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      config = function()
-        require("nvim-treesitter.configs").setup({
-          textobjects = {
-            select = {
-              enable = true,
-              lookahead = true,
-              keymaps = {
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["aa"] = "@parameter.outer",
-                ["ia"] = "@parameter.inner",
-              },
-            },
-          },
-        })
-      end,
-    },
+    { "echasnovski/mini.ai", config = true },
   },
   {
     "kylechui/nvim-surround",
@@ -1141,11 +1121,10 @@ require("lazy").setup({
     config = function()
       require("mason-nvim-dap").setup({
         automatic_installation = true,
-        ensure_installed = { "node2", "chrome", "js" },
+        ensure_installed = { "chrome", "js" },
       })
     end,
   },
   "tpope/vim-rails",
   "vim-ruby/vim-ruby",
-  -- "sheerun/vim-polyglot",
 })
