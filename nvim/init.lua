@@ -589,6 +589,10 @@ require("lazy").setup({
     },
   },
   {
+    "Bekaboo/dropbar.nvim",
+    dependencies = { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+  },
+  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -598,7 +602,6 @@ require("lazy").setup({
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "lukas-reineke/cmp-rg",
       "quangnguyen30192/cmp-nvim-tags",
-      "andersevenrud/cmp-tmux",
       "petertriho/cmp-git",
       "L3MON4D3/LuaSnip",
       "rafamadriz/friendly-snippets",
@@ -630,6 +633,9 @@ require("lazy").setup({
       local pattern = [[[\w_-]{5,60}]]
 
       cmp.setup({
+        performance = {
+          max_view_entries = 15,
+        },
         completion = {
           keyword_length = 2,
         },
@@ -684,13 +690,6 @@ require("lazy").setup({
           { name = "tags" },
           { name = "treesitter" },
           { name = "rg", option = { pattern = pattern, additional_arguments = "--hidden" } },
-          {
-            name = "tmux",
-            option = {
-              all_panes = true,
-              keyword_pattern = pattern,
-            },
-          },
         }),
       })
 
