@@ -82,7 +82,7 @@ require("lazy").setup({
     priority = 1000,
     config = function()
       require("catppuccin").setup({
-        flavour = "frappe", -- latte, frappe, macchiato, mocha
+        flavour = "frappe",
       })
       vim.cmd.colorscheme("catppuccin")
     end,
@@ -381,6 +381,15 @@ require("lazy").setup({
       "MunifTanjim/nui.nvim",
       { "s1n7ax/nvim-window-picker", opts = {} },
     },
+    opts = {
+      filesystem = {
+        filtered_items = {
+          visible = true, -- show hidden files by default
+          hide_dotfiles = false,
+          hide_gitignored = false,
+        },
+      },
+    },
     keys = {
       { "<leader>nt", "<cmd>Neotree toggle<cr>", desc = "Toggle file tree" },
       { "<leader>nf", "<cmd>Neotree filesystem reveal left<cr>", desc = "File tree for filesystem" },
@@ -394,7 +403,20 @@ require("lazy").setup({
   },
   {
     "windwp/nvim-ts-autotag",
-    config = true,
+    config = function()
+      require("nvim-ts-autotag").setup({
+        filetypes = {
+          "html",
+          "xml",
+          "javascript",
+          "typescript",
+          "javascriptreact",
+          "typescriptreact",
+          "svelte",
+          "vue",
+        },
+      })
+    end,
   },
   "RRethy/nvim-treesitter-endwise",
   {
@@ -469,7 +491,22 @@ require("lazy").setup({
           graphql = {},
           html = {},
           jsonls = {},
-          ts_ls = {},
+          ts_ls = {
+            init_options = {
+              plugins = {
+                {
+                  name = "@vue/typescript-plugin",
+                  location = "",
+                  languages = { "javascript", "typescript", "vue" },
+                },
+              },
+            },
+            filetypes = {
+              "javascript",
+              "typescript",
+              "vue",
+            },
+          },
           lua_ls = {
             settings = {
               Lua = {
@@ -531,6 +568,9 @@ require("lazy").setup({
           ruby = { "rubocop" },
           markdown = { "prettier" },
           sql = { "sqlfmt" },
+          typescript = { "eslint" },
+          javascript = { "eslint" },
+          vue = { "eslint" },
         },
       })
     end,
@@ -823,7 +863,33 @@ require("lazy").setup({
       "tpope/vim-rhubarb",
     },
     keys = {
-      { "<Leader>gs", "<cmd>botright 10split<Bar>0Git<CR>", silent = true, desc = "Git status" },
+      {
+        "<Leader>gs",
+        function()
+          -- collect all fugitive windows
+          local fugitive_windows = {}
+          for _, win in ipairs(vim.api.nvim_list_wins()) do
+            local buf = vim.api.nvim_win_get_buf(win)
+            if vim.api.nvim_buf_get_name(buf):match("^fugitive:") then
+              table.insert(fugitive_windows, win)
+            end
+          end
+
+          if #fugitive_windows > 0 then
+            for _, win in ipairs(fugitive_windows) do
+              vim.api.nvim_win_close(win, true)
+            end
+          else
+            -- close current window if it's alpha
+            if vim.bo.filetype == "alpha" then
+              vim.cmd("Alpha")
+            end
+            vim.cmd("15split | 0Git")
+          end
+        end,
+        silent = true,
+        desc = "Toggle Git status",
+      },
       { "<Leader>gl", ":Gclog %<CR>", silent = true, desc = "Git log" },
       { "<Leader>gl", ":Gclog<CR>", silent = true, desc = "Git log", mode = "v" },
       { "<Leader>gb", ":Git blame<CR>", silent = true, desc = "Git blame" },
