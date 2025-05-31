@@ -476,7 +476,30 @@ require("lazy").setup({
             opts = { desc = "Next Diagnostic" },
           },
         },
-        on_attach = function() end,
+        on_attach = function(client)
+          local disable_formatting = {
+            "ts_ls",
+            "vue_ls",
+          }
+
+          local enable_formatting = {
+            "eslint",
+          }
+
+          for _, server in ipairs(disable_formatting) do
+            if client.name == server then
+              client.server_capabilities.documentFormattingProvider = false
+              client.server_capabilities.documentRangeFormattingProvider = false
+            end
+          end
+
+          for _, server in ipairs(enable_formatting) do
+            if client.name == server then
+              client.server_capabilities.documentFormattingProvider = true
+              client.server_capabilities.documentRangeFormattingProvider = true
+            end
+          end
+        end,
         servers = {
           pylsp = {},
           ansiblels = {},
@@ -568,9 +591,6 @@ require("lazy").setup({
           ruby = { "rubocop" },
           markdown = { "prettier" },
           sql = { "sqlfmt" },
-          typescript = { "eslint" },
-          javascript = { "eslint" },
-          vue = { "eslint" },
         },
       })
     end,
@@ -1193,4 +1213,5 @@ require("lazy").setup({
   },
   "tpope/vim-rails",
   "vim-ruby/vim-ruby",
+  "itchyny/vim-qfedit",
 })
