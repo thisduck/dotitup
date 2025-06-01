@@ -270,6 +270,7 @@ require("lazy").setup({
             i = {
               ["<C-j>"] = actions.move_selection_next,
               ["<C-k>"] = actions.move_selection_previous,
+              ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
             },
           },
         }),
@@ -1250,6 +1251,10 @@ require("lazy").setup({
     "kevinhwang91/nvim-bqf",
     config = function()
       require("bqf").setup({
+        func_map = {
+          pscrollup = "<C-u>",
+          pscrolldown = "<C-d>",
+        },
         preview = {
           auto_preview = false,
         },
