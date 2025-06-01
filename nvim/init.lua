@@ -324,6 +324,21 @@ require("lazy").setup({
         end,
         desc = "Search in project",
       },
+      {
+        "<leader>/",
+        function()
+          local old_reg = vim.fn.getreg("v")
+          vim.cmd('normal! "vy')
+          local text = vim.fn.getreg("v")
+          vim.fn.setreg("v", old_reg)
+
+          require("telescope.builtin").grep_string({
+            search = text,
+          })
+        end,
+        mode = "v",
+        desc = "Search in project (via visual selection)",
+      },
     },
   },
   {
@@ -527,6 +542,8 @@ require("lazy").setup({
             filetypes = {
               "javascript",
               "typescript",
+              "javascriptreact",
+              "typescriptreact",
               "vue",
             },
           },
@@ -1214,4 +1231,5 @@ require("lazy").setup({
   "tpope/vim-rails",
   "vim-ruby/vim-ruby",
   "itchyny/vim-qfedit",
+  "kevinhwang91/nvim-bqf",
 })
