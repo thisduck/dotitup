@@ -157,6 +157,7 @@ require("lazy").setup({
       vim.opt.timeout = true
       vim.opt.timeoutlen = 300
       require("which-key").setup({
+        delay = 800,
         win = {
           border = "single",
         },
