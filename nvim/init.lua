@@ -386,6 +386,16 @@ require("lazy").setup({
       startify.section.header.val = cow.cowsays()
 
       require("alpha").setup(startify.config)
+
+      -- close alpha when a new window is opened
+      vim.api.nvim_create_autocmd("WinEnter", {
+        pattern = "*",
+        callback = function()
+          if vim.bo.filetype == "alpha" then
+            vim.cmd("Alpha")
+          end
+        end,
+      })
     end,
   },
   {
@@ -628,7 +638,11 @@ require("lazy").setup({
       "MunifTanjim/nui.nvim",
     },
     config = function()
-      require("noice").setup({})
+      require("noice").setup({
+        presets = {
+          long_message_to_split = true,
+        },
+      })
 
       vim.api.nvim_set_hl(0, "NoiceVirtualText", { fg = "#b0b0b0", bg = "NONE" })
 
@@ -1232,5 +1246,14 @@ require("lazy").setup({
   "tpope/vim-rails",
   "vim-ruby/vim-ruby",
   "itchyny/vim-qfedit",
-  "kevinhwang91/nvim-bqf",
+  {
+    "kevinhwang91/nvim-bqf",
+    config = function()
+      require("bqf").setup({
+        preview = {
+          auto_preview = false,
+        },
+      })
+    end,
+  },
 })
