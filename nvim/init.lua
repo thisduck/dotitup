@@ -209,16 +209,49 @@ require("lazy").setup({
     },
   },
   {
-    {
-      "kana/vim-textobj-user",
-      dependencies = {
-        "kana/vim-textobj-entire",
-        "beloglazov/vim-textobj-quotes",
-      },
-    },
     "michaeljsmith/vim-indent-object",
     "coderifous/textobj-word-column.vim",
-    { "echasnovski/mini.ai", config = true },
+    {
+      "echasnovski/mini.ai",
+      config = function()
+        require("mini.ai").setup({
+          custom_textobjects = {
+            e = function()
+              local from = { line = 1, col = 1 }
+              local to = {
+                line = vim.fn.line("$"),
+                col = math.max(vim.fn.getline("$"):len(), 1),
+              }
+              return { from = from, to = to }
+            end,
+          },
+          mappings = {
+            goto_left = "",
+            goto_right = "",
+          },
+        })
+      end,
+    },
+    {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      dependencies = { "nvim-treesitter/nvim-treesitter" },
+      config = function()
+        require("nvim-treesitter.configs").setup({
+          textobjects = {
+            select = {
+              enable = true,
+              lookahead = true,
+              keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ao"] = "@block.outer",
+                ["io"] = "@block.inner",
+              },
+            },
+          },
+        })
+      end,
+    },
   },
   {
     "kylechui/nvim-surround",
@@ -247,7 +280,7 @@ require("lazy").setup({
   "tpope/vim-unimpaired",
   {
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
+    branch = "master",
     dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -569,7 +602,7 @@ require("lazy").setup({
             },
           },
           intelephense = {},
-          kulala_ls = {},
+          -- kulala_ls = {},
           perlnavigator = {},
           prismals = {},
           solargraph = {},
